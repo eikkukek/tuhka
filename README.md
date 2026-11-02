@@ -1,7 +1,5 @@
 # tuhka
-New up-to-date Vulkan bindings used by [leimu].
-
-Follows mostly the same structure as [ash], but differs in some areas.
+New up-to-date Vulkan bindings for Rust.
 
 ## Usage
 
@@ -24,10 +22,9 @@ let create_info = vk::InstanceCreateInfo
     .application_info(Some(&application_info));
 let instance: Instance = unsafe {
     library.create_instance(&create_info, None)
-}.unwrap().value;
+}.unwrap();
 unsafe {
     library.destroy_instance(&instance, None);
 }
 ```
-[leimu]: https://crates.io/crates/leimu
 [ash]: https://crates.io/crates/ash

@@ -1,0 +1,223 @@
+use core::{ffi, fmt::{self, Display}, error::Error};
+use raw_window_handle::{RawDisplayHandle, RawWindowHandle};
+use crate::*;
+
+/// An error associated with [`creating surfaces`][1].
+///
+/// [1]: create_surface
+#[derive(Debug)]
+pub enum CreateSurfaceError {
+    VkErr(vk::Result),
+    MissingHandle(&'static str),
+    UnsupportedPlatform,
+}
+
+impl Display for CreateSurfaceError {
+
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::VkErr(err) => write!(f, "{err}"),
+            Self::MissingHandle(h) => write!(f, "missing handle {h}"),
+            Self::UnsupportedPlatform => write!(f, "unsupported platform"),
+        }
+    }
+}
+
+impl Error for CreateSurfaceError {}
+
+/// Gets required instance extensions for [`creating surfaces`][1] for the given display.
+///
+/// Returns [`None`] if the platform is not supported.
+///
+/// See [`create_surface`] for supported platforms.
+///
+/// [1]: create_surface
+pub fn required_instance_extensions(
+    display_handle: RawDisplayHandle,
+) -> Option<&'static [&'static ffi::CStr]>
+{
+    match display_handle {
+        RawDisplayHandle::Windows(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, khr::win32_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::Wayland(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, khr::wayland_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::Xlib(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, khr::xlib_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::Xcb(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, khr::xcb_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::Android(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, khr::android_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::AppKit(_) | RawDisplayHandle::UiKit(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, ext::metal_surface::NAME];
+            Some(&EXT)
+        },
+        RawDisplayHandle::Ohos(_) => {
+            static EXT: [&ffi::CStr; 2] =
+                [khr::surface::NAME, ohos::surface::NAME];
+            Some(&EXT)
+        },
+        _ => None,
+    }
+}
+
+/// Creates a surface for the given [`RawDisplayHandle`], [`RawWindowHandle`] pair.
+///
+/// # Supported platforms
+/// * Win32
+/// * Wayland
+/// * Xlib
+/// * Xcb
+/// * Android
+/// * macos (AppKit/metal)
+/// * ios (UiKit/metal)
+/// * Ohos
+///
+/// # Safety
+/// All raw Vulkan calls are unsafe as there is no validation of input or usage.
+pub unsafe fn create_surface(
+    instance: &Instance,
+    display_handle: RawDisplayHandle,
+    window_handle: RawWindowHandle,
+    allocator: Option<&vk::AllocationCallbacks>
+) -> Result<vk::SurfaceKHR, CreateSurfaceError>
+{
+    match (display_handle, window_handle) {
+        (RawDisplayHandle::Windows(_), RawWindowHandle::Win32(window)) => {
+            let create_info = vk::Win32SurfaceCreateInfoKHR::default()
+                .hwnd(window.hwnd.get())
+                .hinstance(
+                    window 
+                        .hinstance
+                        .ok_or(CreateSurfaceError::MissingHandle("HINSTANCE"))?
+                        .get(),
+                );
+            let instance = khr::win32_surface::Instance
+                ::new(instance);
+            unsafe {
+                instance.create_win32_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        (RawDisplayHandle::Wayland(mut display), RawWindowHandle::Wayland(mut window)) => {
+            let create_info = vk::WaylandSurfaceCreateInfoKHR::default()
+                .display(unsafe { display.display.as_mut() })
+                .surface(unsafe { window.surface.as_mut() });
+            let instance = khr::wayland_surface::Instance
+                ::new(instance);
+            unsafe {
+                instance.create_wayland_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        (RawDisplayHandle::Xlib(display), RawWindowHandle::Xlib(window)) => {
+            let create_info = vk::XlibSurfaceCreateInfoKHR::default()
+                .dpy(unsafe { display.display
+                    .ok_or(CreateSurfaceError::MissingHandle("xlib Display"))?
+                    .as_mut()
+                }).window(window.window);
+            let instance = khr::xlib_surface::Instance
+                ::new(instance);
+            unsafe {
+                instance.create_xlib_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        (RawDisplayHandle::Xcb(display), RawWindowHandle::Xcb(window)) => {
+            let create_info = vk::XcbSurfaceCreateInfoKHR::default()
+                .connection(unsafe {
+                    display.connection
+                        .ok_or(CreateSurfaceError::MissingHandle("xcb_connection_t"))?
+                        .as_mut()
+                }).window(window.window.get());
+            let instance = khr::xcb_surface::Instance
+                ::new(instance);
+            unsafe {
+                instance.create_xcb_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        (RawDisplayHandle::Android(_), RawWindowHandle::AndroidNdk(mut window)) => {
+            let create_info = vk::AndroidSurfaceCreateInfoKHR::default()
+                .window(unsafe { window.a_native_window.as_mut() });
+            let instance = khr::android_surface::Instance::new(instance);
+            unsafe {
+                instance.create_android_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        #[cfg(target_os = "macos")]
+        (RawDisplayHandle::AppKit(_), RawWindowHandle::AppKit(window)) => {
+            use raw_window_metal::Layer;
+            let layer = unsafe {
+                Layer::from_ns_view(window.ns_view).into_raw()
+            };
+            let create_info = vk::MetalSurfaceCreateInfoEXT {
+                p_layer: layer.as_ptr(),
+                ..Default::default()
+            };
+            let instance = ext::metal_surface::Instance::new(instance);
+            unsafe {
+                instance.create_metal_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        #[cfg(target_os = "ios")]
+        (RawDisplayHandle::UiKit(_), RawWindowHandle::UiKit(window)) => {
+            use raw_window_metal::Layer;
+            let layer = unsafe {
+                Layer::from_ui_view(window.ui_view).into_raw()
+            };
+            let create_info = vk::MetalSurfaceCreateInfoEXT {
+                p_layer: layer.as_ptr(),
+                ..Default::default()
+            };
+            let instance = ext::metal_surface::Instance::new(instance);
+            unsafe {
+                instance.create_metal_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        (RawDisplayHandle::Ohos(_), RawWindowHandle::OhosNdk(mut window)) => {
+            let create_info = vk::SurfaceCreateInfoOHOS::default()
+                .window(unsafe { window.native_window.as_mut() });
+            let instance = ohos::surface::Instance::new(instance);
+            unsafe {
+                instance.create_surface(
+                    &create_info,
+                    allocator
+                ).map_err(CreateSurfaceError::VkErr)
+            }
+        },
+        _ => Err(CreateSurfaceError::UnsupportedPlatform)
+    }
+}
