@@ -49,23 +49,6 @@ pub use device::*;
 pub use extension_gen::*;
 mod macros;
 
-/// A trait for loading extension instances/devices generically.
-pub trait LoadWith: Clone {
-
-    /// The handle type, which is either [`vk::Device`] or [`vk::Instance`].
-    type Handle;
-
-    /// Loads the device.
-    ///
-    /// # Safety
-    /// `handle` *must* be a valid handle and `f` *must* yield valid function pointers for
-    /// `handle`.
-    unsafe fn load_with(
-        f: &mut dyn FnMut(&core::ffi::CStr) -> *const core::ffi::c_void,
-        handle: Self::Handle,
-    ) -> Self;
-}
-
 #[doc = include_str!("../README.md")]
 #[cfg(doctest)]
 pub struct ReadMeDoctests;

@@ -4,7 +4,7 @@ version = "0.1.6"
 edition = "2024"
 description = "New up-to-date Vulkan bindings for Rust"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/eikkukek/leimu"
+repository = "https://github.com/eikkukek/tuhka"
 readme = "README.md"
 keywords = ["bindings", "graphics", "vulkan"]
 categories = ["graphics", "api-bindings", "external-ffi-bindings", "rendering::graphics-api"]
@@ -17,4 +17,3 @@ raw-window-metal = { version = "1.1.0", optional = true }
 
 [features]
 window = ["dep:raw-window-handle", "dep:raw-window-metal"]
-ext-load-with = []

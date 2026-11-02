@@ -1,6 +1,4 @@
 use crate::AsPtr;
-#[cfg(feature = "ext-load-with")]
-use crate::LoadWith;
 use crate::VkResult;
 use crate::vk::*;
 use core::ffi;
@@ -172,6 +170,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -407,19 +414,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
-                }
-            }
-        }
     }
     pub mod swapchain {
         //! VK_KHR_swapchain device extension.
@@ -621,6 +615,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -859,19 +862,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod display {
         //! VK_KHR_display instance extension.
@@ -1067,6 +1057,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -1359,19 +1358,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
-                }
-            }
-        }
     }
     pub mod display_swapchain {
         //! VK_KHR_display_swapchain device extension.
@@ -1430,6 +1416,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -1462,19 +1457,6 @@ pub mod khr {
                         swapchains.as_mut_ptr(),
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -1558,6 +1540,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -1606,19 +1597,6 @@ pub mod khr {
                         dpy,
                         visual_id,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -1702,6 +1680,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -1750,19 +1737,6 @@ pub mod khr {
                         connection,
                         visual_id,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -1846,6 +1820,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -1892,19 +1875,6 @@ pub mod khr {
                         queue_family_index,
                         display,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -1965,6 +1935,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -1992,19 +1971,6 @@ pub mod khr {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -2086,6 +2052,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -2130,19 +2105,6 @@ pub mod khr {
                         physical_device,
                         queue_family_index,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -2453,6 +2415,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -2751,19 +2722,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod video_decode_queue {
         //! VK_KHR_video_decode_queue device extension.
@@ -2813,6 +2771,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -2832,19 +2799,6 @@ pub mod khr {
                 decode_info: &VideoDecodeInfoKHR<'_>,
             ) {
                 unsafe { (self.fp.cmd_decode_video_khr)(command_buffer, decode_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -2930,6 +2884,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -2957,19 +2920,6 @@ pub mod khr {
             #[doc = r""]
             pub unsafe fn cmd_end_rendering(&self, command_buffer: CommandBuffer) {
                 unsafe { (self.fp.cmd_end_rendering)(command_buffer) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -3173,6 +3123,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -3383,19 +3342,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod shader_draw_parameters {
         //! VK_KHR_shader_draw_parameters device extension.
@@ -3456,6 +3402,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -3475,19 +3430,6 @@ pub mod khr {
                 flags: CommandPoolTrimFlags,
             ) {
                 unsafe { (self.fp.trim_command_pool)(self.handle, command_pool, flags) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -3593,6 +3535,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -3639,19 +3590,6 @@ pub mod khr {
                         memory_win32_handle_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -3728,6 +3666,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -3770,19 +3717,6 @@ pub mod khr {
                         memory_fd_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -3885,6 +3819,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -3927,19 +3870,6 @@ pub mod khr {
                         handle,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4013,6 +3943,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4048,19 +3987,6 @@ pub mod khr {
                     let mut fd = ::core::mem::MaybeUninit::uninit();
                     (self.fp.get_semaphore_fd_khr)(self.handle, get_fd_info, fd.as_mut_ptr())
                         .success_with_assume_init(fd)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4148,6 +4074,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4208,19 +4143,6 @@ pub mod khr {
                         set,
                         data,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4374,6 +4296,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4464,19 +4395,6 @@ pub mod khr {
                         set,
                         data,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4593,6 +4511,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4673,19 +4600,6 @@ pub mod khr {
                 unsafe { (self.fp.cmd_end_render_pass2)(command_buffer, subpass_end_info) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod shared_presentable_image {
         //! VK_KHR_shared_presentable_image device extension.
@@ -4740,6 +4654,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4762,19 +4685,6 @@ pub mod khr {
                 unsafe {
                     (self.fp.get_swapchain_status_khr)(self.handle, swapchain)
                         .filter_success(&[Result::SUCCESS, Result::SUBOPTIMAL_KHR])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4870,6 +4780,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -4908,19 +4827,6 @@ pub mod khr {
                 unsafe {
                     (self.fp.get_fence_win32_handle_khr)(self.handle, get_win32_handle_info, handle)
                         .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -4989,6 +4895,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -5023,19 +4938,6 @@ pub mod khr {
                     let mut fd = ::core::mem::MaybeUninit::uninit();
                     (self.fp.get_fence_fd_khr)(self.handle, get_fd_info, fd.as_mut_ptr())
                         .success_with_assume_init(fd)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -5162,6 +5064,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -5275,19 +5186,6 @@ pub mod khr {
                 unsafe { (self.fp.release_profiling_lock_khr)(self.handle) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod maintenance2 {
         //! VK_KHR_maintenance2 device extension.
@@ -5376,6 +5274,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -5458,19 +5365,6 @@ pub mod khr {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -5607,6 +5501,15 @@ pub mod khr {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -5796,19 +5699,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
-                }
-            }
-        }
     }
     pub mod dedicated_allocation {
         //! VK_KHR_dedicated_allocation device extension.
@@ -5942,6 +5832,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -6020,19 +5919,6 @@ pub mod khr {
                         &mut len,
                         out.as_mut_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -6452,6 +6338,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -6837,19 +6732,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod ray_tracing_pipeline {
         //! VK_KHR_ray_tracing_pipeline device extension.
@@ -7053,6 +6935,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -7251,19 +7142,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod ray_query {
         //! VK_KHR_ray_query device extension.
@@ -7351,6 +7229,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -7396,19 +7283,6 @@ pub mod khr {
                         ycbcr_conversion,
                         allocator.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -7480,6 +7354,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -7530,19 +7413,6 @@ pub mod khr {
                         },
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -7610,6 +7480,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -7630,19 +7509,6 @@ pub mod khr {
             ) {
                 unsafe {
                     (self.fp.get_descriptor_set_layout_support)(self.handle, create_info, support)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -7733,6 +7599,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -7795,19 +7670,6 @@ pub mod khr {
                         max_draw_count,
                         stride,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -7974,6 +7836,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8026,19 +7897,6 @@ pub mod khr {
                 signal_info: &SemaphoreSignalInfo<'_>,
             ) -> VkResult<()> {
                 unsafe { (self.fp.signal_semaphore)(self.handle, signal_info).success() }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -8136,6 +7994,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8213,19 +8080,6 @@ pub mod khr {
                         fragment_size,
                         combiner_ops,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -8314,6 +8168,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8351,19 +8214,6 @@ pub mod khr {
                         command_buffer,
                         input_attachment_index_info,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -8452,6 +8302,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8481,19 +8340,6 @@ pub mod khr {
                 unsafe {
                     (self.fp.wait_for_present_khr)(self.handle, swapchain, present_id, timeout)
                         .filter_success(&[Result::SUCCESS, Result::TIMEOUT, Result::SUBOPTIMAL_KHR])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -8603,6 +8449,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8643,19 +8498,6 @@ pub mod khr {
                 info: &DeviceMemoryOpaqueCaptureAddressInfo<'_>,
             ) -> u64 {
                 unsafe { (self.fp.get_device_memory_opaque_capture_address)(self.handle, info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -8800,6 +8642,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -8899,19 +8750,6 @@ pub mod khr {
                         Result::THREAD_DONE_KHR,
                         Result::THREAD_IDLE_KHR,
                     ])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -9019,6 +8857,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -9190,19 +9037,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod map_memory2 {
         //! VK_KHR_map_memory2 device extension.
@@ -9270,6 +9104,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -9303,19 +9146,6 @@ pub mod khr {
                 memory_unmap_info: &MemoryUnmapInfo<'_>,
             ) -> VkResult<()> {
                 unsafe { (self.fp.unmap_memory2)(self.handle, memory_unmap_info).success() }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -9444,6 +9274,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -9545,19 +9384,6 @@ pub mod khr {
                 unsafe { (self.fp.cmd_encode_video_khr)(command_buffer, encode_info) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod object_refresh {
         //! VK_KHR_object_refresh device extension.
@@ -9635,6 +9461,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -9705,19 +9540,6 @@ pub mod khr {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -9862,6 +9684,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -9973,19 +9804,6 @@ pub mod khr {
                         fence,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -10494,6 +10312,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -10907,19 +10734,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod fragment_shader_barycentric {
         //! VK_KHR_fragment_shader_barycentric device extension.
@@ -11082,6 +10896,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -11167,19 +10990,6 @@ pub mod khr {
                 unsafe { (self.fp.cmd_resolve_image2)(command_buffer, resolve_image_info) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod format_feature_flags2 {
         //! VK_KHR_format_feature_flags2 device extension.
@@ -11243,6 +11053,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -11265,19 +11084,6 @@ pub mod khr {
             ) {
                 unsafe {
                     (self.fp.cmd_trace_rays_indirect2_khr)(command_buffer, indirect_device_address)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -11397,6 +11203,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -11479,19 +11294,6 @@ pub mod khr {
                         &mut len,
                         out.as_mut_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -11635,6 +11437,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -11713,19 +11524,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod present_id2 {
         //! VK_KHR_present_id2 device extension.
@@ -11787,6 +11585,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -11815,19 +11622,6 @@ pub mod khr {
                 unsafe {
                     (self.fp.wait_for_present2_khr)(self.handle, swapchain, present_wait2_info)
                         .filter_success(&[Result::SUCCESS, Result::TIMEOUT, Result::SUBOPTIMAL_KHR])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -11978,6 +11772,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12120,19 +11923,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod surface_maintenance1 {
         //! VK_KHR_surface_maintenance1 instance extension.
@@ -12194,6 +11984,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12213,19 +12012,6 @@ pub mod khr {
             ) -> VkResult<()> {
                 unsafe {
                     (self.fp.release_swapchain_images_khr)(self.handle, release_info).success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -12292,6 +12078,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12354,19 +12149,6 @@ pub mod khr {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -12490,6 +12272,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12515,19 +12306,6 @@ pub mod khr {
                         line_stipple_factor,
                         line_stipple_pattern,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -12612,6 +12390,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12696,19 +12483,6 @@ pub mod khr {
                         max_deviation.as_mut_ptr(),
                     )
                     .success_with_assume_init(max_deviation)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -12875,6 +12649,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -12983,19 +12766,6 @@ pub mod khr {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod copy_memory_indirect {
         //! VK_KHR_copy_memory_indirect device extension.
@@ -13072,6 +12842,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -13112,19 +12891,6 @@ pub mod khr {
                         command_buffer,
                         copy_memory_to_image_indirect_info,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -13230,6 +12996,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -13317,19 +13092,6 @@ pub mod khr {
                 unsafe {
                     (self.fp.get_device_fault_debug_info_khr)(self.handle, debug_info)
                         .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -13441,6 +13203,15 @@ pub mod khr {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -13461,19 +13232,6 @@ pub mod khr {
             ) {
                 unsafe {
                     (self.fp.cmd_end_rendering2_khr)(command_buffer, rendering_end_info.as_ptr())
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -13609,6 +13367,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -13683,19 +13450,6 @@ pub mod ext {
                         layer_prefix.as_ptr(),
                         message.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -13841,6 +13595,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -13906,19 +13669,6 @@ pub mod ext {
                 marker_info: &DebugMarkerMarkerInfoEXT<'_>,
             ) {
                 unsafe { (self.fp.cmd_debug_marker_insert_ext)(command_buffer, marker_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -14100,6 +13850,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -14266,19 +14025,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod validation_flags {
         //! VK_EXT_validation_flags instance extension.
@@ -14394,6 +14140,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -14426,19 +14181,6 @@ pub mod ext {
             #[doc = r""]
             pub unsafe fn cmd_end_conditional_rendering(&self, command_buffer: CommandBuffer) {
                 unsafe { (self.fp.cmd_end_conditional_rendering_ext)(command_buffer) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -14490,6 +14232,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -14509,19 +14260,6 @@ pub mod ext {
                 display: DisplayKHR,
             ) -> VkResult<()> {
                 unsafe { (self.fp.release_display_ext)(physical_device, display).success() }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
-                }
             }
         }
     }
@@ -14602,6 +14340,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -14645,19 +14392,6 @@ pub mod ext {
                         display.as_mut_ptr(),
                     )
                     .success_with_assume_init(display)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -14718,6 +14452,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -14744,19 +14487,6 @@ pub mod ext {
                         surface_capabilities,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -14883,6 +14613,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -14969,19 +14708,6 @@ pub mod ext {
                         counter_value.as_mut_ptr(),
                     )
                     .success_with_assume_init(counter_value)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -15084,6 +14810,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -15148,19 +14883,6 @@ pub mod ext {
                         command_buffer,
                         discard_rectangle_mode,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -15233,6 +14955,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -15266,19 +14997,6 @@ pub mod ext {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -15560,6 +15278,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -15713,19 +15440,6 @@ pub mod ext {
                         message_types,
                         callback_data,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -15983,6 +15697,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -16184,19 +15907,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod inline_uniform_block {
         //! VK_EXT_inline_uniform_block device extension.
@@ -16289,6 +15999,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -16328,19 +16047,6 @@ pub mod ext {
                         samples,
                         multisample_properties,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -16413,6 +16119,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -16438,19 +16153,6 @@ pub mod ext {
                         properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -16579,6 +16281,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -16705,19 +16416,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod descriptor_indexing {
         //! VK_EXT_descriptor_indexing device extension.
@@ -16803,6 +16501,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -16830,19 +16537,6 @@ pub mod ext {
                         memory_host_pointer_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -16927,6 +16621,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -17001,19 +16704,6 @@ pub mod ext {
                         max_deviation.as_mut_ptr(),
                     )
                     .success_with_assume_init(max_deviation)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -17156,6 +16846,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -17265,19 +16964,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod pci_bus_info {
         //! VK_EXT_pci_bus_info device extension.
@@ -17340,6 +17026,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -17367,19 +17062,6 @@ pub mod ext {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -17477,6 +17159,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -17495,19 +17186,6 @@ pub mod ext {
                 info: &BufferDeviceAddressInfo<'_>,
             ) -> DeviceAddress {
                 unsafe { (self.fp.get_buffer_device_address)(self.handle, info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -17568,6 +17246,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -17616,19 +17303,6 @@ pub mod ext {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -17787,6 +17461,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -17902,19 +17585,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod headless_surface {
         //! VK_EXT_headless_surface instance extension.
@@ -17972,6 +17642,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -17999,19 +17678,6 @@ pub mod ext {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -18065,6 +17731,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -18090,19 +17765,6 @@ pub mod ext {
                         line_stipple_factor,
                         line_stipple_pattern,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -18165,6 +17827,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -18186,19 +17857,6 @@ pub mod ext {
             ) {
                 unsafe {
                     (self.fp.reset_query_pool)(self.handle, query_pool, first_query, query_count)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -18484,6 +18142,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -18715,19 +18382,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod host_image_copy {
         //! VK_EXT_host_image_copy device extension.
@@ -18853,6 +18507,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -18938,19 +18601,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod map_memory_placed {
         //! VK_EXT_map_memory_placed device extension.
@@ -19024,6 +18674,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -19043,19 +18702,6 @@ pub mod ext {
             ) -> VkResult<()> {
                 unsafe {
                     (self.fp.release_swapchain_images_khr)(self.handle, release_info).success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -19129,6 +18775,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -19148,19 +18803,6 @@ pub mod ext {
                 depth_bias_info: &DepthBiasInfoEXT<'_>,
             ) {
                 unsafe { (self.fp.cmd_set_depth_bias2_ext)(command_buffer, depth_bias_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -19241,6 +18883,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -19284,19 +18935,6 @@ pub mod ext {
                         display.as_mut_ptr(),
                     )
                     .success_with_assume_init(display)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -19433,6 +19071,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -19527,19 +19174,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod pipeline_creation_cache_control {
         //! VK_EXT_pipeline_creation_cache_control device extension.
@@ -19608,6 +19242,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -19626,19 +19269,6 @@ pub mod ext {
                 metal_objects_info: &mut ExportMetalObjectsInfoEXT<'_>,
             ) {
                 unsafe { (self.fp.export_metal_objects_ext)(self.handle, metal_objects_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -19927,6 +19557,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20166,19 +19805,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod graphics_pipeline_library {
         //! VK_EXT_graphics_pipeline_library device extension.
@@ -20291,6 +19917,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20376,19 +20011,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod ycbcr_2plane_444_formats {
         //! VK_EXT_ycbcr_2plane_444_formats device extension.
@@ -20468,6 +20090,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20489,19 +20120,6 @@ pub mod ext {
             ) {
                 unsafe {
                     (self.fp.get_image_subresource_layout2)(self.handle, image, subresource, layout)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -20574,6 +20192,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20604,19 +20231,6 @@ pub mod ext {
                         fault_info.as_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -20706,6 +20320,15 @@ pub mod ext {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -20754,19 +20377,6 @@ pub mod ext {
                         queue_family_index,
                         dfb,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -20827,6 +20437,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20862,19 +20481,6 @@ pub mod ext {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -20964,6 +20570,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -20989,19 +20604,6 @@ pub mod ext {
                         pipeline_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -21151,6 +20753,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -21234,19 +20845,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod color_write_enable {
         //! VK_EXT_color_write_enable device extension.
@@ -21303,6 +20901,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -21331,19 +20938,6 @@ pub mod ext {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -21443,6 +21037,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -21508,19 +21111,6 @@ pub mod ext {
                         stride,
                         vertex_offset.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -21861,6 +21451,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -22171,19 +21770,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod load_store_op_none {
         //! VK_EXT_load_store_op_none device extension.
@@ -22252,6 +21838,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -22267,19 +21862,6 @@ pub mod ext {
             #[doc = r""]
             pub unsafe fn set_device_memory_priority(&self, memory: DeviceMemory, priority: f32) {
                 unsafe { (self.fp.set_device_memory_priority_ext)(self.handle, memory, priority) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -23023,6 +22605,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -23636,19 +23227,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod subpass_merge_feedback {
         //! VK_EXT_subpass_merge_feedback device extension.
@@ -23734,6 +23312,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -23776,19 +23363,6 @@ pub mod ext {
                         create_info,
                         identifier,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -24967,6 +24541,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -26046,19 +25629,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod mutable_descriptor_type {
         //! VK_EXT_mutable_descriptor_type device extension.
@@ -26145,6 +25715,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -26168,19 +25747,6 @@ pub mod ext {
                         command_buffer,
                         aspect_mask,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -26263,6 +25829,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -26309,19 +25884,6 @@ pub mod ext {
                         max_decompression_count,
                         stride,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -26575,6 +26137,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -26764,19 +26335,6 @@ pub mod ext {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod ray_tracing_invocation_reorder {
         //! VK_EXT_ray_tracing_invocation_reorder device extension.
@@ -26839,6 +26397,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -26864,19 +26431,6 @@ pub mod ext {
                         depth_clamp_mode,
                         depth_clamp_range.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -26959,6 +26513,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27005,19 +26568,6 @@ pub mod ext {
                         memory_metal_handle_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27087,6 +26637,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27107,19 +26666,6 @@ pub mod ext {
             ) {
                 unsafe {
                     (self.fp.cmd_end_rendering2_khr)(command_buffer, rendering_end_info.as_ptr())
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27190,6 +26736,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27216,19 +26771,6 @@ pub mod ext {
                         command_buffer,
                         begin_custom_resolve_info.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27302,6 +26844,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27368,19 +26919,6 @@ pub mod ext {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27451,6 +26989,15 @@ pub mod ext {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27474,19 +27021,6 @@ pub mod ext {
                         command_buffer,
                         primitive_restart_index,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27585,6 +27119,15 @@ pub mod nv {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -27624,19 +27167,6 @@ pub mod nv {
                         external_image_format_properties.as_mut_ptr(),
                     )
                     .success_with_assume_init(external_image_format_properties)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -27702,6 +27232,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27724,19 +27263,6 @@ pub mod nv {
                 unsafe {
                     (self.fp.get_memory_win32_handle_nv)(self.handle, memory, handle_type, handle)
                         .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27803,6 +27329,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -27833,19 +27368,6 @@ pub mod nv {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -27999,6 +27521,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -28072,19 +27603,6 @@ pub mod nv {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -28406,6 +27924,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -28701,19 +28228,6 @@ pub mod nv {
                 unsafe { (self.fp.compile_deferred_nv)(self.handle, pipeline, shader).success() }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod representative_fragment_test {
         //! VK_NV_representative_fragment_test device extension.
@@ -28837,6 +28351,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -28911,19 +28434,6 @@ pub mod nv {
                         max_draw_count,
                         stride,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -29019,6 +28529,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -29073,19 +28592,6 @@ pub mod nv {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -29187,6 +28693,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -29276,19 +28791,6 @@ pub mod nv {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod dedicated_allocation_image_aliasing {
         //! VK_NV_dedicated_allocation_image_aliasing device extension.
@@ -29352,6 +28854,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -29413,19 +28924,6 @@ pub mod nv {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod coverage_reduction_mode {
         //! VK_NV_coverage_reduction_mode device extension.
@@ -29479,6 +28977,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -29541,19 +29048,6 @@ pub mod nv {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -29725,6 +29219,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -29845,19 +29348,6 @@ pub mod nv {
                         indirect_commands_layout,
                         allocator.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -30041,6 +29531,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -30182,19 +29681,6 @@ pub mod nv {
                 launch_info: &CudaLaunchInfoNV<'_>,
             ) {
                 unsafe { (self.fp.cmd_cuda_launch_kernel_nv)(command_buffer, launch_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -30379,6 +29865,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -30463,19 +29958,6 @@ pub mod nv {
                 unsafe { (self.fp.shutdown_latency_device_legacy_nv)(self.handle) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod fragment_shading_rate_enums {
         //! VK_NV_fragment_shading_rate_enums device extension.
@@ -30532,6 +30014,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -30557,19 +30048,6 @@ pub mod nv {
                         shading_rate,
                         combiner_ops,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -30649,6 +30127,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -30687,19 +30174,6 @@ pub mod nv {
                         display.as_mut_ptr(),
                     )
                     .success_with_assume_init(display)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -30759,6 +30233,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -30784,19 +30267,6 @@ pub mod nv {
                         address.as_mut_ptr(),
                     )
                     .success_with_assume_init(address)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -30984,6 +30454,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -31114,19 +30593,6 @@ pub mod nv {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod external_memory_sci_buf {
         //! VK_NV_external_memory_sci_buf device extension.
@@ -31228,6 +30694,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -31292,19 +30767,6 @@ pub mod nv {
                 unsafe {
                     (self.fp.get_physical_device_sci_buf_attributes_nv)(physical_device, attributes)
                         .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -31397,6 +30859,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -31455,19 +30926,6 @@ pub mod nv {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -31549,6 +31007,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -31598,19 +31065,6 @@ pub mod nv {
                         indirect_commands_count_address,
                         stride,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -31714,6 +31168,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -31769,19 +31232,6 @@ pub mod nv {
                 info: &PipelineIndirectDeviceAddressInfoNV<'_>,
             ) -> DeviceAddress {
                 unsafe { (self.fp.get_pipeline_indirect_device_address_nv)(self.handle, info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -31945,6 +31395,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -32084,19 +31543,6 @@ pub mod nv {
             ) {
                 unsafe {
                     (self.fp.cmd_optical_flow_execute_nv)(command_buffer, session, execute_info)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -32286,6 +31732,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -32423,19 +31878,6 @@ pub mod nv {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod ray_tracing_invocation_reorder {
         //! VK_NV_ray_tracing_invocation_reorder device extension.
@@ -32542,6 +31984,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -32641,19 +32092,6 @@ pub mod nv {
                             ::core::ptr::null()
                         },
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -32796,6 +32234,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -32870,19 +32317,6 @@ pub mod nv {
                 queue_type_info: &OutOfBandQueueTypeInfoNV<'_>,
             ) {
                 unsafe { (self.fp.queue_notify_out_of_band_nv)(queue, queue_type_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -33010,6 +32444,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33070,19 +32513,6 @@ pub mod nv {
             ) {
                 unsafe {
                     (self.fp.get_external_compute_queue_data_nv)(external_queue, params, data)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -33183,6 +32613,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33224,19 +32663,6 @@ pub mod nv {
                         command_buffer,
                         command_infos,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -33319,6 +32745,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33362,19 +32797,6 @@ pub mod nv {
                         command_buffer,
                         build_info,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -33437,6 +32859,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33502,19 +32933,6 @@ pub mod nv {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod present_metering {
         //! VK_NV_present_metering device extension.
@@ -33576,6 +32994,15 @@ pub mod nv {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33596,19 +33023,6 @@ pub mod nv {
             ) {
                 unsafe {
                     (self.fp.cmd_set_compute_occupancy_priority_nv)(command_buffer, parameters)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -33763,6 +33177,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33825,19 +33248,6 @@ pub mod amd {
                         max_draw_count,
                         stride,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -33918,6 +33328,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -33986,19 +33405,6 @@ pub mod amd {
                         out.as_mut_ptr().cast(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -34301,6 +33707,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -34504,19 +33919,6 @@ pub mod amd {
                 unsafe { (self.fp.cmd_copy_gpa_session_results_amd)(command_buffer, gpa_session) }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod mixed_attachment_samples {
         //! VK_AMD_mixed_attachment_samples device extension.
@@ -34611,6 +34013,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -34666,19 +34077,6 @@ pub mod amd {
                         dst_offset,
                         marker,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -34755,6 +34153,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -34779,19 +34186,6 @@ pub mod amd {
                         swap_chain,
                         local_dimming_enable as Bool32,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -34862,6 +34256,15 @@ pub mod amd {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -34877,19 +34280,6 @@ pub mod amd {
             #[doc = r""]
             pub unsafe fn anti_lag_update(&self, data: &AntiLagDataAMD<'_>) {
                 unsafe { (self.fp.anti_lag_update_amd)(self.handle, data) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -35030,6 +34420,15 @@ pub mod nvx {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -35117,19 +34516,6 @@ pub mod nvx {
                 launch_info: &CuLaunchInfoNVX<'_>,
             ) {
                 unsafe { (self.fp.cmd_cu_launch_kernel_nvx)(command_buffer, launch_info) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -35251,6 +34637,15 @@ pub mod nvx {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -35306,19 +34701,6 @@ pub mod nvx {
                         image_view_index,
                         sampler_index,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -35388,6 +34770,15 @@ pub mod ggp {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -35415,19 +34806,6 @@ pub mod ggp {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -35491,6 +34869,15 @@ pub mod nn {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -35518,19 +34905,6 @@ pub mod nn {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -35616,6 +34990,15 @@ pub mod google {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -35695,19 +35078,6 @@ pub mod google {
                         out.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -35800,6 +35170,15 @@ pub mod mvk {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -35827,19 +35206,6 @@ pub mod mvk {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -35899,6 +35265,15 @@ pub mod mvk {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -35926,19 +35301,6 @@ pub mod mvk {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -36025,6 +35387,15 @@ pub mod android {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -36069,19 +35440,6 @@ pub mod android {
                         buffer.as_mut_ptr(),
                     )
                     .success_with_assume_init(buffer)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -36291,6 +35649,15 @@ pub mod amdx {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -36457,19 +35824,6 @@ pub mod amdx {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod dense_geometry_format {
         //! VK_AMDX_dense_geometry_format device extension.
@@ -36563,6 +35917,15 @@ pub mod qcom {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -36582,19 +35945,6 @@ pub mod qcom {
                 perf_hint_info: &PerfHintInfoQCOM<'_>,
             ) -> VkResult<()> {
                 unsafe { (self.fp.queue_set_perf_hint_qcom)(queue, perf_hint_info).success() }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -36705,6 +36055,15 @@ pub mod qcom {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -36751,19 +36110,6 @@ pub mod qcom {
             ) {
                 unsafe {
                     (self.fp.cmd_end_per_tile_execution_qcom)(command_buffer, per_tile_end_info)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -36865,6 +36211,15 @@ pub mod qcom {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -36944,19 +36299,6 @@ pub mod qcom {
                         properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -37050,6 +36392,15 @@ pub mod qcom {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -37073,19 +36424,6 @@ pub mod qcom {
                         command_buffer,
                         tile_memory_bind_info.as_ptr(),
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -37329,6 +36667,15 @@ pub mod intel {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -37472,19 +36819,6 @@ pub mod intel {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod device_info {
         //! VK_INTEL_device_info device extension.
@@ -37551,6 +36885,15 @@ pub mod fuchsia {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -37578,19 +36921,6 @@ pub mod fuchsia {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -37674,6 +37004,15 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -37720,19 +37059,6 @@ pub mod fuchsia {
                         memory_zircon_handle_properties,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -37813,6 +37139,15 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -37855,19 +37190,6 @@ pub mod fuchsia {
                         zircon_handle.as_mut_ptr(),
                     )
                     .success_with_assume_init(zircon_handle)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -38019,6 +37341,15 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -38124,19 +37455,6 @@ pub mod fuchsia {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
 }
 pub mod arm {
@@ -38207,6 +37525,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -38227,19 +37554,6 @@ pub mod arm {
             ) {
                 unsafe {
                     (self.fp.cmd_set_dispatch_parameters_arm)(command_buffer, dispatch_parameters)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -38509,6 +37823,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -38710,19 +38033,6 @@ pub mod arm {
                         data,
                     )
                     .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -39023,6 +38333,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -39377,19 +38696,6 @@ pub mod arm {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod data_graph_instruction_set_tosa {
         //! VK_ARM_data_graph_instruction_set_tosa device extension.
@@ -39444,6 +38750,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -39466,19 +38781,6 @@ pub mod arm {
             ) -> VkResult<()> {
                 unsafe {
                     (self . fp . get_physical_device_queue_family_data_graph_engine_operation_properties_arm) (physical_device , queue_family_index , queue_family_data_graph_properties , properties ,) . success ()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -39549,6 +38851,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -39618,19 +38929,6 @@ pub mod arm {
                         out_counter_descriptions.as_mut_ptr(),
                     )
                     .filter_success(&[Result::SUCCESS, Result::INCOMPLETE])
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -39825,6 +39123,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -39995,19 +39302,6 @@ pub mod arm {
                 }
             }
         }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
-            }
-        }
     }
     pub mod format_pack {
         //! VK_ARM_format_pack device extension.
@@ -40090,6 +39384,15 @@ pub mod arm {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40157,19 +39460,6 @@ pub mod arm {
             ) -> VkResult<()> {
                 unsafe {
                     (self . fp . get_physical_device_queue_family_data_graph_engine_operation_properties_arm) (physical_device , queue_family_index , queue_family_data_graph_properties , properties ,) . success ()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -40279,6 +39569,15 @@ pub mod valve {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40322,19 +39621,6 @@ pub mod valve {
                         pp_data.as_mut_ptr(),
                     );
                     pp_data.assume_init()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -40436,6 +39722,15 @@ pub mod huawei {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40470,19 +39765,6 @@ pub mod huawei {
             #[doc = r""]
             pub unsafe fn cmd_subpass_shading(&self, command_buffer: CommandBuffer) {
                 unsafe { (self.fp.cmd_subpass_shading_huawei)(command_buffer) }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
-                }
             }
         }
     }
@@ -40541,6 +39823,15 @@ pub mod huawei {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40566,19 +39857,6 @@ pub mod huawei {
                         image_view,
                         image_layout,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -40660,6 +39938,15 @@ pub mod huawei {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40702,19 +39989,6 @@ pub mod huawei {
             ) {
                 unsafe {
                     (self.fp.cmd_draw_cluster_indirect_huawei)(command_buffer, buffer, offset)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -40806,6 +40080,15 @@ pub mod qnx {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -40852,19 +40135,6 @@ pub mod qnx {
                         queue_family_index,
                         window,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -40924,6 +40194,15 @@ pub mod qnx {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -40945,19 +40224,6 @@ pub mod qnx {
                 unsafe {
                     (self.fp.get_screen_buffer_properties_qnx)(self.handle, buffer, properties)
                         .success()
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -41042,6 +40308,15 @@ pub mod ohos {
             }
         }
         impl Device {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Device,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: DeviceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Device {
                 self.handle
@@ -41078,19 +40353,6 @@ pub mod ohos {
                     let mut buffer = ::core::mem::MaybeUninit::uninit();
                     (self.fp.get_memory_native_buffer_ohos)(self.handle, info, buffer.as_mut_ptr())
                         .success_with_assume_init(buffer)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Device {
-            type Handle = crate::vk::Device;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: DeviceFp::load(f),
                 }
             }
         }
@@ -41145,6 +40407,15 @@ pub mod ohos {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -41172,19 +40443,6 @@ pub mod ohos {
                         surface.as_mut_ptr(),
                     )
                     .success_with_assume_init(surface)
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }
@@ -41291,6 +40549,15 @@ pub mod sec {
             }
         }
         impl Instance {
+            pub unsafe fn load_with(
+                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                handle: crate::vk::Instance,
+            ) -> Self {
+                Self {
+                    handle,
+                    fp: InstanceFp::load(f),
+                }
+            }
             #[inline]
             pub fn handle(&self) -> crate::vk::Instance {
                 self.handle
@@ -41337,19 +40604,6 @@ pub mod sec {
                         queue_family_index,
                         device,
                     )
-                }
-            }
-        }
-        #[cfg(feature = "ext-load-with")]
-        impl LoadWith for Instance {
-            type Handle = crate::vk::Instance;
-            unsafe fn load_with(
-                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                handle: Self::Handle,
-            ) -> Self {
-                Self {
-                    handle,
-                    fp: InstanceFp::load(f),
                 }
             }
         }

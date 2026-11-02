@@ -3719,6 +3719,15 @@ fn main() -> std::io::Result<()> {
                                 }
                             }
                             impl Instance { 
+                                pub unsafe fn load_with(
+                                    f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                                    handle: crate::vk::Instance,
+                                ) -> Self {
+                                    Self {
+                                        handle,
+                                        fp: InstanceFp::load(f),
+                                    }
+                                }
                                 #[inline]
                                 pub fn handle(&self) -> crate::vk::Instance {
                                     self.handle
@@ -3728,20 +3737,6 @@ fn main() -> std::io::Result<()> {
                                     &self.fp
                                 }
                                 #(#rs_defs)*
-                            }
-                            #[cfg(feature = "ext-load-with")]
-                            impl LoadWith for Instance
-                            {
-                                type Handle = crate::vk::Instance;
-                                unsafe fn load_with(
-                                    f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                                    handle: Self::Handle
-                                ) -> Self {
-                                    Self {
-                                        handle,
-                                        fp: InstanceFp::load(f),
-                                    }
-                                }
                             }
                         };
                         buffer.push_str(&def.to_string());
@@ -3910,6 +3905,15 @@ fn main() -> std::io::Result<()> {
                             }
                         }
                         impl Device {
+                            pub unsafe fn load_with(
+                                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
+                                handle: crate::vk::Device,
+                            ) -> Self {
+                                Self {
+                                    handle,
+                                    fp: DeviceFp::load(f),
+                                }
+                            }
                             #[inline]
                             pub fn handle(&self) -> crate::vk::Device {
                                 self.handle
@@ -3919,20 +3923,6 @@ fn main() -> std::io::Result<()> {
                                 &self.fp
                             }
                             #(#rs_defs)*
-                        }
-                        #[cfg(feature = "ext-load-with")]
-                        impl LoadWith for Device
-                        {
-                            type Handle = crate::vk::Device;
-                            unsafe fn load_with(
-                                f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
-                                handle: Self::Handle
-                            ) -> Self {
-                                Self {
-                                    handle,
-                                    fp: DeviceFp::load(f),
-                                }
-                            }
                         }
                     };
                     buffer.push_str(&def.to_string());
@@ -3947,10 +3937,6 @@ fn main() -> std::io::Result<()> {
 "use core::ffi; use crate::vk::*;
 use crate::VkResult;
 use crate::{{AsPtr}};
-#[cfg(feature = \"ext-load-with\")]
-use {{
-    crate::LoadWith,
-}};
 ")?;
     for buffer in extensions_by_prefix.values() {
         write!(extension_gen, "{buffer} }}")?;
