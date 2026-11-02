@@ -27,4 +27,3 @@ unsafe {
     library.destroy_instance(&instance, None);
 }
 ```
-[ash]: https://crates.io/crates/ash
