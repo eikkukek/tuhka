@@ -1,6 +1,9 @@
 # Changelog
 
 All changes to this project will be documented in this file.
+## [0.1.8] - 2026-11-04
+### Changed
+- Package metadata
 ## [0.1.7] - 2026-11-04
 ### Added
 - Optional `bytemuck` feature that implements `Zeroable` for structs with no `StructureType` and

@@ -1,6 +1,6 @@
 [package]
 name = "tuhka"
-version = "0.1.7"
+version = "0.1.8"
 edition = "2024"
 description = "New up-to-date Vulkan bindings for Rust"
 license = "MIT OR Apache-2.0"
@@ -19,3 +19,6 @@ bytemuck = { version = "1.25.2", optional = true }
 [features]
 window = ["dep:raw-window-handle", "dep:raw-window-metal"]
 bytemuck = ["dep:bytemuck"]
+
+[package.metadata.docs.rs]
+all-features = true
