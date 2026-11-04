@@ -1,10 +1,10 @@
 # Changelog
 
 All changes to this project will be documented in this file.
-## [0.1.10]
+## [0.1.10] - 2026-11-05
 ### Fixed
 - Docs.
-## [0.1.9]
+## [0.1.9] - 2026-11-05
 ### Added
 - `bytemuck` `NoUninit` implementation for non-dispatchable handles and enums.
 ## [0.1.8] - 2026-11-04
