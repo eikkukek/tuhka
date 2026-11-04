@@ -1613,7 +1613,7 @@ fn main() -> std::io::Result<()> {
                                             Span::call_site(),
                                         );
                                         let name_str = reader.element_name.take().unwrap();
-                                        let doc = doc_link(&name_str).unwrap_or_default();
+                                        let doc = doc_link(&format!("Vk{name_str}")).unwrap_or_default();
                                         let name = Ident::new(&name_str, Span::call_site());
                                         let def = match handle.ty {
                                             HandleType::NonDispatchable => {
