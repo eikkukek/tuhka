@@ -28,4 +28,13 @@ unsafe {
 }
 ```
 
+## Features
+### `window` (disabled by default)
+Provides the `window` module, which can be used to create surfaces for a
+[`raw_window_handle`](https://crates.io/crates/raw-window-handle).
+### `bytemuck` (disabled by default)
+Implements [`bytemuck`](https://crates.io/crates/bytemuck) `Zeroable` for Vulkan structures
+that have no structure type and that don't contain any function pointers,
+and `AnyBitPattern` for non-dispatchable handles.
+
 [tuhka]: https://crates.io/crates/tuhka
