@@ -24,6 +24,8 @@ macro_rules! define_non_dispatchable_handle {
         unsafe impl bytemuck::Zeroable for $name {}
         #[cfg(feature = "bytemuck")]
         unsafe impl bytemuck::AnyBitPattern for $name {}
+        #[cfg(feature = "bytemuck")]
+        unsafe impl bytemuck::NoUninit for $name {}
         impl fmt::LowerHex for $name {
             fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
                 fmt::LowerHex::fmt(&self.0, f)

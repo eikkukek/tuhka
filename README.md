@@ -35,6 +35,6 @@ Provides the `window` module, which can be used to create surfaces for a
 ### `bytemuck` (disabled by default)
 Implements [`bytemuck`](https://crates.io/crates/bytemuck) `Zeroable` for Vulkan structures
 that have no structure type and that don't contain any function pointers,
-and `AnyBitPattern` for non-dispatchable handles.
+`AnyBitPattern` for non-dispatchable handles and `NoUninit` for non-dispatchable handles and enums/bitflags.
 
 [tuhka]: https://crates.io/crates/tuhka

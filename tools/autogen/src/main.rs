@@ -547,7 +547,7 @@ fn main() -> std::io::Result<()> {
     write!(handles, "use super::*; use crate::define_non_dispatchable_handle; use crate::define_handle;")?;
     let mut enums = File::create("../../src/vk/enums.rs")?;
     write!(enums, "use super::*; use crate::bitflags;")?;
-    write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
+    write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, NoUninit}};")?;
     let mut structs = File::create("../../src/vk/structs.rs")?;
     write!(structs, "use super::*; use vk_video::*;")?;
     write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
@@ -1808,9 +1808,11 @@ fn main() -> std::io::Result<()> {
         let doc = doc_link(&name_str)
             .map(|link| quote! { #[doc = #link] });
         let name = Ident::new(name_str.trim_start_matches("Vk"), Span::call_site());
-        let impl_zeroable = quote! {
+        let impl_bytemuck = quote! {
             #[cfg(feature = "bytemuck")]
             unsafe impl Zeroable for #name {}
+            #[cfg(feature = "bytemuck")]
+            unsafe impl NoUninit for #name {}
         };
         let def = quote! {
            
@@ -1830,7 +1832,7 @@ fn main() -> std::io::Result<()> {
                 }
             }
 
-            #impl_zeroable
+            #impl_bytemuck
         };
         let mut display = vec![];
         let var1 = variants.variants.first().map(|var| var.name.as_str()).unwrap_or_default();
@@ -1926,9 +1928,11 @@ fn main() -> std::io::Result<()> {
             FlagType::U32 => Ident::new("Flags", Span::call_site()),
             FlagType::U64 => Ident::new("Flags64", Span::call_site())
         };
-        let impl_zeroable = quote! {
+        let impl_bytemuck = quote! {
             #[cfg(feature = "bytemuck")]
             unsafe impl Zeroable for #name {}
+            #[cfg(feature = "bytemuck")]
+            unsafe impl NoUninit for #name {}
         };
         let def = quote! {
             #doc
@@ -1937,7 +1941,7 @@ fn main() -> std::io::Result<()> {
             pub struct #name(#ty);
             bitflags!(#name, #ty); 
 
-            #impl_zeroable
+            #impl_bytemuck
         };
         let requires_sc = upper_snake_case(requires);
         let idx = requires_sc.find("FLAG_BITS").unwrap_or_default();

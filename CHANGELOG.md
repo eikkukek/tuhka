@@ -1,6 +1,9 @@
 # Changelog
 
 All changes to this project will be documented in this file.
+## [0.1.9]
+### Added
+- `bytemuck` `NoUninit` implementation for non-dispatchable handles and enums.
 ## [0.1.8] - 2026-11-04
 ### Changed
 - Package metadata
@@ -43,6 +46,8 @@ All changes to this project will be documented in this file.
 ### Added
 - Initial crate release
 
+[0.1.9]: https://crates.io/crates/tuhka/0.1.9
+[0.1.8]: https://crates.io/crates/tuhka/0.1.8
 [0.1.7]: https://crates.io/crates/tuhka/0.1.7
 [0.1.6]: https://crates.io/crates/tuhka/0.1.6
 [0.1.5]: https://crates.io/crates/tuhka/0.1.5

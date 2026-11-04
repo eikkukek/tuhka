@@ -1,7 +1,7 @@
 use super::*;
 use crate::bitflags;
 #[cfg(feature = "bytemuck")]
-use bytemuck::Zeroable;
+use bytemuck::{NoUninit, Zeroable};
 pub const MAX_PHYSICAL_DEVICE_NAME_SIZE: u32 = 256;
 pub const UUID_SIZE: u32 = 16;
 pub const LUID_SIZE: u32 = 8;
@@ -57,6 +57,8 @@ impl AttachmentLoadOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AttachmentLoadOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AttachmentLoadOp {}
 impl AttachmentLoadOp {
     pub const LOAD: Self = Self(0);
     pub const CLEAR: Self = Self(1);
@@ -92,6 +94,8 @@ impl AttachmentStoreOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AttachmentStoreOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AttachmentStoreOp {}
 impl AttachmentStoreOp {
     pub const STORE: Self = Self(0);
     pub const DONT_CARE: Self = Self(1);
@@ -126,6 +130,8 @@ impl BlendFactor {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BlendFactor {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BlendFactor {}
 impl BlendFactor {
     pub const ZERO: Self = Self(0);
     pub const ONE: Self = Self(1);
@@ -189,6 +195,8 @@ impl BlendOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BlendOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BlendOp {}
 impl BlendOp {
     pub const ADD: Self = Self(0);
     pub const SUBTRACT: Self = Self(1);
@@ -316,6 +324,8 @@ impl BorderColor {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BorderColor {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BorderColor {}
 impl BorderColor {
     pub const FLOAT_TRANSPARENT_BLACK: Self = Self(0);
     pub const INT_TRANSPARENT_BLACK: Self = Self(1);
@@ -357,6 +367,8 @@ impl PipelineCacheHeaderVersion {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCacheHeaderVersion {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCacheHeaderVersion {}
 impl PipelineCacheHeaderVersion {
     pub const ONE: Self = Self(1);
     pub const DATA_GRAPH_QCOM: Self = Self(1000629000);
@@ -386,6 +398,8 @@ impl ComponentSwizzle {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ComponentSwizzle {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ComponentSwizzle {}
 impl ComponentSwizzle {
     pub const IDENTITY: Self = Self(0);
     pub const ZERO: Self = Self(1);
@@ -425,6 +439,8 @@ impl CommandBufferLevel {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandBufferLevel {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandBufferLevel {}
 impl CommandBufferLevel {
     pub const PRIMARY: Self = Self(0);
     pub const SECONDARY: Self = Self(1);
@@ -454,6 +470,8 @@ impl CompareOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CompareOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CompareOp {}
 impl CompareOp {
     pub const NEVER: Self = Self(0);
     pub const LESS: Self = Self(1);
@@ -495,6 +513,8 @@ impl DescriptorType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorType {}
 impl DescriptorType {
     pub const SAMPLER: Self = Self(0);
     pub const COMBINED_IMAGE_SAMPLER: Self = Self(1);
@@ -562,6 +582,8 @@ impl DynamicState {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DynamicState {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DynamicState {}
 impl DynamicState {
     pub const VIEWPORT: Self = Self(0);
     pub const SCISSOR: Self = Self(1);
@@ -764,6 +786,8 @@ impl PolygonMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PolygonMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PolygonMode {}
 impl PolygonMode {
     pub const FILL: Self = Self(0);
     pub const LINE: Self = Self(1);
@@ -797,6 +821,8 @@ impl Format {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Format {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for Format {}
 impl Format {
     pub const UNDEFINED: Self = Self(0);
     pub const R4G4_UNORM_PACK8: Self = Self(1);
@@ -1548,6 +1574,8 @@ impl FrontFace {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FrontFace {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FrontFace {}
 impl FrontFace {
     pub const COUNTER_CLOCKWISE: Self = Self(0);
     pub const CLOCKWISE: Self = Self(1);
@@ -1577,6 +1605,8 @@ impl ImageLayout {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageLayout {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageLayout {}
 impl ImageLayout {
     pub const UNDEFINED: Self = Self(0);
     pub const GENERAL: Self = Self(1);
@@ -1688,6 +1718,8 @@ impl ImageTiling {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageTiling {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageTiling {}
 impl ImageTiling {
     pub const OPTIMAL: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -1719,6 +1751,8 @@ impl ImageType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageType {}
 impl ImageType {
     pub const TYPE_1D: Self = Self(0);
     pub const TYPE_2D: Self = Self(1);
@@ -1750,6 +1784,8 @@ impl ImageViewType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageViewType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageViewType {}
 impl ImageViewType {
     pub const TYPE_1D: Self = Self(0);
     pub const TYPE_2D: Self = Self(1);
@@ -1789,6 +1825,8 @@ impl IndirectCommandsTokenTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsTokenTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectCommandsTokenTypeEXT {}
 impl IndirectCommandsTokenTypeEXT {
     pub const EXECUTION_SET_EXT: Self = Self(0);
     pub const PUSH_CONSTANT_EXT: Self = Self(1);
@@ -1848,6 +1886,8 @@ impl SharingMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SharingMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SharingMode {}
 impl SharingMode {
     pub const EXCLUSIVE: Self = Self(0);
     pub const CONCURRENT: Self = Self(1);
@@ -1877,6 +1917,8 @@ impl IndexType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndexType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndexType {}
 impl IndexType {
     pub const UINT16: Self = Self(0);
     pub const UINT32: Self = Self(1);
@@ -1913,6 +1955,8 @@ impl LogicOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LogicOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for LogicOp {}
 impl LogicOp {
     pub const CLEAR: Self = Self(0);
     pub const AND: Self = Self(1);
@@ -1970,6 +2014,8 @@ impl PhysicalDeviceType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceType {}
 impl PhysicalDeviceType {
     pub const OTHER: Self = Self(0);
     pub const INTEGRATED_GPU: Self = Self(1);
@@ -2005,6 +2051,8 @@ impl PipelineBindPoint {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineBindPoint {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineBindPoint {}
 impl PipelineBindPoint {
     pub const GRAPHICS: Self = Self(0);
     pub const COMPUTE: Self = Self(1);
@@ -2043,6 +2091,8 @@ impl PrimitiveTopology {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PrimitiveTopology {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PrimitiveTopology {}
 impl PrimitiveTopology {
     pub const POINT_LIST: Self = Self(0);
     pub const LINE_LIST: Self = Self(1);
@@ -2090,6 +2140,8 @@ impl QueryType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryType {}
 impl QueryType {
     pub const OCCLUSION: Self = Self(0);
     pub const PIPELINE_STATISTICS: Self = Self(1);
@@ -2161,6 +2213,8 @@ impl SubpassContents {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubpassContents {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SubpassContents {}
 impl SubpassContents {
     pub const INLINE: Self = Self(0);
     pub const SECONDARY_COMMAND_BUFFERS: Self = Self(1);
@@ -2196,6 +2250,8 @@ impl Result {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Result {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for Result {}
 impl Result {
     pub const SUCCESS: Self = Self(0);
     pub const NOT_READY: Self = Self(1);
@@ -2356,6 +2412,8 @@ impl StencilOp {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StencilOp {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for StencilOp {}
 impl StencilOp {
     pub const KEEP: Self = Self(0);
     pub const ZERO: Self = Self(1);
@@ -2397,6 +2455,8 @@ impl StructureType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StructureType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for StructureType {}
 impl StructureType {
     pub const APPLICATION_INFO: Self = Self(0);
     pub const INSTANCE_CREATE_INFO: Self = Self(1);
@@ -7370,6 +7430,8 @@ impl SystemAllocationScope {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SystemAllocationScope {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SystemAllocationScope {}
 impl SystemAllocationScope {
     pub const COMMAND: Self = Self(0);
     pub const OBJECT: Self = Self(1);
@@ -7405,6 +7467,8 @@ impl InternalAllocationType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for InternalAllocationType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for InternalAllocationType {}
 impl InternalAllocationType {
     pub const EXECUTABLE: Self = Self(0);
 }
@@ -7433,6 +7497,8 @@ impl SamplerAddressMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerAddressMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerAddressMode {}
 impl SamplerAddressMode {
     pub const REPEAT: Self = Self(0);
     pub const MIRRORED_REPEAT: Self = Self(1);
@@ -7470,6 +7536,8 @@ impl Filter {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Filter {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for Filter {}
 impl Filter {
     pub const NEAREST: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -7502,6 +7570,8 @@ impl SamplerMipmapMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerMipmapMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerMipmapMode {}
 impl SamplerMipmapMode {
     pub const NEAREST: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -7531,6 +7601,8 @@ impl VertexInputRate {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VertexInputRate {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VertexInputRate {}
 impl VertexInputRate {
     pub const VERTEX: Self = Self(0);
     pub const INSTANCE: Self = Self(1);
@@ -7560,6 +7632,8 @@ impl ClusterAccelerationStructureTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureTypeNV {}
 impl ClusterAccelerationStructureTypeNV {
     pub const CLUSTERS_BOTTOM_LEVEL_NV: Self = Self(0);
     pub const TRIANGLE_CLUSTER_NV: Self = Self(1);
@@ -7591,6 +7665,8 @@ impl ClusterAccelerationStructureOpTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureOpTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureOpTypeNV {}
 impl ClusterAccelerationStructureOpTypeNV {
     pub const MOVE_OBJECTS_NV: Self = Self(0);
     pub const BUILD_CLUSTERS_BOTTOM_LEVEL_NV: Self = Self(1);
@@ -7630,6 +7706,8 @@ impl ClusterAccelerationStructureOpModeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureOpModeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureOpModeNV {}
 impl ClusterAccelerationStructureOpModeNV {
     pub const IMPLICIT_DESTINATIONS_NV: Self = Self(0);
     pub const EXPLICIT_DESTINATIONS_NV: Self = Self(1);
@@ -7661,6 +7739,8 @@ impl ObjectType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ObjectType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ObjectType {}
 impl ObjectType {
     pub const UNKNOWN: Self = Self(0);
     pub const INSTANCE: Self = Self(1);
@@ -7811,6 +7891,8 @@ impl RayTracingInvocationReorderModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RayTracingInvocationReorderModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RayTracingInvocationReorderModeEXT {}
 impl RayTracingInvocationReorderModeEXT {
     pub const NONE_EXT: Self = Self(0);
     pub const REORDER_EXT: Self = Self(1);
@@ -7842,6 +7924,8 @@ impl ImageTilingControlEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageTilingControlEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageTilingControlEXT {}
 impl ImageTilingControlEXT {
     pub const DEFAULT_EXT: Self = Self(0);
     pub const MIN_SIZE_EXT: Self = Self(1);
@@ -7873,6 +7957,8 @@ impl IndirectCommandsTokenTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsTokenTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectCommandsTokenTypeNV {}
 impl IndirectCommandsTokenTypeNV {
     pub const SHADER_GROUP_NV: Self = Self(0);
     pub const STATE_FLAGS_NV: Self = Self(1);
@@ -7922,6 +8008,8 @@ impl DescriptorUpdateTemplateType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorUpdateTemplateType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorUpdateTemplateType {}
 impl DescriptorUpdateTemplateType {
     pub const DESCRIPTOR_SET: Self = Self(0);
     pub const PUSH_DESCRIPTORS: Self = Self(1);
@@ -7953,6 +8041,8 @@ impl ViewportCoordinateSwizzleNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ViewportCoordinateSwizzleNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ViewportCoordinateSwizzleNV {}
 impl ViewportCoordinateSwizzleNV {
     pub const POSITIVE_X_NV: Self = Self(0);
     pub const NEGATIVE_X_NV: Self = Self(1);
@@ -7994,6 +8084,8 @@ impl DiscardRectangleModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DiscardRectangleModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DiscardRectangleModeEXT {}
 impl DiscardRectangleModeEXT {
     pub const INCLUSIVE_EXT: Self = Self(0);
     pub const EXCLUSIVE_EXT: Self = Self(1);
@@ -8023,6 +8115,8 @@ impl PointClippingBehavior {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PointClippingBehavior {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PointClippingBehavior {}
 impl PointClippingBehavior {
     pub const ALL_CLIP_PLANES: Self = Self(0);
     pub const USER_CLIP_PLANES_ONLY: Self = Self(1);
@@ -8054,6 +8148,8 @@ impl CoverageModulationModeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CoverageModulationModeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CoverageModulationModeNV {}
 impl CoverageModulationModeNV {
     pub const NONE_NV: Self = Self(0);
     pub const RGB_NV: Self = Self(1);
@@ -8087,6 +8183,8 @@ impl CoverageReductionModeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CoverageReductionModeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CoverageReductionModeNV {}
 impl CoverageReductionModeNV {
     pub const MERGE_NV: Self = Self(0);
     pub const TRUNCATE_NV: Self = Self(1);
@@ -8116,6 +8214,8 @@ impl ValidationCacheHeaderVersionEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ValidationCacheHeaderVersionEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ValidationCacheHeaderVersionEXT {}
 impl ValidationCacheHeaderVersionEXT {
     pub const ONE_EXT: Self = Self(1);
 }
@@ -8144,6 +8244,8 @@ impl ShaderInfoTypeAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderInfoTypeAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderInfoTypeAMD {}
 impl ShaderInfoTypeAMD {
     pub const STATISTICS_AMD: Self = Self(0);
     pub const BINARY_AMD: Self = Self(1);
@@ -8175,6 +8277,8 @@ impl QueueGlobalPriority {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueueGlobalPriority {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueueGlobalPriority {}
 impl QueueGlobalPriority {
     pub const LOW: Self = Self(128);
     pub const MEDIUM: Self = Self(256);
@@ -8216,6 +8320,8 @@ impl TimeDomainKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TimeDomainKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TimeDomainKHR {}
 impl TimeDomainKHR {
     pub const DEVICE_KHR: Self = Self(0);
     pub const CLOCK_MONOTONIC_KHR: Self = Self(1);
@@ -8257,6 +8363,8 @@ impl ConservativeRasterizationModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ConservativeRasterizationModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ConservativeRasterizationModeEXT {}
 impl ConservativeRasterizationModeEXT {
     pub const DISABLED_EXT: Self = Self(0);
     pub const OVERESTIMATE_EXT: Self = Self(1);
@@ -8288,6 +8396,8 @@ impl SemaphoreType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SemaphoreType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SemaphoreType {}
 impl SemaphoreType {
     pub const BINARY: Self = Self(0);
     pub const TIMELINE: Self = Self(1);
@@ -8319,6 +8429,8 @@ impl BuildAccelerationStructureModeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BuildAccelerationStructureModeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BuildAccelerationStructureModeKHR {}
 impl BuildAccelerationStructureModeKHR {
     pub const BUILD_KHR: Self = Self(0);
     pub const UPDATE_KHR: Self = Self(1);
@@ -8348,6 +8460,8 @@ impl CopyAccelerationStructureModeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CopyAccelerationStructureModeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CopyAccelerationStructureModeKHR {}
 impl CopyAccelerationStructureModeKHR {
     pub const CLONE_KHR: Self = Self(0);
     pub const COMPACT_KHR: Self = Self(1);
@@ -8383,6 +8497,8 @@ impl AccelerationStructureTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureTypeKHR {}
 impl AccelerationStructureTypeKHR {
     pub const TOP_LEVEL_KHR: Self = Self(0);
     pub const BOTTOM_LEVEL_KHR: Self = Self(1);
@@ -8418,6 +8534,8 @@ impl GeometryTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GeometryTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GeometryTypeKHR {}
 impl GeometryTypeKHR {
     pub const TRIANGLES_KHR: Self = Self(0);
     pub const AABBS_KHR: Self = Self(1);
@@ -8461,6 +8579,8 @@ impl RayTracingShaderGroupTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RayTracingShaderGroupTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RayTracingShaderGroupTypeKHR {}
 impl RayTracingShaderGroupTypeKHR {
     pub const GENERAL_KHR: Self = Self(0);
     pub const TRIANGLES_HIT_GROUP_KHR: Self = Self(1);
@@ -8495,6 +8615,8 @@ impl AccelerationStructureMemoryRequirementsTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureMemoryRequirementsTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureMemoryRequirementsTypeNV {}
 impl AccelerationStructureMemoryRequirementsTypeNV {
     pub const OBJECT_NV: Self = Self(0);
     pub const BUILD_SCRATCH_NV: Self = Self(1);
@@ -8526,6 +8648,8 @@ impl AccelerationStructureBuildTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureBuildTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureBuildTypeKHR {}
 impl AccelerationStructureBuildTypeKHR {
     pub const HOST_KHR: Self = Self(0);
     pub const DEVICE_KHR: Self = Self(1);
@@ -8557,6 +8681,8 @@ impl AccelerationStructureCompatibilityKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureCompatibilityKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureCompatibilityKHR {}
 impl AccelerationStructureCompatibilityKHR {
     pub const COMPATIBLE_KHR: Self = Self(0);
     pub const INCOMPATIBLE_KHR: Self = Self(1);
@@ -8586,6 +8712,8 @@ impl RayTracingLssIndexingModeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RayTracingLssIndexingModeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RayTracingLssIndexingModeNV {}
 impl RayTracingLssIndexingModeNV {
     pub const LIST_NV: Self = Self(0);
     pub const SUCCESSIVE_NV: Self = Self(1);
@@ -8615,6 +8743,8 @@ impl RayTracingLssPrimitiveEndCapsModeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RayTracingLssPrimitiveEndCapsModeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RayTracingLssPrimitiveEndCapsModeNV {}
 impl RayTracingLssPrimitiveEndCapsModeNV {
     pub const NONE_NV: Self = Self(0);
     pub const CHAINED_NV: Self = Self(1);
@@ -8644,6 +8774,8 @@ impl ShaderGroupShaderKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderGroupShaderKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderGroupShaderKHR {}
 impl ShaderGroupShaderKHR {
     pub const GENERAL_KHR: Self = Self(0);
     pub const CLOSEST_HIT_KHR: Self = Self(1);
@@ -8677,6 +8809,8 @@ impl MemoryOverallocationBehaviorAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryOverallocationBehaviorAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryOverallocationBehaviorAMD {}
 impl MemoryOverallocationBehaviorAMD {
     pub const DEFAULT_AMD: Self = Self(0);
     pub const ALLOWED_AMD: Self = Self(1);
@@ -8708,6 +8842,8 @@ impl PerformanceCounterScopeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceCounterScopeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceCounterScopeKHR {}
 impl PerformanceCounterScopeKHR {
     pub const COMMAND_BUFFER_KHR: Self = Self(0);
     pub const RENDER_PASS_KHR: Self = Self(1);
@@ -8745,6 +8881,8 @@ impl PerformanceCounterUnitKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceCounterUnitKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceCounterUnitKHR {}
 impl PerformanceCounterUnitKHR {
     pub const GENERIC_KHR: Self = Self(0);
     pub const PERCENTAGE_KHR: Self = Self(1);
@@ -8792,6 +8930,8 @@ impl PerformanceCounterStorageKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceCounterStorageKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceCounterStorageKHR {}
 impl PerformanceCounterStorageKHR {
     pub const INT32_KHR: Self = Self(0);
     pub const INT64_KHR: Self = Self(1);
@@ -8829,6 +8969,8 @@ impl PerformanceConfigurationTypeINTEL {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceConfigurationTypeINTEL {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceConfigurationTypeINTEL {}
 impl PerformanceConfigurationTypeINTEL {
     pub const COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL: Self = Self(0);
 }
@@ -8857,6 +8999,8 @@ impl QueryPoolSamplingModeINTEL {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryPoolSamplingModeINTEL {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryPoolSamplingModeINTEL {}
 impl QueryPoolSamplingModeINTEL {
     pub const MANUAL_INTEL: Self = Self(0);
 }
@@ -8885,6 +9029,8 @@ impl PerformanceOverrideTypeINTEL {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceOverrideTypeINTEL {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceOverrideTypeINTEL {}
 impl PerformanceOverrideTypeINTEL {
     pub const NULL_HARDWARE_INTEL: Self = Self(0);
     pub const FLUSH_GPU_CACHES_INTEL: Self = Self(1);
@@ -8914,6 +9060,8 @@ impl PerformanceParameterTypeINTEL {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceParameterTypeINTEL {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceParameterTypeINTEL {}
 impl PerformanceParameterTypeINTEL {
     pub const HW_COUNTERS_SUPPORTED_INTEL: Self = Self(0);
     pub const STREAM_MARKER_VALID_BITS_INTEL: Self = Self(1);
@@ -8943,6 +9091,8 @@ impl PerformanceValueTypeINTEL {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceValueTypeINTEL {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceValueTypeINTEL {}
 impl PerformanceValueTypeINTEL {
     pub const UINT32_INTEL: Self = Self(0);
     pub const UINT64_INTEL: Self = Self(1);
@@ -8978,6 +9128,8 @@ impl LineRasterizationMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LineRasterizationMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for LineRasterizationMode {}
 impl LineRasterizationMode {
     pub const DEFAULT: Self = Self(0);
     pub const RECTANGULAR: Self = Self(1);
@@ -9019,6 +9171,8 @@ impl FaultLevel {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FaultLevel {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FaultLevel {}
 impl FaultLevel {
     pub const UNASSIGNED: Self = Self(0);
     pub const CRITICAL: Self = Self(1);
@@ -9052,6 +9206,8 @@ impl FaultType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FaultType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FaultType {}
 impl FaultType {
     pub const INVALID: Self = Self(0);
     pub const UNASSIGNED: Self = Self(1);
@@ -9091,6 +9247,8 @@ impl FaultQueryBehavior {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FaultQueryBehavior {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FaultQueryBehavior {}
 impl FaultQueryBehavior {
     pub const GET_AND_CLEAR_ALL_FAULTS: Self = Self(0);
 }
@@ -9119,6 +9277,8 @@ impl PipelineMatchControl {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineMatchControl {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineMatchControl {}
 impl PipelineMatchControl {
     pub const APPLICATION_UUID_EXACT_MATCH: Self = Self(0);
 }
@@ -9147,6 +9307,8 @@ impl SciSyncClientTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SciSyncClientTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SciSyncClientTypeNV {}
 impl SciSyncClientTypeNV {
     pub const SIGNALER_NV: Self = Self(0);
     pub const WAITER_NV: Self = Self(1);
@@ -9178,6 +9340,8 @@ impl SciSyncPrimitiveTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SciSyncPrimitiveTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SciSyncPrimitiveTypeNV {}
 impl SciSyncPrimitiveTypeNV {
     pub const FENCE_NV: Self = Self(0);
     pub const SEMAPHORE_NV: Self = Self(1);
@@ -9207,6 +9371,8 @@ impl FragmentShadingRateNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FragmentShadingRateNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FragmentShadingRateNV {}
 impl FragmentShadingRateNV {
     pub const TYPE_1_INVOCATION_PER_PIXEL_NV: Self = Self(0);
     pub const TYPE_1_INVOCATION_PER_1X2_PIXELS_NV: Self = Self(1);
@@ -9268,6 +9434,8 @@ impl FragmentShadingRateTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FragmentShadingRateTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FragmentShadingRateTypeNV {}
 impl FragmentShadingRateTypeNV {
     pub const FRAGMENT_SIZE_NV: Self = Self(0);
     pub const ENUMS_NV: Self = Self(1);
@@ -9297,6 +9465,8 @@ impl SubpassMergeStatusEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubpassMergeStatusEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SubpassMergeStatusEXT {}
 impl SubpassMergeStatusEXT {
     pub const MERGED_EXT: Self = Self(0);
     pub const DISALLOWED_EXT: Self = Self(1);
@@ -9360,6 +9530,8 @@ impl ProvokingVertexModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ProvokingVertexModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ProvokingVertexModeEXT {}
 impl ProvokingVertexModeEXT {
     pub const FIRST_VERTEX_EXT: Self = Self(0);
     pub const LAST_VERTEX_EXT: Self = Self(1);
@@ -9389,6 +9561,8 @@ impl PipelineCacheValidationVersion {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCacheValidationVersion {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCacheValidationVersion {}
 impl PipelineCacheValidationVersion {
     pub const SAFETY_CRITICAL_ONE: Self = Self(1);
 }
@@ -9417,6 +9591,8 @@ impl PipelineRobustnessBufferBehavior {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRobustnessBufferBehavior {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRobustnessBufferBehavior {}
 impl PipelineRobustnessBufferBehavior {
     pub const DEVICE_DEFAULT: Self = Self(0);
     pub const DISABLED: Self = Self(1);
@@ -9454,6 +9630,8 @@ impl PipelineRobustnessImageBehavior {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRobustnessImageBehavior {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRobustnessImageBehavior {}
 impl PipelineRobustnessImageBehavior {
     pub const DEVICE_DEFAULT: Self = Self(0);
     pub const DISABLED: Self = Self(1);
@@ -9491,6 +9669,8 @@ impl DeviceAddressBindingTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceAddressBindingTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceAddressBindingTypeEXT {}
 impl DeviceAddressBindingTypeEXT {
     pub const BIND_EXT: Self = Self(0);
     pub const UNBIND_EXT: Self = Self(1);
@@ -9520,6 +9700,8 @@ impl MicromapTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MicromapTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MicromapTypeEXT {}
 impl MicromapTypeEXT {
     pub const OPACITY_MICROMAP_EXT: Self = Self(0);
     pub const DISPLACEMENT_MICROMAP_NV: Self = Self(1000397000);
@@ -9549,6 +9731,8 @@ impl BuildMicromapModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BuildMicromapModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BuildMicromapModeEXT {}
 impl BuildMicromapModeEXT {
     pub const BUILD_EXT: Self = Self(0);
 }
@@ -9577,6 +9761,8 @@ impl CopyMicromapModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CopyMicromapModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CopyMicromapModeEXT {}
 impl CopyMicromapModeEXT {
     pub const CLONE_EXT: Self = Self(0);
     pub const SERIALIZE_EXT: Self = Self(1);
@@ -9610,6 +9796,8 @@ impl OpacityMicromapFormatKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpacityMicromapFormatKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpacityMicromapFormatKHR {}
 impl OpacityMicromapFormatKHR {
     pub const TYPE_2_STATE_KHR: Self = Self(1);
     pub const TYPE_4_STATE_KHR: Self = Self(2);
@@ -9641,6 +9829,8 @@ impl OpacityMicromapSpecialIndexKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpacityMicromapSpecialIndexKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpacityMicromapSpecialIndexKHR {}
 impl OpacityMicromapSpecialIndexKHR {
     pub const FULLY_TRANSPARENT_KHR: Self = Self(-1);
     pub const FULLY_OPAQUE_KHR: Self = Self(-2);
@@ -9682,6 +9872,8 @@ impl AccelerationStructureSerializedBlockTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureSerializedBlockTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureSerializedBlockTypeKHR {}
 impl AccelerationStructureSerializedBlockTypeKHR {
     pub const OPACITY_MICROMAP_KHR: Self = Self(0);
 }
@@ -9710,6 +9902,8 @@ impl IndirectExecutionSetInfoTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectExecutionSetInfoTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectExecutionSetInfoTypeEXT {}
 impl IndirectExecutionSetInfoTypeEXT {
     pub const PIPELINES_EXT: Self = Self(0);
     pub const SHADER_OBJECTS_EXT: Self = Self(1);
@@ -9739,6 +9933,8 @@ impl DeviceFaultVendorBinaryHeaderVersionKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultVendorBinaryHeaderVersionKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceFaultVendorBinaryHeaderVersionKHR {}
 impl DeviceFaultVendorBinaryHeaderVersionKHR {
     pub const ONE_KHR: Self = Self(1);
     pub const ONE_EXT: Self = Self::ONE_KHR;
@@ -9767,6 +9963,8 @@ impl DepthBiasRepresentationEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DepthBiasRepresentationEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DepthBiasRepresentationEXT {}
 impl DepthBiasRepresentationEXT {
     pub const LEAST_REPRESENTABLE_VALUE_FORMAT_EXT: Self = Self(0);
     pub const LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT: Self = Self(1);
@@ -9802,6 +10000,8 @@ impl DirectDriverLoadingModeLUNARG {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DirectDriverLoadingModeLUNARG {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DirectDriverLoadingModeLUNARG {}
 impl DirectDriverLoadingModeLUNARG {
     pub const EXCLUSIVE_LUNARG: Self = Self(0);
     pub const INCLUSIVE_LUNARG: Self = Self(1);
@@ -9831,6 +10031,8 @@ impl PartitionedAccelerationStructureOpTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PartitionedAccelerationStructureOpTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PartitionedAccelerationStructureOpTypeNV {}
 impl PartitionedAccelerationStructureOpTypeNV {
     pub const WRITE_INSTANCE_NV: Self = Self(0);
     pub const UPDATE_INSTANCE_NV: Self = Self(1);
@@ -9862,6 +10064,8 @@ impl AntiLagModeAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AntiLagModeAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AntiLagModeAMD {}
 impl AntiLagModeAMD {
     pub const DRIVER_CONTROL_AMD: Self = Self(0);
     pub const ON_AMD: Self = Self(1);
@@ -9893,6 +10097,8 @@ impl AntiLagStageAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AntiLagStageAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AntiLagStageAMD {}
 impl AntiLagStageAMD {
     pub const INPUT_AMD: Self = Self(0);
     pub const PRESENT_AMD: Self = Self(1);
@@ -9922,6 +10128,8 @@ impl DisplacementMicromapFormatNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplacementMicromapFormatNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplacementMicromapFormatNV {}
 impl DisplacementMicromapFormatNV {
     pub const TYPE_64_TRIANGLES_64_BYTES_NV: Self = Self(1);
     pub const TYPE_256_TRIANGLES_128_BYTES_NV: Self = Self(2);
@@ -9953,6 +10161,8 @@ impl ShaderCodeTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderCodeTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderCodeTypeEXT {}
 impl ShaderCodeTypeEXT {
     pub const BINARY_EXT: Self = Self(0);
     pub const SPIRV_EXT: Self = Self(1);
@@ -9982,6 +10192,8 @@ impl ScopeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ScopeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ScopeKHR {}
 impl ScopeKHR {
     pub const DEVICE_KHR: Self = Self(1);
     pub const WORKGROUP_KHR: Self = Self(2);
@@ -10019,6 +10231,8 @@ impl ComponentTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ComponentTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ComponentTypeKHR {}
 impl ComponentTypeKHR {
     pub const FLOAT16_KHR: Self = Self(0);
     pub const FLOAT32_KHR: Self = Self(1);
@@ -10099,6 +10313,8 @@ impl CubicFilterWeightsQCOM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CubicFilterWeightsQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CubicFilterWeightsQCOM {}
 impl CubicFilterWeightsQCOM {
     pub const CATMULL_ROM_QCOM: Self = Self(0);
     pub const ZERO_TANGENT_CARDINAL_QCOM: Self = Self(1);
@@ -10132,6 +10348,8 @@ impl BlockMatchWindowCompareModeQCOM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BlockMatchWindowCompareModeQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BlockMatchWindowCompareModeQCOM {}
 impl BlockMatchWindowCompareModeQCOM {
     pub const MIN_QCOM: Self = Self(0);
     pub const MAX_QCOM: Self = Self(1);
@@ -10161,6 +10379,8 @@ impl LayeredDriverUnderlyingApiMSFT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LayeredDriverUnderlyingApiMSFT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for LayeredDriverUnderlyingApiMSFT {}
 impl LayeredDriverUnderlyingApiMSFT {
     pub const NONE_MSFT: Self = Self(0);
     pub const D3D12_MSFT: Self = Self(1);
@@ -10190,6 +10410,8 @@ impl PhysicalDeviceLayeredApiKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceLayeredApiKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceLayeredApiKHR {}
 impl PhysicalDeviceLayeredApiKHR {
     pub const VULKAN_KHR: Self = Self(0);
     pub const D3D12_KHR: Self = Self(1);
@@ -10225,6 +10447,8 @@ impl CompressedTriangleFormatAMDX {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CompressedTriangleFormatAMDX {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CompressedTriangleFormatAMDX {}
 impl CompressedTriangleFormatAMDX {
     pub const DGF1_AMDX: Self = Self(0);
 }
@@ -10253,6 +10477,8 @@ impl DepthClampModeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DepthClampModeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DepthClampModeEXT {}
 impl DepthClampModeEXT {
     pub const VIEWPORT_RANGE_EXT: Self = Self(0);
     pub const USER_DEFINED_RANGE_EXT: Self = Self(1);
@@ -10282,6 +10508,8 @@ impl CooperativeVectorMatrixLayoutNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CooperativeVectorMatrixLayoutNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CooperativeVectorMatrixLayoutNV {}
 impl CooperativeVectorMatrixLayoutNV {
     pub const ROW_MAJOR_NV: Self = Self(0);
     pub const COLUMN_MAJOR_NV: Self = Self(1);
@@ -10315,6 +10543,8 @@ impl TensorTilingARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TensorTilingARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TensorTilingARM {}
 impl TensorTilingARM {
     pub const OPTIMAL_ARM: Self = Self(0);
     pub const LINEAR_ARM: Self = Self(1);
@@ -10354,6 +10584,8 @@ impl DataGraphPipelinePropertyARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelinePropertyARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelinePropertyARM {}
 impl DataGraphPipelinePropertyARM {
     pub const CREATION_LOG_ARM: Self = Self(0);
     pub const IDENTIFIER_ARM: Self = Self(1);
@@ -10391,6 +10623,8 @@ impl DataGraphPipelineSessionBindPointARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineSessionBindPointARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineSessionBindPointARM {}
 impl DataGraphPipelineSessionBindPointARM {
     pub const TRANSIENT_ARM: Self = Self(0);
     pub const OPTICAL_FLOW_CACHE_ARM: Self = Self(1000631001);
@@ -10424,6 +10658,8 @@ impl DataGraphPipelineSessionBindPointTypeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineSessionBindPointTypeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineSessionBindPointTypeARM {}
 impl DataGraphPipelineSessionBindPointTypeARM {
     pub const MEMORY_ARM: Self = Self(0);
 }
@@ -10452,6 +10688,8 @@ impl PhysicalDeviceDataGraphProcessingEngineTypeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceDataGraphProcessingEngineTypeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceDataGraphProcessingEngineTypeARM {}
 impl PhysicalDeviceDataGraphProcessingEngineTypeARM {
     pub const DEFAULT_ARM: Self = Self(0);
     pub const NEURAL_QCOM: Self = Self(1000629000);
@@ -10483,6 +10721,8 @@ impl PhysicalDeviceDataGraphOperationTypeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceDataGraphOperationTypeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceDataGraphOperationTypeARM {}
 impl PhysicalDeviceDataGraphOperationTypeARM {
     pub const SPIRV_EXTENDED_INSTRUCTION_SET_ARM: Self = Self(0);
     pub const NEURAL_MODEL_QCOM: Self = Self(1000629000);
@@ -10518,6 +10758,8 @@ impl DataGraphModelCacheTypeQCOM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphModelCacheTypeQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphModelCacheTypeQCOM {}
 impl DataGraphModelCacheTypeQCOM {
     pub const GENERIC_BINARY_QCOM: Self = Self(0);
 }
@@ -10546,6 +10788,8 @@ impl PerfHintTypeQCOM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerfHintTypeQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerfHintTypeQCOM {}
 impl PerfHintTypeQCOM {
     pub const DEFAULT_QCOM: Self = Self(0);
     pub const FREQUENCY_MIN_QCOM: Self = Self(1);
@@ -10579,6 +10823,8 @@ impl DescriptorMappingSourceEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorMappingSourceEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorMappingSourceEXT {}
 impl DescriptorMappingSourceEXT {
     pub const HEAP_WITH_CONSTANT_OFFSET_EXT: Self = Self(0);
     pub const HEAP_WITH_PUSH_INDEX_EXT: Self = Self(1);
@@ -10630,6 +10876,8 @@ impl GpaPerfBlockAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaPerfBlockAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GpaPerfBlockAMD {}
 impl GpaPerfBlockAMD {
     pub const CPF_AMD: Self = Self(0);
     pub const IA_AMD: Self = Self(1);
@@ -10771,6 +11019,8 @@ impl GpaSampleTypeAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaSampleTypeAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GpaSampleTypeAMD {}
 impl GpaSampleTypeAMD {
     pub const CUMULATIVE_AMD: Self = Self(0);
     pub const TRACE_AMD: Self = Self(1);
@@ -10802,6 +11052,8 @@ impl GpaDeviceClockModeAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaDeviceClockModeAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GpaDeviceClockModeAMD {}
 impl GpaDeviceClockModeAMD {
     pub const DEFAULT_AMD: Self = Self(0);
     pub const QUERY_AMD: Self = Self(1);
@@ -10839,6 +11091,8 @@ impl DataGraphTOSALevelARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphTOSALevelARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphTOSALevelARM {}
 impl DataGraphTOSALevelARM {
     pub const OSA_LEVEL_NONE_ARM: Self = Self(0);
     pub const OSA_LEVEL_8K_ARM: Self = Self(1);
@@ -10868,6 +11122,8 @@ impl DataGraphOpticalFlowPerformanceLevelARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphOpticalFlowPerformanceLevelARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphOpticalFlowPerformanceLevelARM {}
 impl DataGraphOpticalFlowPerformanceLevelARM {
     pub const UNKNOWN_ARM: Self = Self(0);
     pub const SLOW_ARM: Self = Self(1);
@@ -10901,6 +11157,8 @@ impl DataGraphPipelineNodeConnectionTypeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineNodeConnectionTypeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineNodeConnectionTypeARM {}
 impl DataGraphPipelineNodeConnectionTypeARM {
     pub const OPTICAL_FLOW_INPUT_ARM: Self = Self(1000631000);
     pub const OPTICAL_FLOW_REFERENCE_ARM: Self = Self(1000631001);
@@ -10936,6 +11194,8 @@ impl DataGraphPipelineNodeTypeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineNodeTypeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineNodeTypeARM {}
 impl DataGraphPipelineNodeTypeARM {
     pub const OPTICAL_FLOW_ARM: Self = Self(1000631000);
 }
@@ -10964,6 +11224,8 @@ impl NeuralAcceleratorStatisticsModeARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for NeuralAcceleratorStatisticsModeARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for NeuralAcceleratorStatisticsModeARM {}
 impl NeuralAcceleratorStatisticsModeARM {
     pub const DISABLED_ARM: Self = Self(0);
     pub const STATISTICS0_ARM: Self = Self(1);
@@ -10995,6 +11257,8 @@ impl ThrottleHintTypeSEC {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ThrottleHintTypeSEC {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ThrottleHintTypeSEC {}
 impl ThrottleHintTypeSEC {
     pub const DEFAULT_SEC: Self = Self(0);
     pub const LOW_SEC: Self = Self(1);
@@ -11026,6 +11290,8 @@ impl ColorSpaceKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ColorSpaceKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ColorSpaceKHR {}
 impl ColorSpaceKHR {
     pub const SRGB_NONLINEAR_KHR: Self = Self(0);
     #[deprecated = "aliased"]
@@ -11087,6 +11353,8 @@ impl PresentModeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentModeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PresentModeKHR {}
 impl PresentModeKHR {
     pub const IMMEDIATE_KHR: Self = Self(0);
     pub const MAILBOX_KHR: Self = Self(1);
@@ -11127,6 +11395,8 @@ impl DisplaySurfaceStereoTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplaySurfaceStereoTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplaySurfaceStereoTypeNV {}
 impl DisplaySurfaceStereoTypeNV {
     pub const NONE_NV: Self = Self(0);
     pub const ONBOARD_DIN_NV: Self = Self(1);
@@ -11160,6 +11430,8 @@ impl DebugReportObjectTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugReportObjectTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugReportObjectTypeEXT {}
 impl DebugReportObjectTypeEXT {
     pub const UNKNOWN_EXT: Self = Self(0);
     pub const INSTANCE_EXT: Self = Self(1);
@@ -11273,6 +11545,8 @@ impl DeviceMemoryReportEventTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceMemoryReportEventTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceMemoryReportEventTypeEXT {}
 impl DeviceMemoryReportEventTypeEXT {
     pub const ALLOCATE_EXT: Self = Self(0);
     pub const FREE_EXT: Self = Self(1);
@@ -11308,6 +11582,8 @@ impl RasterizationOrderAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RasterizationOrderAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RasterizationOrderAMD {}
 impl RasterizationOrderAMD {
     pub const STRICT_AMD: Self = Self(0);
     pub const RELAXED_AMD: Self = Self(1);
@@ -11337,6 +11613,8 @@ impl ValidationCheckEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ValidationCheckEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ValidationCheckEXT {}
 impl ValidationCheckEXT {
     pub const ALL_EXT: Self = Self(0);
     pub const SHADERS_EXT: Self = Self(1);
@@ -11366,6 +11644,8 @@ impl ValidationFeatureEnableEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ValidationFeatureEnableEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ValidationFeatureEnableEXT {}
 impl ValidationFeatureEnableEXT {
     pub const GPU_ASSISTED_EXT: Self = Self(0);
     pub const GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT: Self = Self(1);
@@ -11403,6 +11683,8 @@ impl ValidationFeatureDisableEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ValidationFeatureDisableEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ValidationFeatureDisableEXT {}
 impl ValidationFeatureDisableEXT {
     pub const ALL_EXT: Self = Self(0);
     pub const SHADERS_EXT: Self = Self(1);
@@ -11444,6 +11726,8 @@ impl DisplayPowerStateEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayPowerStateEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplayPowerStateEXT {}
 impl DisplayPowerStateEXT {
     pub const OFF_EXT: Self = Self(0);
     pub const SUSPEND_EXT: Self = Self(1);
@@ -11475,6 +11759,8 @@ impl DeviceEventTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceEventTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceEventTypeEXT {}
 impl DeviceEventTypeEXT {
     pub const DISPLAY_HOTPLUG_EXT: Self = Self(0);
 }
@@ -11503,6 +11789,8 @@ impl DisplayEventTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayEventTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplayEventTypeEXT {}
 impl DisplayEventTypeEXT {
     pub const FIRST_PIXEL_OUT_EXT: Self = Self(0);
 }
@@ -11531,6 +11819,8 @@ impl TessellationDomainOrigin {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TessellationDomainOrigin {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TessellationDomainOrigin {}
 impl TessellationDomainOrigin {
     pub const UPPER_LEFT: Self = Self(0);
     pub const LOWER_LEFT: Self = Self(1);
@@ -11562,6 +11852,8 @@ impl SamplerYcbcrModelConversion {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerYcbcrModelConversion {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerYcbcrModelConversion {}
 impl SamplerYcbcrModelConversion {
     pub const RGB_IDENTITY: Self = Self(0);
     pub const YCBCR_IDENTITY: Self = Self(1);
@@ -11602,6 +11894,8 @@ impl SamplerYcbcrRange {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerYcbcrRange {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerYcbcrRange {}
 impl SamplerYcbcrRange {
     pub const ITU_FULL: Self = Self(0);
     pub const ITU_NARROW: Self = Self(1);
@@ -11633,6 +11927,8 @@ impl ChromaLocation {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ChromaLocation {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ChromaLocation {}
 impl ChromaLocation {
     pub const COSITED_EVEN: Self = Self(0);
     pub const MIDPOINT: Self = Self(1);
@@ -11664,6 +11960,8 @@ impl SamplerReductionMode {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerReductionMode {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerReductionMode {}
 impl SamplerReductionMode {
     pub const WEIGHTED_AVERAGE: Self = Self(0);
     pub const MIN: Self = Self(1);
@@ -11700,6 +11998,8 @@ impl BlendOverlapEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BlendOverlapEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BlendOverlapEXT {}
 impl BlendOverlapEXT {
     pub const UNCORRELATED_EXT: Self = Self(0);
     pub const DISJOINT_EXT: Self = Self(1);
@@ -11731,6 +12031,8 @@ impl FullScreenExclusiveEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FullScreenExclusiveEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FullScreenExclusiveEXT {}
 impl FullScreenExclusiveEXT {
     pub const DEFAULT_EXT: Self = Self(0);
     pub const ALLOWED_EXT: Self = Self(1);
@@ -11764,6 +12066,8 @@ impl ShaderFloatControlsIndependence {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderFloatControlsIndependence {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderFloatControlsIndependence {}
 impl ShaderFloatControlsIndependence {
     pub const TYPE_32_BIT_ONLY: Self = Self(0);
     pub const ALL: Self = Self(1);
@@ -11798,6 +12102,8 @@ impl FragmentShadingRateCombinerOpKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FragmentShadingRateCombinerOpKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FragmentShadingRateCombinerOpKHR {}
 impl FragmentShadingRateCombinerOpKHR {
     pub const KEEP_KHR: Self = Self(0);
     pub const REPLACE_KHR: Self = Self(1);
@@ -11833,6 +12139,8 @@ impl OpticalFlowPerformanceLevelNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowPerformanceLevelNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowPerformanceLevelNV {}
 impl OpticalFlowPerformanceLevelNV {
     pub const UNKNOWN_NV: Self = Self(0);
     pub const SLOW_NV: Self = Self(1);
@@ -11866,6 +12174,8 @@ impl OpticalFlowSessionBindingPointNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowSessionBindingPointNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowSessionBindingPointNV {}
 impl OpticalFlowSessionBindingPointNV {
     pub const UNKNOWN_NV: Self = Self(0);
     pub const INPUT_NV: Self = Self(1);
@@ -11909,6 +12219,8 @@ impl DeviceFaultAddressTypeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultAddressTypeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceFaultAddressTypeKHR {}
 impl DeviceFaultAddressTypeKHR {
     pub const NONE_KHR: Self = Self(0);
     pub const READ_INVALID_KHR: Self = Self(1);
@@ -11955,6 +12267,8 @@ impl LayerSettingTypeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LayerSettingTypeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for LayerSettingTypeEXT {}
 impl LayerSettingTypeEXT {
     pub const BOOL32_EXT: Self = Self(0);
     pub const INT32_EXT: Self = Self(1);
@@ -11996,6 +12310,8 @@ impl LatencyMarkerNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LatencyMarkerNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for LatencyMarkerNV {}
 impl LatencyMarkerNV {
     pub const SIMULATION_START_NV: Self = Self(0);
     pub const SIMULATION_END_NV: Self = Self(1);
@@ -12047,6 +12363,8 @@ impl OutOfBandQueueTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OutOfBandQueueTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OutOfBandQueueTypeNV {}
 impl OutOfBandQueueTypeNV {
     pub const RENDER_NV: Self = Self(0);
     pub const PRESENT_NV: Self = Self(1);
@@ -12076,6 +12394,8 @@ impl HdrSmpteSt209450PowerPreferenceGOOGLE {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for HdrSmpteSt209450PowerPreferenceGOOGLE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for HdrSmpteSt209450PowerPreferenceGOOGLE {}
 impl HdrSmpteSt209450PowerPreferenceGOOGLE {
     pub const _209450_POWER_PREFERENCE_COLOR_ACCURACY_GOOGLE: Self = Self(0);
     pub const _209450_POWER_PREFERENCE_LOW_POWER_GOOGLE: Self = Self(1);
@@ -12109,6 +12429,8 @@ impl VendorId {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VendorId {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VendorId {}
 impl VendorId {
     pub const KHRONOS: Self = Self(0x10000);
     pub const VIV: Self = Self(0x10001);
@@ -12154,6 +12476,8 @@ impl DriverId {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DriverId {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DriverId {}
 impl DriverId {
     pub const AMD_PROPRIETARY: Self = Self(1);
     pub const AMD_OPEN_SOURCE: Self = Self(2);
@@ -12261,6 +12585,8 @@ impl ShadingRatePaletteEntryNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShadingRatePaletteEntryNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShadingRatePaletteEntryNV {}
 impl ShadingRatePaletteEntryNV {
     pub const NO_INVOCATIONS_NV: Self = Self(0);
     pub const TYPE_16_INVOCATIONS_PER_PIXEL_NV: Self = Self(1);
@@ -12322,6 +12648,8 @@ impl CoarseSampleOrderTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CoarseSampleOrderTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CoarseSampleOrderTypeNV {}
 impl CoarseSampleOrderTypeNV {
     pub const DEFAULT_NV: Self = Self(0);
     pub const CUSTOM_NV: Self = Self(1);
@@ -12355,6 +12683,8 @@ impl PipelineExecutableStatisticFormatKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineExecutableStatisticFormatKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineExecutableStatisticFormatKHR {}
 impl PipelineExecutableStatisticFormatKHR {
     pub const BOOL32_KHR: Self = Self(0);
     pub const INT64_KHR: Self = Self(1);
@@ -12388,6 +12718,8 @@ impl QueryResultStatusKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryResultStatusKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryResultStatusKHR {}
 impl QueryResultStatusKHR {
     pub const ERROR_KHR: Self = Self(-1);
     pub const NOT_READY_KHR: Self = Self(0);
@@ -12423,6 +12755,8 @@ impl VideoEncodeTuningModeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeTuningModeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeTuningModeKHR {}
 impl VideoEncodeTuningModeKHR {
     pub const DEFAULT_KHR: Self = Self(0);
     pub const HIGH_QUALITY_KHR: Self = Self(1);
@@ -12458,6 +12792,8 @@ impl VideoEncodeAV1PredictionModeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1PredictionModeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1PredictionModeKHR {}
 impl VideoEncodeAV1PredictionModeKHR {
     pub const V1_PREDICTION_MODE_INTRA_ONLY_KHR: Self = Self(0);
     pub const V1_PREDICTION_MODE_SINGLE_REFERENCE_KHR: Self = Self(1);
@@ -12499,6 +12835,8 @@ impl VideoEncodeAV1RateControlGroupKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1RateControlGroupKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1RateControlGroupKHR {}
 impl VideoEncodeAV1RateControlGroupKHR {
     pub const V1_RATE_CONTROL_GROUP_INTRA_KHR: Self = Self(0);
     pub const V1_RATE_CONTROL_GROUP_PREDICTIVE_KHR: Self = Self(1);
@@ -12534,6 +12872,8 @@ impl DefaultVertexAttributeValueKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DefaultVertexAttributeValueKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DefaultVertexAttributeValueKHR {}
 impl DefaultVertexAttributeValueKHR {
     pub const ZERO_ZERO_ZERO_ZERO_KHR: Self = Self(0);
     pub const ZERO_ZERO_ZERO_ONE_KHR: Self = Self(1);
@@ -12563,6 +12903,8 @@ impl AccelerationStructureMotionInstanceTypeNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureMotionInstanceTypeNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureMotionInstanceTypeNV {}
 impl AccelerationStructureMotionInstanceTypeNV {
     pub const STATIC_NV: Self = Self(0);
     pub const MATRIX_MOTION_NV: Self = Self(1);
@@ -12585,6 +12927,8 @@ pub struct FramebufferCreateFlags(Flags);
 bitflags!(FramebufferCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FramebufferCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FramebufferCreateFlags {}
 impl FramebufferCreateFlags {
     pub const IMAGELESS: Self = Self(0x1);
 }
@@ -12604,6 +12948,8 @@ pub struct QueryPoolCreateFlags(Flags);
 bitflags!(QueryPoolCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryPoolCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryPoolCreateFlags {}
 impl QueryPoolCreateFlags {
     pub const RESET_KHR: Self = Self(0x1);
 }
@@ -12623,6 +12969,8 @@ pub struct RenderPassCreateFlags(Flags);
 bitflags!(RenderPassCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RenderPassCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RenderPassCreateFlags {}
 impl RenderPassCreateFlags {
     pub const TRANSFORM_QCOM: Self = Self(0x2);
     pub const PER_LAYER_FRAGMENT_DENSITY_VALVE: Self = Self(0x4);
@@ -12646,6 +12994,8 @@ pub struct SamplerCreateFlags(Flags);
 bitflags!(SamplerCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SamplerCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SamplerCreateFlags {}
 impl SamplerCreateFlags {
     pub const SUBSAMPLED_EXT: Self = Self(0x1);
     pub const SUBSAMPLED_COARSE_RECONSTRUCTION_EXT: Self = Self(0x2);
@@ -12675,6 +13025,8 @@ pub struct PipelineLayoutCreateFlags(Flags);
 bitflags!(PipelineLayoutCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineLayoutCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineLayoutCreateFlags {}
 impl PipelineLayoutCreateFlags {
     pub const INDEPENDENT_SETS_EXT: Self = Self(0x2);
     pub const NO_TASK_SHADER_KHR: Self = Self(0x4);
@@ -12696,6 +13048,8 @@ pub struct PipelineCacheCreateFlags(Flags);
 bitflags!(PipelineCacheCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCacheCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCacheCreateFlags {}
 impl PipelineCacheCreateFlags {
     pub const EXTERNALLY_SYNCHRONIZED: Self = Self(0x1);
     pub const INTERNALLY_SYNCHRONIZED_MERGE_KHR: Self = Self(0x8);
@@ -12719,6 +13073,8 @@ pub struct PipelineDepthStencilStateCreateFlags(Flags);
 bitflags!(PipelineDepthStencilStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineDepthStencilStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineDepthStencilStateCreateFlags {}
 impl PipelineDepthStencilStateCreateFlags {
     pub const RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT: Self = Self(0x1);
     pub const RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT: Self = Self(0x2);
@@ -12742,6 +13098,8 @@ pub struct PipelineDynamicStateCreateFlags(Flags);
 bitflags!(PipelineDynamicStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineDynamicStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineDynamicStateCreateFlags {}
 impl PipelineDynamicStateCreateFlags {}
 impl fmt::Display for PipelineDynamicStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12759,6 +13117,8 @@ pub struct PipelineColorBlendStateCreateFlags(Flags);
 bitflags!(PipelineColorBlendStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineColorBlendStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineColorBlendStateCreateFlags {}
 impl PipelineColorBlendStateCreateFlags {
     pub const RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXT: Self = Self(0x1);
 }
@@ -12778,6 +13138,8 @@ pub struct PipelineMultisampleStateCreateFlags(Flags);
 bitflags!(PipelineMultisampleStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineMultisampleStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineMultisampleStateCreateFlags {}
 impl PipelineMultisampleStateCreateFlags {}
 impl fmt::Display for PipelineMultisampleStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12795,6 +13157,8 @@ pub struct PipelineRasterizationStateCreateFlags(Flags);
 bitflags!(PipelineRasterizationStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRasterizationStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRasterizationStateCreateFlags {}
 impl PipelineRasterizationStateCreateFlags {}
 impl fmt::Display for PipelineRasterizationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12812,6 +13176,8 @@ pub struct PipelineViewportStateCreateFlags(Flags);
 bitflags!(PipelineViewportStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineViewportStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineViewportStateCreateFlags {}
 impl PipelineViewportStateCreateFlags {}
 impl fmt::Display for PipelineViewportStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12829,6 +13195,8 @@ pub struct PipelineTessellationStateCreateFlags(Flags);
 bitflags!(PipelineTessellationStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineTessellationStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineTessellationStateCreateFlags {}
 impl PipelineTessellationStateCreateFlags {}
 impl fmt::Display for PipelineTessellationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12846,6 +13214,8 @@ pub struct PipelineInputAssemblyStateCreateFlags(Flags);
 bitflags!(PipelineInputAssemblyStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineInputAssemblyStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineInputAssemblyStateCreateFlags {}
 impl PipelineInputAssemblyStateCreateFlags {}
 impl fmt::Display for PipelineInputAssemblyStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12863,6 +13233,8 @@ pub struct PipelineVertexInputStateCreateFlags(Flags);
 bitflags!(PipelineVertexInputStateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineVertexInputStateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineVertexInputStateCreateFlags {}
 impl PipelineVertexInputStateCreateFlags {}
 impl fmt::Display for PipelineVertexInputStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12880,6 +13252,8 @@ pub struct PipelineShaderStageCreateFlags(Flags);
 bitflags!(PipelineShaderStageCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineShaderStageCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineShaderStageCreateFlags {}
 impl PipelineShaderStageCreateFlags {
     pub const ALLOW_VARYING_SUBGROUP_SIZE: Self = Self(0x1);
     pub const REQUIRE_FULL_SUBGROUPS: Self = Self(0x2);
@@ -12903,6 +13277,8 @@ pub struct DescriptorSetLayoutCreateFlags(Flags);
 bitflags!(DescriptorSetLayoutCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorSetLayoutCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorSetLayoutCreateFlags {}
 impl DescriptorSetLayoutCreateFlags {
     pub const UPDATE_AFTER_BIND_POOL: Self = Self(0x2);
     pub const PUSH_DESCRIPTOR: Self = Self(0x1);
@@ -12936,6 +13312,8 @@ pub struct BufferViewCreateFlags(Flags);
 bitflags!(BufferViewCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferViewCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BufferViewCreateFlags {}
 impl BufferViewCreateFlags {}
 impl fmt::Display for BufferViewCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12953,6 +13331,8 @@ pub struct InstanceCreateFlags(Flags);
 bitflags!(InstanceCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for InstanceCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for InstanceCreateFlags {}
 impl InstanceCreateFlags {
     pub const ENUMERATE_PORTABILITY_KHR: Self = Self(0x1);
 }
@@ -12972,6 +13352,8 @@ pub struct DeviceCreateFlags(Flags);
 bitflags!(DeviceCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceCreateFlags {}
 impl DeviceCreateFlags {}
 impl fmt::Display for DeviceCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12989,6 +13371,8 @@ pub struct DeviceQueueCreateFlags(Flags);
 bitflags!(DeviceQueueCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceQueueCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceQueueCreateFlags {}
 impl DeviceQueueCreateFlags {
     #[doc = "Queue is a protected-capable device queue"]
     pub const PROTECTED: Self = Self(0x1);
@@ -13010,6 +13394,8 @@ pub struct QueueFlags(Flags);
 bitflags!(QueueFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueueFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueueFlags {}
 impl QueueFlags {
     #[doc = "Queue supports graphics operations"]
     pub const GRAPHICS: Self = Self(0x1);
@@ -13052,6 +13438,8 @@ pub struct MemoryPropertyFlags(Flags);
 bitflags!(MemoryPropertyFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryPropertyFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryPropertyFlags {}
 impl MemoryPropertyFlags {
     #[doc = "If otherwise stated, then allocate memory on device"]
     pub const DEVICE_LOCAL: Self = Self(0x1);
@@ -13095,6 +13483,8 @@ pub struct MemoryHeapFlags(Flags);
 bitflags!(MemoryHeapFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryHeapFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryHeapFlags {}
 impl MemoryHeapFlags {
     #[doc = "If set, heap represents device memory"]
     pub const DEVICE_LOCAL: Self = Self(0x1);
@@ -13122,6 +13512,8 @@ pub struct AccessFlags(Flags);
 bitflags!(AccessFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccessFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccessFlags {}
 impl AccessFlags {
     #[doc = "Controls coherency of indirect command reads"]
     pub const INDIRECT_COMMAND_READ: Self = Self(0x1);
@@ -13216,6 +13608,8 @@ pub struct BufferUsageFlags(Flags);
 bitflags!(BufferUsageFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferUsageFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BufferUsageFlags {}
 impl BufferUsageFlags {
     #[doc = "Can be used as a source of transfer operations"]
     pub const TRANSFER_SRC: Self = Self(0x1);
@@ -13304,6 +13698,8 @@ pub struct BufferCreateFlags(Flags);
 bitflags!(BufferCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BufferCreateFlags {}
 impl BufferCreateFlags {
     #[doc = "Buffer should support sparse backing"]
     pub const SPARSE_BINDING: Self = Self(0x1);
@@ -13341,6 +13737,8 @@ pub struct ShaderStageFlags(Flags);
 bitflags!(ShaderStageFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderStageFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderStageFlags {}
 impl ShaderStageFlags {
     pub const VERTEX: Self = Self(0x1);
     pub const TESSELLATION_CONTROL: Self = Self(0x2);
@@ -13396,6 +13794,8 @@ pub struct ImageUsageFlags(Flags);
 bitflags!(ImageUsageFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageUsageFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageUsageFlags {}
 impl ImageUsageFlags {
     #[doc = "Can be used as a source of transfer operations"]
     pub const TRANSFER_SRC: Self = Self(0x1);
@@ -13473,6 +13873,8 @@ pub struct ImageCreateFlags(Flags);
 bitflags!(ImageCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageCreateFlags {}
 impl ImageCreateFlags {
     #[doc = "Image should support sparse backing"]
     pub const SPARSE_BINDING: Self = Self(0x1);
@@ -13543,6 +13945,8 @@ pub struct ImageViewCreateFlags(Flags);
 bitflags!(ImageViewCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageViewCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageViewCreateFlags {}
 impl ImageViewCreateFlags {
     pub const FRAGMENT_DENSITY_MAP_DYNAMIC_EXT: Self = Self(0x1);
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT: Self = Self(0x4);
@@ -13568,6 +13972,8 @@ pub struct PipelineCreateFlags(Flags);
 bitflags!(PipelineCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCreateFlags {}
 impl PipelineCreateFlags {
     pub const DISABLE_OPTIMIZATION: Self = Self(0x1);
     pub const ALLOW_DERIVATIVES: Self = Self(0x2);
@@ -13652,6 +14058,8 @@ pub struct ColorComponentFlags(Flags);
 bitflags!(ColorComponentFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ColorComponentFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ColorComponentFlags {}
 impl ColorComponentFlags {
     pub const R: Self = Self(0x1);
     pub const G: Self = Self(0x2);
@@ -13674,6 +14082,8 @@ pub struct FenceCreateFlags(Flags);
 bitflags!(FenceCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FenceCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FenceCreateFlags {}
 impl FenceCreateFlags {
     pub const SIGNALED: Self = Self(0x1);
 }
@@ -13693,6 +14103,8 @@ pub struct SemaphoreCreateFlags(Flags);
 bitflags!(SemaphoreCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SemaphoreCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SemaphoreCreateFlags {}
 impl SemaphoreCreateFlags {}
 impl fmt::Display for SemaphoreCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -13710,6 +14122,8 @@ pub struct FormatFeatureFlags(Flags);
 bitflags!(FormatFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FormatFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FormatFeatureFlags {}
 impl FormatFeatureFlags {
     #[doc = "Format can be used for sampled images (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)"]
     pub const SAMPLED_IMAGE: Self = Self(0x1);
@@ -13822,6 +14236,8 @@ pub struct QueryControlFlags(Flags);
 bitflags!(QueryControlFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryControlFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryControlFlags {}
 impl QueryControlFlags {
     #[doc = "Require precise results to be collected by the query"]
     pub const PRECISE: Self = Self(0x1);
@@ -13842,6 +14258,8 @@ pub struct QueryResultFlags(Flags);
 bitflags!(QueryResultFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryResultFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryResultFlags {}
 impl QueryResultFlags {
     #[doc = "Results of the queries are written to the destination buffer as 64-bit values"]
     pub const TYPE_64: Self = Self(0x1);
@@ -13875,6 +14293,8 @@ pub struct ShaderModuleCreateFlags(Flags);
 bitflags!(ShaderModuleCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderModuleCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderModuleCreateFlags {}
 impl ShaderModuleCreateFlags {}
 impl fmt::Display for ShaderModuleCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -13892,6 +14312,8 @@ pub struct EventCreateFlags(Flags);
 bitflags!(EventCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for EventCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for EventCreateFlags {}
 impl EventCreateFlags {
     pub const DEVICE_ONLY: Self = Self(0x1);
 }
@@ -13911,6 +14333,8 @@ pub struct CommandPoolCreateFlags(Flags);
 bitflags!(CommandPoolCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandPoolCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandPoolCreateFlags {}
 impl CommandPoolCreateFlags {
     #[doc = "Command buffers have a short lifetime"]
     pub const TRANSIENT: Self = Self(0x1);
@@ -13939,6 +14363,8 @@ pub struct CommandPoolResetFlags(Flags);
 bitflags!(CommandPoolResetFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandPoolResetFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandPoolResetFlags {}
 impl CommandPoolResetFlags {
     #[doc = "Release resources owned by the pool"]
     pub const RELEASE_RESOURCES: Self = Self(0x1);
@@ -13959,6 +14385,8 @@ pub struct CommandBufferResetFlags(Flags);
 bitflags!(CommandBufferResetFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandBufferResetFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandBufferResetFlags {}
 impl CommandBufferResetFlags {
     #[doc = "Release resources owned by the buffer"]
     pub const RELEASE_RESOURCES: Self = Self(0x1);
@@ -13979,6 +14407,8 @@ pub struct CommandBufferUsageFlags(Flags);
 bitflags!(CommandBufferUsageFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandBufferUsageFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandBufferUsageFlags {}
 impl CommandBufferUsageFlags {
     pub const ONE_TIME_SUBMIT: Self = Self(0x1);
     pub const RENDER_PASS_CONTINUE: Self = Self(0x2);
@@ -14005,6 +14435,8 @@ pub struct QueryPipelineStatisticFlags(Flags);
 bitflags!(QueryPipelineStatisticFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueryPipelineStatisticFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for QueryPipelineStatisticFlags {}
 impl QueryPipelineStatisticFlags {
     #[doc = "Optional"]
     pub const INPUT_ASSEMBLY_VERTICES: Self = Self(0x1);
@@ -14063,6 +14495,8 @@ pub struct MemoryMapFlags(Flags);
 bitflags!(MemoryMapFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryMapFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryMapFlags {}
 impl MemoryMapFlags {
     pub const PLACED_EXT: Self = Self(0x1);
 }
@@ -14082,6 +14516,8 @@ pub struct MemoryUnmapFlags(Flags);
 bitflags!(MemoryUnmapFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryUnmapFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryUnmapFlags {}
 impl MemoryUnmapFlags {
     pub const RESERVE_EXT: Self = Self(0x1);
 }
@@ -14101,6 +14537,8 @@ pub struct ImageAspectFlags(Flags);
 bitflags!(ImageAspectFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageAspectFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageAspectFlags {}
 impl ImageAspectFlags {
     pub const COLOR: Self = Self(0x1);
     pub const DEPTH: Self = Self(0x2);
@@ -14143,6 +14581,8 @@ pub struct SparseMemoryBindFlags(Flags);
 bitflags!(SparseMemoryBindFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseMemoryBindFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SparseMemoryBindFlags {}
 impl SparseMemoryBindFlags {
     #[doc = "Operation binds resource metadata to memory"]
     pub const METADATA: Self = Self(0x1);
@@ -14163,6 +14603,8 @@ pub struct SparseImageFormatFlags(Flags);
 bitflags!(SparseImageFormatFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseImageFormatFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SparseImageFormatFlags {}
 impl SparseImageFormatFlags {
     #[doc = "Image uses a single mip tail region for all array layers"]
     pub const SINGLE_MIPTAIL: Self = Self(0x1);
@@ -14191,6 +14633,8 @@ pub struct SubpassDescriptionFlags(Flags);
 bitflags!(SubpassDescriptionFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubpassDescriptionFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SubpassDescriptionFlags {}
 impl SubpassDescriptionFlags {
     pub const PER_VIEW_ATTRIBUTES_NVX: Self = Self(0x1);
     pub const PER_VIEW_POSITION_X_ONLY_NVX: Self = Self(0x2);
@@ -14228,6 +14672,8 @@ pub struct PipelineStageFlags(Flags);
 bitflags!(PipelineStageFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineStageFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineStageFlags {}
 impl PipelineStageFlags {
     #[doc = "Before subsequent commands are processed"]
     pub const TOP_OF_PIPE: Self = Self(0x1);
@@ -14318,6 +14764,8 @@ pub struct SampleCountFlags(Flags);
 bitflags!(SampleCountFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SampleCountFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SampleCountFlags {}
 impl SampleCountFlags {
     #[doc = "Sample count 1 supported"]
     pub const TYPE_1: Self = Self(0x1);
@@ -14358,6 +14806,8 @@ pub struct AttachmentDescriptionFlags(Flags);
 bitflags!(AttachmentDescriptionFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AttachmentDescriptionFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AttachmentDescriptionFlags {}
 impl AttachmentDescriptionFlags {
     #[doc = "The attachment may alias physical memory of another attachment in the same render pass"]
     pub const MAY_ALIAS: Self = Self(0x1);
@@ -14384,6 +14834,8 @@ pub struct StencilFaceFlags(Flags);
 bitflags!(StencilFaceFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StencilFaceFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for StencilFaceFlags {}
 impl StencilFaceFlags {
     #[doc = "Front face"]
     pub const FRONT: Self = Self(0x1);
@@ -14410,6 +14862,8 @@ pub struct CullModeFlags(Flags);
 bitflags!(CullModeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CullModeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CullModeFlags {}
 impl CullModeFlags {
     pub const NONE: Self = Self(0x0);
     pub const FRONT: Self = Self(0x1);
@@ -14432,6 +14886,8 @@ pub struct DescriptorPoolCreateFlags(Flags);
 bitflags!(DescriptorPoolCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorPoolCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorPoolCreateFlags {}
 impl DescriptorPoolCreateFlags {
     #[doc = "Descriptor sets may be freed individually"]
     pub const FREE_DESCRIPTOR_SET: Self = Self(0x1);
@@ -14462,6 +14918,8 @@ pub struct DescriptorPoolResetFlags(Flags);
 bitflags!(DescriptorPoolResetFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorPoolResetFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorPoolResetFlags {}
 impl DescriptorPoolResetFlags {}
 impl fmt::Display for DescriptorPoolResetFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14479,6 +14937,8 @@ pub struct DependencyFlags(Flags);
 bitflags!(DependencyFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DependencyFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DependencyFlags {}
 impl DependencyFlags {
     #[doc = "Dependency is per pixel region "]
     pub const BY_REGION: Self = Self(0x1);
@@ -14513,6 +14973,8 @@ pub struct SubgroupFeatureFlags(Flags);
 bitflags!(SubgroupFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubgroupFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SubgroupFeatureFlags {}
 impl SubgroupFeatureFlags {
     #[doc = "Basic subgroup operations"]
     pub const BASIC: Self = Self(0x1);
@@ -14562,6 +15024,8 @@ pub struct IndirectCommandsLayoutUsageFlagsNV(Flags);
 bitflags!(IndirectCommandsLayoutUsageFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsLayoutUsageFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectCommandsLayoutUsageFlagsNV {}
 impl IndirectCommandsLayoutUsageFlagsNV {
     pub const EXPLICIT_PREPROCESS_NV: Self = Self(0x1);
     pub const INDEXED_SEQUENCES_NV: Self = Self(0x2);
@@ -14587,6 +15051,8 @@ pub struct IndirectStateFlagsNV(Flags);
 bitflags!(IndirectStateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectStateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectStateFlagsNV {}
 impl IndirectStateFlagsNV {
     pub const FLAG_FRONTFACE_NV: Self = Self(0x1);
 }
@@ -14606,6 +15072,8 @@ pub struct GeometryFlagsKHR(Flags);
 bitflags!(GeometryFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GeometryFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GeometryFlagsKHR {}
 impl GeometryFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const NO_DUPLICATE_ANY_HIT_INVOCATION_KHR: Self = Self(0x2);
@@ -14629,6 +15097,8 @@ pub struct GeometryInstanceFlagsKHR(Flags);
 bitflags!(GeometryInstanceFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GeometryInstanceFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GeometryInstanceFlagsKHR {}
 impl GeometryInstanceFlagsKHR {
     pub const TRIANGLE_FACING_CULL_DISABLE_KHR: Self = Self(0x1);
     pub const TRIANGLE_FLIP_FACING_KHR: Self = Self(0x2);
@@ -14661,6 +15131,8 @@ pub struct ClusterAccelerationStructureGeometryFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureGeometryFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureGeometryFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureGeometryFlagsNV {}
 impl ClusterAccelerationStructureGeometryFlagsNV {
     pub const CULL_DISABLE_NV: Self = Self(0x1);
     pub const NO_DUPLICATE_ANYHIT_INVOCATION_NV: Self = Self(0x2);
@@ -14686,6 +15158,8 @@ pub struct ClusterAccelerationStructureClusterFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureClusterFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureClusterFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureClusterFlagsNV {}
 impl ClusterAccelerationStructureClusterFlagsNV {
     pub const ALLOW_DISABLE_OPACITY_MICROMAPS_NV: Self = Self(0x1);
 }
@@ -14705,6 +15179,8 @@ pub struct ClusterAccelerationStructureAddressResolutionFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureAddressResolutionFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureAddressResolutionFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureAddressResolutionFlagsNV {}
 impl ClusterAccelerationStructureAddressResolutionFlagsNV {
     pub const NONE_NV: Self = Self(0x0);
     pub const INDIRECTED_DST_IMPLICIT_DATA_NV: Self = Self(0x1);
@@ -14737,6 +15213,8 @@ pub struct BuildAccelerationStructureFlagsKHR(Flags);
 bitflags!(BuildAccelerationStructureFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BuildAccelerationStructureFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BuildAccelerationStructureFlagsKHR {}
 impl BuildAccelerationStructureFlagsKHR {
     pub const ALLOW_UPDATE_KHR: Self = Self(0x1);
     pub const ALLOW_COMPACTION_KHR: Self = Self(0x2);
@@ -14782,6 +15260,8 @@ pub struct PrivateDataSlotCreateFlags(Flags);
 bitflags!(PrivateDataSlotCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PrivateDataSlotCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PrivateDataSlotCreateFlags {}
 impl PrivateDataSlotCreateFlags {
     pub const BASE_OBJECT_HANDLE_NV: Self = Self(0x1);
 }
@@ -14801,6 +15281,8 @@ pub struct AccelerationStructureCreateFlagsKHR(Flags);
 bitflags!(AccelerationStructureCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureCreateFlagsKHR {}
 impl AccelerationStructureCreateFlagsKHR {
     pub const DEVICE_ADDRESS_CAPTURE_REPLAY_KHR: Self = Self(0x1);
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT: Self = Self(0x8);
@@ -14826,6 +15308,8 @@ pub struct DescriptorUpdateTemplateCreateFlags(Flags);
 bitflags!(DescriptorUpdateTemplateCreateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorUpdateTemplateCreateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorUpdateTemplateCreateFlags {}
 impl DescriptorUpdateTemplateCreateFlags {}
 impl fmt::Display for DescriptorUpdateTemplateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14843,6 +15327,8 @@ pub struct PipelineCreationFeedbackFlags(Flags);
 bitflags!(PipelineCreationFeedbackFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCreationFeedbackFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCreationFeedbackFlags {}
 impl PipelineCreationFeedbackFlags {
     pub const VALID: Self = Self(0x1);
     pub const APPLICATION_PIPELINE_CACHE_HIT: Self = Self(0x2);
@@ -14868,6 +15354,8 @@ pub struct PerformanceCounterDescriptionFlagsKHR(Flags);
 bitflags!(PerformanceCounterDescriptionFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceCounterDescriptionFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceCounterDescriptionFlagsKHR {}
 impl PerformanceCounterDescriptionFlagsKHR {
     pub const PERFORMANCE_IMPACTING_KHR: Self = Self(0x1);
     pub const CONCURRENTLY_IMPACTED_KHR: Self = Self(0x2);
@@ -14891,6 +15379,8 @@ pub struct AcquireProfilingLockFlagsKHR(Flags);
 bitflags!(AcquireProfilingLockFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AcquireProfilingLockFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AcquireProfilingLockFlagsKHR {}
 impl AcquireProfilingLockFlagsKHR {}
 impl fmt::Display for AcquireProfilingLockFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14908,6 +15398,8 @@ pub struct SemaphoreWaitFlags(Flags);
 bitflags!(SemaphoreWaitFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SemaphoreWaitFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SemaphoreWaitFlags {}
 impl SemaphoreWaitFlags {
     pub const ANY: Self = Self(0x1);
 }
@@ -14927,6 +15419,8 @@ pub struct PipelineCompilerControlFlagsAMD(Flags);
 bitflags!(PipelineCompilerControlFlagsAMD, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCompilerControlFlagsAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCompilerControlFlagsAMD {}
 impl PipelineCompilerControlFlagsAMD {}
 impl fmt::Display for PipelineCompilerControlFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14944,6 +15438,8 @@ pub struct ShaderCorePropertiesFlagsAMD(Flags);
 bitflags!(ShaderCorePropertiesFlagsAMD, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderCorePropertiesFlagsAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderCorePropertiesFlagsAMD {}
 impl ShaderCorePropertiesFlagsAMD {}
 impl fmt::Display for ShaderCorePropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14961,6 +15457,8 @@ pub struct DeviceDiagnosticsConfigFlagsNV(Flags);
 bitflags!(DeviceDiagnosticsConfigFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceDiagnosticsConfigFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceDiagnosticsConfigFlagsNV {}
 impl DeviceDiagnosticsConfigFlagsNV {
     pub const ENABLE_SHADER_DEBUG_INFO_NV: Self = Self(0x1);
     pub const ENABLE_RESOURCE_TRACKING_NV: Self = Self(0x2);
@@ -14988,6 +15486,8 @@ pub struct RefreshObjectFlagsKHR(Flags);
 bitflags!(RefreshObjectFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RefreshObjectFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RefreshObjectFlagsKHR {}
 impl RefreshObjectFlagsKHR {}
 impl fmt::Display for RefreshObjectFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15005,6 +15505,8 @@ pub struct AccessFlags2(Flags64);
 bitflags!(AccessFlags2, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccessFlags2 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccessFlags2 {}
 impl AccessFlags2 {
     pub const NONE: Self = Self(0x0);
     pub const INDIRECT_COMMAND_READ: Self = Self(0x1);
@@ -15126,6 +15628,8 @@ pub struct PipelineStageFlags2(Flags64);
 bitflags!(PipelineStageFlags2, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineStageFlags2 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineStageFlags2 {}
 impl PipelineStageFlags2 {
     pub const NONE: Self = Self(0x0);
     pub const TOP_OF_PIPE: Self = Self(0x1);
@@ -15238,6 +15742,8 @@ pub struct AccelerationStructureMotionInfoFlagsNV(Flags);
 bitflags!(AccelerationStructureMotionInfoFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureMotionInfoFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureMotionInfoFlagsNV {}
 impl AccelerationStructureMotionInfoFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInfoFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15255,6 +15761,8 @@ pub struct AccelerationStructureMotionInstanceFlagsNV(Flags);
 bitflags!(AccelerationStructureMotionInstanceFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureMotionInstanceFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccelerationStructureMotionInstanceFlagsNV {}
 impl AccelerationStructureMotionInstanceFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInstanceFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15272,6 +15780,8 @@ pub struct FormatFeatureFlags2(Flags64);
 bitflags!(FormatFeatureFlags2, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FormatFeatureFlags2 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FormatFeatureFlags2 {}
 impl FormatFeatureFlags2 {
     pub const SAMPLED_IMAGE: Self = Self(0x1);
     pub const STORAGE_IMAGE: Self = Self(0x2);
@@ -15427,6 +15937,8 @@ pub struct FormatFeatureFlags4KHR(Flags64);
 bitflags!(FormatFeatureFlags4KHR, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FormatFeatureFlags4KHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FormatFeatureFlags4KHR {}
 impl FormatFeatureFlags4KHR {}
 impl fmt::Display for FormatFeatureFlags4KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15444,6 +15956,8 @@ pub struct RenderingFlags(Flags);
 bitflags!(RenderingFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RenderingFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RenderingFlags {}
 impl RenderingFlags {
     pub const CONTENTS_SECONDARY_COMMAND_BUFFERS: Self = Self(0x1);
     pub const SUSPENDING: Self = Self(0x2);
@@ -15482,6 +15996,8 @@ pub struct MemoryDecompressionMethodFlagsEXT(Flags64);
 bitflags!(MemoryDecompressionMethodFlagsEXT, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryDecompressionMethodFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryDecompressionMethodFlagsEXT {}
 impl MemoryDecompressionMethodFlagsEXT {
     pub const GDEFLATE_1_0_EXT: Self = Self(0x1);
     pub const GDEFLATE_1_0_NV: Self = Self::GDEFLATE_1_0_EXT;
@@ -15502,6 +16018,8 @@ pub struct DeviceFaultFlagsKHR(Flags);
 bitflags!(DeviceFaultFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceFaultFlagsKHR {}
 impl DeviceFaultFlagsKHR {
     pub const FLAG_DEVICE_LOST_KHR: Self = Self(0x1);
     pub const FLAG_MEMORY_ADDRESS_KHR: Self = Self(0x2);
@@ -15533,6 +16051,8 @@ pub struct BuildMicromapFlagsEXT(Flags);
 bitflags!(BuildMicromapFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BuildMicromapFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BuildMicromapFlagsEXT {}
 impl BuildMicromapFlagsEXT {
     pub const PREFER_FAST_TRACE_EXT: Self = Self(0x1);
     pub const PREFER_FAST_BUILD_EXT: Self = Self(0x2);
@@ -15558,6 +16078,8 @@ pub struct MicromapCreateFlagsEXT(Flags);
 bitflags!(MicromapCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MicromapCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MicromapCreateFlagsEXT {}
 impl MicromapCreateFlagsEXT {
     pub const DEVICE_ADDRESS_CAPTURE_REPLAY_EXT: Self = Self(0x1);
 }
@@ -15577,6 +16099,8 @@ pub struct IndirectCommandsLayoutUsageFlagsEXT(Flags);
 bitflags!(IndirectCommandsLayoutUsageFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsLayoutUsageFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectCommandsLayoutUsageFlagsEXT {}
 impl IndirectCommandsLayoutUsageFlagsEXT {
     pub const EXPLICIT_PREPROCESS_EXT: Self = Self(0x1);
     pub const UNORDERED_SEQUENCES_EXT: Self = Self(0x2);
@@ -15600,6 +16124,8 @@ pub struct IndirectCommandsInputModeFlagsEXT(Flags);
 bitflags!(IndirectCommandsInputModeFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsInputModeFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IndirectCommandsInputModeFlagsEXT {}
 impl IndirectCommandsInputModeFlagsEXT {
     pub const VULKAN_INDEX_BUFFER_EXT: Self = Self(0x1);
     pub const DXGI_INDEX_BUFFER_EXT: Self = Self(0x2);
@@ -15623,6 +16149,8 @@ pub struct DirectDriverLoadingFlagsLUNARG(Flags);
 bitflags!(DirectDriverLoadingFlagsLUNARG, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DirectDriverLoadingFlagsLUNARG {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DirectDriverLoadingFlagsLUNARG {}
 impl DirectDriverLoadingFlagsLUNARG {}
 impl fmt::Display for DirectDriverLoadingFlagsLUNARG {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15640,6 +16168,8 @@ pub struct PipelineCreateFlags2(Flags64);
 bitflags!(PipelineCreateFlags2, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCreateFlags2 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCreateFlags2 {}
 impl PipelineCreateFlags2 {
     pub const DISABLE_OPTIMIZATION: Self = Self(0x1);
     pub const ALLOW_DERIVATIVES: Self = Self(0x2);
@@ -15752,6 +16282,8 @@ pub struct BufferUsageFlags2(Flags64);
 bitflags!(BufferUsageFlags2, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferUsageFlags2 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for BufferUsageFlags2 {}
 impl BufferUsageFlags2 {
     pub const TRANSFER_SRC: Self = Self(0x1);
     pub const TRANSFER_DST: Self = Self(0x2);
@@ -15838,6 +16370,8 @@ pub struct ImageUsageFlags2KHR(Flags64);
 bitflags!(ImageUsageFlags2KHR, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageUsageFlags2KHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageUsageFlags2KHR {}
 impl ImageUsageFlags2KHR {
     pub const TYPE_2_TRANSFER_SRC_KHR: Self = Self(0x1);
     pub const TYPE_2_TRANSFER_DST_KHR: Self = Self(0x2);
@@ -15910,6 +16444,8 @@ pub struct ImageCreateFlags2KHR(Flags64);
 bitflags!(ImageCreateFlags2KHR, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageCreateFlags2KHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageCreateFlags2KHR {}
 impl ImageCreateFlags2KHR {
     pub const TYPE_2_SPARSE_BINDING_KHR: Self = Self(0x1);
     pub const TYPE_2_SPARSE_RESIDENCY_KHR: Self = Self(0x2);
@@ -15974,6 +16510,8 @@ pub struct AddressCopyFlagsKHR(Flags);
 bitflags!(AddressCopyFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AddressCopyFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AddressCopyFlagsKHR {}
 impl AddressCopyFlagsKHR {
     pub const DEVICE_LOCAL_KHR: Self = Self(0x1);
     pub const SPARSE_KHR: Self = Self(0x2);
@@ -15999,6 +16537,8 @@ pub struct TensorCreateFlagsARM(Flags64);
 bitflags!(TensorCreateFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TensorCreateFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TensorCreateFlagsARM {}
 impl TensorCreateFlagsARM {
     pub const MUTABLE_FORMAT_ARM: Self = Self(0x1);
     pub const PROTECTED_ARM: Self = Self(0x2);
@@ -16026,6 +16566,8 @@ pub struct TensorUsageFlagsARM(Flags64);
 bitflags!(TensorUsageFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TensorUsageFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TensorUsageFlagsARM {}
 impl TensorUsageFlagsARM {
     #[doc = "Tensor written/read through shader descriptor"]
     pub const SHADER_ARM: Self = Self(0x2);
@@ -16059,6 +16601,8 @@ pub struct TensorViewCreateFlagsARM(Flags64);
 bitflags!(TensorViewCreateFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TensorViewCreateFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TensorViewCreateFlagsARM {}
 impl TensorViewCreateFlagsARM {
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_ARM: Self = Self(0x1);
 }
@@ -16078,6 +16622,8 @@ pub struct DataGraphPipelineSessionCreateFlagsARM(Flags64);
 bitflags!(DataGraphPipelineSessionCreateFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineSessionCreateFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineSessionCreateFlagsARM {}
 impl DataGraphPipelineSessionCreateFlagsARM {
     pub const PROTECTED_ARM: Self = Self(0x1);
     pub const OPTICAL_FLOW_CACHE_ARM: Self = Self(0x2);
@@ -16098,6 +16644,8 @@ pub struct DataGraphPipelineDispatchFlagsARM(Flags64);
 bitflags!(DataGraphPipelineDispatchFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphPipelineDispatchFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphPipelineDispatchFlagsARM {}
 impl DataGraphPipelineDispatchFlagsARM {}
 impl fmt::Display for DataGraphPipelineDispatchFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16115,6 +16663,8 @@ pub struct VideoEncodeRgbModelConversionFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbModelConversionFlagsVALVE, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeRgbModelConversionFlagsVALVE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeRgbModelConversionFlagsVALVE {}
 impl VideoEncodeRgbModelConversionFlagsVALVE {
     pub const RGB_IDENTITY_VALVE: Self = Self(0x1);
     pub const YCBCR_IDENTITY_VALVE: Self = Self(0x2);
@@ -16144,6 +16694,8 @@ pub struct VideoEncodeRgbRangeCompressionFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbRangeCompressionFlagsVALVE, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeRgbRangeCompressionFlagsVALVE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeRgbRangeCompressionFlagsVALVE {}
 impl VideoEncodeRgbRangeCompressionFlagsVALVE {
     pub const FULL_RANGE_VALVE: Self = Self(0x1);
     pub const NARROW_RANGE_VALVE: Self = Self(0x2);
@@ -16164,6 +16716,8 @@ pub struct VideoEncodeRgbChromaOffsetFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbChromaOffsetFlagsVALVE, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeRgbChromaOffsetFlagsVALVE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeRgbChromaOffsetFlagsVALVE {}
 impl VideoEncodeRgbChromaOffsetFlagsVALVE {
     pub const COSITED_EVEN_VALVE: Self = Self(0x1);
     pub const MIDPOINT_VALVE: Self = Self(0x2);
@@ -16184,6 +16738,8 @@ pub struct SpirvResourceTypeFlagsEXT(Flags);
 bitflags!(SpirvResourceTypeFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SpirvResourceTypeFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SpirvResourceTypeFlagsEXT {}
 impl SpirvResourceTypeFlagsEXT {
     pub const ALL_EXT: Self = Self(0x7fffffff);
     pub const SAMPLER_EXT: Self = Self(0x1);
@@ -16225,6 +16781,8 @@ pub struct GpaSqShaderStageFlagsAMD(Flags);
 bitflags!(GpaSqShaderStageFlagsAMD, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaSqShaderStageFlagsAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GpaSqShaderStageFlagsAMD {}
 impl GpaSqShaderStageFlagsAMD {
     pub const PS_AMD: Self = Self(0x1);
     pub const VS_AMD: Self = Self(0x2);
@@ -16258,6 +16816,8 @@ pub struct GpaPerfBlockPropertiesFlagsAMD(Flags);
 bitflags!(GpaPerfBlockPropertiesFlagsAMD, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaPerfBlockPropertiesFlagsAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GpaPerfBlockPropertiesFlagsAMD {}
 impl GpaPerfBlockPropertiesFlagsAMD {}
 impl fmt::Display for GpaPerfBlockPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16275,6 +16835,8 @@ pub struct PhysicalDeviceGpaPropertiesFlagsAMD(Flags);
 bitflags!(PhysicalDeviceGpaPropertiesFlagsAMD, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceGpaPropertiesFlagsAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceGpaPropertiesFlagsAMD {}
 impl PhysicalDeviceGpaPropertiesFlagsAMD {}
 impl fmt::Display for PhysicalDeviceGpaPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16292,6 +16854,8 @@ pub struct AddressCommandFlagsKHR(Flags);
 bitflags!(AddressCommandFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AddressCommandFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AddressCommandFlagsKHR {}
 impl AddressCommandFlagsKHR {
     pub const PROTECTED_KHR: Self = Self(0x1);
     pub const FULLY_BOUND_KHR: Self = Self(0x2);
@@ -16323,6 +16887,8 @@ pub struct CompositeAlphaFlagsKHR(Flags);
 bitflags!(CompositeAlphaFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CompositeAlphaFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CompositeAlphaFlagsKHR {}
 impl CompositeAlphaFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const PRE_MULTIPLIED_KHR: Self = Self(0x2);
@@ -16350,6 +16916,8 @@ pub struct DisplayPlaneAlphaFlagsKHR(Flags);
 bitflags!(DisplayPlaneAlphaFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayPlaneAlphaFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplayPlaneAlphaFlagsKHR {}
 impl DisplayPlaneAlphaFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const GLOBAL_KHR: Self = Self(0x2);
@@ -16377,6 +16945,8 @@ pub struct SurfaceTransformFlagsKHR(Flags);
 bitflags!(SurfaceTransformFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SurfaceTransformFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SurfaceTransformFlagsKHR {}
 impl SurfaceTransformFlagsKHR {
     pub const IDENTITY_KHR: Self = Self(0x1);
     pub const ROTATE_90_KHR: Self = Self(0x2);
@@ -16414,6 +16984,8 @@ pub struct SwapchainCreateFlagsKHR(Flags);
 bitflags!(SwapchainCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SwapchainCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SwapchainCreateFlagsKHR {}
 impl SwapchainCreateFlagsKHR {
     #[doc = "Allow images with VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT"]
     pub const SPLIT_INSTANCE_BIND_REGIONS_KHR: Self = Self(0x1);
@@ -16453,6 +17025,8 @@ pub struct DisplayModeCreateFlagsKHR(Flags);
 bitflags!(DisplayModeCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayModeCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplayModeCreateFlagsKHR {}
 impl DisplayModeCreateFlagsKHR {}
 impl fmt::Display for DisplayModeCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16470,6 +17044,8 @@ pub struct DisplaySurfaceCreateFlagsKHR(Flags);
 bitflags!(DisplaySurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplaySurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DisplaySurfaceCreateFlagsKHR {}
 impl DisplaySurfaceCreateFlagsKHR {}
 impl fmt::Display for DisplaySurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16487,6 +17063,8 @@ pub struct AndroidSurfaceCreateFlagsKHR(Flags);
 bitflags!(AndroidSurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AndroidSurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AndroidSurfaceCreateFlagsKHR {}
 impl AndroidSurfaceCreateFlagsKHR {}
 impl fmt::Display for AndroidSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16504,6 +17082,8 @@ pub struct ViSurfaceCreateFlagsNN(Flags);
 bitflags!(ViSurfaceCreateFlagsNN, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ViSurfaceCreateFlagsNN {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ViSurfaceCreateFlagsNN {}
 impl ViSurfaceCreateFlagsNN {}
 impl fmt::Display for ViSurfaceCreateFlagsNN {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16521,6 +17101,8 @@ pub struct WaylandSurfaceCreateFlagsKHR(Flags);
 bitflags!(WaylandSurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for WaylandSurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for WaylandSurfaceCreateFlagsKHR {}
 impl WaylandSurfaceCreateFlagsKHR {}
 impl fmt::Display for WaylandSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16538,6 +17120,8 @@ pub struct UbmSurfaceCreateFlagsSEC(Flags);
 bitflags!(UbmSurfaceCreateFlagsSEC, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for UbmSurfaceCreateFlagsSEC {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for UbmSurfaceCreateFlagsSEC {}
 impl UbmSurfaceCreateFlagsSEC {}
 impl fmt::Display for UbmSurfaceCreateFlagsSEC {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16555,6 +17139,8 @@ pub struct Win32SurfaceCreateFlagsKHR(Flags);
 bitflags!(Win32SurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Win32SurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for Win32SurfaceCreateFlagsKHR {}
 impl Win32SurfaceCreateFlagsKHR {}
 impl fmt::Display for Win32SurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16572,6 +17158,8 @@ pub struct XlibSurfaceCreateFlagsKHR(Flags);
 bitflags!(XlibSurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for XlibSurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for XlibSurfaceCreateFlagsKHR {}
 impl XlibSurfaceCreateFlagsKHR {}
 impl fmt::Display for XlibSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16589,6 +17177,8 @@ pub struct XcbSurfaceCreateFlagsKHR(Flags);
 bitflags!(XcbSurfaceCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for XcbSurfaceCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for XcbSurfaceCreateFlagsKHR {}
 impl XcbSurfaceCreateFlagsKHR {}
 impl fmt::Display for XcbSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16606,6 +17196,8 @@ pub struct DirectFBSurfaceCreateFlagsEXT(Flags);
 bitflags!(DirectFBSurfaceCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DirectFBSurfaceCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DirectFBSurfaceCreateFlagsEXT {}
 impl DirectFBSurfaceCreateFlagsEXT {}
 impl fmt::Display for DirectFBSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16623,6 +17215,8 @@ pub struct IOSSurfaceCreateFlagsMVK(Flags);
 bitflags!(IOSSurfaceCreateFlagsMVK, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IOSSurfaceCreateFlagsMVK {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for IOSSurfaceCreateFlagsMVK {}
 impl IOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for IOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16640,6 +17234,8 @@ pub struct MacOSSurfaceCreateFlagsMVK(Flags);
 bitflags!(MacOSSurfaceCreateFlagsMVK, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MacOSSurfaceCreateFlagsMVK {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MacOSSurfaceCreateFlagsMVK {}
 impl MacOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for MacOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16657,6 +17253,8 @@ pub struct MetalSurfaceCreateFlagsEXT(Flags);
 bitflags!(MetalSurfaceCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MetalSurfaceCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MetalSurfaceCreateFlagsEXT {}
 impl MetalSurfaceCreateFlagsEXT {}
 impl fmt::Display for MetalSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16674,6 +17272,8 @@ pub struct ImagePipeSurfaceCreateFlagsFUCHSIA(Flags);
 bitflags!(ImagePipeSurfaceCreateFlagsFUCHSIA, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImagePipeSurfaceCreateFlagsFUCHSIA {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImagePipeSurfaceCreateFlagsFUCHSIA {}
 impl ImagePipeSurfaceCreateFlagsFUCHSIA {}
 impl fmt::Display for ImagePipeSurfaceCreateFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16691,6 +17291,8 @@ pub struct StreamDescriptorSurfaceCreateFlagsGGP(Flags);
 bitflags!(StreamDescriptorSurfaceCreateFlagsGGP, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StreamDescriptorSurfaceCreateFlagsGGP {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for StreamDescriptorSurfaceCreateFlagsGGP {}
 impl StreamDescriptorSurfaceCreateFlagsGGP {}
 impl fmt::Display for StreamDescriptorSurfaceCreateFlagsGGP {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16708,6 +17310,8 @@ pub struct HeadlessSurfaceCreateFlagsEXT(Flags);
 bitflags!(HeadlessSurfaceCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for HeadlessSurfaceCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for HeadlessSurfaceCreateFlagsEXT {}
 impl HeadlessSurfaceCreateFlagsEXT {}
 impl fmt::Display for HeadlessSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16725,6 +17329,8 @@ pub struct ScreenSurfaceCreateFlagsQNX(Flags);
 bitflags!(ScreenSurfaceCreateFlagsQNX, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ScreenSurfaceCreateFlagsQNX {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ScreenSurfaceCreateFlagsQNX {}
 impl ScreenSurfaceCreateFlagsQNX {}
 impl fmt::Display for ScreenSurfaceCreateFlagsQNX {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16742,6 +17348,8 @@ pub struct PeerMemoryFeatureFlags(Flags);
 bitflags!(PeerMemoryFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PeerMemoryFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PeerMemoryFeatureFlags {}
 impl PeerMemoryFeatureFlags {
     #[doc = "Can read with vkCmdCopy commands"]
     pub const COPY_SRC: Self = Self(0x1);
@@ -16773,6 +17381,8 @@ pub struct MemoryAllocateFlags(Flags);
 bitflags!(MemoryAllocateFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryAllocateFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for MemoryAllocateFlags {}
 impl MemoryAllocateFlags {
     #[doc = "Force allocation on specific devices"]
     pub const DEVICE_MASK: Self = Self(0x1);
@@ -16801,6 +17411,8 @@ pub struct DeviceGroupPresentModeFlagsKHR(Flags);
 bitflags!(DeviceGroupPresentModeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceGroupPresentModeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceGroupPresentModeFlagsKHR {}
 impl DeviceGroupPresentModeFlagsKHR {
     #[doc = "Present from local memory"]
     pub const LOCAL_KHR: Self = Self(0x1);
@@ -16832,6 +17444,8 @@ pub struct DebugReportFlagsEXT(Flags);
 bitflags!(DebugReportFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugReportFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugReportFlagsEXT {}
 impl DebugReportFlagsEXT {
     pub const INFORMATION_EXT: Self = Self(0x1);
     pub const WARNING_EXT: Self = Self(0x2);
@@ -16861,6 +17475,8 @@ pub struct CommandPoolTrimFlags(Flags);
 bitflags!(CommandPoolTrimFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CommandPoolTrimFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CommandPoolTrimFlags {}
 impl CommandPoolTrimFlags {}
 impl fmt::Display for CommandPoolTrimFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16878,6 +17494,8 @@ pub struct ExternalMemoryHandleTypeFlagsNV(Flags);
 bitflags!(ExternalMemoryHandleTypeFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalMemoryHandleTypeFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalMemoryHandleTypeFlagsNV {}
 impl ExternalMemoryHandleTypeFlagsNV {
     pub const OPAQUE_WIN32_NV: Self = Self(0x1);
     pub const OPAQUE_WIN32_KMT_NV: Self = Self(0x2);
@@ -16905,6 +17523,8 @@ pub struct ClusterAccelerationStructureIndexFormatFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureIndexFormatFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureIndexFormatFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ClusterAccelerationStructureIndexFormatFlagsNV {}
 impl ClusterAccelerationStructureIndexFormatFlagsNV {
     pub const TYPE_8BIT_NV: Self = Self(0x1);
     pub const TYPE_16BIT_NV: Self = Self(0x2);
@@ -16930,6 +17550,8 @@ pub struct ExternalMemoryFeatureFlagsNV(Flags);
 bitflags!(ExternalMemoryFeatureFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalMemoryFeatureFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalMemoryFeatureFlagsNV {}
 impl ExternalMemoryFeatureFlagsNV {
     pub const DEDICATED_ONLY_NV: Self = Self(0x1);
     pub const EXPORTABLE_NV: Self = Self(0x2);
@@ -16955,6 +17577,8 @@ pub struct ExternalMemoryHandleTypeFlags(Flags);
 bitflags!(ExternalMemoryHandleTypeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalMemoryHandleTypeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalMemoryHandleTypeFlags {}
 impl ExternalMemoryHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -17012,6 +17636,8 @@ pub struct ExternalMemoryFeatureFlags(Flags);
 bitflags!(ExternalMemoryFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalMemoryFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalMemoryFeatureFlags {}
 impl ExternalMemoryFeatureFlags {
     pub const DEDICATED_ONLY: Self = Self(0x1);
     pub const EXPORTABLE: Self = Self(0x2);
@@ -17037,6 +17663,8 @@ pub struct ExternalSemaphoreHandleTypeFlags(Flags);
 bitflags!(ExternalSemaphoreHandleTypeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalSemaphoreHandleTypeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalSemaphoreHandleTypeFlags {}
 impl ExternalSemaphoreHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -17071,6 +17699,8 @@ pub struct ExternalSemaphoreFeatureFlags(Flags);
 bitflags!(ExternalSemaphoreFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalSemaphoreFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalSemaphoreFeatureFlags {}
 impl ExternalSemaphoreFeatureFlags {
     pub const EXPORTABLE: Self = Self(0x1);
     pub const IMPORTABLE: Self = Self(0x2);
@@ -17091,6 +17721,8 @@ pub struct SemaphoreImportFlags(Flags);
 bitflags!(SemaphoreImportFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SemaphoreImportFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SemaphoreImportFlags {}
 impl SemaphoreImportFlags {
     pub const TEMPORARY: Self = Self(0x1);
 }
@@ -17110,6 +17742,8 @@ pub struct ExternalFenceHandleTypeFlags(Flags);
 bitflags!(ExternalFenceHandleTypeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalFenceHandleTypeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalFenceHandleTypeFlags {}
 impl ExternalFenceHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -17141,6 +17775,8 @@ pub struct ExternalFenceFeatureFlags(Flags);
 bitflags!(ExternalFenceFeatureFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalFenceFeatureFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExternalFenceFeatureFlags {}
 impl ExternalFenceFeatureFlags {
     pub const EXPORTABLE: Self = Self(0x1);
     pub const IMPORTABLE: Self = Self(0x2);
@@ -17161,6 +17797,8 @@ pub struct FenceImportFlags(Flags);
 bitflags!(FenceImportFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FenceImportFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FenceImportFlags {}
 impl FenceImportFlags {
     pub const TEMPORARY: Self = Self(0x1);
 }
@@ -17180,6 +17818,8 @@ pub struct SurfaceCounterFlagsEXT(Flags);
 bitflags!(SurfaceCounterFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SurfaceCounterFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SurfaceCounterFlagsEXT {}
 impl SurfaceCounterFlagsEXT {
     pub const VBLANK_EXT: Self = Self(0x1);
 }
@@ -17199,6 +17839,8 @@ pub struct PipelineViewportSwizzleStateCreateFlagsNV(Flags);
 bitflags!(PipelineViewportSwizzleStateCreateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineViewportSwizzleStateCreateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineViewportSwizzleStateCreateFlagsNV {}
 impl PipelineViewportSwizzleStateCreateFlagsNV {}
 impl fmt::Display for PipelineViewportSwizzleStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17216,6 +17858,8 @@ pub struct PipelineDiscardRectangleStateCreateFlagsEXT(Flags);
 bitflags!(PipelineDiscardRectangleStateCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineDiscardRectangleStateCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineDiscardRectangleStateCreateFlagsEXT {}
 impl PipelineDiscardRectangleStateCreateFlagsEXT {}
 impl fmt::Display for PipelineDiscardRectangleStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17233,6 +17877,8 @@ pub struct PipelineCoverageToColorStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageToColorStateCreateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCoverageToColorStateCreateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCoverageToColorStateCreateFlagsNV {}
 impl PipelineCoverageToColorStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageToColorStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17250,6 +17896,8 @@ pub struct PipelineCoverageModulationStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageModulationStateCreateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCoverageModulationStateCreateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCoverageModulationStateCreateFlagsNV {}
 impl PipelineCoverageModulationStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageModulationStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17267,6 +17915,8 @@ pub struct PipelineCoverageReductionStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageReductionStateCreateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCoverageReductionStateCreateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineCoverageReductionStateCreateFlagsNV {}
 impl PipelineCoverageReductionStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageReductionStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17284,6 +17934,8 @@ pub struct ValidationCacheCreateFlagsEXT(Flags);
 bitflags!(ValidationCacheCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ValidationCacheCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ValidationCacheCreateFlagsEXT {}
 impl ValidationCacheCreateFlagsEXT {}
 impl fmt::Display for ValidationCacheCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17301,6 +17953,8 @@ pub struct DebugUtilsMessageSeverityFlagsEXT(Flags);
 bitflags!(DebugUtilsMessageSeverityFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugUtilsMessageSeverityFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugUtilsMessageSeverityFlagsEXT {}
 impl DebugUtilsMessageSeverityFlagsEXT {
     pub const VERBOSE_EXT: Self = Self(0x1);
     pub const INFO_EXT: Self = Self(0x10);
@@ -17328,6 +17982,8 @@ pub struct DebugUtilsMessageTypeFlagsEXT(Flags);
 bitflags!(DebugUtilsMessageTypeFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugUtilsMessageTypeFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugUtilsMessageTypeFlagsEXT {}
 impl DebugUtilsMessageTypeFlagsEXT {
     pub const GENERAL_EXT: Self = Self(0x1);
     pub const VALIDATION_EXT: Self = Self(0x2);
@@ -17355,6 +18011,8 @@ pub struct DebugUtilsMessengerCreateFlagsEXT(Flags);
 bitflags!(DebugUtilsMessengerCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugUtilsMessengerCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugUtilsMessengerCreateFlagsEXT {}
 impl DebugUtilsMessengerCreateFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17372,6 +18030,8 @@ pub struct DebugUtilsMessengerCallbackDataFlagsEXT(Flags);
 bitflags!(DebugUtilsMessengerCallbackDataFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DebugUtilsMessengerCallbackDataFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DebugUtilsMessengerCallbackDataFlagsEXT {}
 impl DebugUtilsMessengerCallbackDataFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCallbackDataFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17389,6 +18049,8 @@ pub struct DeviceMemoryReportFlagsEXT(Flags);
 bitflags!(DeviceMemoryReportFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceMemoryReportFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceMemoryReportFlagsEXT {}
 impl DeviceMemoryReportFlagsEXT {}
 impl fmt::Display for DeviceMemoryReportFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17406,6 +18068,8 @@ pub struct PipelineRasterizationConservativeStateCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationConservativeStateCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRasterizationConservativeStateCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRasterizationConservativeStateCreateFlagsEXT {}
 impl PipelineRasterizationConservativeStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationConservativeStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17423,6 +18087,8 @@ pub struct DescriptorBindingFlags(Flags);
 bitflags!(DescriptorBindingFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorBindingFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DescriptorBindingFlags {}
 impl DescriptorBindingFlags {
     pub const UPDATE_AFTER_BIND: Self = Self(0x1);
     pub const UPDATE_UNUSED_WHILE_PENDING: Self = Self(0x2);
@@ -17450,6 +18116,8 @@ pub struct ConditionalRenderingFlagsEXT(Flags);
 bitflags!(ConditionalRenderingFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ConditionalRenderingFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ConditionalRenderingFlagsEXT {}
 impl ConditionalRenderingFlagsEXT {
     pub const INVERTED_EXT: Self = Self(0x1);
 }
@@ -17469,6 +18137,8 @@ pub struct ResolveModeFlags(Flags);
 bitflags!(ResolveModeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ResolveModeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ResolveModeFlags {}
 impl ResolveModeFlags {
     pub const NONE: Self = Self(0x0);
     pub const SAMPLE_ZERO: Self = Self(0x1);
@@ -17501,6 +18171,8 @@ pub struct PipelineRasterizationStateStreamCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationStateStreamCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRasterizationStateStreamCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRasterizationStateStreamCreateFlagsEXT {}
 impl PipelineRasterizationStateStreamCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationStateStreamCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17518,6 +18190,8 @@ pub struct PipelineRasterizationDepthClipStateCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationDepthClipStateCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineRasterizationDepthClipStateCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PipelineRasterizationDepthClipStateCreateFlagsEXT {}
 impl PipelineRasterizationDepthClipStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationDepthClipStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17535,6 +18209,8 @@ pub struct SwapchainImageUsageFlagsANDROID(Flags);
 bitflags!(SwapchainImageUsageFlagsANDROID, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SwapchainImageUsageFlagsANDROID {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SwapchainImageUsageFlagsANDROID {}
 impl SwapchainImageUsageFlagsANDROID {
     pub const SHARED_ANDROID: Self = Self(0x1);
 }
@@ -17554,6 +18230,8 @@ pub struct ToolPurposeFlags(Flags);
 bitflags!(ToolPurposeFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ToolPurposeFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ToolPurposeFlags {}
 impl ToolPurposeFlags {
     pub const VALIDATION: Self = Self(0x1);
     pub const PROFILING: Self = Self(0x2);
@@ -17587,6 +18265,8 @@ pub struct SubmitFlags(Flags);
 bitflags!(SubmitFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubmitFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SubmitFlags {}
 impl SubmitFlags {
     pub const PROTECTED: Self = Self(0x1);
 }
@@ -17606,6 +18286,8 @@ pub struct ImageFormatConstraintsFlagsFUCHSIA(Flags);
 bitflags!(ImageFormatConstraintsFlagsFUCHSIA, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageFormatConstraintsFlagsFUCHSIA {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageFormatConstraintsFlagsFUCHSIA {}
 impl ImageFormatConstraintsFlagsFUCHSIA {}
 impl fmt::Display for ImageFormatConstraintsFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17623,6 +18305,8 @@ pub struct HostImageCopyFlags(Flags);
 bitflags!(HostImageCopyFlags, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for HostImageCopyFlags {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for HostImageCopyFlags {}
 impl HostImageCopyFlags {
     pub const MEMCPY: Self = Self(0x1);
 }
@@ -17642,6 +18326,8 @@ pub struct PartitionedAccelerationStructureInstanceFlagsNV(Flags);
 bitflags!(PartitionedAccelerationStructureInstanceFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PartitionedAccelerationStructureInstanceFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PartitionedAccelerationStructureInstanceFlagsNV {}
 impl PartitionedAccelerationStructureInstanceFlagsNV {
     pub const FLAG_TRIANGLE_FACING_CULL_DISABLE_NV: Self = Self(0x1);
     pub const FLAG_TRIANGLE_FLIP_FACING_NV: Self = Self(0x2);
@@ -17671,6 +18357,8 @@ pub struct ImageConstraintsInfoFlagsFUCHSIA(Flags);
 bitflags!(ImageConstraintsInfoFlagsFUCHSIA, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageConstraintsInfoFlagsFUCHSIA {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageConstraintsInfoFlagsFUCHSIA {}
 impl ImageConstraintsInfoFlagsFUCHSIA {
     pub const CPU_READ_RARELY_FUCHSIA: Self = Self(0x1);
     pub const CPU_READ_OFTEN_FUCHSIA: Self = Self(0x2);
@@ -17700,6 +18388,8 @@ pub struct GraphicsPipelineLibraryFlagsEXT(Flags);
 bitflags!(GraphicsPipelineLibraryFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GraphicsPipelineLibraryFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for GraphicsPipelineLibraryFlagsEXT {}
 impl GraphicsPipelineLibraryFlagsEXT {
     pub const VERTEX_INPUT_INTERFACE_EXT: Self = Self(0x1);
     pub const PRE_RASTERIZATION_SHADERS_EXT: Self = Self(0x2);
@@ -17727,6 +18417,8 @@ pub struct ImageCompressionFlagsEXT(Flags);
 bitflags!(ImageCompressionFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageCompressionFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageCompressionFlagsEXT {}
 impl ImageCompressionFlagsEXT {
     pub const DEFAULT_EXT: Self = Self(0x0);
     pub const FIXED_RATE_DEFAULT_EXT: Self = Self(0x1);
@@ -17753,6 +18445,8 @@ pub struct ImageCompressionFixedRateFlagsEXT(Flags);
 bitflags!(ImageCompressionFixedRateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageCompressionFixedRateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ImageCompressionFixedRateFlagsEXT {}
 impl ImageCompressionFixedRateFlagsEXT {
     pub const NONE_EXT: Self = Self(0x0);
     pub const TYPE_1BPC_EXT: Self = Self(0x1);
@@ -17821,6 +18515,8 @@ pub struct ExportMetalObjectTypeFlagsEXT(Flags);
 bitflags!(ExportMetalObjectTypeFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExportMetalObjectTypeFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ExportMetalObjectTypeFlagsEXT {}
 impl ExportMetalObjectTypeFlagsEXT {
     pub const METAL_DEVICE_EXT: Self = Self(0x1);
     pub const METAL_COMMAND_QUEUE_EXT: Self = Self(0x2);
@@ -17852,6 +18548,8 @@ pub struct RenderingAttachmentFlagsKHR(Flags);
 bitflags!(RenderingAttachmentFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RenderingAttachmentFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for RenderingAttachmentFlagsKHR {}
 impl RenderingAttachmentFlagsKHR {
     pub const INPUT_ATTACHMENT_FEEDBACK_KHR: Self = Self(0x1);
     pub const RESOLVE_SKIP_TRANSFER_FUNCTION_KHR: Self = Self(0x2);
@@ -17877,6 +18575,8 @@ pub struct ResolveImageFlagsKHR(Flags);
 bitflags!(ResolveImageFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ResolveImageFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ResolveImageFlagsKHR {}
 impl ResolveImageFlagsKHR {
     pub const SKIP_TRANSFER_FUNCTION_KHR: Self = Self(0x1);
     pub const ENABLE_TRANSFER_FUNCTION_KHR: Self = Self(0x2);
@@ -17900,6 +18600,8 @@ pub struct DeviceAddressBindingFlagsEXT(Flags);
 bitflags!(DeviceAddressBindingFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceAddressBindingFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DeviceAddressBindingFlagsEXT {}
 impl DeviceAddressBindingFlagsEXT {
     pub const INTERNAL_OBJECT_EXT: Self = Self(0x1);
 }
@@ -17919,6 +18621,8 @@ pub struct OpticalFlowGridSizeFlagsNV(Flags);
 bitflags!(OpticalFlowGridSizeFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowGridSizeFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowGridSizeFlagsNV {}
 impl OpticalFlowGridSizeFlagsNV {
     pub const UNKNOWN_NV: Self = Self(0x0);
     pub const TYPE_1X1_NV: Self = Self(0x1);
@@ -17947,6 +18651,8 @@ pub struct OpticalFlowUsageFlagsNV(Flags);
 bitflags!(OpticalFlowUsageFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowUsageFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowUsageFlagsNV {}
 impl OpticalFlowUsageFlagsNV {
     pub const UNKNOWN_NV: Self = Self(0x0);
     pub const INPUT_NV: Self = Self(0x1);
@@ -17977,6 +18683,8 @@ pub struct OpticalFlowSessionCreateFlagsNV(Flags);
 bitflags!(OpticalFlowSessionCreateFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowSessionCreateFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowSessionCreateFlagsNV {}
 impl OpticalFlowSessionCreateFlagsNV {
     pub const ENABLE_HINT_NV: Self = Self(0x1);
     pub const ENABLE_COST_NV: Self = Self(0x2);
@@ -18006,6 +18714,8 @@ pub struct OpticalFlowExecuteFlagsNV(Flags);
 bitflags!(OpticalFlowExecuteFlagsNV, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for OpticalFlowExecuteFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for OpticalFlowExecuteFlagsNV {}
 impl OpticalFlowExecuteFlagsNV {
     pub const DISABLE_TEMPORAL_HINTS_NV: Self = Self(0x1);
 }
@@ -18025,6 +18735,8 @@ pub struct FrameBoundaryFlagsEXT(Flags);
 bitflags!(FrameBoundaryFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FrameBoundaryFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for FrameBoundaryFlagsEXT {}
 impl FrameBoundaryFlagsEXT {
     pub const FRAME_END_EXT: Self = Self(0x1);
 }
@@ -18044,6 +18756,8 @@ pub struct PresentScalingFlagsKHR(Flags);
 bitflags!(PresentScalingFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentScalingFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PresentScalingFlagsKHR {}
 impl PresentScalingFlagsKHR {
     pub const ONE_TO_ONE_KHR: Self = Self(0x1);
     pub const ONE_TO_ONE_EXT: Self = Self::ONE_TO_ONE_KHR;
@@ -18072,6 +18786,8 @@ pub struct PresentGravityFlagsKHR(Flags);
 bitflags!(PresentGravityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentGravityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PresentGravityFlagsKHR {}
 impl PresentGravityFlagsKHR {
     pub const MIN_KHR: Self = Self(0x1);
     pub const MIN_EXT: Self = Self::MIN_KHR;
@@ -18097,6 +18813,8 @@ pub struct ShaderCreateFlagsEXT(Flags);
 bitflags!(ShaderCreateFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderCreateFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderCreateFlagsEXT {}
 impl ShaderCreateFlagsEXT {
     pub const LINK_STAGE_EXT: Self = Self(0x1);
     pub const DESCRIPTOR_HEAP_EXT: Self = Self(0x400);
@@ -18142,6 +18860,8 @@ pub struct TileShadingRenderPassFlagsQCOM(Flags);
 bitflags!(TileShadingRenderPassFlagsQCOM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TileShadingRenderPassFlagsQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for TileShadingRenderPassFlagsQCOM {}
 impl TileShadingRenderPassFlagsQCOM {
     pub const ENABLE_QCOM: Self = Self(0x1);
     pub const PER_TILE_EXECUTION_QCOM: Self = Self(0x2);
@@ -18162,6 +18882,8 @@ pub struct PhysicalDeviceSchedulingControlsFlagsARM(Flags64);
 bitflags!(PhysicalDeviceSchedulingControlsFlagsARM, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceSchedulingControlsFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PhysicalDeviceSchedulingControlsFlagsARM {}
 impl PhysicalDeviceSchedulingControlsFlagsARM {
     pub const SHADER_CORE_COUNT_ARM: Self = Self(0x1);
     pub const DISPATCH_PARAMETERS_ARM: Self = Self(0x2);
@@ -18185,6 +18907,8 @@ pub struct SurfaceCreateFlagsOHOS(Flags);
 bitflags!(SurfaceCreateFlagsOHOS, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SurfaceCreateFlagsOHOS {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SurfaceCreateFlagsOHOS {}
 impl SurfaceCreateFlagsOHOS {}
 impl fmt::Display for SurfaceCreateFlagsOHOS {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18202,6 +18926,8 @@ pub struct PresentStageFlagsEXT(Flags);
 bitflags!(PresentStageFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentStageFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PresentStageFlagsEXT {}
 impl PresentStageFlagsEXT {
     pub const QUEUE_OPERATIONS_END_EXT: Self = Self(0x1);
     pub const REQUEST_DEQUEUED_EXT: Self = Self(0x2);
@@ -18229,6 +18955,8 @@ pub struct PastPresentationTimingFlagsEXT(Flags);
 bitflags!(PastPresentationTimingFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PastPresentationTimingFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PastPresentationTimingFlagsEXT {}
 impl PastPresentationTimingFlagsEXT {
     pub const ALLOW_PARTIAL_RESULTS_EXT: Self = Self(0x1);
     pub const ALLOW_OUT_OF_ORDER_RESULTS_EXT: Self = Self(0x2);
@@ -18252,6 +18980,8 @@ pub struct PresentTimingInfoFlagsEXT(Flags);
 bitflags!(PresentTimingInfoFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentTimingInfoFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PresentTimingInfoFlagsEXT {}
 impl PresentTimingInfoFlagsEXT {
     pub const PRESENT_AT_RELATIVE_TIME_EXT: Self = Self(0x1);
     pub const PRESENT_AT_NEAREST_REFRESH_CYCLE_EXT: Self = Self(0x2);
@@ -18275,6 +19005,8 @@ pub struct SwapchainImageUsageFlagsOHOS(Flags);
 bitflags!(SwapchainImageUsageFlagsOHOS, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SwapchainImageUsageFlagsOHOS {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for SwapchainImageUsageFlagsOHOS {}
 impl SwapchainImageUsageFlagsOHOS {
     pub const SHARED_OHOS: Self = Self(0x1);
 }
@@ -18294,6 +19026,8 @@ pub struct PerformanceCounterDescriptionFlagsARM(Flags);
 bitflags!(PerformanceCounterDescriptionFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PerformanceCounterDescriptionFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for PerformanceCounterDescriptionFlagsARM {}
 impl PerformanceCounterDescriptionFlagsARM {}
 impl fmt::Display for PerformanceCounterDescriptionFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18311,6 +19045,8 @@ pub struct ShaderInstrumentationValuesFlagsARM(Flags);
 bitflags!(ShaderInstrumentationValuesFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderInstrumentationValuesFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for ShaderInstrumentationValuesFlagsARM {}
 impl ShaderInstrumentationValuesFlagsARM {}
 impl fmt::Display for ShaderInstrumentationValuesFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18328,6 +19064,8 @@ pub struct DataGraphTOSAQualityFlagsARM(Flags);
 bitflags!(DataGraphTOSAQualityFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphTOSAQualityFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphTOSAQualityFlagsARM {}
 impl DataGraphTOSAQualityFlagsARM {
     pub const DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM: Self = Self(0x1);
     pub const DATA_GRAPH_TOSA_QUALITY_CONFORMANT_ARM: Self = Self(0x2);
@@ -18355,6 +19093,8 @@ pub struct DataGraphOpticalFlowGridSizeFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowGridSizeFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphOpticalFlowGridSizeFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphOpticalFlowGridSizeFlagsARM {}
 impl DataGraphOpticalFlowGridSizeFlagsARM {
     pub const UNKNOWN_ARM: Self = Self(0x0);
     pub const TYPE_1X1_ARM: Self = Self(0x1);
@@ -18383,6 +19123,8 @@ pub struct DataGraphOpticalFlowImageUsageFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowImageUsageFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphOpticalFlowImageUsageFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphOpticalFlowImageUsageFlagsARM {}
 impl DataGraphOpticalFlowImageUsageFlagsARM {
     pub const UNKNOWN_ARM: Self = Self(0x0);
     pub const INPUT_ARM: Self = Self(0x1);
@@ -18411,6 +19153,8 @@ pub struct DataGraphOpticalFlowCreateFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowCreateFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphOpticalFlowCreateFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphOpticalFlowCreateFlagsARM {}
 impl DataGraphOpticalFlowCreateFlagsARM {
     pub const ENABLE_HINT_ARM: Self = Self(0x1);
     pub const ENABLE_COST_ARM: Self = Self(0x2);
@@ -18436,6 +19180,8 @@ pub struct DataGraphOpticalFlowExecuteFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowExecuteFlagsARM, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphOpticalFlowExecuteFlagsARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for DataGraphOpticalFlowExecuteFlagsARM {}
 impl DataGraphOpticalFlowExecuteFlagsARM {
     pub const DISABLE_TEMPORAL_HINTS_ARM: Self = Self(0x1);
     pub const INPUT_UNCHANGED_ARM: Self = Self(0x2);
@@ -18465,6 +19211,8 @@ pub struct VideoCodecOperationFlagsKHR(Flags);
 bitflags!(VideoCodecOperationFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoCodecOperationFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoCodecOperationFlagsKHR {}
 impl VideoCodecOperationFlagsKHR {
     pub const NONE_KHR: Self = Self(0x0);
     pub const ENCODE_H264_KHR: Self = Self(0x10000);
@@ -18499,6 +19247,8 @@ pub struct VideoCapabilityFlagsKHR(Flags);
 bitflags!(VideoCapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoCapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoCapabilityFlagsKHR {}
 impl VideoCapabilityFlagsKHR {
     pub const PROTECTED_CONTENT_KHR: Self = Self(0x1);
     pub const SEPARATE_REFERENCE_IMAGES_KHR: Self = Self(0x2);
@@ -18522,6 +19272,8 @@ pub struct VideoSessionCreateFlagsKHR(Flags);
 bitflags!(VideoSessionCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoSessionCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoSessionCreateFlagsKHR {}
 impl VideoSessionCreateFlagsKHR {
     pub const PROTECTED_CONTENT_KHR: Self = Self(0x1);
     pub const ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_KHR: Self = Self(0x2);
@@ -18553,6 +19305,8 @@ pub struct VideoSessionParametersCreateFlagsKHR(Flags);
 bitflags!(VideoSessionParametersCreateFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoSessionParametersCreateFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoSessionParametersCreateFlagsKHR {}
 impl VideoSessionParametersCreateFlagsKHR {
     pub const QUANTIZATION_MAP_COMPATIBLE_KHR: Self = Self(0x1);
 }
@@ -18572,6 +19326,8 @@ pub struct VideoBeginCodingFlagsKHR(Flags);
 bitflags!(VideoBeginCodingFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoBeginCodingFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoBeginCodingFlagsKHR {}
 impl VideoBeginCodingFlagsKHR {}
 impl fmt::Display for VideoBeginCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18589,6 +19345,8 @@ pub struct VideoEndCodingFlagsKHR(Flags);
 bitflags!(VideoEndCodingFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEndCodingFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEndCodingFlagsKHR {}
 impl VideoEndCodingFlagsKHR {}
 impl fmt::Display for VideoEndCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18606,6 +19364,8 @@ pub struct VideoCodingControlFlagsKHR(Flags);
 bitflags!(VideoCodingControlFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoCodingControlFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoCodingControlFlagsKHR {}
 impl VideoCodingControlFlagsKHR {
     pub const RESET_KHR: Self = Self(0x1);
     pub const ENCODE_RATE_CONTROL_KHR: Self = Self(0x2);
@@ -18631,6 +19391,8 @@ pub struct VideoDecodeUsageFlagsKHR(Flags);
 bitflags!(VideoDecodeUsageFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoDecodeUsageFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoDecodeUsageFlagsKHR {}
 impl VideoDecodeUsageFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const TRANSCODING_KHR: Self = Self(0x1);
@@ -18657,6 +19419,8 @@ pub struct VideoDecodeCapabilityFlagsKHR(Flags);
 bitflags!(VideoDecodeCapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoDecodeCapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoDecodeCapabilityFlagsKHR {}
 impl VideoDecodeCapabilityFlagsKHR {
     pub const DPB_AND_OUTPUT_COINCIDE_KHR: Self = Self(0x1);
     pub const DPB_AND_OUTPUT_DISTINCT_KHR: Self = Self(0x2);
@@ -18680,6 +19444,8 @@ pub struct VideoDecodeFlagsKHR(Flags);
 bitflags!(VideoDecodeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoDecodeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoDecodeFlagsKHR {}
 impl VideoDecodeFlagsKHR {}
 impl fmt::Display for VideoDecodeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18697,6 +19463,8 @@ pub struct VideoDecodeH264PictureLayoutFlagsKHR(Flags);
 bitflags!(VideoDecodeH264PictureLayoutFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoDecodeH264PictureLayoutFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoDecodeH264PictureLayoutFlagsKHR {}
 impl VideoDecodeH264PictureLayoutFlagsKHR {
     pub const PROGRESSIVE_KHR: Self = Self(0x0);
     pub const INTERLACED_INTERLEAVED_LINES_KHR: Self = Self(0x1);
@@ -18721,6 +19489,8 @@ pub struct VideoEncodeFlagsKHR(Flags);
 bitflags!(VideoEncodeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeFlagsKHR {}
 impl VideoEncodeFlagsKHR {
     pub const INTRA_REFRESH_KHR: Self = Self(0x4);
     pub const WITH_QUANTIZATION_DELTA_MAP_KHR: Self = Self(0x1);
@@ -18746,6 +19516,8 @@ pub struct VideoEncodeUsageFlagsKHR(Flags);
 bitflags!(VideoEncodeUsageFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeUsageFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeUsageFlagsKHR {}
 impl VideoEncodeUsageFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const TRANSCODING_KHR: Self = Self(0x1);
@@ -18774,6 +19546,8 @@ pub struct VideoEncodeContentFlagsKHR(Flags);
 bitflags!(VideoEncodeContentFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeContentFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeContentFlagsKHR {}
 impl VideoEncodeContentFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const CAMERA_KHR: Self = Self(0x1);
@@ -18800,6 +19574,8 @@ pub struct VideoEncodeCapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeCapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeCapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeCapabilityFlagsKHR {}
 impl VideoEncodeCapabilityFlagsKHR {
     pub const PRECEDING_EXTERNALLY_ENCODED_BYTES_KHR: Self = Self(0x1);
     pub const INSUFFICIENTSTREAM_BUFFER_RANGE_DETECTION_KHR: Self = Self(0x2);
@@ -18827,6 +19603,8 @@ pub struct VideoEncodeFeedbackFlagsKHR(Flags);
 bitflags!(VideoEncodeFeedbackFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeFeedbackFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeFeedbackFlagsKHR {}
 impl VideoEncodeFeedbackFlagsKHR {
     pub const VIDEO_ENCODE_FEEDBACKSTREAM_BUFFER_OFFSET_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_FEEDBACKSTREAM_BYTES_WRITTEN_KHR: Self = Self(0x2);
@@ -18866,6 +19644,8 @@ pub struct VideoEncodePerPartitionFeedbackFlagsKHR(Flags);
 bitflags!(VideoEncodePerPartitionFeedbackFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodePerPartitionFeedbackFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodePerPartitionFeedbackFlagsKHR {}
 impl VideoEncodePerPartitionFeedbackFlagsKHR {
     pub const STATUS_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_PER_PARTITION_FEEDBACKSTREAM_BUFFER_OFFSET_KHR: Self = Self(0x2);
@@ -18897,6 +19677,8 @@ pub struct VideoEncodeRateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeRateControlFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeRateControlFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeRateControlFlagsKHR {}
 impl VideoEncodeRateControlFlagsKHR {}
 impl fmt::Display for VideoEncodeRateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18914,6 +19696,8 @@ pub struct VideoEncodeRateControlModeFlagsKHR(Flags);
 bitflags!(VideoEncodeRateControlModeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeRateControlModeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeRateControlModeFlagsKHR {}
 impl VideoEncodeRateControlModeFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const DISABLED_KHR: Self = Self(0x1);
@@ -18937,6 +19721,8 @@ pub struct VideoEncodeIntraRefreshModeFlagsKHR(Flags);
 bitflags!(VideoEncodeIntraRefreshModeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeIntraRefreshModeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeIntraRefreshModeFlagsKHR {}
 impl VideoEncodeIntraRefreshModeFlagsKHR {
     pub const NONE_KHR: Self = Self(0x0);
     pub const PER_PICTURE_PARTITION_KHR: Self = Self(0x1);
@@ -18965,6 +19751,8 @@ pub struct VideoChromaSubsamplingFlagsKHR(Flags);
 bitflags!(VideoChromaSubsamplingFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoChromaSubsamplingFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoChromaSubsamplingFlagsKHR {}
 impl VideoChromaSubsamplingFlagsKHR {
     pub const INVALID_KHR: Self = Self(0x0);
     pub const MONOCHROME_KHR: Self = Self(0x1);
@@ -18993,6 +19781,8 @@ pub struct VideoComponentBitDepthFlagsKHR(Flags);
 bitflags!(VideoComponentBitDepthFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoComponentBitDepthFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoComponentBitDepthFlagsKHR {}
 impl VideoComponentBitDepthFlagsKHR {
     pub const VIDEO_COMPONENT_DEPTH_INVALID_KHR: Self = Self(0x0);
     pub const VIDEO_COMPONENT_DEPTH_8_KHR: Self = Self(0x1);
@@ -19019,6 +19809,8 @@ pub struct VideoEncodeH264CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeH264CapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH264CapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH264CapabilityFlagsKHR {}
 impl VideoEncodeH264CapabilityFlagsKHR {
     pub const HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const PREDICTION_WEIGHT_TABLE_GENERATED_KHR: Self = Self(0x2);
@@ -19060,6 +19852,8 @@ pub struct VideoEncodeH264StdFlagsKHR(Flags);
 bitflags!(VideoEncodeH264StdFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH264StdFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH264StdFlagsKHR {}
 impl VideoEncodeH264StdFlagsKHR {
     pub const SEPARATE_COLOR_PLANE_FLAG_SET_KHR: Self = Self(0x1);
     pub const QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_KHR: Self = Self(0x2);
@@ -19119,6 +19913,8 @@ pub struct VideoEncodeH264RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeH264RateControlFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH264RateControlFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH264RateControlFlagsKHR {}
 impl VideoEncodeH264RateControlFlagsKHR {
     pub const ATTEMPT_HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const REGULAR_GOP_KHR: Self = Self(0x2);
@@ -19148,6 +19944,8 @@ pub struct VideoEncodeH265CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeH265CapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265CapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH265CapabilityFlagsKHR {}
 impl VideoEncodeH265CapabilityFlagsKHR {
     pub const HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const PREDICTION_WEIGHT_TABLE_GENERATED_KHR: Self = Self(0x2);
@@ -19191,6 +19989,8 @@ pub struct VideoEncodeH265StdFlagsKHR(Flags);
 bitflags!(VideoEncodeH265StdFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265StdFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH265StdFlagsKHR {}
 impl VideoEncodeH265StdFlagsKHR {
     pub const SEPARATE_COLOR_PLANE_FLAG_SET_KHR: Self = Self(0x1);
     pub const SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_KHR: Self = Self(0x2);
@@ -19252,6 +20052,8 @@ pub struct VideoEncodeH265RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeH265RateControlFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265RateControlFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH265RateControlFlagsKHR {}
 impl VideoEncodeH265RateControlFlagsKHR {
     pub const ATTEMPT_HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const REGULAR_GOP_KHR: Self = Self(0x2);
@@ -19281,6 +20083,8 @@ pub struct VideoEncodeH265CtbSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeH265CtbSizeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265CtbSizeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH265CtbSizeFlagsKHR {}
 impl VideoEncodeH265CtbSizeFlagsKHR {
     pub const TYPE_16_KHR: Self = Self(0x1);
     pub const TYPE_32_KHR: Self = Self(0x2);
@@ -19306,6 +20110,8 @@ pub struct VideoEncodeH265TransformBlockSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeH265TransformBlockSizeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265TransformBlockSizeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeH265TransformBlockSizeFlagsKHR {}
 impl VideoEncodeH265TransformBlockSizeFlagsKHR {
     pub const TYPE_4_KHR: Self = Self(0x1);
     pub const TYPE_8_KHR: Self = Self(0x2);
@@ -19333,6 +20139,8 @@ pub struct VideoEncodeAV1CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1CapabilityFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1CapabilityFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1CapabilityFlagsKHR {}
 impl VideoEncodeAV1CapabilityFlagsKHR {
     pub const VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_KHR: Self =
         Self(0x1);
@@ -19380,6 +20188,8 @@ pub struct VideoEncodeAV1StdFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1StdFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1StdFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1StdFlagsKHR {}
 impl VideoEncodeAV1StdFlagsKHR {
     pub const VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_KHR: Self = Self(0x2);
@@ -19410,6 +20220,8 @@ pub struct VideoEncodeAV1RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1RateControlFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1RateControlFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1RateControlFlagsKHR {}
 impl VideoEncodeAV1RateControlFlagsKHR {
     pub const VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_KHR: Self = Self(0x2);
@@ -19446,6 +20258,8 @@ pub struct VideoEncodeAV1SuperblockSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1SuperblockSizeFlagsKHR, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1SuperblockSizeFlagsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for VideoEncodeAV1SuperblockSizeFlagsKHR {}
 impl VideoEncodeAV1SuperblockSizeFlagsKHR {
     pub const VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_KHR: Self = Self(0x2);
@@ -19469,6 +20283,8 @@ pub struct AccessFlags3KHR(Flags64);
 bitflags!(AccessFlags3KHR, Flags64);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccessFlags3KHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for AccessFlags3KHR {}
 impl AccessFlags3KHR {
     pub const NONE_KHR: Self = Self(0x0);
 }
@@ -19488,6 +20304,8 @@ pub struct CooperativeMatrixFlagsEXT(Flags);
 bitflags!(CooperativeMatrixFlagsEXT, Flags);
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CooperativeMatrixFlagsEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl NoUninit for CooperativeMatrixFlagsEXT {}
 impl CooperativeMatrixFlagsEXT {
     pub const SATURATING_ACCUMULATION_EXT: Self = Self(0x1);
 }
