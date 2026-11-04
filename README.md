@@ -1,4 +1,4 @@
-# tuhka
+# [tuhka]
 New up-to-date Vulkan bindings for Rust.
 
 ## Usage
@@ -27,3 +27,5 @@ unsafe {
     library.destroy_instance(&instance, None);
 }
 ```
+
+[tuhka]: https://crates.io/crates/tuhka

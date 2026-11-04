@@ -1,4 +1,6 @@
 use super::*;
+#[cfg(feature = "bytemuck")]
+use bytemuck::Zeroable;
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClearColorValue.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -13,6 +15,8 @@ impl Default for ClearColorValue {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClearColorValue {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClearValue.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -26,6 +30,8 @@ impl Default for ClearValue {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClearValue {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureOpInputNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -40,6 +46,8 @@ impl<'a> Default for ClusterAccelerationStructureOpInputNV<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for ClusterAccelerationStructureOpInputNV<'a> {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPerformanceCounterResultKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -57,6 +65,8 @@ impl Default for PerformanceCounterResultKHR {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterResultKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPerformanceValueDataINTEL.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -73,6 +83,8 @@ impl Default for PerformanceValueDataINTEL {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceValueDataINTEL {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineExecutableStatisticValueKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -88,6 +100,8 @@ impl Default for PipelineExecutableStatisticValueKHR {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineExecutableStatisticValueKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceOrHostAddressKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -101,6 +115,8 @@ impl Default for DeviceOrHostAddressKHR {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceOrHostAddressKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceOrHostAddressConstKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -114,6 +130,8 @@ impl Default for DeviceOrHostAddressConstKHR {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceOrHostAddressConstKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceOrHostAddressConstAMDX.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -127,6 +145,8 @@ impl Default for DeviceOrHostAddressConstAMDX {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceOrHostAddressConstAMDX {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureGeometryDataKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -141,6 +161,8 @@ impl<'a> Default for AccelerationStructureGeometryDataKHR<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for AccelerationStructureGeometryDataKHR<'a> {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectExecutionSetInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -154,6 +176,8 @@ impl<'a> Default for IndirectExecutionSetInfoEXT<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for IndirectExecutionSetInfoEXT<'a> {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsTokenDataEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -169,6 +193,8 @@ impl Default for IndirectCommandsTokenDataEXT {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsTokenDataEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorDataEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -190,6 +216,8 @@ impl<'a> Default for DescriptorDataEXT<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for DescriptorDataEXT<'a> {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureMotionInstanceDataNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -204,6 +232,8 @@ impl Default for AccelerationStructureMotionInstanceDataNV {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureMotionInstanceDataNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkResourceDescriptorDataEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -219,6 +249,8 @@ impl<'a> Default for ResourceDescriptorDataEXT<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for ResourceDescriptorDataEXT<'a> {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorMappingSourceDataEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -241,3 +273,5 @@ impl<'a> Default for DescriptorMappingSourceDataEXT<'a> {
         unsafe { ::core::mem::zeroed() }
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl<'a> Zeroable for DescriptorMappingSourceDataEXT<'a> {}

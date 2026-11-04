@@ -1,5 +1,7 @@
 use super::*;
 use crate::bitflags;
+#[cfg(feature = "bytemuck")]
+use bytemuck::Zeroable;
 pub const MAX_PHYSICAL_DEVICE_NAME_SIZE: u32 = 256;
 pub const UUID_SIZE: u32 = 16;
 pub const LUID_SIZE: u32 = 8;
@@ -53,6 +55,8 @@ impl AttachmentLoadOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AttachmentLoadOp {}
 impl AttachmentLoadOp {
     pub const LOAD: Self = Self(0);
     pub const CLEAR: Self = Self(1);
@@ -86,6 +90,8 @@ impl AttachmentStoreOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AttachmentStoreOp {}
 impl AttachmentStoreOp {
     pub const STORE: Self = Self(0);
     pub const DONT_CARE: Self = Self(1);
@@ -118,6 +124,8 @@ impl BlendFactor {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BlendFactor {}
 impl BlendFactor {
     pub const ZERO: Self = Self(0);
     pub const ONE: Self = Self(1);
@@ -179,6 +187,8 @@ impl BlendOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BlendOp {}
 impl BlendOp {
     pub const ADD: Self = Self(0);
     pub const SUBTRACT: Self = Self(1);
@@ -304,6 +314,8 @@ impl BorderColor {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BorderColor {}
 impl BorderColor {
     pub const FLOAT_TRANSPARENT_BLACK: Self = Self(0);
     pub const INT_TRANSPARENT_BLACK: Self = Self(1);
@@ -343,6 +355,8 @@ impl PipelineCacheHeaderVersion {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCacheHeaderVersion {}
 impl PipelineCacheHeaderVersion {
     pub const ONE: Self = Self(1);
     pub const DATA_GRAPH_QCOM: Self = Self(1000629000);
@@ -370,6 +384,8 @@ impl ComponentSwizzle {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ComponentSwizzle {}
 impl ComponentSwizzle {
     pub const IDENTITY: Self = Self(0);
     pub const ZERO: Self = Self(1);
@@ -407,6 +423,8 @@ impl CommandBufferLevel {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandBufferLevel {}
 impl CommandBufferLevel {
     pub const PRIMARY: Self = Self(0);
     pub const SECONDARY: Self = Self(1);
@@ -434,6 +452,8 @@ impl CompareOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CompareOp {}
 impl CompareOp {
     pub const NEVER: Self = Self(0);
     pub const LESS: Self = Self(1);
@@ -473,6 +493,8 @@ impl DescriptorType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorType {}
 impl DescriptorType {
     pub const SAMPLER: Self = Self(0);
     pub const COMBINED_IMAGE_SAMPLER: Self = Self(1);
@@ -538,6 +560,8 @@ impl DynamicState {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DynamicState {}
 impl DynamicState {
     pub const VIEWPORT: Self = Self(0);
     pub const SCISSOR: Self = Self(1);
@@ -738,6 +762,8 @@ impl PolygonMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PolygonMode {}
 impl PolygonMode {
     pub const FILL: Self = Self(0);
     pub const LINE: Self = Self(1);
@@ -769,6 +795,8 @@ impl Format {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for Format {}
 impl Format {
     pub const UNDEFINED: Self = Self(0);
     pub const R4G4_UNORM_PACK8: Self = Self(1);
@@ -1518,6 +1546,8 @@ impl FrontFace {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FrontFace {}
 impl FrontFace {
     pub const COUNTER_CLOCKWISE: Self = Self(0);
     pub const CLOCKWISE: Self = Self(1);
@@ -1545,6 +1575,8 @@ impl ImageLayout {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageLayout {}
 impl ImageLayout {
     pub const UNDEFINED: Self = Self(0);
     pub const GENERAL: Self = Self(1);
@@ -1654,6 +1686,8 @@ impl ImageTiling {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageTiling {}
 impl ImageTiling {
     pub const OPTIMAL: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -1683,6 +1717,8 @@ impl ImageType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageType {}
 impl ImageType {
     pub const TYPE_1D: Self = Self(0);
     pub const TYPE_2D: Self = Self(1);
@@ -1712,6 +1748,8 @@ impl ImageViewType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageViewType {}
 impl ImageViewType {
     pub const TYPE_1D: Self = Self(0);
     pub const TYPE_2D: Self = Self(1);
@@ -1749,6 +1787,8 @@ impl IndirectCommandsTokenTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsTokenTypeEXT {}
 impl IndirectCommandsTokenTypeEXT {
     pub const EXECUTION_SET_EXT: Self = Self(0);
     pub const PUSH_CONSTANT_EXT: Self = Self(1);
@@ -1806,6 +1846,8 @@ impl SharingMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SharingMode {}
 impl SharingMode {
     pub const EXCLUSIVE: Self = Self(0);
     pub const CONCURRENT: Self = Self(1);
@@ -1833,6 +1875,8 @@ impl IndexType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndexType {}
 impl IndexType {
     pub const UINT16: Self = Self(0);
     pub const UINT32: Self = Self(1);
@@ -1867,6 +1911,8 @@ impl LogicOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for LogicOp {}
 impl LogicOp {
     pub const CLEAR: Self = Self(0);
     pub const AND: Self = Self(1);
@@ -1922,6 +1968,8 @@ impl PhysicalDeviceType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceType {}
 impl PhysicalDeviceType {
     pub const OTHER: Self = Self(0);
     pub const INTEGRATED_GPU: Self = Self(1);
@@ -1955,6 +2003,8 @@ impl PipelineBindPoint {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineBindPoint {}
 impl PipelineBindPoint {
     pub const GRAPHICS: Self = Self(0);
     pub const COMPUTE: Self = Self(1);
@@ -1991,6 +2041,8 @@ impl PrimitiveTopology {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PrimitiveTopology {}
 impl PrimitiveTopology {
     pub const POINT_LIST: Self = Self(0);
     pub const LINE_LIST: Self = Self(1);
@@ -2036,6 +2088,8 @@ impl QueryType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryType {}
 impl QueryType {
     pub const OCCLUSION: Self = Self(0);
     pub const PIPELINE_STATISTICS: Self = Self(1);
@@ -2105,6 +2159,8 @@ impl SubpassContents {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SubpassContents {}
 impl SubpassContents {
     pub const INLINE: Self = Self(0);
     pub const SECONDARY_COMMAND_BUFFERS: Self = Self(1);
@@ -2138,6 +2194,8 @@ impl Result {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for Result {}
 impl Result {
     pub const SUCCESS: Self = Self(0);
     pub const NOT_READY: Self = Self(1);
@@ -2296,6 +2354,8 @@ impl StencilOp {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for StencilOp {}
 impl StencilOp {
     pub const KEEP: Self = Self(0);
     pub const ZERO: Self = Self(1);
@@ -2335,6 +2395,8 @@ impl StructureType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for StructureType {}
 impl StructureType {
     pub const APPLICATION_INFO: Self = Self(0);
     pub const INSTANCE_CREATE_INFO: Self = Self(1);
@@ -7306,6 +7368,8 @@ impl SystemAllocationScope {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SystemAllocationScope {}
 impl SystemAllocationScope {
     pub const COMMAND: Self = Self(0);
     pub const OBJECT: Self = Self(1);
@@ -7339,6 +7403,8 @@ impl InternalAllocationType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for InternalAllocationType {}
 impl InternalAllocationType {
     pub const EXECUTABLE: Self = Self(0);
 }
@@ -7365,6 +7431,8 @@ impl SamplerAddressMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerAddressMode {}
 impl SamplerAddressMode {
     pub const REPEAT: Self = Self(0);
     pub const MIRRORED_REPEAT: Self = Self(1);
@@ -7400,6 +7468,8 @@ impl Filter {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for Filter {}
 impl Filter {
     pub const NEAREST: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -7430,6 +7500,8 @@ impl SamplerMipmapMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerMipmapMode {}
 impl SamplerMipmapMode {
     pub const NEAREST: Self = Self(0);
     pub const LINEAR: Self = Self(1);
@@ -7457,6 +7529,8 @@ impl VertexInputRate {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VertexInputRate {}
 impl VertexInputRate {
     pub const VERTEX: Self = Self(0);
     pub const INSTANCE: Self = Self(1);
@@ -7484,6 +7558,8 @@ impl ClusterAccelerationStructureTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureTypeNV {}
 impl ClusterAccelerationStructureTypeNV {
     pub const CLUSTERS_BOTTOM_LEVEL_NV: Self = Self(0);
     pub const TRIANGLE_CLUSTER_NV: Self = Self(1);
@@ -7513,6 +7589,8 @@ impl ClusterAccelerationStructureOpTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureOpTypeNV {}
 impl ClusterAccelerationStructureOpTypeNV {
     pub const MOVE_OBJECTS_NV: Self = Self(0);
     pub const BUILD_CLUSTERS_BOTTOM_LEVEL_NV: Self = Self(1);
@@ -7550,6 +7628,8 @@ impl ClusterAccelerationStructureOpModeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureOpModeNV {}
 impl ClusterAccelerationStructureOpModeNV {
     pub const IMPLICIT_DESTINATIONS_NV: Self = Self(0);
     pub const EXPLICIT_DESTINATIONS_NV: Self = Self(1);
@@ -7579,6 +7659,8 @@ impl ObjectType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ObjectType {}
 impl ObjectType {
     pub const UNKNOWN: Self = Self(0);
     pub const INSTANCE: Self = Self(1);
@@ -7727,6 +7809,8 @@ impl RayTracingInvocationReorderModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RayTracingInvocationReorderModeEXT {}
 impl RayTracingInvocationReorderModeEXT {
     pub const NONE_EXT: Self = Self(0);
     pub const REORDER_EXT: Self = Self(1);
@@ -7756,6 +7840,8 @@ impl ImageTilingControlEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageTilingControlEXT {}
 impl ImageTilingControlEXT {
     pub const DEFAULT_EXT: Self = Self(0);
     pub const MIN_SIZE_EXT: Self = Self(1);
@@ -7785,6 +7871,8 @@ impl IndirectCommandsTokenTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsTokenTypeNV {}
 impl IndirectCommandsTokenTypeNV {
     pub const SHADER_GROUP_NV: Self = Self(0);
     pub const STATE_FLAGS_NV: Self = Self(1);
@@ -7832,6 +7920,8 @@ impl DescriptorUpdateTemplateType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorUpdateTemplateType {}
 impl DescriptorUpdateTemplateType {
     pub const DESCRIPTOR_SET: Self = Self(0);
     pub const PUSH_DESCRIPTORS: Self = Self(1);
@@ -7861,6 +7951,8 @@ impl ViewportCoordinateSwizzleNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ViewportCoordinateSwizzleNV {}
 impl ViewportCoordinateSwizzleNV {
     pub const POSITIVE_X_NV: Self = Self(0);
     pub const NEGATIVE_X_NV: Self = Self(1);
@@ -7900,6 +7992,8 @@ impl DiscardRectangleModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DiscardRectangleModeEXT {}
 impl DiscardRectangleModeEXT {
     pub const INCLUSIVE_EXT: Self = Self(0);
     pub const EXCLUSIVE_EXT: Self = Self(1);
@@ -7927,6 +8021,8 @@ impl PointClippingBehavior {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PointClippingBehavior {}
 impl PointClippingBehavior {
     pub const ALL_CLIP_PLANES: Self = Self(0);
     pub const USER_CLIP_PLANES_ONLY: Self = Self(1);
@@ -7956,6 +8052,8 @@ impl CoverageModulationModeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CoverageModulationModeNV {}
 impl CoverageModulationModeNV {
     pub const NONE_NV: Self = Self(0);
     pub const RGB_NV: Self = Self(1);
@@ -7987,6 +8085,8 @@ impl CoverageReductionModeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CoverageReductionModeNV {}
 impl CoverageReductionModeNV {
     pub const MERGE_NV: Self = Self(0);
     pub const TRUNCATE_NV: Self = Self(1);
@@ -8014,6 +8114,8 @@ impl ValidationCacheHeaderVersionEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ValidationCacheHeaderVersionEXT {}
 impl ValidationCacheHeaderVersionEXT {
     pub const ONE_EXT: Self = Self(1);
 }
@@ -8040,6 +8142,8 @@ impl ShaderInfoTypeAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderInfoTypeAMD {}
 impl ShaderInfoTypeAMD {
     pub const STATISTICS_AMD: Self = Self(0);
     pub const BINARY_AMD: Self = Self(1);
@@ -8069,6 +8173,8 @@ impl QueueGlobalPriority {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueueGlobalPriority {}
 impl QueueGlobalPriority {
     pub const LOW: Self = Self(128);
     pub const MEDIUM: Self = Self(256);
@@ -8108,6 +8214,8 @@ impl TimeDomainKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TimeDomainKHR {}
 impl TimeDomainKHR {
     pub const DEVICE_KHR: Self = Self(0);
     pub const CLOCK_MONOTONIC_KHR: Self = Self(1);
@@ -8147,6 +8255,8 @@ impl ConservativeRasterizationModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ConservativeRasterizationModeEXT {}
 impl ConservativeRasterizationModeEXT {
     pub const DISABLED_EXT: Self = Self(0);
     pub const OVERESTIMATE_EXT: Self = Self(1);
@@ -8176,6 +8286,8 @@ impl SemaphoreType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SemaphoreType {}
 impl SemaphoreType {
     pub const BINARY: Self = Self(0);
     pub const TIMELINE: Self = Self(1);
@@ -8205,6 +8317,8 @@ impl BuildAccelerationStructureModeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BuildAccelerationStructureModeKHR {}
 impl BuildAccelerationStructureModeKHR {
     pub const BUILD_KHR: Self = Self(0);
     pub const UPDATE_KHR: Self = Self(1);
@@ -8232,6 +8346,8 @@ impl CopyAccelerationStructureModeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CopyAccelerationStructureModeKHR {}
 impl CopyAccelerationStructureModeKHR {
     pub const CLONE_KHR: Self = Self(0);
     pub const COMPACT_KHR: Self = Self(1);
@@ -8265,6 +8381,8 @@ impl AccelerationStructureTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureTypeKHR {}
 impl AccelerationStructureTypeKHR {
     pub const TOP_LEVEL_KHR: Self = Self(0);
     pub const BOTTOM_LEVEL_KHR: Self = Self(1);
@@ -8298,6 +8416,8 @@ impl GeometryTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GeometryTypeKHR {}
 impl GeometryTypeKHR {
     pub const TRIANGLES_KHR: Self = Self(0);
     pub const AABBS_KHR: Self = Self(1);
@@ -8339,6 +8459,8 @@ impl RayTracingShaderGroupTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RayTracingShaderGroupTypeKHR {}
 impl RayTracingShaderGroupTypeKHR {
     pub const GENERAL_KHR: Self = Self(0);
     pub const TRIANGLES_HIT_GROUP_KHR: Self = Self(1);
@@ -8371,6 +8493,8 @@ impl AccelerationStructureMemoryRequirementsTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureMemoryRequirementsTypeNV {}
 impl AccelerationStructureMemoryRequirementsTypeNV {
     pub const OBJECT_NV: Self = Self(0);
     pub const BUILD_SCRATCH_NV: Self = Self(1);
@@ -8400,6 +8524,8 @@ impl AccelerationStructureBuildTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureBuildTypeKHR {}
 impl AccelerationStructureBuildTypeKHR {
     pub const HOST_KHR: Self = Self(0);
     pub const DEVICE_KHR: Self = Self(1);
@@ -8429,6 +8555,8 @@ impl AccelerationStructureCompatibilityKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureCompatibilityKHR {}
 impl AccelerationStructureCompatibilityKHR {
     pub const COMPATIBLE_KHR: Self = Self(0);
     pub const INCOMPATIBLE_KHR: Self = Self(1);
@@ -8456,6 +8584,8 @@ impl RayTracingLssIndexingModeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RayTracingLssIndexingModeNV {}
 impl RayTracingLssIndexingModeNV {
     pub const LIST_NV: Self = Self(0);
     pub const SUCCESSIVE_NV: Self = Self(1);
@@ -8483,6 +8613,8 @@ impl RayTracingLssPrimitiveEndCapsModeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RayTracingLssPrimitiveEndCapsModeNV {}
 impl RayTracingLssPrimitiveEndCapsModeNV {
     pub const NONE_NV: Self = Self(0);
     pub const CHAINED_NV: Self = Self(1);
@@ -8510,6 +8642,8 @@ impl ShaderGroupShaderKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderGroupShaderKHR {}
 impl ShaderGroupShaderKHR {
     pub const GENERAL_KHR: Self = Self(0);
     pub const CLOSEST_HIT_KHR: Self = Self(1);
@@ -8541,6 +8675,8 @@ impl MemoryOverallocationBehaviorAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryOverallocationBehaviorAMD {}
 impl MemoryOverallocationBehaviorAMD {
     pub const DEFAULT_AMD: Self = Self(0);
     pub const ALLOWED_AMD: Self = Self(1);
@@ -8570,6 +8706,8 @@ impl PerformanceCounterScopeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterScopeKHR {}
 impl PerformanceCounterScopeKHR {
     pub const COMMAND_BUFFER_KHR: Self = Self(0);
     pub const RENDER_PASS_KHR: Self = Self(1);
@@ -8605,6 +8743,8 @@ impl PerformanceCounterUnitKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterUnitKHR {}
 impl PerformanceCounterUnitKHR {
     pub const GENERIC_KHR: Self = Self(0);
     pub const PERCENTAGE_KHR: Self = Self(1);
@@ -8650,6 +8790,8 @@ impl PerformanceCounterStorageKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterStorageKHR {}
 impl PerformanceCounterStorageKHR {
     pub const INT32_KHR: Self = Self(0);
     pub const INT64_KHR: Self = Self(1);
@@ -8685,6 +8827,8 @@ impl PerformanceConfigurationTypeINTEL {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceConfigurationTypeINTEL {}
 impl PerformanceConfigurationTypeINTEL {
     pub const COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL: Self = Self(0);
 }
@@ -8711,6 +8855,8 @@ impl QueryPoolSamplingModeINTEL {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryPoolSamplingModeINTEL {}
 impl QueryPoolSamplingModeINTEL {
     pub const MANUAL_INTEL: Self = Self(0);
 }
@@ -8737,6 +8883,8 @@ impl PerformanceOverrideTypeINTEL {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceOverrideTypeINTEL {}
 impl PerformanceOverrideTypeINTEL {
     pub const NULL_HARDWARE_INTEL: Self = Self(0);
     pub const FLUSH_GPU_CACHES_INTEL: Self = Self(1);
@@ -8764,6 +8912,8 @@ impl PerformanceParameterTypeINTEL {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceParameterTypeINTEL {}
 impl PerformanceParameterTypeINTEL {
     pub const HW_COUNTERS_SUPPORTED_INTEL: Self = Self(0);
     pub const STREAM_MARKER_VALID_BITS_INTEL: Self = Self(1);
@@ -8791,6 +8941,8 @@ impl PerformanceValueTypeINTEL {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceValueTypeINTEL {}
 impl PerformanceValueTypeINTEL {
     pub const UINT32_INTEL: Self = Self(0);
     pub const UINT64_INTEL: Self = Self(1);
@@ -8824,6 +8976,8 @@ impl LineRasterizationMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for LineRasterizationMode {}
 impl LineRasterizationMode {
     pub const DEFAULT: Self = Self(0);
     pub const RECTANGULAR: Self = Self(1);
@@ -8863,6 +9017,8 @@ impl FaultLevel {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FaultLevel {}
 impl FaultLevel {
     pub const UNASSIGNED: Self = Self(0);
     pub const CRITICAL: Self = Self(1);
@@ -8894,6 +9050,8 @@ impl FaultType {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FaultType {}
 impl FaultType {
     pub const INVALID: Self = Self(0);
     pub const UNASSIGNED: Self = Self(1);
@@ -8931,6 +9089,8 @@ impl FaultQueryBehavior {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FaultQueryBehavior {}
 impl FaultQueryBehavior {
     pub const GET_AND_CLEAR_ALL_FAULTS: Self = Self(0);
 }
@@ -8957,6 +9117,8 @@ impl PipelineMatchControl {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineMatchControl {}
 impl PipelineMatchControl {
     pub const APPLICATION_UUID_EXACT_MATCH: Self = Self(0);
 }
@@ -8983,6 +9145,8 @@ impl SciSyncClientTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SciSyncClientTypeNV {}
 impl SciSyncClientTypeNV {
     pub const SIGNALER_NV: Self = Self(0);
     pub const WAITER_NV: Self = Self(1);
@@ -9012,6 +9176,8 @@ impl SciSyncPrimitiveTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SciSyncPrimitiveTypeNV {}
 impl SciSyncPrimitiveTypeNV {
     pub const FENCE_NV: Self = Self(0);
     pub const SEMAPHORE_NV: Self = Self(1);
@@ -9039,6 +9205,8 @@ impl FragmentShadingRateNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FragmentShadingRateNV {}
 impl FragmentShadingRateNV {
     pub const TYPE_1_INVOCATION_PER_PIXEL_NV: Self = Self(0);
     pub const TYPE_1_INVOCATION_PER_1X2_PIXELS_NV: Self = Self(1);
@@ -9098,6 +9266,8 @@ impl FragmentShadingRateTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FragmentShadingRateTypeNV {}
 impl FragmentShadingRateTypeNV {
     pub const FRAGMENT_SIZE_NV: Self = Self(0);
     pub const ENUMS_NV: Self = Self(1);
@@ -9125,6 +9295,8 @@ impl SubpassMergeStatusEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SubpassMergeStatusEXT {}
 impl SubpassMergeStatusEXT {
     pub const MERGED_EXT: Self = Self(0);
     pub const DISALLOWED_EXT: Self = Self(1);
@@ -9186,6 +9358,8 @@ impl ProvokingVertexModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ProvokingVertexModeEXT {}
 impl ProvokingVertexModeEXT {
     pub const FIRST_VERTEX_EXT: Self = Self(0);
     pub const LAST_VERTEX_EXT: Self = Self(1);
@@ -9213,6 +9387,8 @@ impl PipelineCacheValidationVersion {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCacheValidationVersion {}
 impl PipelineCacheValidationVersion {
     pub const SAFETY_CRITICAL_ONE: Self = Self(1);
 }
@@ -9239,6 +9415,8 @@ impl PipelineRobustnessBufferBehavior {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRobustnessBufferBehavior {}
 impl PipelineRobustnessBufferBehavior {
     pub const DEVICE_DEFAULT: Self = Self(0);
     pub const DISABLED: Self = Self(1);
@@ -9274,6 +9452,8 @@ impl PipelineRobustnessImageBehavior {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRobustnessImageBehavior {}
 impl PipelineRobustnessImageBehavior {
     pub const DEVICE_DEFAULT: Self = Self(0);
     pub const DISABLED: Self = Self(1);
@@ -9309,6 +9489,8 @@ impl DeviceAddressBindingTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceAddressBindingTypeEXT {}
 impl DeviceAddressBindingTypeEXT {
     pub const BIND_EXT: Self = Self(0);
     pub const UNBIND_EXT: Self = Self(1);
@@ -9336,6 +9518,8 @@ impl MicromapTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MicromapTypeEXT {}
 impl MicromapTypeEXT {
     pub const OPACITY_MICROMAP_EXT: Self = Self(0);
     pub const DISPLACEMENT_MICROMAP_NV: Self = Self(1000397000);
@@ -9363,6 +9547,8 @@ impl BuildMicromapModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BuildMicromapModeEXT {}
 impl BuildMicromapModeEXT {
     pub const BUILD_EXT: Self = Self(0);
 }
@@ -9389,6 +9575,8 @@ impl CopyMicromapModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CopyMicromapModeEXT {}
 impl CopyMicromapModeEXT {
     pub const CLONE_EXT: Self = Self(0);
     pub const SERIALIZE_EXT: Self = Self(1);
@@ -9420,6 +9608,8 @@ impl OpacityMicromapFormatKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpacityMicromapFormatKHR {}
 impl OpacityMicromapFormatKHR {
     pub const TYPE_2_STATE_KHR: Self = Self(1);
     pub const TYPE_4_STATE_KHR: Self = Self(2);
@@ -9449,6 +9639,8 @@ impl OpacityMicromapSpecialIndexKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpacityMicromapSpecialIndexKHR {}
 impl OpacityMicromapSpecialIndexKHR {
     pub const FULLY_TRANSPARENT_KHR: Self = Self(-1);
     pub const FULLY_OPAQUE_KHR: Self = Self(-2);
@@ -9488,6 +9680,8 @@ impl AccelerationStructureSerializedBlockTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureSerializedBlockTypeKHR {}
 impl AccelerationStructureSerializedBlockTypeKHR {
     pub const OPACITY_MICROMAP_KHR: Self = Self(0);
 }
@@ -9514,6 +9708,8 @@ impl IndirectExecutionSetInfoTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectExecutionSetInfoTypeEXT {}
 impl IndirectExecutionSetInfoTypeEXT {
     pub const PIPELINES_EXT: Self = Self(0);
     pub const SHADER_OBJECTS_EXT: Self = Self(1);
@@ -9541,6 +9737,8 @@ impl DeviceFaultVendorBinaryHeaderVersionKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceFaultVendorBinaryHeaderVersionKHR {}
 impl DeviceFaultVendorBinaryHeaderVersionKHR {
     pub const ONE_KHR: Self = Self(1);
     pub const ONE_EXT: Self = Self::ONE_KHR;
@@ -9567,6 +9765,8 @@ impl DepthBiasRepresentationEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DepthBiasRepresentationEXT {}
 impl DepthBiasRepresentationEXT {
     pub const LEAST_REPRESENTABLE_VALUE_FORMAT_EXT: Self = Self(0);
     pub const LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT: Self = Self(1);
@@ -9600,6 +9800,8 @@ impl DirectDriverLoadingModeLUNARG {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DirectDriverLoadingModeLUNARG {}
 impl DirectDriverLoadingModeLUNARG {
     pub const EXCLUSIVE_LUNARG: Self = Self(0);
     pub const INCLUSIVE_LUNARG: Self = Self(1);
@@ -9627,6 +9829,8 @@ impl PartitionedAccelerationStructureOpTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PartitionedAccelerationStructureOpTypeNV {}
 impl PartitionedAccelerationStructureOpTypeNV {
     pub const WRITE_INSTANCE_NV: Self = Self(0);
     pub const UPDATE_INSTANCE_NV: Self = Self(1);
@@ -9656,6 +9860,8 @@ impl AntiLagModeAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AntiLagModeAMD {}
 impl AntiLagModeAMD {
     pub const DRIVER_CONTROL_AMD: Self = Self(0);
     pub const ON_AMD: Self = Self(1);
@@ -9685,6 +9891,8 @@ impl AntiLagStageAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AntiLagStageAMD {}
 impl AntiLagStageAMD {
     pub const INPUT_AMD: Self = Self(0);
     pub const PRESENT_AMD: Self = Self(1);
@@ -9712,6 +9920,8 @@ impl DisplacementMicromapFormatNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplacementMicromapFormatNV {}
 impl DisplacementMicromapFormatNV {
     pub const TYPE_64_TRIANGLES_64_BYTES_NV: Self = Self(1);
     pub const TYPE_256_TRIANGLES_128_BYTES_NV: Self = Self(2);
@@ -9741,6 +9951,8 @@ impl ShaderCodeTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderCodeTypeEXT {}
 impl ShaderCodeTypeEXT {
     pub const BINARY_EXT: Self = Self(0);
     pub const SPIRV_EXT: Self = Self(1);
@@ -9768,6 +9980,8 @@ impl ScopeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ScopeKHR {}
 impl ScopeKHR {
     pub const DEVICE_KHR: Self = Self(1);
     pub const WORKGROUP_KHR: Self = Self(2);
@@ -9803,6 +10017,8 @@ impl ComponentTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ComponentTypeKHR {}
 impl ComponentTypeKHR {
     pub const FLOAT16_KHR: Self = Self(0);
     pub const FLOAT32_KHR: Self = Self(1);
@@ -9881,6 +10097,8 @@ impl CubicFilterWeightsQCOM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CubicFilterWeightsQCOM {}
 impl CubicFilterWeightsQCOM {
     pub const CATMULL_ROM_QCOM: Self = Self(0);
     pub const ZERO_TANGENT_CARDINAL_QCOM: Self = Self(1);
@@ -9912,6 +10130,8 @@ impl BlockMatchWindowCompareModeQCOM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BlockMatchWindowCompareModeQCOM {}
 impl BlockMatchWindowCompareModeQCOM {
     pub const MIN_QCOM: Self = Self(0);
     pub const MAX_QCOM: Self = Self(1);
@@ -9939,6 +10159,8 @@ impl LayeredDriverUnderlyingApiMSFT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for LayeredDriverUnderlyingApiMSFT {}
 impl LayeredDriverUnderlyingApiMSFT {
     pub const NONE_MSFT: Self = Self(0);
     pub const D3D12_MSFT: Self = Self(1);
@@ -9966,6 +10188,8 @@ impl PhysicalDeviceLayeredApiKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceLayeredApiKHR {}
 impl PhysicalDeviceLayeredApiKHR {
     pub const VULKAN_KHR: Self = Self(0);
     pub const D3D12_KHR: Self = Self(1);
@@ -9999,6 +10223,8 @@ impl CompressedTriangleFormatAMDX {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CompressedTriangleFormatAMDX {}
 impl CompressedTriangleFormatAMDX {
     pub const DGF1_AMDX: Self = Self(0);
 }
@@ -10025,6 +10251,8 @@ impl DepthClampModeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DepthClampModeEXT {}
 impl DepthClampModeEXT {
     pub const VIEWPORT_RANGE_EXT: Self = Self(0);
     pub const USER_DEFINED_RANGE_EXT: Self = Self(1);
@@ -10052,6 +10280,8 @@ impl CooperativeVectorMatrixLayoutNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CooperativeVectorMatrixLayoutNV {}
 impl CooperativeVectorMatrixLayoutNV {
     pub const ROW_MAJOR_NV: Self = Self(0);
     pub const COLUMN_MAJOR_NV: Self = Self(1);
@@ -10083,6 +10313,8 @@ impl TensorTilingARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TensorTilingARM {}
 impl TensorTilingARM {
     pub const OPTIMAL_ARM: Self = Self(0);
     pub const LINEAR_ARM: Self = Self(1);
@@ -10120,6 +10352,8 @@ impl DataGraphPipelinePropertyARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelinePropertyARM {}
 impl DataGraphPipelinePropertyARM {
     pub const CREATION_LOG_ARM: Self = Self(0);
     pub const IDENTIFIER_ARM: Self = Self(1);
@@ -10155,6 +10389,8 @@ impl DataGraphPipelineSessionBindPointARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineSessionBindPointARM {}
 impl DataGraphPipelineSessionBindPointARM {
     pub const TRANSIENT_ARM: Self = Self(0);
     pub const OPTICAL_FLOW_CACHE_ARM: Self = Self(1000631001);
@@ -10186,6 +10422,8 @@ impl DataGraphPipelineSessionBindPointTypeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineSessionBindPointTypeARM {}
 impl DataGraphPipelineSessionBindPointTypeARM {
     pub const MEMORY_ARM: Self = Self(0);
 }
@@ -10212,6 +10450,8 @@ impl PhysicalDeviceDataGraphProcessingEngineTypeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceDataGraphProcessingEngineTypeARM {}
 impl PhysicalDeviceDataGraphProcessingEngineTypeARM {
     pub const DEFAULT_ARM: Self = Self(0);
     pub const NEURAL_QCOM: Self = Self(1000629000);
@@ -10241,6 +10481,8 @@ impl PhysicalDeviceDataGraphOperationTypeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceDataGraphOperationTypeARM {}
 impl PhysicalDeviceDataGraphOperationTypeARM {
     pub const SPIRV_EXTENDED_INSTRUCTION_SET_ARM: Self = Self(0);
     pub const NEURAL_MODEL_QCOM: Self = Self(1000629000);
@@ -10274,6 +10516,8 @@ impl DataGraphModelCacheTypeQCOM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphModelCacheTypeQCOM {}
 impl DataGraphModelCacheTypeQCOM {
     pub const GENERIC_BINARY_QCOM: Self = Self(0);
 }
@@ -10300,6 +10544,8 @@ impl PerfHintTypeQCOM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerfHintTypeQCOM {}
 impl PerfHintTypeQCOM {
     pub const DEFAULT_QCOM: Self = Self(0);
     pub const FREQUENCY_MIN_QCOM: Self = Self(1);
@@ -10331,6 +10577,8 @@ impl DescriptorMappingSourceEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorMappingSourceEXT {}
 impl DescriptorMappingSourceEXT {
     pub const HEAP_WITH_CONSTANT_OFFSET_EXT: Self = Self(0);
     pub const HEAP_WITH_PUSH_INDEX_EXT: Self = Self(1);
@@ -10380,6 +10628,8 @@ impl GpaPerfBlockAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GpaPerfBlockAMD {}
 impl GpaPerfBlockAMD {
     pub const CPF_AMD: Self = Self(0);
     pub const IA_AMD: Self = Self(1);
@@ -10519,6 +10769,8 @@ impl GpaSampleTypeAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GpaSampleTypeAMD {}
 impl GpaSampleTypeAMD {
     pub const CUMULATIVE_AMD: Self = Self(0);
     pub const TRACE_AMD: Self = Self(1);
@@ -10548,6 +10800,8 @@ impl GpaDeviceClockModeAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GpaDeviceClockModeAMD {}
 impl GpaDeviceClockModeAMD {
     pub const DEFAULT_AMD: Self = Self(0);
     pub const QUERY_AMD: Self = Self(1);
@@ -10583,6 +10837,8 @@ impl DataGraphTOSALevelARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphTOSALevelARM {}
 impl DataGraphTOSALevelARM {
     pub const OSA_LEVEL_NONE_ARM: Self = Self(0);
     pub const OSA_LEVEL_8K_ARM: Self = Self(1);
@@ -10610,6 +10866,8 @@ impl DataGraphOpticalFlowPerformanceLevelARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphOpticalFlowPerformanceLevelARM {}
 impl DataGraphOpticalFlowPerformanceLevelARM {
     pub const UNKNOWN_ARM: Self = Self(0);
     pub const SLOW_ARM: Self = Self(1);
@@ -10641,6 +10899,8 @@ impl DataGraphPipelineNodeConnectionTypeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineNodeConnectionTypeARM {}
 impl DataGraphPipelineNodeConnectionTypeARM {
     pub const OPTICAL_FLOW_INPUT_ARM: Self = Self(1000631000);
     pub const OPTICAL_FLOW_REFERENCE_ARM: Self = Self(1000631001);
@@ -10674,6 +10934,8 @@ impl DataGraphPipelineNodeTypeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineNodeTypeARM {}
 impl DataGraphPipelineNodeTypeARM {
     pub const OPTICAL_FLOW_ARM: Self = Self(1000631000);
 }
@@ -10700,6 +10962,8 @@ impl NeuralAcceleratorStatisticsModeARM {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for NeuralAcceleratorStatisticsModeARM {}
 impl NeuralAcceleratorStatisticsModeARM {
     pub const DISABLED_ARM: Self = Self(0);
     pub const STATISTICS0_ARM: Self = Self(1);
@@ -10729,6 +10993,8 @@ impl ThrottleHintTypeSEC {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ThrottleHintTypeSEC {}
 impl ThrottleHintTypeSEC {
     pub const DEFAULT_SEC: Self = Self(0);
     pub const LOW_SEC: Self = Self(1);
@@ -10758,6 +11024,8 @@ impl ColorSpaceKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ColorSpaceKHR {}
 impl ColorSpaceKHR {
     pub const SRGB_NONLINEAR_KHR: Self = Self(0);
     #[deprecated = "aliased"]
@@ -10817,6 +11085,8 @@ impl PresentModeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PresentModeKHR {}
 impl PresentModeKHR {
     pub const IMMEDIATE_KHR: Self = Self(0);
     pub const MAILBOX_KHR: Self = Self(1);
@@ -10855,6 +11125,8 @@ impl DisplaySurfaceStereoTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplaySurfaceStereoTypeNV {}
 impl DisplaySurfaceStereoTypeNV {
     pub const NONE_NV: Self = Self(0);
     pub const ONBOARD_DIN_NV: Self = Self(1);
@@ -10886,6 +11158,8 @@ impl DebugReportObjectTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugReportObjectTypeEXT {}
 impl DebugReportObjectTypeEXT {
     pub const UNKNOWN_EXT: Self = Self(0);
     pub const INSTANCE_EXT: Self = Self(1);
@@ -10997,6 +11271,8 @@ impl DeviceMemoryReportEventTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceMemoryReportEventTypeEXT {}
 impl DeviceMemoryReportEventTypeEXT {
     pub const ALLOCATE_EXT: Self = Self(0);
     pub const FREE_EXT: Self = Self(1);
@@ -11030,6 +11306,8 @@ impl RasterizationOrderAMD {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RasterizationOrderAMD {}
 impl RasterizationOrderAMD {
     pub const STRICT_AMD: Self = Self(0);
     pub const RELAXED_AMD: Self = Self(1);
@@ -11057,6 +11335,8 @@ impl ValidationCheckEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ValidationCheckEXT {}
 impl ValidationCheckEXT {
     pub const ALL_EXT: Self = Self(0);
     pub const SHADERS_EXT: Self = Self(1);
@@ -11084,6 +11364,8 @@ impl ValidationFeatureEnableEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ValidationFeatureEnableEXT {}
 impl ValidationFeatureEnableEXT {
     pub const GPU_ASSISTED_EXT: Self = Self(0);
     pub const GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT: Self = Self(1);
@@ -11119,6 +11401,8 @@ impl ValidationFeatureDisableEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ValidationFeatureDisableEXT {}
 impl ValidationFeatureDisableEXT {
     pub const ALL_EXT: Self = Self(0);
     pub const SHADERS_EXT: Self = Self(1);
@@ -11158,6 +11442,8 @@ impl DisplayPowerStateEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplayPowerStateEXT {}
 impl DisplayPowerStateEXT {
     pub const OFF_EXT: Self = Self(0);
     pub const SUSPEND_EXT: Self = Self(1);
@@ -11187,6 +11473,8 @@ impl DeviceEventTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceEventTypeEXT {}
 impl DeviceEventTypeEXT {
     pub const DISPLAY_HOTPLUG_EXT: Self = Self(0);
 }
@@ -11213,6 +11501,8 @@ impl DisplayEventTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplayEventTypeEXT {}
 impl DisplayEventTypeEXT {
     pub const FIRST_PIXEL_OUT_EXT: Self = Self(0);
 }
@@ -11239,6 +11529,8 @@ impl TessellationDomainOrigin {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TessellationDomainOrigin {}
 impl TessellationDomainOrigin {
     pub const UPPER_LEFT: Self = Self(0);
     pub const LOWER_LEFT: Self = Self(1);
@@ -11268,6 +11560,8 @@ impl SamplerYcbcrModelConversion {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerYcbcrModelConversion {}
 impl SamplerYcbcrModelConversion {
     pub const RGB_IDENTITY: Self = Self(0);
     pub const YCBCR_IDENTITY: Self = Self(1);
@@ -11306,6 +11600,8 @@ impl SamplerYcbcrRange {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerYcbcrRange {}
 impl SamplerYcbcrRange {
     pub const ITU_FULL: Self = Self(0);
     pub const ITU_NARROW: Self = Self(1);
@@ -11335,6 +11631,8 @@ impl ChromaLocation {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ChromaLocation {}
 impl ChromaLocation {
     pub const COSITED_EVEN: Self = Self(0);
     pub const MIDPOINT: Self = Self(1);
@@ -11364,6 +11662,8 @@ impl SamplerReductionMode {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerReductionMode {}
 impl SamplerReductionMode {
     pub const WEIGHTED_AVERAGE: Self = Self(0);
     pub const MIN: Self = Self(1);
@@ -11398,6 +11698,8 @@ impl BlendOverlapEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BlendOverlapEXT {}
 impl BlendOverlapEXT {
     pub const UNCORRELATED_EXT: Self = Self(0);
     pub const DISJOINT_EXT: Self = Self(1);
@@ -11427,6 +11729,8 @@ impl FullScreenExclusiveEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FullScreenExclusiveEXT {}
 impl FullScreenExclusiveEXT {
     pub const DEFAULT_EXT: Self = Self(0);
     pub const ALLOWED_EXT: Self = Self(1);
@@ -11458,6 +11762,8 @@ impl ShaderFloatControlsIndependence {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderFloatControlsIndependence {}
 impl ShaderFloatControlsIndependence {
     pub const TYPE_32_BIT_ONLY: Self = Self(0);
     pub const ALL: Self = Self(1);
@@ -11490,6 +11796,8 @@ impl FragmentShadingRateCombinerOpKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FragmentShadingRateCombinerOpKHR {}
 impl FragmentShadingRateCombinerOpKHR {
     pub const KEEP_KHR: Self = Self(0);
     pub const REPLACE_KHR: Self = Self(1);
@@ -11523,6 +11831,8 @@ impl OpticalFlowPerformanceLevelNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowPerformanceLevelNV {}
 impl OpticalFlowPerformanceLevelNV {
     pub const UNKNOWN_NV: Self = Self(0);
     pub const SLOW_NV: Self = Self(1);
@@ -11554,6 +11864,8 @@ impl OpticalFlowSessionBindingPointNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowSessionBindingPointNV {}
 impl OpticalFlowSessionBindingPointNV {
     pub const UNKNOWN_NV: Self = Self(0);
     pub const INPUT_NV: Self = Self(1);
@@ -11595,6 +11907,8 @@ impl DeviceFaultAddressTypeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceFaultAddressTypeKHR {}
 impl DeviceFaultAddressTypeKHR {
     pub const NONE_KHR: Self = Self(0);
     pub const READ_INVALID_KHR: Self = Self(1);
@@ -11639,6 +11953,8 @@ impl LayerSettingTypeEXT {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for LayerSettingTypeEXT {}
 impl LayerSettingTypeEXT {
     pub const BOOL32_EXT: Self = Self(0);
     pub const INT32_EXT: Self = Self(1);
@@ -11678,6 +11994,8 @@ impl LatencyMarkerNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for LatencyMarkerNV {}
 impl LatencyMarkerNV {
     pub const SIMULATION_START_NV: Self = Self(0);
     pub const SIMULATION_END_NV: Self = Self(1);
@@ -11727,6 +12045,8 @@ impl OutOfBandQueueTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OutOfBandQueueTypeNV {}
 impl OutOfBandQueueTypeNV {
     pub const RENDER_NV: Self = Self(0);
     pub const PRESENT_NV: Self = Self(1);
@@ -11754,6 +12074,8 @@ impl HdrSmpteSt209450PowerPreferenceGOOGLE {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for HdrSmpteSt209450PowerPreferenceGOOGLE {}
 impl HdrSmpteSt209450PowerPreferenceGOOGLE {
     pub const _209450_POWER_PREFERENCE_COLOR_ACCURACY_GOOGLE: Self = Self(0);
     pub const _209450_POWER_PREFERENCE_LOW_POWER_GOOGLE: Self = Self(1);
@@ -11785,6 +12107,8 @@ impl VendorId {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VendorId {}
 impl VendorId {
     pub const KHRONOS: Self = Self(0x10000);
     pub const VIV: Self = Self(0x10001);
@@ -11828,6 +12152,8 @@ impl DriverId {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DriverId {}
 impl DriverId {
     pub const AMD_PROPRIETARY: Self = Self(1);
     pub const AMD_OPEN_SOURCE: Self = Self(2);
@@ -11933,6 +12259,8 @@ impl ShadingRatePaletteEntryNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShadingRatePaletteEntryNV {}
 impl ShadingRatePaletteEntryNV {
     pub const NO_INVOCATIONS_NV: Self = Self(0);
     pub const TYPE_16_INVOCATIONS_PER_PIXEL_NV: Self = Self(1);
@@ -11992,6 +12320,8 @@ impl CoarseSampleOrderTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CoarseSampleOrderTypeNV {}
 impl CoarseSampleOrderTypeNV {
     pub const DEFAULT_NV: Self = Self(0);
     pub const CUSTOM_NV: Self = Self(1);
@@ -12023,6 +12353,8 @@ impl PipelineExecutableStatisticFormatKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineExecutableStatisticFormatKHR {}
 impl PipelineExecutableStatisticFormatKHR {
     pub const BOOL32_KHR: Self = Self(0);
     pub const INT64_KHR: Self = Self(1);
@@ -12054,6 +12386,8 @@ impl QueryResultStatusKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryResultStatusKHR {}
 impl QueryResultStatusKHR {
     pub const ERROR_KHR: Self = Self(-1);
     pub const NOT_READY_KHR: Self = Self(0);
@@ -12087,6 +12421,8 @@ impl VideoEncodeTuningModeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeTuningModeKHR {}
 impl VideoEncodeTuningModeKHR {
     pub const DEFAULT_KHR: Self = Self(0);
     pub const HIGH_QUALITY_KHR: Self = Self(1);
@@ -12120,6 +12456,8 @@ impl VideoEncodeAV1PredictionModeKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1PredictionModeKHR {}
 impl VideoEncodeAV1PredictionModeKHR {
     pub const V1_PREDICTION_MODE_INTRA_ONLY_KHR: Self = Self(0);
     pub const V1_PREDICTION_MODE_SINGLE_REFERENCE_KHR: Self = Self(1);
@@ -12159,6 +12497,8 @@ impl VideoEncodeAV1RateControlGroupKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1RateControlGroupKHR {}
 impl VideoEncodeAV1RateControlGroupKHR {
     pub const V1_RATE_CONTROL_GROUP_INTRA_KHR: Self = Self(0);
     pub const V1_RATE_CONTROL_GROUP_PREDICTIVE_KHR: Self = Self(1);
@@ -12192,6 +12532,8 @@ impl DefaultVertexAttributeValueKHR {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DefaultVertexAttributeValueKHR {}
 impl DefaultVertexAttributeValueKHR {
     pub const ZERO_ZERO_ZERO_ZERO_KHR: Self = Self(0);
     pub const ZERO_ZERO_ZERO_ONE_KHR: Self = Self(1);
@@ -12219,6 +12561,8 @@ impl AccelerationStructureMotionInstanceTypeNV {
         self.0
     }
 }
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureMotionInstanceTypeNV {}
 impl AccelerationStructureMotionInstanceTypeNV {
     pub const STATIC_NV: Self = Self(0);
     pub const MATRIX_MOTION_NV: Self = Self(1);
@@ -12239,6 +12583,8 @@ impl fmt::Display for AccelerationStructureMotionInstanceTypeNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FramebufferCreateFlags(Flags);
 bitflags!(FramebufferCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FramebufferCreateFlags {}
 impl FramebufferCreateFlags {
     pub const IMAGELESS: Self = Self(0x1);
 }
@@ -12256,6 +12602,8 @@ impl fmt::Display for FramebufferCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct QueryPoolCreateFlags(Flags);
 bitflags!(QueryPoolCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryPoolCreateFlags {}
 impl QueryPoolCreateFlags {
     pub const RESET_KHR: Self = Self(0x1);
 }
@@ -12273,6 +12621,8 @@ impl fmt::Display for QueryPoolCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct RenderPassCreateFlags(Flags);
 bitflags!(RenderPassCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RenderPassCreateFlags {}
 impl RenderPassCreateFlags {
     pub const TRANSFORM_QCOM: Self = Self(0x2);
     pub const PER_LAYER_FRAGMENT_DENSITY_VALVE: Self = Self(0x4);
@@ -12294,6 +12644,8 @@ impl fmt::Display for RenderPassCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SamplerCreateFlags(Flags);
 bitflags!(SamplerCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SamplerCreateFlags {}
 impl SamplerCreateFlags {
     pub const SUBSAMPLED_EXT: Self = Self(0x1);
     pub const SUBSAMPLED_COARSE_RECONSTRUCTION_EXT: Self = Self(0x2);
@@ -12321,6 +12673,8 @@ impl fmt::Display for SamplerCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineLayoutCreateFlags(Flags);
 bitflags!(PipelineLayoutCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineLayoutCreateFlags {}
 impl PipelineLayoutCreateFlags {
     pub const INDEPENDENT_SETS_EXT: Self = Self(0x2);
     pub const NO_TASK_SHADER_KHR: Self = Self(0x4);
@@ -12340,6 +12694,8 @@ impl fmt::Display for PipelineLayoutCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCacheCreateFlags(Flags);
 bitflags!(PipelineCacheCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCacheCreateFlags {}
 impl PipelineCacheCreateFlags {
     pub const EXTERNALLY_SYNCHRONIZED: Self = Self(0x1);
     pub const INTERNALLY_SYNCHRONIZED_MERGE_KHR: Self = Self(0x8);
@@ -12361,6 +12717,8 @@ impl fmt::Display for PipelineCacheCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineDepthStencilStateCreateFlags(Flags);
 bitflags!(PipelineDepthStencilStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineDepthStencilStateCreateFlags {}
 impl PipelineDepthStencilStateCreateFlags {
     pub const RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT: Self = Self(0x1);
     pub const RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_EXT: Self = Self(0x2);
@@ -12382,6 +12740,8 @@ impl fmt::Display for PipelineDepthStencilStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineDynamicStateCreateFlags(Flags);
 bitflags!(PipelineDynamicStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineDynamicStateCreateFlags {}
 impl PipelineDynamicStateCreateFlags {}
 impl fmt::Display for PipelineDynamicStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12397,6 +12757,8 @@ impl fmt::Display for PipelineDynamicStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineColorBlendStateCreateFlags(Flags);
 bitflags!(PipelineColorBlendStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineColorBlendStateCreateFlags {}
 impl PipelineColorBlendStateCreateFlags {
     pub const RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXT: Self = Self(0x1);
 }
@@ -12414,6 +12776,8 @@ impl fmt::Display for PipelineColorBlendStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineMultisampleStateCreateFlags(Flags);
 bitflags!(PipelineMultisampleStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineMultisampleStateCreateFlags {}
 impl PipelineMultisampleStateCreateFlags {}
 impl fmt::Display for PipelineMultisampleStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12429,6 +12793,8 @@ impl fmt::Display for PipelineMultisampleStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineRasterizationStateCreateFlags(Flags);
 bitflags!(PipelineRasterizationStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRasterizationStateCreateFlags {}
 impl PipelineRasterizationStateCreateFlags {}
 impl fmt::Display for PipelineRasterizationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12444,6 +12810,8 @@ impl fmt::Display for PipelineRasterizationStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineViewportStateCreateFlags(Flags);
 bitflags!(PipelineViewportStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineViewportStateCreateFlags {}
 impl PipelineViewportStateCreateFlags {}
 impl fmt::Display for PipelineViewportStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12459,6 +12827,8 @@ impl fmt::Display for PipelineViewportStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineTessellationStateCreateFlags(Flags);
 bitflags!(PipelineTessellationStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineTessellationStateCreateFlags {}
 impl PipelineTessellationStateCreateFlags {}
 impl fmt::Display for PipelineTessellationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12474,6 +12844,8 @@ impl fmt::Display for PipelineTessellationStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineInputAssemblyStateCreateFlags(Flags);
 bitflags!(PipelineInputAssemblyStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineInputAssemblyStateCreateFlags {}
 impl PipelineInputAssemblyStateCreateFlags {}
 impl fmt::Display for PipelineInputAssemblyStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12489,6 +12861,8 @@ impl fmt::Display for PipelineInputAssemblyStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineVertexInputStateCreateFlags(Flags);
 bitflags!(PipelineVertexInputStateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineVertexInputStateCreateFlags {}
 impl PipelineVertexInputStateCreateFlags {}
 impl fmt::Display for PipelineVertexInputStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12504,6 +12878,8 @@ impl fmt::Display for PipelineVertexInputStateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineShaderStageCreateFlags(Flags);
 bitflags!(PipelineShaderStageCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineShaderStageCreateFlags {}
 impl PipelineShaderStageCreateFlags {
     pub const ALLOW_VARYING_SUBGROUP_SIZE: Self = Self(0x1);
     pub const REQUIRE_FULL_SUBGROUPS: Self = Self(0x2);
@@ -12525,6 +12901,8 @@ impl fmt::Display for PipelineShaderStageCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DescriptorSetLayoutCreateFlags(Flags);
 bitflags!(DescriptorSetLayoutCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorSetLayoutCreateFlags {}
 impl DescriptorSetLayoutCreateFlags {
     pub const UPDATE_AFTER_BIND_POOL: Self = Self(0x2);
     pub const PUSH_DESCRIPTOR: Self = Self(0x1);
@@ -12556,6 +12934,8 @@ impl fmt::Display for DescriptorSetLayoutCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BufferViewCreateFlags(Flags);
 bitflags!(BufferViewCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BufferViewCreateFlags {}
 impl BufferViewCreateFlags {}
 impl fmt::Display for BufferViewCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12571,6 +12951,8 @@ impl fmt::Display for BufferViewCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct InstanceCreateFlags(Flags);
 bitflags!(InstanceCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for InstanceCreateFlags {}
 impl InstanceCreateFlags {
     pub const ENUMERATE_PORTABILITY_KHR: Self = Self(0x1);
 }
@@ -12588,6 +12970,8 @@ impl fmt::Display for InstanceCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceCreateFlags(Flags);
 bitflags!(DeviceCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceCreateFlags {}
 impl DeviceCreateFlags {}
 impl fmt::Display for DeviceCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -12603,6 +12987,8 @@ impl fmt::Display for DeviceCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceQueueCreateFlags(Flags);
 bitflags!(DeviceQueueCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceQueueCreateFlags {}
 impl DeviceQueueCreateFlags {
     #[doc = "Queue is a protected-capable device queue"]
     pub const PROTECTED: Self = Self(0x1);
@@ -12622,6 +13008,8 @@ impl fmt::Display for DeviceQueueCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct QueueFlags(Flags);
 bitflags!(QueueFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueueFlags {}
 impl QueueFlags {
     #[doc = "Queue supports graphics operations"]
     pub const GRAPHICS: Self = Self(0x1);
@@ -12662,6 +13050,8 @@ impl fmt::Display for QueueFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryPropertyFlags(Flags);
 bitflags!(MemoryPropertyFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryPropertyFlags {}
 impl MemoryPropertyFlags {
     #[doc = "If otherwise stated, then allocate memory on device"]
     pub const DEVICE_LOCAL: Self = Self(0x1);
@@ -12703,6 +13093,8 @@ impl fmt::Display for MemoryPropertyFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryHeapFlags(Flags);
 bitflags!(MemoryHeapFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryHeapFlags {}
 impl MemoryHeapFlags {
     #[doc = "If set, heap represents device memory"]
     pub const DEVICE_LOCAL: Self = Self(0x1);
@@ -12728,6 +13120,8 @@ impl fmt::Display for MemoryHeapFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccessFlags(Flags);
 bitflags!(AccessFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccessFlags {}
 impl AccessFlags {
     #[doc = "Controls coherency of indirect command reads"]
     pub const INDIRECT_COMMAND_READ: Self = Self(0x1);
@@ -12820,6 +13214,8 @@ impl fmt::Display for AccessFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BufferUsageFlags(Flags);
 bitflags!(BufferUsageFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BufferUsageFlags {}
 impl BufferUsageFlags {
     #[doc = "Can be used as a source of transfer operations"]
     pub const TRANSFER_SRC: Self = Self(0x1);
@@ -12906,6 +13302,8 @@ impl fmt::Display for BufferUsageFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BufferCreateFlags(Flags);
 bitflags!(BufferCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BufferCreateFlags {}
 impl BufferCreateFlags {
     #[doc = "Buffer should support sparse backing"]
     pub const SPARSE_BINDING: Self = Self(0x1);
@@ -12941,6 +13339,8 @@ impl fmt::Display for BufferCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ShaderStageFlags(Flags);
 bitflags!(ShaderStageFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderStageFlags {}
 impl ShaderStageFlags {
     pub const VERTEX: Self = Self(0x1);
     pub const TESSELLATION_CONTROL: Self = Self(0x2);
@@ -12994,6 +13394,8 @@ impl fmt::Display for ShaderStageFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageUsageFlags(Flags);
 bitflags!(ImageUsageFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageUsageFlags {}
 impl ImageUsageFlags {
     #[doc = "Can be used as a source of transfer operations"]
     pub const TRANSFER_SRC: Self = Self(0x1);
@@ -13069,6 +13471,8 @@ impl fmt::Display for ImageUsageFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageCreateFlags(Flags);
 bitflags!(ImageCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageCreateFlags {}
 impl ImageCreateFlags {
     #[doc = "Image should support sparse backing"]
     pub const SPARSE_BINDING: Self = Self(0x1);
@@ -13137,6 +13541,8 @@ impl fmt::Display for ImageCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageViewCreateFlags(Flags);
 bitflags!(ImageViewCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageViewCreateFlags {}
 impl ImageViewCreateFlags {
     pub const FRAGMENT_DENSITY_MAP_DYNAMIC_EXT: Self = Self(0x1);
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT: Self = Self(0x4);
@@ -13160,6 +13566,8 @@ impl fmt::Display for ImageViewCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCreateFlags(Flags);
 bitflags!(PipelineCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCreateFlags {}
 impl PipelineCreateFlags {
     pub const DISABLE_OPTIMIZATION: Self = Self(0x1);
     pub const ALLOW_DERIVATIVES: Self = Self(0x2);
@@ -13242,6 +13650,8 @@ impl fmt::Display for PipelineCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ColorComponentFlags(Flags);
 bitflags!(ColorComponentFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ColorComponentFlags {}
 impl ColorComponentFlags {
     pub const R: Self = Self(0x1);
     pub const G: Self = Self(0x2);
@@ -13262,6 +13672,8 @@ impl fmt::Display for ColorComponentFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FenceCreateFlags(Flags);
 bitflags!(FenceCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FenceCreateFlags {}
 impl FenceCreateFlags {
     pub const SIGNALED: Self = Self(0x1);
 }
@@ -13279,6 +13691,8 @@ impl fmt::Display for FenceCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SemaphoreCreateFlags(Flags);
 bitflags!(SemaphoreCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SemaphoreCreateFlags {}
 impl SemaphoreCreateFlags {}
 impl fmt::Display for SemaphoreCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -13294,6 +13708,8 @@ impl fmt::Display for SemaphoreCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FormatFeatureFlags(Flags);
 bitflags!(FormatFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FormatFeatureFlags {}
 impl FormatFeatureFlags {
     #[doc = "Format can be used for sampled images (SAMPLED_IMAGE and COMBINED_IMAGE_SAMPLER descriptor types)"]
     pub const SAMPLED_IMAGE: Self = Self(0x1);
@@ -13404,6 +13820,8 @@ impl fmt::Display for FormatFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct QueryControlFlags(Flags);
 bitflags!(QueryControlFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryControlFlags {}
 impl QueryControlFlags {
     #[doc = "Require precise results to be collected by the query"]
     pub const PRECISE: Self = Self(0x1);
@@ -13422,6 +13840,8 @@ impl fmt::Display for QueryControlFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct QueryResultFlags(Flags);
 bitflags!(QueryResultFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryResultFlags {}
 impl QueryResultFlags {
     #[doc = "Results of the queries are written to the destination buffer as 64-bit values"]
     pub const TYPE_64: Self = Self(0x1);
@@ -13453,6 +13873,8 @@ impl fmt::Display for QueryResultFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ShaderModuleCreateFlags(Flags);
 bitflags!(ShaderModuleCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderModuleCreateFlags {}
 impl ShaderModuleCreateFlags {}
 impl fmt::Display for ShaderModuleCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -13468,6 +13890,8 @@ impl fmt::Display for ShaderModuleCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct EventCreateFlags(Flags);
 bitflags!(EventCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for EventCreateFlags {}
 impl EventCreateFlags {
     pub const DEVICE_ONLY: Self = Self(0x1);
 }
@@ -13485,6 +13909,8 @@ impl fmt::Display for EventCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CommandPoolCreateFlags(Flags);
 bitflags!(CommandPoolCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandPoolCreateFlags {}
 impl CommandPoolCreateFlags {
     #[doc = "Command buffers have a short lifetime"]
     pub const TRANSIENT: Self = Self(0x1);
@@ -13511,6 +13937,8 @@ impl fmt::Display for CommandPoolCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CommandPoolResetFlags(Flags);
 bitflags!(CommandPoolResetFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandPoolResetFlags {}
 impl CommandPoolResetFlags {
     #[doc = "Release resources owned by the pool"]
     pub const RELEASE_RESOURCES: Self = Self(0x1);
@@ -13529,6 +13957,8 @@ impl fmt::Display for CommandPoolResetFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CommandBufferResetFlags(Flags);
 bitflags!(CommandBufferResetFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandBufferResetFlags {}
 impl CommandBufferResetFlags {
     #[doc = "Release resources owned by the buffer"]
     pub const RELEASE_RESOURCES: Self = Self(0x1);
@@ -13547,6 +13977,8 @@ impl fmt::Display for CommandBufferResetFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CommandBufferUsageFlags(Flags);
 bitflags!(CommandBufferUsageFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandBufferUsageFlags {}
 impl CommandBufferUsageFlags {
     pub const ONE_TIME_SUBMIT: Self = Self(0x1);
     pub const RENDER_PASS_CONTINUE: Self = Self(0x2);
@@ -13571,6 +14003,8 @@ impl fmt::Display for CommandBufferUsageFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct QueryPipelineStatisticFlags(Flags);
 bitflags!(QueryPipelineStatisticFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for QueryPipelineStatisticFlags {}
 impl QueryPipelineStatisticFlags {
     #[doc = "Optional"]
     pub const INPUT_ASSEMBLY_VERTICES: Self = Self(0x1);
@@ -13627,6 +14061,8 @@ impl fmt::Display for QueryPipelineStatisticFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryMapFlags(Flags);
 bitflags!(MemoryMapFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryMapFlags {}
 impl MemoryMapFlags {
     pub const PLACED_EXT: Self = Self(0x1);
 }
@@ -13644,6 +14080,8 @@ impl fmt::Display for MemoryMapFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryUnmapFlags(Flags);
 bitflags!(MemoryUnmapFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryUnmapFlags {}
 impl MemoryUnmapFlags {
     pub const RESERVE_EXT: Self = Self(0x1);
 }
@@ -13661,6 +14099,8 @@ impl fmt::Display for MemoryUnmapFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageAspectFlags(Flags);
 bitflags!(ImageAspectFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageAspectFlags {}
 impl ImageAspectFlags {
     pub const COLOR: Self = Self(0x1);
     pub const DEPTH: Self = Self(0x2);
@@ -13701,6 +14141,8 @@ impl fmt::Display for ImageAspectFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SparseMemoryBindFlags(Flags);
 bitflags!(SparseMemoryBindFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SparseMemoryBindFlags {}
 impl SparseMemoryBindFlags {
     #[doc = "Operation binds resource metadata to memory"]
     pub const METADATA: Self = Self(0x1);
@@ -13719,6 +14161,8 @@ impl fmt::Display for SparseMemoryBindFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SparseImageFormatFlags(Flags);
 bitflags!(SparseImageFormatFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SparseImageFormatFlags {}
 impl SparseImageFormatFlags {
     #[doc = "Image uses a single mip tail region for all array layers"]
     pub const SINGLE_MIPTAIL: Self = Self(0x1);
@@ -13745,6 +14189,8 @@ impl fmt::Display for SparseImageFormatFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SubpassDescriptionFlags(Flags);
 bitflags!(SubpassDescriptionFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SubpassDescriptionFlags {}
 impl SubpassDescriptionFlags {
     pub const PER_VIEW_ATTRIBUTES_NVX: Self = Self(0x1);
     pub const PER_VIEW_POSITION_X_ONLY_NVX: Self = Self(0x2);
@@ -13780,6 +14226,8 @@ impl fmt::Display for SubpassDescriptionFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineStageFlags(Flags);
 bitflags!(PipelineStageFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineStageFlags {}
 impl PipelineStageFlags {
     #[doc = "Before subsequent commands are processed"]
     pub const TOP_OF_PIPE: Self = Self(0x1);
@@ -13868,6 +14316,8 @@ impl fmt::Display for PipelineStageFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SampleCountFlags(Flags);
 bitflags!(SampleCountFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SampleCountFlags {}
 impl SampleCountFlags {
     #[doc = "Sample count 1 supported"]
     pub const TYPE_1: Self = Self(0x1);
@@ -13906,6 +14356,8 @@ impl fmt::Display for SampleCountFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AttachmentDescriptionFlags(Flags);
 bitflags!(AttachmentDescriptionFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AttachmentDescriptionFlags {}
 impl AttachmentDescriptionFlags {
     #[doc = "The attachment may alias physical memory of another attachment in the same render pass"]
     pub const MAY_ALIAS: Self = Self(0x1);
@@ -13930,6 +14382,8 @@ impl fmt::Display for AttachmentDescriptionFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct StencilFaceFlags(Flags);
 bitflags!(StencilFaceFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for StencilFaceFlags {}
 impl StencilFaceFlags {
     #[doc = "Front face"]
     pub const FRONT: Self = Self(0x1);
@@ -13954,6 +14408,8 @@ impl fmt::Display for StencilFaceFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CullModeFlags(Flags);
 bitflags!(CullModeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CullModeFlags {}
 impl CullModeFlags {
     pub const NONE: Self = Self(0x0);
     pub const FRONT: Self = Self(0x1);
@@ -13974,6 +14430,8 @@ impl fmt::Display for CullModeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DescriptorPoolCreateFlags(Flags);
 bitflags!(DescriptorPoolCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorPoolCreateFlags {}
 impl DescriptorPoolCreateFlags {
     #[doc = "Descriptor sets may be freed individually"]
     pub const FREE_DESCRIPTOR_SET: Self = Self(0x1);
@@ -14002,6 +14460,8 @@ impl fmt::Display for DescriptorPoolCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DescriptorPoolResetFlags(Flags);
 bitflags!(DescriptorPoolResetFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorPoolResetFlags {}
 impl DescriptorPoolResetFlags {}
 impl fmt::Display for DescriptorPoolResetFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14017,6 +14477,8 @@ impl fmt::Display for DescriptorPoolResetFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DependencyFlags(Flags);
 bitflags!(DependencyFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DependencyFlags {}
 impl DependencyFlags {
     #[doc = "Dependency is per pixel region "]
     pub const BY_REGION: Self = Self(0x1);
@@ -14049,6 +14511,8 @@ impl fmt::Display for DependencyFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SubgroupFeatureFlags(Flags);
 bitflags!(SubgroupFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SubgroupFeatureFlags {}
 impl SubgroupFeatureFlags {
     #[doc = "Basic subgroup operations"]
     pub const BASIC: Self = Self(0x1);
@@ -14096,6 +14560,8 @@ impl fmt::Display for SubgroupFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct IndirectCommandsLayoutUsageFlagsNV(Flags);
 bitflags!(IndirectCommandsLayoutUsageFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsLayoutUsageFlagsNV {}
 impl IndirectCommandsLayoutUsageFlagsNV {
     pub const EXPLICIT_PREPROCESS_NV: Self = Self(0x1);
     pub const INDEXED_SEQUENCES_NV: Self = Self(0x2);
@@ -14119,6 +14585,8 @@ impl fmt::Display for IndirectCommandsLayoutUsageFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct IndirectStateFlagsNV(Flags);
 bitflags!(IndirectStateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectStateFlagsNV {}
 impl IndirectStateFlagsNV {
     pub const FLAG_FRONTFACE_NV: Self = Self(0x1);
 }
@@ -14136,6 +14604,8 @@ impl fmt::Display for IndirectStateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GeometryFlagsKHR(Flags);
 bitflags!(GeometryFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GeometryFlagsKHR {}
 impl GeometryFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const NO_DUPLICATE_ANY_HIT_INVOCATION_KHR: Self = Self(0x2);
@@ -14157,6 +14627,8 @@ impl fmt::Display for GeometryFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GeometryInstanceFlagsKHR(Flags);
 bitflags!(GeometryInstanceFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GeometryInstanceFlagsKHR {}
 impl GeometryInstanceFlagsKHR {
     pub const TRIANGLE_FACING_CULL_DISABLE_KHR: Self = Self(0x1);
     pub const TRIANGLE_FLIP_FACING_KHR: Self = Self(0x2);
@@ -14187,6 +14659,8 @@ impl fmt::Display for GeometryInstanceFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ClusterAccelerationStructureGeometryFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureGeometryFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureGeometryFlagsNV {}
 impl ClusterAccelerationStructureGeometryFlagsNV {
     pub const CULL_DISABLE_NV: Self = Self(0x1);
     pub const NO_DUPLICATE_ANYHIT_INVOCATION_NV: Self = Self(0x2);
@@ -14210,6 +14684,8 @@ impl fmt::Display for ClusterAccelerationStructureGeometryFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ClusterAccelerationStructureClusterFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureClusterFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureClusterFlagsNV {}
 impl ClusterAccelerationStructureClusterFlagsNV {
     pub const ALLOW_DISABLE_OPACITY_MICROMAPS_NV: Self = Self(0x1);
 }
@@ -14227,6 +14703,8 @@ impl fmt::Display for ClusterAccelerationStructureClusterFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ClusterAccelerationStructureAddressResolutionFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureAddressResolutionFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureAddressResolutionFlagsNV {}
 impl ClusterAccelerationStructureAddressResolutionFlagsNV {
     pub const NONE_NV: Self = Self(0x0);
     pub const INDIRECTED_DST_IMPLICIT_DATA_NV: Self = Self(0x1);
@@ -14257,6 +14735,8 @@ impl fmt::Display for ClusterAccelerationStructureAddressResolutionFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BuildAccelerationStructureFlagsKHR(Flags);
 bitflags!(BuildAccelerationStructureFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BuildAccelerationStructureFlagsKHR {}
 impl BuildAccelerationStructureFlagsKHR {
     pub const ALLOW_UPDATE_KHR: Self = Self(0x1);
     pub const ALLOW_COMPACTION_KHR: Self = Self(0x2);
@@ -14300,6 +14780,8 @@ impl fmt::Display for BuildAccelerationStructureFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PrivateDataSlotCreateFlags(Flags);
 bitflags!(PrivateDataSlotCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PrivateDataSlotCreateFlags {}
 impl PrivateDataSlotCreateFlags {
     pub const BASE_OBJECT_HANDLE_NV: Self = Self(0x1);
 }
@@ -14317,6 +14799,8 @@ impl fmt::Display for PrivateDataSlotCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccelerationStructureCreateFlagsKHR(Flags);
 bitflags!(AccelerationStructureCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureCreateFlagsKHR {}
 impl AccelerationStructureCreateFlagsKHR {
     pub const DEVICE_ADDRESS_CAPTURE_REPLAY_KHR: Self = Self(0x1);
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_EXT: Self = Self(0x8);
@@ -14340,6 +14824,8 @@ impl fmt::Display for AccelerationStructureCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DescriptorUpdateTemplateCreateFlags(Flags);
 bitflags!(DescriptorUpdateTemplateCreateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorUpdateTemplateCreateFlags {}
 impl DescriptorUpdateTemplateCreateFlags {}
 impl fmt::Display for DescriptorUpdateTemplateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14355,6 +14841,8 @@ impl fmt::Display for DescriptorUpdateTemplateCreateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCreationFeedbackFlags(Flags);
 bitflags!(PipelineCreationFeedbackFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCreationFeedbackFlags {}
 impl PipelineCreationFeedbackFlags {
     pub const VALID: Self = Self(0x1);
     pub const APPLICATION_PIPELINE_CACHE_HIT: Self = Self(0x2);
@@ -14378,6 +14866,8 @@ impl fmt::Display for PipelineCreationFeedbackFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PerformanceCounterDescriptionFlagsKHR(Flags);
 bitflags!(PerformanceCounterDescriptionFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterDescriptionFlagsKHR {}
 impl PerformanceCounterDescriptionFlagsKHR {
     pub const PERFORMANCE_IMPACTING_KHR: Self = Self(0x1);
     pub const CONCURRENTLY_IMPACTED_KHR: Self = Self(0x2);
@@ -14399,6 +14889,8 @@ impl fmt::Display for PerformanceCounterDescriptionFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AcquireProfilingLockFlagsKHR(Flags);
 bitflags!(AcquireProfilingLockFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AcquireProfilingLockFlagsKHR {}
 impl AcquireProfilingLockFlagsKHR {}
 impl fmt::Display for AcquireProfilingLockFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14414,6 +14906,8 @@ impl fmt::Display for AcquireProfilingLockFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SemaphoreWaitFlags(Flags);
 bitflags!(SemaphoreWaitFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SemaphoreWaitFlags {}
 impl SemaphoreWaitFlags {
     pub const ANY: Self = Self(0x1);
 }
@@ -14431,6 +14925,8 @@ impl fmt::Display for SemaphoreWaitFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCompilerControlFlagsAMD(Flags);
 bitflags!(PipelineCompilerControlFlagsAMD, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCompilerControlFlagsAMD {}
 impl PipelineCompilerControlFlagsAMD {}
 impl fmt::Display for PipelineCompilerControlFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14446,6 +14942,8 @@ impl fmt::Display for PipelineCompilerControlFlagsAMD {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ShaderCorePropertiesFlagsAMD(Flags);
 bitflags!(ShaderCorePropertiesFlagsAMD, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderCorePropertiesFlagsAMD {}
 impl ShaderCorePropertiesFlagsAMD {}
 impl fmt::Display for ShaderCorePropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14461,6 +14959,8 @@ impl fmt::Display for ShaderCorePropertiesFlagsAMD {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceDiagnosticsConfigFlagsNV(Flags);
 bitflags!(DeviceDiagnosticsConfigFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceDiagnosticsConfigFlagsNV {}
 impl DeviceDiagnosticsConfigFlagsNV {
     pub const ENABLE_SHADER_DEBUG_INFO_NV: Self = Self(0x1);
     pub const ENABLE_RESOURCE_TRACKING_NV: Self = Self(0x2);
@@ -14486,6 +14986,8 @@ impl fmt::Display for DeviceDiagnosticsConfigFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct RefreshObjectFlagsKHR(Flags);
 bitflags!(RefreshObjectFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RefreshObjectFlagsKHR {}
 impl RefreshObjectFlagsKHR {}
 impl fmt::Display for RefreshObjectFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14501,6 +15003,8 @@ impl fmt::Display for RefreshObjectFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccessFlags2(Flags64);
 bitflags!(AccessFlags2, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccessFlags2 {}
 impl AccessFlags2 {
     pub const NONE: Self = Self(0x0);
     pub const INDIRECT_COMMAND_READ: Self = Self(0x1);
@@ -14620,6 +15124,8 @@ impl fmt::Display for AccessFlags2 {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineStageFlags2(Flags64);
 bitflags!(PipelineStageFlags2, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineStageFlags2 {}
 impl PipelineStageFlags2 {
     pub const NONE: Self = Self(0x0);
     pub const TOP_OF_PIPE: Self = Self(0x1);
@@ -14730,6 +15236,8 @@ impl fmt::Display for PipelineStageFlags2 {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccelerationStructureMotionInfoFlagsNV(Flags);
 bitflags!(AccelerationStructureMotionInfoFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureMotionInfoFlagsNV {}
 impl AccelerationStructureMotionInfoFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInfoFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14745,6 +15253,8 @@ impl fmt::Display for AccelerationStructureMotionInfoFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccelerationStructureMotionInstanceFlagsNV(Flags);
 bitflags!(AccelerationStructureMotionInstanceFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccelerationStructureMotionInstanceFlagsNV {}
 impl AccelerationStructureMotionInstanceFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInstanceFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14760,6 +15270,8 @@ impl fmt::Display for AccelerationStructureMotionInstanceFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FormatFeatureFlags2(Flags64);
 bitflags!(FormatFeatureFlags2, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FormatFeatureFlags2 {}
 impl FormatFeatureFlags2 {
     pub const SAMPLED_IMAGE: Self = Self(0x1);
     pub const STORAGE_IMAGE: Self = Self(0x2);
@@ -14913,6 +15425,8 @@ impl fmt::Display for FormatFeatureFlags2 {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FormatFeatureFlags4KHR(Flags64);
 bitflags!(FormatFeatureFlags4KHR, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FormatFeatureFlags4KHR {}
 impl FormatFeatureFlags4KHR {}
 impl fmt::Display for FormatFeatureFlags4KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -14928,6 +15442,8 @@ impl fmt::Display for FormatFeatureFlags4KHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct RenderingFlags(Flags);
 bitflags!(RenderingFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RenderingFlags {}
 impl RenderingFlags {
     pub const CONTENTS_SECONDARY_COMMAND_BUFFERS: Self = Self(0x1);
     pub const SUSPENDING: Self = Self(0x2);
@@ -14964,6 +15480,8 @@ impl fmt::Display for RenderingFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryDecompressionMethodFlagsEXT(Flags64);
 bitflags!(MemoryDecompressionMethodFlagsEXT, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryDecompressionMethodFlagsEXT {}
 impl MemoryDecompressionMethodFlagsEXT {
     pub const GDEFLATE_1_0_EXT: Self = Self(0x1);
     pub const GDEFLATE_1_0_NV: Self = Self::GDEFLATE_1_0_EXT;
@@ -14982,6 +15500,8 @@ impl fmt::Display for MemoryDecompressionMethodFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceFaultFlagsKHR(Flags);
 bitflags!(DeviceFaultFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceFaultFlagsKHR {}
 impl DeviceFaultFlagsKHR {
     pub const FLAG_DEVICE_LOST_KHR: Self = Self(0x1);
     pub const FLAG_MEMORY_ADDRESS_KHR: Self = Self(0x2);
@@ -15011,6 +15531,8 @@ impl fmt::Display for DeviceFaultFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BuildMicromapFlagsEXT(Flags);
 bitflags!(BuildMicromapFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BuildMicromapFlagsEXT {}
 impl BuildMicromapFlagsEXT {
     pub const PREFER_FAST_TRACE_EXT: Self = Self(0x1);
     pub const PREFER_FAST_BUILD_EXT: Self = Self(0x2);
@@ -15034,6 +15556,8 @@ impl fmt::Display for BuildMicromapFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MicromapCreateFlagsEXT(Flags);
 bitflags!(MicromapCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MicromapCreateFlagsEXT {}
 impl MicromapCreateFlagsEXT {
     pub const DEVICE_ADDRESS_CAPTURE_REPLAY_EXT: Self = Self(0x1);
 }
@@ -15051,6 +15575,8 @@ impl fmt::Display for MicromapCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct IndirectCommandsLayoutUsageFlagsEXT(Flags);
 bitflags!(IndirectCommandsLayoutUsageFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsLayoutUsageFlagsEXT {}
 impl IndirectCommandsLayoutUsageFlagsEXT {
     pub const EXPLICIT_PREPROCESS_EXT: Self = Self(0x1);
     pub const UNORDERED_SEQUENCES_EXT: Self = Self(0x2);
@@ -15072,6 +15598,8 @@ impl fmt::Display for IndirectCommandsLayoutUsageFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct IndirectCommandsInputModeFlagsEXT(Flags);
 bitflags!(IndirectCommandsInputModeFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IndirectCommandsInputModeFlagsEXT {}
 impl IndirectCommandsInputModeFlagsEXT {
     pub const VULKAN_INDEX_BUFFER_EXT: Self = Self(0x1);
     pub const DXGI_INDEX_BUFFER_EXT: Self = Self(0x2);
@@ -15093,6 +15621,8 @@ impl fmt::Display for IndirectCommandsInputModeFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DirectDriverLoadingFlagsLUNARG(Flags);
 bitflags!(DirectDriverLoadingFlagsLUNARG, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DirectDriverLoadingFlagsLUNARG {}
 impl DirectDriverLoadingFlagsLUNARG {}
 impl fmt::Display for DirectDriverLoadingFlagsLUNARG {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15108,6 +15638,8 @@ impl fmt::Display for DirectDriverLoadingFlagsLUNARG {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCreateFlags2(Flags64);
 bitflags!(PipelineCreateFlags2, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCreateFlags2 {}
 impl PipelineCreateFlags2 {
     pub const DISABLE_OPTIMIZATION: Self = Self(0x1);
     pub const ALLOW_DERIVATIVES: Self = Self(0x2);
@@ -15218,6 +15750,8 @@ impl fmt::Display for PipelineCreateFlags2 {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct BufferUsageFlags2(Flags64);
 bitflags!(BufferUsageFlags2, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for BufferUsageFlags2 {}
 impl BufferUsageFlags2 {
     pub const TRANSFER_SRC: Self = Self(0x1);
     pub const TRANSFER_DST: Self = Self(0x2);
@@ -15302,6 +15836,8 @@ impl fmt::Display for BufferUsageFlags2 {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageUsageFlags2KHR(Flags64);
 bitflags!(ImageUsageFlags2KHR, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageUsageFlags2KHR {}
 impl ImageUsageFlags2KHR {
     pub const TYPE_2_TRANSFER_SRC_KHR: Self = Self(0x1);
     pub const TYPE_2_TRANSFER_DST_KHR: Self = Self(0x2);
@@ -15372,6 +15908,8 @@ impl fmt::Display for ImageUsageFlags2KHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageCreateFlags2KHR(Flags64);
 bitflags!(ImageCreateFlags2KHR, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageCreateFlags2KHR {}
 impl ImageCreateFlags2KHR {
     pub const TYPE_2_SPARSE_BINDING_KHR: Self = Self(0x1);
     pub const TYPE_2_SPARSE_RESIDENCY_KHR: Self = Self(0x2);
@@ -15434,6 +15972,8 @@ impl fmt::Display for ImageCreateFlags2KHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AddressCopyFlagsKHR(Flags);
 bitflags!(AddressCopyFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AddressCopyFlagsKHR {}
 impl AddressCopyFlagsKHR {
     pub const DEVICE_LOCAL_KHR: Self = Self(0x1);
     pub const SPARSE_KHR: Self = Self(0x2);
@@ -15457,6 +15997,8 @@ impl fmt::Display for AddressCopyFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TensorCreateFlagsARM(Flags64);
 bitflags!(TensorCreateFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TensorCreateFlagsARM {}
 impl TensorCreateFlagsARM {
     pub const MUTABLE_FORMAT_ARM: Self = Self(0x1);
     pub const PROTECTED_ARM: Self = Self(0x2);
@@ -15482,6 +16024,8 @@ impl fmt::Display for TensorCreateFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TensorUsageFlagsARM(Flags64);
 bitflags!(TensorUsageFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TensorUsageFlagsARM {}
 impl TensorUsageFlagsARM {
     #[doc = "Tensor written/read through shader descriptor"]
     pub const SHADER_ARM: Self = Self(0x2);
@@ -15513,6 +16057,8 @@ impl fmt::Display for TensorUsageFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TensorViewCreateFlagsARM(Flags64);
 bitflags!(TensorViewCreateFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TensorViewCreateFlagsARM {}
 impl TensorViewCreateFlagsARM {
     pub const DESCRIPTOR_BUFFER_CAPTURE_REPLAY_ARM: Self = Self(0x1);
 }
@@ -15530,6 +16076,8 @@ impl fmt::Display for TensorViewCreateFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphPipelineSessionCreateFlagsARM(Flags64);
 bitflags!(DataGraphPipelineSessionCreateFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineSessionCreateFlagsARM {}
 impl DataGraphPipelineSessionCreateFlagsARM {
     pub const PROTECTED_ARM: Self = Self(0x1);
     pub const OPTICAL_FLOW_CACHE_ARM: Self = Self(0x2);
@@ -15548,6 +16096,8 @@ impl fmt::Display for DataGraphPipelineSessionCreateFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphPipelineDispatchFlagsARM(Flags64);
 bitflags!(DataGraphPipelineDispatchFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphPipelineDispatchFlagsARM {}
 impl DataGraphPipelineDispatchFlagsARM {}
 impl fmt::Display for DataGraphPipelineDispatchFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15563,6 +16113,8 @@ impl fmt::Display for DataGraphPipelineDispatchFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeRgbModelConversionFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbModelConversionFlagsVALVE, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeRgbModelConversionFlagsVALVE {}
 impl VideoEncodeRgbModelConversionFlagsVALVE {
     pub const RGB_IDENTITY_VALVE: Self = Self(0x1);
     pub const YCBCR_IDENTITY_VALVE: Self = Self(0x2);
@@ -15590,6 +16142,8 @@ impl fmt::Display for VideoEncodeRgbModelConversionFlagsVALVE {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeRgbRangeCompressionFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbRangeCompressionFlagsVALVE, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeRgbRangeCompressionFlagsVALVE {}
 impl VideoEncodeRgbRangeCompressionFlagsVALVE {
     pub const FULL_RANGE_VALVE: Self = Self(0x1);
     pub const NARROW_RANGE_VALVE: Self = Self(0x2);
@@ -15608,6 +16162,8 @@ impl fmt::Display for VideoEncodeRgbRangeCompressionFlagsVALVE {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeRgbChromaOffsetFlagsVALVE(Flags);
 bitflags!(VideoEncodeRgbChromaOffsetFlagsVALVE, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeRgbChromaOffsetFlagsVALVE {}
 impl VideoEncodeRgbChromaOffsetFlagsVALVE {
     pub const COSITED_EVEN_VALVE: Self = Self(0x1);
     pub const MIDPOINT_VALVE: Self = Self(0x2);
@@ -15626,6 +16182,8 @@ impl fmt::Display for VideoEncodeRgbChromaOffsetFlagsVALVE {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SpirvResourceTypeFlagsEXT(Flags);
 bitflags!(SpirvResourceTypeFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SpirvResourceTypeFlagsEXT {}
 impl SpirvResourceTypeFlagsEXT {
     pub const ALL_EXT: Self = Self(0x7fffffff);
     pub const SAMPLER_EXT: Self = Self(0x1);
@@ -15665,6 +16223,8 @@ impl fmt::Display for SpirvResourceTypeFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GpaSqShaderStageFlagsAMD(Flags);
 bitflags!(GpaSqShaderStageFlagsAMD, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GpaSqShaderStageFlagsAMD {}
 impl GpaSqShaderStageFlagsAMD {
     pub const PS_AMD: Self = Self(0x1);
     pub const VS_AMD: Self = Self(0x2);
@@ -15696,6 +16256,8 @@ impl fmt::Display for GpaSqShaderStageFlagsAMD {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GpaPerfBlockPropertiesFlagsAMD(Flags);
 bitflags!(GpaPerfBlockPropertiesFlagsAMD, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GpaPerfBlockPropertiesFlagsAMD {}
 impl GpaPerfBlockPropertiesFlagsAMD {}
 impl fmt::Display for GpaPerfBlockPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15711,6 +16273,8 @@ impl fmt::Display for GpaPerfBlockPropertiesFlagsAMD {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PhysicalDeviceGpaPropertiesFlagsAMD(Flags);
 bitflags!(PhysicalDeviceGpaPropertiesFlagsAMD, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceGpaPropertiesFlagsAMD {}
 impl PhysicalDeviceGpaPropertiesFlagsAMD {}
 impl fmt::Display for PhysicalDeviceGpaPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15726,6 +16290,8 @@ impl fmt::Display for PhysicalDeviceGpaPropertiesFlagsAMD {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AddressCommandFlagsKHR(Flags);
 bitflags!(AddressCommandFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AddressCommandFlagsKHR {}
 impl AddressCommandFlagsKHR {
     pub const PROTECTED_KHR: Self = Self(0x1);
     pub const FULLY_BOUND_KHR: Self = Self(0x2);
@@ -15755,6 +16321,8 @@ impl fmt::Display for AddressCommandFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CompositeAlphaFlagsKHR(Flags);
 bitflags!(CompositeAlphaFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CompositeAlphaFlagsKHR {}
 impl CompositeAlphaFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const PRE_MULTIPLIED_KHR: Self = Self(0x2);
@@ -15780,6 +16348,8 @@ impl fmt::Display for CompositeAlphaFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DisplayPlaneAlphaFlagsKHR(Flags);
 bitflags!(DisplayPlaneAlphaFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplayPlaneAlphaFlagsKHR {}
 impl DisplayPlaneAlphaFlagsKHR {
     pub const OPAQUE_KHR: Self = Self(0x1);
     pub const GLOBAL_KHR: Self = Self(0x2);
@@ -15805,6 +16375,8 @@ impl fmt::Display for DisplayPlaneAlphaFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SurfaceTransformFlagsKHR(Flags);
 bitflags!(SurfaceTransformFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SurfaceTransformFlagsKHR {}
 impl SurfaceTransformFlagsKHR {
     pub const IDENTITY_KHR: Self = Self(0x1);
     pub const ROTATE_90_KHR: Self = Self(0x2);
@@ -15840,6 +16412,8 @@ impl fmt::Display for SurfaceTransformFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SwapchainCreateFlagsKHR(Flags);
 bitflags!(SwapchainCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SwapchainCreateFlagsKHR {}
 impl SwapchainCreateFlagsKHR {
     #[doc = "Allow images with VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT"]
     pub const SPLIT_INSTANCE_BIND_REGIONS_KHR: Self = Self(0x1);
@@ -15877,6 +16451,8 @@ impl fmt::Display for SwapchainCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DisplayModeCreateFlagsKHR(Flags);
 bitflags!(DisplayModeCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplayModeCreateFlagsKHR {}
 impl DisplayModeCreateFlagsKHR {}
 impl fmt::Display for DisplayModeCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15892,6 +16468,8 @@ impl fmt::Display for DisplayModeCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DisplaySurfaceCreateFlagsKHR(Flags);
 bitflags!(DisplaySurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DisplaySurfaceCreateFlagsKHR {}
 impl DisplaySurfaceCreateFlagsKHR {}
 impl fmt::Display for DisplaySurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15907,6 +16485,8 @@ impl fmt::Display for DisplaySurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AndroidSurfaceCreateFlagsKHR(Flags);
 bitflags!(AndroidSurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AndroidSurfaceCreateFlagsKHR {}
 impl AndroidSurfaceCreateFlagsKHR {}
 impl fmt::Display for AndroidSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15922,6 +16502,8 @@ impl fmt::Display for AndroidSurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ViSurfaceCreateFlagsNN(Flags);
 bitflags!(ViSurfaceCreateFlagsNN, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ViSurfaceCreateFlagsNN {}
 impl ViSurfaceCreateFlagsNN {}
 impl fmt::Display for ViSurfaceCreateFlagsNN {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15937,6 +16519,8 @@ impl fmt::Display for ViSurfaceCreateFlagsNN {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct WaylandSurfaceCreateFlagsKHR(Flags);
 bitflags!(WaylandSurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for WaylandSurfaceCreateFlagsKHR {}
 impl WaylandSurfaceCreateFlagsKHR {}
 impl fmt::Display for WaylandSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15952,6 +16536,8 @@ impl fmt::Display for WaylandSurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct UbmSurfaceCreateFlagsSEC(Flags);
 bitflags!(UbmSurfaceCreateFlagsSEC, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for UbmSurfaceCreateFlagsSEC {}
 impl UbmSurfaceCreateFlagsSEC {}
 impl fmt::Display for UbmSurfaceCreateFlagsSEC {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15967,6 +16553,8 @@ impl fmt::Display for UbmSurfaceCreateFlagsSEC {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Win32SurfaceCreateFlagsKHR(Flags);
 bitflags!(Win32SurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for Win32SurfaceCreateFlagsKHR {}
 impl Win32SurfaceCreateFlagsKHR {}
 impl fmt::Display for Win32SurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15982,6 +16570,8 @@ impl fmt::Display for Win32SurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct XlibSurfaceCreateFlagsKHR(Flags);
 bitflags!(XlibSurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for XlibSurfaceCreateFlagsKHR {}
 impl XlibSurfaceCreateFlagsKHR {}
 impl fmt::Display for XlibSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -15997,6 +16587,8 @@ impl fmt::Display for XlibSurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct XcbSurfaceCreateFlagsKHR(Flags);
 bitflags!(XcbSurfaceCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for XcbSurfaceCreateFlagsKHR {}
 impl XcbSurfaceCreateFlagsKHR {}
 impl fmt::Display for XcbSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16012,6 +16604,8 @@ impl fmt::Display for XcbSurfaceCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DirectFBSurfaceCreateFlagsEXT(Flags);
 bitflags!(DirectFBSurfaceCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DirectFBSurfaceCreateFlagsEXT {}
 impl DirectFBSurfaceCreateFlagsEXT {}
 impl fmt::Display for DirectFBSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16027,6 +16621,8 @@ impl fmt::Display for DirectFBSurfaceCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct IOSSurfaceCreateFlagsMVK(Flags);
 bitflags!(IOSSurfaceCreateFlagsMVK, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for IOSSurfaceCreateFlagsMVK {}
 impl IOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for IOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16042,6 +16638,8 @@ impl fmt::Display for IOSSurfaceCreateFlagsMVK {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MacOSSurfaceCreateFlagsMVK(Flags);
 bitflags!(MacOSSurfaceCreateFlagsMVK, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MacOSSurfaceCreateFlagsMVK {}
 impl MacOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for MacOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16057,6 +16655,8 @@ impl fmt::Display for MacOSSurfaceCreateFlagsMVK {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MetalSurfaceCreateFlagsEXT(Flags);
 bitflags!(MetalSurfaceCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MetalSurfaceCreateFlagsEXT {}
 impl MetalSurfaceCreateFlagsEXT {}
 impl fmt::Display for MetalSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16072,6 +16672,8 @@ impl fmt::Display for MetalSurfaceCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImagePipeSurfaceCreateFlagsFUCHSIA(Flags);
 bitflags!(ImagePipeSurfaceCreateFlagsFUCHSIA, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImagePipeSurfaceCreateFlagsFUCHSIA {}
 impl ImagePipeSurfaceCreateFlagsFUCHSIA {}
 impl fmt::Display for ImagePipeSurfaceCreateFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16087,6 +16689,8 @@ impl fmt::Display for ImagePipeSurfaceCreateFlagsFUCHSIA {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct StreamDescriptorSurfaceCreateFlagsGGP(Flags);
 bitflags!(StreamDescriptorSurfaceCreateFlagsGGP, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for StreamDescriptorSurfaceCreateFlagsGGP {}
 impl StreamDescriptorSurfaceCreateFlagsGGP {}
 impl fmt::Display for StreamDescriptorSurfaceCreateFlagsGGP {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16102,6 +16706,8 @@ impl fmt::Display for StreamDescriptorSurfaceCreateFlagsGGP {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct HeadlessSurfaceCreateFlagsEXT(Flags);
 bitflags!(HeadlessSurfaceCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for HeadlessSurfaceCreateFlagsEXT {}
 impl HeadlessSurfaceCreateFlagsEXT {}
 impl fmt::Display for HeadlessSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16117,6 +16723,8 @@ impl fmt::Display for HeadlessSurfaceCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ScreenSurfaceCreateFlagsQNX(Flags);
 bitflags!(ScreenSurfaceCreateFlagsQNX, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ScreenSurfaceCreateFlagsQNX {}
 impl ScreenSurfaceCreateFlagsQNX {}
 impl fmt::Display for ScreenSurfaceCreateFlagsQNX {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16132,6 +16740,8 @@ impl fmt::Display for ScreenSurfaceCreateFlagsQNX {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PeerMemoryFeatureFlags(Flags);
 bitflags!(PeerMemoryFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PeerMemoryFeatureFlags {}
 impl PeerMemoryFeatureFlags {
     #[doc = "Can read with vkCmdCopy commands"]
     pub const COPY_SRC: Self = Self(0x1);
@@ -16161,6 +16771,8 @@ impl fmt::Display for PeerMemoryFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct MemoryAllocateFlags(Flags);
 bitflags!(MemoryAllocateFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for MemoryAllocateFlags {}
 impl MemoryAllocateFlags {
     #[doc = "Force allocation on specific devices"]
     pub const DEVICE_MASK: Self = Self(0x1);
@@ -16187,6 +16799,8 @@ impl fmt::Display for MemoryAllocateFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceGroupPresentModeFlagsKHR(Flags);
 bitflags!(DeviceGroupPresentModeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceGroupPresentModeFlagsKHR {}
 impl DeviceGroupPresentModeFlagsKHR {
     #[doc = "Present from local memory"]
     pub const LOCAL_KHR: Self = Self(0x1);
@@ -16216,6 +16830,8 @@ impl fmt::Display for DeviceGroupPresentModeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DebugReportFlagsEXT(Flags);
 bitflags!(DebugReportFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugReportFlagsEXT {}
 impl DebugReportFlagsEXT {
     pub const INFORMATION_EXT: Self = Self(0x1);
     pub const WARNING_EXT: Self = Self(0x2);
@@ -16243,6 +16859,8 @@ impl fmt::Display for DebugReportFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CommandPoolTrimFlags(Flags);
 bitflags!(CommandPoolTrimFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CommandPoolTrimFlags {}
 impl CommandPoolTrimFlags {}
 impl fmt::Display for CommandPoolTrimFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16258,6 +16876,8 @@ impl fmt::Display for CommandPoolTrimFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalMemoryHandleTypeFlagsNV(Flags);
 bitflags!(ExternalMemoryHandleTypeFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalMemoryHandleTypeFlagsNV {}
 impl ExternalMemoryHandleTypeFlagsNV {
     pub const OPAQUE_WIN32_NV: Self = Self(0x1);
     pub const OPAQUE_WIN32_KMT_NV: Self = Self(0x2);
@@ -16283,6 +16903,8 @@ impl fmt::Display for ExternalMemoryHandleTypeFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ClusterAccelerationStructureIndexFormatFlagsNV(Flags);
 bitflags!(ClusterAccelerationStructureIndexFormatFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ClusterAccelerationStructureIndexFormatFlagsNV {}
 impl ClusterAccelerationStructureIndexFormatFlagsNV {
     pub const TYPE_8BIT_NV: Self = Self(0x1);
     pub const TYPE_16BIT_NV: Self = Self(0x2);
@@ -16306,6 +16928,8 @@ impl fmt::Display for ClusterAccelerationStructureIndexFormatFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalMemoryFeatureFlagsNV(Flags);
 bitflags!(ExternalMemoryFeatureFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalMemoryFeatureFlagsNV {}
 impl ExternalMemoryFeatureFlagsNV {
     pub const DEDICATED_ONLY_NV: Self = Self(0x1);
     pub const EXPORTABLE_NV: Self = Self(0x2);
@@ -16329,6 +16953,8 @@ impl fmt::Display for ExternalMemoryFeatureFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalMemoryHandleTypeFlags(Flags);
 bitflags!(ExternalMemoryHandleTypeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalMemoryHandleTypeFlags {}
 impl ExternalMemoryHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -16384,6 +17010,8 @@ impl fmt::Display for ExternalMemoryHandleTypeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalMemoryFeatureFlags(Flags);
 bitflags!(ExternalMemoryFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalMemoryFeatureFlags {}
 impl ExternalMemoryFeatureFlags {
     pub const DEDICATED_ONLY: Self = Self(0x1);
     pub const EXPORTABLE: Self = Self(0x2);
@@ -16407,6 +17035,8 @@ impl fmt::Display for ExternalMemoryFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalSemaphoreHandleTypeFlags(Flags);
 bitflags!(ExternalSemaphoreHandleTypeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalSemaphoreHandleTypeFlags {}
 impl ExternalSemaphoreHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -16439,6 +17069,8 @@ impl fmt::Display for ExternalSemaphoreHandleTypeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalSemaphoreFeatureFlags(Flags);
 bitflags!(ExternalSemaphoreFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalSemaphoreFeatureFlags {}
 impl ExternalSemaphoreFeatureFlags {
     pub const EXPORTABLE: Self = Self(0x1);
     pub const IMPORTABLE: Self = Self(0x2);
@@ -16457,6 +17089,8 @@ impl fmt::Display for ExternalSemaphoreFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SemaphoreImportFlags(Flags);
 bitflags!(SemaphoreImportFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SemaphoreImportFlags {}
 impl SemaphoreImportFlags {
     pub const TEMPORARY: Self = Self(0x1);
 }
@@ -16474,6 +17108,8 @@ impl fmt::Display for SemaphoreImportFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalFenceHandleTypeFlags(Flags);
 bitflags!(ExternalFenceHandleTypeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalFenceHandleTypeFlags {}
 impl ExternalFenceHandleTypeFlags {
     pub const OPAQUE_FD: Self = Self(0x1);
     pub const OPAQUE_WIN32: Self = Self(0x2);
@@ -16503,6 +17139,8 @@ impl fmt::Display for ExternalFenceHandleTypeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExternalFenceFeatureFlags(Flags);
 bitflags!(ExternalFenceFeatureFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExternalFenceFeatureFlags {}
 impl ExternalFenceFeatureFlags {
     pub const EXPORTABLE: Self = Self(0x1);
     pub const IMPORTABLE: Self = Self(0x2);
@@ -16521,6 +17159,8 @@ impl fmt::Display for ExternalFenceFeatureFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FenceImportFlags(Flags);
 bitflags!(FenceImportFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FenceImportFlags {}
 impl FenceImportFlags {
     pub const TEMPORARY: Self = Self(0x1);
 }
@@ -16538,6 +17178,8 @@ impl fmt::Display for FenceImportFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SurfaceCounterFlagsEXT(Flags);
 bitflags!(SurfaceCounterFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SurfaceCounterFlagsEXT {}
 impl SurfaceCounterFlagsEXT {
     pub const VBLANK_EXT: Self = Self(0x1);
 }
@@ -16555,6 +17197,8 @@ impl fmt::Display for SurfaceCounterFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineViewportSwizzleStateCreateFlagsNV(Flags);
 bitflags!(PipelineViewportSwizzleStateCreateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineViewportSwizzleStateCreateFlagsNV {}
 impl PipelineViewportSwizzleStateCreateFlagsNV {}
 impl fmt::Display for PipelineViewportSwizzleStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16570,6 +17214,8 @@ impl fmt::Display for PipelineViewportSwizzleStateCreateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineDiscardRectangleStateCreateFlagsEXT(Flags);
 bitflags!(PipelineDiscardRectangleStateCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineDiscardRectangleStateCreateFlagsEXT {}
 impl PipelineDiscardRectangleStateCreateFlagsEXT {}
 impl fmt::Display for PipelineDiscardRectangleStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16585,6 +17231,8 @@ impl fmt::Display for PipelineDiscardRectangleStateCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCoverageToColorStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageToColorStateCreateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCoverageToColorStateCreateFlagsNV {}
 impl PipelineCoverageToColorStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageToColorStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16600,6 +17248,8 @@ impl fmt::Display for PipelineCoverageToColorStateCreateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCoverageModulationStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageModulationStateCreateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCoverageModulationStateCreateFlagsNV {}
 impl PipelineCoverageModulationStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageModulationStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16615,6 +17265,8 @@ impl fmt::Display for PipelineCoverageModulationStateCreateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineCoverageReductionStateCreateFlagsNV(Flags);
 bitflags!(PipelineCoverageReductionStateCreateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineCoverageReductionStateCreateFlagsNV {}
 impl PipelineCoverageReductionStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageReductionStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16630,6 +17282,8 @@ impl fmt::Display for PipelineCoverageReductionStateCreateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ValidationCacheCreateFlagsEXT(Flags);
 bitflags!(ValidationCacheCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ValidationCacheCreateFlagsEXT {}
 impl ValidationCacheCreateFlagsEXT {}
 impl fmt::Display for ValidationCacheCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16645,6 +17299,8 @@ impl fmt::Display for ValidationCacheCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DebugUtilsMessageSeverityFlagsEXT(Flags);
 bitflags!(DebugUtilsMessageSeverityFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugUtilsMessageSeverityFlagsEXT {}
 impl DebugUtilsMessageSeverityFlagsEXT {
     pub const VERBOSE_EXT: Self = Self(0x1);
     pub const INFO_EXT: Self = Self(0x10);
@@ -16670,6 +17326,8 @@ impl fmt::Display for DebugUtilsMessageSeverityFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DebugUtilsMessageTypeFlagsEXT(Flags);
 bitflags!(DebugUtilsMessageTypeFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugUtilsMessageTypeFlagsEXT {}
 impl DebugUtilsMessageTypeFlagsEXT {
     pub const GENERAL_EXT: Self = Self(0x1);
     pub const VALIDATION_EXT: Self = Self(0x2);
@@ -16695,6 +17353,8 @@ impl fmt::Display for DebugUtilsMessageTypeFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DebugUtilsMessengerCreateFlagsEXT(Flags);
 bitflags!(DebugUtilsMessengerCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugUtilsMessengerCreateFlagsEXT {}
 impl DebugUtilsMessengerCreateFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16710,6 +17370,8 @@ impl fmt::Display for DebugUtilsMessengerCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DebugUtilsMessengerCallbackDataFlagsEXT(Flags);
 bitflags!(DebugUtilsMessengerCallbackDataFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DebugUtilsMessengerCallbackDataFlagsEXT {}
 impl DebugUtilsMessengerCallbackDataFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCallbackDataFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16725,6 +17387,8 @@ impl fmt::Display for DebugUtilsMessengerCallbackDataFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceMemoryReportFlagsEXT(Flags);
 bitflags!(DeviceMemoryReportFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceMemoryReportFlagsEXT {}
 impl DeviceMemoryReportFlagsEXT {}
 impl fmt::Display for DeviceMemoryReportFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16740,6 +17404,8 @@ impl fmt::Display for DeviceMemoryReportFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineRasterizationConservativeStateCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationConservativeStateCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRasterizationConservativeStateCreateFlagsEXT {}
 impl PipelineRasterizationConservativeStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationConservativeStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16755,6 +17421,8 @@ impl fmt::Display for PipelineRasterizationConservativeStateCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DescriptorBindingFlags(Flags);
 bitflags!(DescriptorBindingFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DescriptorBindingFlags {}
 impl DescriptorBindingFlags {
     pub const UPDATE_AFTER_BIND: Self = Self(0x1);
     pub const UPDATE_UNUSED_WHILE_PENDING: Self = Self(0x2);
@@ -16780,6 +17448,8 @@ impl fmt::Display for DescriptorBindingFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ConditionalRenderingFlagsEXT(Flags);
 bitflags!(ConditionalRenderingFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ConditionalRenderingFlagsEXT {}
 impl ConditionalRenderingFlagsEXT {
     pub const INVERTED_EXT: Self = Self(0x1);
 }
@@ -16797,6 +17467,8 @@ impl fmt::Display for ConditionalRenderingFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ResolveModeFlags(Flags);
 bitflags!(ResolveModeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ResolveModeFlags {}
 impl ResolveModeFlags {
     pub const NONE: Self = Self(0x0);
     pub const SAMPLE_ZERO: Self = Self(0x1);
@@ -16827,6 +17499,8 @@ impl fmt::Display for ResolveModeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineRasterizationStateStreamCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationStateStreamCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRasterizationStateStreamCreateFlagsEXT {}
 impl PipelineRasterizationStateStreamCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationStateStreamCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16842,6 +17516,8 @@ impl fmt::Display for PipelineRasterizationStateStreamCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PipelineRasterizationDepthClipStateCreateFlagsEXT(Flags);
 bitflags!(PipelineRasterizationDepthClipStateCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PipelineRasterizationDepthClipStateCreateFlagsEXT {}
 impl PipelineRasterizationDepthClipStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationDepthClipStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16857,6 +17533,8 @@ impl fmt::Display for PipelineRasterizationDepthClipStateCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SwapchainImageUsageFlagsANDROID(Flags);
 bitflags!(SwapchainImageUsageFlagsANDROID, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SwapchainImageUsageFlagsANDROID {}
 impl SwapchainImageUsageFlagsANDROID {
     pub const SHARED_ANDROID: Self = Self(0x1);
 }
@@ -16874,6 +17552,8 @@ impl fmt::Display for SwapchainImageUsageFlagsANDROID {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ToolPurposeFlags(Flags);
 bitflags!(ToolPurposeFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ToolPurposeFlags {}
 impl ToolPurposeFlags {
     pub const VALIDATION: Self = Self(0x1);
     pub const PROFILING: Self = Self(0x2);
@@ -16905,6 +17585,8 @@ impl fmt::Display for ToolPurposeFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SubmitFlags(Flags);
 bitflags!(SubmitFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SubmitFlags {}
 impl SubmitFlags {
     pub const PROTECTED: Self = Self(0x1);
 }
@@ -16922,6 +17604,8 @@ impl fmt::Display for SubmitFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageFormatConstraintsFlagsFUCHSIA(Flags);
 bitflags!(ImageFormatConstraintsFlagsFUCHSIA, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageFormatConstraintsFlagsFUCHSIA {}
 impl ImageFormatConstraintsFlagsFUCHSIA {}
 impl fmt::Display for ImageFormatConstraintsFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -16937,6 +17621,8 @@ impl fmt::Display for ImageFormatConstraintsFlagsFUCHSIA {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct HostImageCopyFlags(Flags);
 bitflags!(HostImageCopyFlags, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for HostImageCopyFlags {}
 impl HostImageCopyFlags {
     pub const MEMCPY: Self = Self(0x1);
 }
@@ -16954,6 +17640,8 @@ impl fmt::Display for HostImageCopyFlags {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PartitionedAccelerationStructureInstanceFlagsNV(Flags);
 bitflags!(PartitionedAccelerationStructureInstanceFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PartitionedAccelerationStructureInstanceFlagsNV {}
 impl PartitionedAccelerationStructureInstanceFlagsNV {
     pub const FLAG_TRIANGLE_FACING_CULL_DISABLE_NV: Self = Self(0x1);
     pub const FLAG_TRIANGLE_FLIP_FACING_NV: Self = Self(0x2);
@@ -16981,6 +17669,8 @@ impl fmt::Display for PartitionedAccelerationStructureInstanceFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageConstraintsInfoFlagsFUCHSIA(Flags);
 bitflags!(ImageConstraintsInfoFlagsFUCHSIA, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageConstraintsInfoFlagsFUCHSIA {}
 impl ImageConstraintsInfoFlagsFUCHSIA {
     pub const CPU_READ_RARELY_FUCHSIA: Self = Self(0x1);
     pub const CPU_READ_OFTEN_FUCHSIA: Self = Self(0x2);
@@ -17008,6 +17698,8 @@ impl fmt::Display for ImageConstraintsInfoFlagsFUCHSIA {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct GraphicsPipelineLibraryFlagsEXT(Flags);
 bitflags!(GraphicsPipelineLibraryFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for GraphicsPipelineLibraryFlagsEXT {}
 impl GraphicsPipelineLibraryFlagsEXT {
     pub const VERTEX_INPUT_INTERFACE_EXT: Self = Self(0x1);
     pub const PRE_RASTERIZATION_SHADERS_EXT: Self = Self(0x2);
@@ -17033,6 +17725,8 @@ impl fmt::Display for GraphicsPipelineLibraryFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageCompressionFlagsEXT(Flags);
 bitflags!(ImageCompressionFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageCompressionFlagsEXT {}
 impl ImageCompressionFlagsEXT {
     pub const DEFAULT_EXT: Self = Self(0x0);
     pub const FIXED_RATE_DEFAULT_EXT: Self = Self(0x1);
@@ -17057,6 +17751,8 @@ impl fmt::Display for ImageCompressionFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ImageCompressionFixedRateFlagsEXT(Flags);
 bitflags!(ImageCompressionFixedRateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ImageCompressionFixedRateFlagsEXT {}
 impl ImageCompressionFixedRateFlagsEXT {
     pub const NONE_EXT: Self = Self(0x0);
     pub const TYPE_1BPC_EXT: Self = Self(0x1);
@@ -17123,6 +17819,8 @@ impl fmt::Display for ImageCompressionFixedRateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ExportMetalObjectTypeFlagsEXT(Flags);
 bitflags!(ExportMetalObjectTypeFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ExportMetalObjectTypeFlagsEXT {}
 impl ExportMetalObjectTypeFlagsEXT {
     pub const METAL_DEVICE_EXT: Self = Self(0x1);
     pub const METAL_COMMAND_QUEUE_EXT: Self = Self(0x2);
@@ -17152,6 +17850,8 @@ impl fmt::Display for ExportMetalObjectTypeFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct RenderingAttachmentFlagsKHR(Flags);
 bitflags!(RenderingAttachmentFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for RenderingAttachmentFlagsKHR {}
 impl RenderingAttachmentFlagsKHR {
     pub const INPUT_ATTACHMENT_FEEDBACK_KHR: Self = Self(0x1);
     pub const RESOLVE_SKIP_TRANSFER_FUNCTION_KHR: Self = Self(0x2);
@@ -17175,6 +17875,8 @@ impl fmt::Display for RenderingAttachmentFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ResolveImageFlagsKHR(Flags);
 bitflags!(ResolveImageFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ResolveImageFlagsKHR {}
 impl ResolveImageFlagsKHR {
     pub const SKIP_TRANSFER_FUNCTION_KHR: Self = Self(0x1);
     pub const ENABLE_TRANSFER_FUNCTION_KHR: Self = Self(0x2);
@@ -17196,6 +17898,8 @@ impl fmt::Display for ResolveImageFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DeviceAddressBindingFlagsEXT(Flags);
 bitflags!(DeviceAddressBindingFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DeviceAddressBindingFlagsEXT {}
 impl DeviceAddressBindingFlagsEXT {
     pub const INTERNAL_OBJECT_EXT: Self = Self(0x1);
 }
@@ -17213,6 +17917,8 @@ impl fmt::Display for DeviceAddressBindingFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct OpticalFlowGridSizeFlagsNV(Flags);
 bitflags!(OpticalFlowGridSizeFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowGridSizeFlagsNV {}
 impl OpticalFlowGridSizeFlagsNV {
     pub const UNKNOWN_NV: Self = Self(0x0);
     pub const TYPE_1X1_NV: Self = Self(0x1);
@@ -17239,6 +17945,8 @@ impl fmt::Display for OpticalFlowGridSizeFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct OpticalFlowUsageFlagsNV(Flags);
 bitflags!(OpticalFlowUsageFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowUsageFlagsNV {}
 impl OpticalFlowUsageFlagsNV {
     pub const UNKNOWN_NV: Self = Self(0x0);
     pub const INPUT_NV: Self = Self(0x1);
@@ -17267,6 +17975,8 @@ impl fmt::Display for OpticalFlowUsageFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct OpticalFlowSessionCreateFlagsNV(Flags);
 bitflags!(OpticalFlowSessionCreateFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowSessionCreateFlagsNV {}
 impl OpticalFlowSessionCreateFlagsNV {
     pub const ENABLE_HINT_NV: Self = Self(0x1);
     pub const ENABLE_COST_NV: Self = Self(0x2);
@@ -17294,6 +18004,8 @@ impl fmt::Display for OpticalFlowSessionCreateFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct OpticalFlowExecuteFlagsNV(Flags);
 bitflags!(OpticalFlowExecuteFlagsNV, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for OpticalFlowExecuteFlagsNV {}
 impl OpticalFlowExecuteFlagsNV {
     pub const DISABLE_TEMPORAL_HINTS_NV: Self = Self(0x1);
 }
@@ -17311,6 +18023,8 @@ impl fmt::Display for OpticalFlowExecuteFlagsNV {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct FrameBoundaryFlagsEXT(Flags);
 bitflags!(FrameBoundaryFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for FrameBoundaryFlagsEXT {}
 impl FrameBoundaryFlagsEXT {
     pub const FRAME_END_EXT: Self = Self(0x1);
 }
@@ -17328,6 +18042,8 @@ impl fmt::Display for FrameBoundaryFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PresentScalingFlagsKHR(Flags);
 bitflags!(PresentScalingFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PresentScalingFlagsKHR {}
 impl PresentScalingFlagsKHR {
     pub const ONE_TO_ONE_KHR: Self = Self(0x1);
     pub const ONE_TO_ONE_EXT: Self = Self::ONE_TO_ONE_KHR;
@@ -17354,6 +18070,8 @@ impl fmt::Display for PresentScalingFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PresentGravityFlagsKHR(Flags);
 bitflags!(PresentGravityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PresentGravityFlagsKHR {}
 impl PresentGravityFlagsKHR {
     pub const MIN_KHR: Self = Self(0x1);
     pub const MIN_EXT: Self = Self::MIN_KHR;
@@ -17377,6 +18095,8 @@ impl fmt::Display for PresentGravityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ShaderCreateFlagsEXT(Flags);
 bitflags!(ShaderCreateFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderCreateFlagsEXT {}
 impl ShaderCreateFlagsEXT {
     pub const LINK_STAGE_EXT: Self = Self(0x1);
     pub const DESCRIPTOR_HEAP_EXT: Self = Self(0x400);
@@ -17420,6 +18140,8 @@ impl fmt::Display for ShaderCreateFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct TileShadingRenderPassFlagsQCOM(Flags);
 bitflags!(TileShadingRenderPassFlagsQCOM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for TileShadingRenderPassFlagsQCOM {}
 impl TileShadingRenderPassFlagsQCOM {
     pub const ENABLE_QCOM: Self = Self(0x1);
     pub const PER_TILE_EXECUTION_QCOM: Self = Self(0x2);
@@ -17438,6 +18160,8 @@ impl fmt::Display for TileShadingRenderPassFlagsQCOM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PhysicalDeviceSchedulingControlsFlagsARM(Flags64);
 bitflags!(PhysicalDeviceSchedulingControlsFlagsARM, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PhysicalDeviceSchedulingControlsFlagsARM {}
 impl PhysicalDeviceSchedulingControlsFlagsARM {
     pub const SHADER_CORE_COUNT_ARM: Self = Self(0x1);
     pub const DISPATCH_PARAMETERS_ARM: Self = Self(0x2);
@@ -17459,6 +18183,8 @@ impl fmt::Display for PhysicalDeviceSchedulingControlsFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SurfaceCreateFlagsOHOS(Flags);
 bitflags!(SurfaceCreateFlagsOHOS, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SurfaceCreateFlagsOHOS {}
 impl SurfaceCreateFlagsOHOS {}
 impl fmt::Display for SurfaceCreateFlagsOHOS {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17474,6 +18200,8 @@ impl fmt::Display for SurfaceCreateFlagsOHOS {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PresentStageFlagsEXT(Flags);
 bitflags!(PresentStageFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PresentStageFlagsEXT {}
 impl PresentStageFlagsEXT {
     pub const QUEUE_OPERATIONS_END_EXT: Self = Self(0x1);
     pub const REQUEST_DEQUEUED_EXT: Self = Self(0x2);
@@ -17499,6 +18227,8 @@ impl fmt::Display for PresentStageFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PastPresentationTimingFlagsEXT(Flags);
 bitflags!(PastPresentationTimingFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PastPresentationTimingFlagsEXT {}
 impl PastPresentationTimingFlagsEXT {
     pub const ALLOW_PARTIAL_RESULTS_EXT: Self = Self(0x1);
     pub const ALLOW_OUT_OF_ORDER_RESULTS_EXT: Self = Self(0x2);
@@ -17520,6 +18250,8 @@ impl fmt::Display for PastPresentationTimingFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PresentTimingInfoFlagsEXT(Flags);
 bitflags!(PresentTimingInfoFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PresentTimingInfoFlagsEXT {}
 impl PresentTimingInfoFlagsEXT {
     pub const PRESENT_AT_RELATIVE_TIME_EXT: Self = Self(0x1);
     pub const PRESENT_AT_NEAREST_REFRESH_CYCLE_EXT: Self = Self(0x2);
@@ -17541,6 +18273,8 @@ impl fmt::Display for PresentTimingInfoFlagsEXT {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct SwapchainImageUsageFlagsOHOS(Flags);
 bitflags!(SwapchainImageUsageFlagsOHOS, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for SwapchainImageUsageFlagsOHOS {}
 impl SwapchainImageUsageFlagsOHOS {
     pub const SHARED_OHOS: Self = Self(0x1);
 }
@@ -17558,6 +18292,8 @@ impl fmt::Display for SwapchainImageUsageFlagsOHOS {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct PerformanceCounterDescriptionFlagsARM(Flags);
 bitflags!(PerformanceCounterDescriptionFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for PerformanceCounterDescriptionFlagsARM {}
 impl PerformanceCounterDescriptionFlagsARM {}
 impl fmt::Display for PerformanceCounterDescriptionFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17573,6 +18309,8 @@ impl fmt::Display for PerformanceCounterDescriptionFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ShaderInstrumentationValuesFlagsARM(Flags);
 bitflags!(ShaderInstrumentationValuesFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for ShaderInstrumentationValuesFlagsARM {}
 impl ShaderInstrumentationValuesFlagsARM {}
 impl fmt::Display for ShaderInstrumentationValuesFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17588,6 +18326,8 @@ impl fmt::Display for ShaderInstrumentationValuesFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphTOSAQualityFlagsARM(Flags);
 bitflags!(DataGraphTOSAQualityFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphTOSAQualityFlagsARM {}
 impl DataGraphTOSAQualityFlagsARM {
     pub const DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM: Self = Self(0x1);
     pub const DATA_GRAPH_TOSA_QUALITY_CONFORMANT_ARM: Self = Self(0x2);
@@ -17613,6 +18353,8 @@ impl fmt::Display for DataGraphTOSAQualityFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphOpticalFlowGridSizeFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowGridSizeFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphOpticalFlowGridSizeFlagsARM {}
 impl DataGraphOpticalFlowGridSizeFlagsARM {
     pub const UNKNOWN_ARM: Self = Self(0x0);
     pub const TYPE_1X1_ARM: Self = Self(0x1);
@@ -17639,6 +18381,8 @@ impl fmt::Display for DataGraphOpticalFlowGridSizeFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphOpticalFlowImageUsageFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowImageUsageFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphOpticalFlowImageUsageFlagsARM {}
 impl DataGraphOpticalFlowImageUsageFlagsARM {
     pub const UNKNOWN_ARM: Self = Self(0x0);
     pub const INPUT_ARM: Self = Self(0x1);
@@ -17665,6 +18409,8 @@ impl fmt::Display for DataGraphOpticalFlowImageUsageFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphOpticalFlowCreateFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowCreateFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphOpticalFlowCreateFlagsARM {}
 impl DataGraphOpticalFlowCreateFlagsARM {
     pub const ENABLE_HINT_ARM: Self = Self(0x1);
     pub const ENABLE_COST_ARM: Self = Self(0x2);
@@ -17688,6 +18434,8 @@ impl fmt::Display for DataGraphOpticalFlowCreateFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DataGraphOpticalFlowExecuteFlagsARM(Flags);
 bitflags!(DataGraphOpticalFlowExecuteFlagsARM, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for DataGraphOpticalFlowExecuteFlagsARM {}
 impl DataGraphOpticalFlowExecuteFlagsARM {
     pub const DISABLE_TEMPORAL_HINTS_ARM: Self = Self(0x1);
     pub const INPUT_UNCHANGED_ARM: Self = Self(0x2);
@@ -17715,6 +18463,8 @@ impl fmt::Display for DataGraphOpticalFlowExecuteFlagsARM {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoCodecOperationFlagsKHR(Flags);
 bitflags!(VideoCodecOperationFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoCodecOperationFlagsKHR {}
 impl VideoCodecOperationFlagsKHR {
     pub const NONE_KHR: Self = Self(0x0);
     pub const ENCODE_H264_KHR: Self = Self(0x10000);
@@ -17747,6 +18497,8 @@ impl fmt::Display for VideoCodecOperationFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoCapabilityFlagsKHR(Flags);
 bitflags!(VideoCapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoCapabilityFlagsKHR {}
 impl VideoCapabilityFlagsKHR {
     pub const PROTECTED_CONTENT_KHR: Self = Self(0x1);
     pub const SEPARATE_REFERENCE_IMAGES_KHR: Self = Self(0x2);
@@ -17768,6 +18520,8 @@ impl fmt::Display for VideoCapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoSessionCreateFlagsKHR(Flags);
 bitflags!(VideoSessionCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoSessionCreateFlagsKHR {}
 impl VideoSessionCreateFlagsKHR {
     pub const PROTECTED_CONTENT_KHR: Self = Self(0x1);
     pub const ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_KHR: Self = Self(0x2);
@@ -17797,6 +18551,8 @@ impl fmt::Display for VideoSessionCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoSessionParametersCreateFlagsKHR(Flags);
 bitflags!(VideoSessionParametersCreateFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoSessionParametersCreateFlagsKHR {}
 impl VideoSessionParametersCreateFlagsKHR {
     pub const QUANTIZATION_MAP_COMPATIBLE_KHR: Self = Self(0x1);
 }
@@ -17814,6 +18570,8 @@ impl fmt::Display for VideoSessionParametersCreateFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoBeginCodingFlagsKHR(Flags);
 bitflags!(VideoBeginCodingFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoBeginCodingFlagsKHR {}
 impl VideoBeginCodingFlagsKHR {}
 impl fmt::Display for VideoBeginCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17829,6 +18587,8 @@ impl fmt::Display for VideoBeginCodingFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEndCodingFlagsKHR(Flags);
 bitflags!(VideoEndCodingFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEndCodingFlagsKHR {}
 impl VideoEndCodingFlagsKHR {}
 impl fmt::Display for VideoEndCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17844,6 +18604,8 @@ impl fmt::Display for VideoEndCodingFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoCodingControlFlagsKHR(Flags);
 bitflags!(VideoCodingControlFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoCodingControlFlagsKHR {}
 impl VideoCodingControlFlagsKHR {
     pub const RESET_KHR: Self = Self(0x1);
     pub const ENCODE_RATE_CONTROL_KHR: Self = Self(0x2);
@@ -17867,6 +18629,8 @@ impl fmt::Display for VideoCodingControlFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoDecodeUsageFlagsKHR(Flags);
 bitflags!(VideoDecodeUsageFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoDecodeUsageFlagsKHR {}
 impl VideoDecodeUsageFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const TRANSCODING_KHR: Self = Self(0x1);
@@ -17891,6 +18655,8 @@ impl fmt::Display for VideoDecodeUsageFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoDecodeCapabilityFlagsKHR(Flags);
 bitflags!(VideoDecodeCapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoDecodeCapabilityFlagsKHR {}
 impl VideoDecodeCapabilityFlagsKHR {
     pub const DPB_AND_OUTPUT_COINCIDE_KHR: Self = Self(0x1);
     pub const DPB_AND_OUTPUT_DISTINCT_KHR: Self = Self(0x2);
@@ -17912,6 +18678,8 @@ impl fmt::Display for VideoDecodeCapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoDecodeFlagsKHR(Flags);
 bitflags!(VideoDecodeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoDecodeFlagsKHR {}
 impl VideoDecodeFlagsKHR {}
 impl fmt::Display for VideoDecodeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -17927,6 +18695,8 @@ impl fmt::Display for VideoDecodeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoDecodeH264PictureLayoutFlagsKHR(Flags);
 bitflags!(VideoDecodeH264PictureLayoutFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoDecodeH264PictureLayoutFlagsKHR {}
 impl VideoDecodeH264PictureLayoutFlagsKHR {
     pub const PROGRESSIVE_KHR: Self = Self(0x0);
     pub const INTERLACED_INTERLEAVED_LINES_KHR: Self = Self(0x1);
@@ -17949,6 +18719,8 @@ impl fmt::Display for VideoDecodeH264PictureLayoutFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeFlagsKHR(Flags);
 bitflags!(VideoEncodeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeFlagsKHR {}
 impl VideoEncodeFlagsKHR {
     pub const INTRA_REFRESH_KHR: Self = Self(0x4);
     pub const WITH_QUANTIZATION_DELTA_MAP_KHR: Self = Self(0x1);
@@ -17972,6 +18744,8 @@ impl fmt::Display for VideoEncodeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeUsageFlagsKHR(Flags);
 bitflags!(VideoEncodeUsageFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeUsageFlagsKHR {}
 impl VideoEncodeUsageFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const TRANSCODING_KHR: Self = Self(0x1);
@@ -17998,6 +18772,8 @@ impl fmt::Display for VideoEncodeUsageFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeContentFlagsKHR(Flags);
 bitflags!(VideoEncodeContentFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeContentFlagsKHR {}
 impl VideoEncodeContentFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const CAMERA_KHR: Self = Self(0x1);
@@ -18022,6 +18798,8 @@ impl fmt::Display for VideoEncodeContentFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeCapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeCapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeCapabilityFlagsKHR {}
 impl VideoEncodeCapabilityFlagsKHR {
     pub const PRECEDING_EXTERNALLY_ENCODED_BYTES_KHR: Self = Self(0x1);
     pub const INSUFFICIENTSTREAM_BUFFER_RANGE_DETECTION_KHR: Self = Self(0x2);
@@ -18047,6 +18825,8 @@ impl fmt::Display for VideoEncodeCapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeFeedbackFlagsKHR(Flags);
 bitflags!(VideoEncodeFeedbackFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeFeedbackFlagsKHR {}
 impl VideoEncodeFeedbackFlagsKHR {
     pub const VIDEO_ENCODE_FEEDBACKSTREAM_BUFFER_OFFSET_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_FEEDBACKSTREAM_BYTES_WRITTEN_KHR: Self = Self(0x2);
@@ -18084,6 +18864,8 @@ impl fmt::Display for VideoEncodeFeedbackFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodePerPartitionFeedbackFlagsKHR(Flags);
 bitflags!(VideoEncodePerPartitionFeedbackFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodePerPartitionFeedbackFlagsKHR {}
 impl VideoEncodePerPartitionFeedbackFlagsKHR {
     pub const STATUS_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_PER_PARTITION_FEEDBACKSTREAM_BUFFER_OFFSET_KHR: Self = Self(0x2);
@@ -18113,6 +18895,8 @@ impl fmt::Display for VideoEncodePerPartitionFeedbackFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeRateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeRateControlFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeRateControlFlagsKHR {}
 impl VideoEncodeRateControlFlagsKHR {}
 impl fmt::Display for VideoEncodeRateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -18128,6 +18912,8 @@ impl fmt::Display for VideoEncodeRateControlFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeRateControlModeFlagsKHR(Flags);
 bitflags!(VideoEncodeRateControlModeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeRateControlModeFlagsKHR {}
 impl VideoEncodeRateControlModeFlagsKHR {
     pub const DEFAULT_KHR: Self = Self(0x0);
     pub const DISABLED_KHR: Self = Self(0x1);
@@ -18149,6 +18935,8 @@ impl fmt::Display for VideoEncodeRateControlModeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeIntraRefreshModeFlagsKHR(Flags);
 bitflags!(VideoEncodeIntraRefreshModeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeIntraRefreshModeFlagsKHR {}
 impl VideoEncodeIntraRefreshModeFlagsKHR {
     pub const NONE_KHR: Self = Self(0x0);
     pub const PER_PICTURE_PARTITION_KHR: Self = Self(0x1);
@@ -18175,6 +18963,8 @@ impl fmt::Display for VideoEncodeIntraRefreshModeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoChromaSubsamplingFlagsKHR(Flags);
 bitflags!(VideoChromaSubsamplingFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoChromaSubsamplingFlagsKHR {}
 impl VideoChromaSubsamplingFlagsKHR {
     pub const INVALID_KHR: Self = Self(0x0);
     pub const MONOCHROME_KHR: Self = Self(0x1);
@@ -18201,6 +18991,8 @@ impl fmt::Display for VideoChromaSubsamplingFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoComponentBitDepthFlagsKHR(Flags);
 bitflags!(VideoComponentBitDepthFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoComponentBitDepthFlagsKHR {}
 impl VideoComponentBitDepthFlagsKHR {
     pub const VIDEO_COMPONENT_DEPTH_INVALID_KHR: Self = Self(0x0);
     pub const VIDEO_COMPONENT_DEPTH_8_KHR: Self = Self(0x1);
@@ -18225,6 +19017,8 @@ impl fmt::Display for VideoComponentBitDepthFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH264CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeH264CapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH264CapabilityFlagsKHR {}
 impl VideoEncodeH264CapabilityFlagsKHR {
     pub const HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const PREDICTION_WEIGHT_TABLE_GENERATED_KHR: Self = Self(0x2);
@@ -18264,6 +19058,8 @@ impl fmt::Display for VideoEncodeH264CapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH264StdFlagsKHR(Flags);
 bitflags!(VideoEncodeH264StdFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH264StdFlagsKHR {}
 impl VideoEncodeH264StdFlagsKHR {
     pub const SEPARATE_COLOR_PLANE_FLAG_SET_KHR: Self = Self(0x1);
     pub const QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_KHR: Self = Self(0x2);
@@ -18321,6 +19117,8 @@ impl fmt::Display for VideoEncodeH264StdFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH264RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeH264RateControlFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH264RateControlFlagsKHR {}
 impl VideoEncodeH264RateControlFlagsKHR {
     pub const ATTEMPT_HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const REGULAR_GOP_KHR: Self = Self(0x2);
@@ -18348,6 +19146,8 @@ impl fmt::Display for VideoEncodeH264RateControlFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH265CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeH265CapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH265CapabilityFlagsKHR {}
 impl VideoEncodeH265CapabilityFlagsKHR {
     pub const HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const PREDICTION_WEIGHT_TABLE_GENERATED_KHR: Self = Self(0x2);
@@ -18389,6 +19189,8 @@ impl fmt::Display for VideoEncodeH265CapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH265StdFlagsKHR(Flags);
 bitflags!(VideoEncodeH265StdFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH265StdFlagsKHR {}
 impl VideoEncodeH265StdFlagsKHR {
     pub const SEPARATE_COLOR_PLANE_FLAG_SET_KHR: Self = Self(0x1);
     pub const SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_KHR: Self = Self(0x2);
@@ -18448,6 +19250,8 @@ impl fmt::Display for VideoEncodeH265StdFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH265RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeH265RateControlFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH265RateControlFlagsKHR {}
 impl VideoEncodeH265RateControlFlagsKHR {
     pub const ATTEMPT_HRD_COMPLIANCE_KHR: Self = Self(0x1);
     pub const REGULAR_GOP_KHR: Self = Self(0x2);
@@ -18475,6 +19279,8 @@ impl fmt::Display for VideoEncodeH265RateControlFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH265CtbSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeH265CtbSizeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH265CtbSizeFlagsKHR {}
 impl VideoEncodeH265CtbSizeFlagsKHR {
     pub const TYPE_16_KHR: Self = Self(0x1);
     pub const TYPE_32_KHR: Self = Self(0x2);
@@ -18498,6 +19304,8 @@ impl fmt::Display for VideoEncodeH265CtbSizeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeH265TransformBlockSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeH265TransformBlockSizeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeH265TransformBlockSizeFlagsKHR {}
 impl VideoEncodeH265TransformBlockSizeFlagsKHR {
     pub const TYPE_4_KHR: Self = Self(0x1);
     pub const TYPE_8_KHR: Self = Self(0x2);
@@ -18523,6 +19331,8 @@ impl fmt::Display for VideoEncodeH265TransformBlockSizeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeAV1CapabilityFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1CapabilityFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1CapabilityFlagsKHR {}
 impl VideoEncodeAV1CapabilityFlagsKHR {
     pub const VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_KHR: Self =
         Self(0x1);
@@ -18568,6 +19378,8 @@ impl fmt::Display for VideoEncodeAV1CapabilityFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeAV1StdFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1StdFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1StdFlagsKHR {}
 impl VideoEncodeAV1StdFlagsKHR {
     pub const VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_KHR: Self = Self(0x2);
@@ -18596,6 +19408,8 @@ impl fmt::Display for VideoEncodeAV1StdFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeAV1RateControlFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1RateControlFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1RateControlFlagsKHR {}
 impl VideoEncodeAV1RateControlFlagsKHR {
     pub const VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_KHR: Self = Self(0x2);
@@ -18630,6 +19444,8 @@ impl fmt::Display for VideoEncodeAV1RateControlFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct VideoEncodeAV1SuperblockSizeFlagsKHR(Flags);
 bitflags!(VideoEncodeAV1SuperblockSizeFlagsKHR, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for VideoEncodeAV1SuperblockSizeFlagsKHR {}
 impl VideoEncodeAV1SuperblockSizeFlagsKHR {
     pub const VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_KHR: Self = Self(0x1);
     pub const VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_KHR: Self = Self(0x2);
@@ -18651,6 +19467,8 @@ impl fmt::Display for VideoEncodeAV1SuperblockSizeFlagsKHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct AccessFlags3KHR(Flags64);
 bitflags!(AccessFlags3KHR, Flags64);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for AccessFlags3KHR {}
 impl AccessFlags3KHR {
     pub const NONE_KHR: Self = Self(0x0);
 }
@@ -18668,6 +19486,8 @@ impl fmt::Display for AccessFlags3KHR {
 #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct CooperativeMatrixFlagsEXT(Flags);
 bitflags!(CooperativeMatrixFlagsEXT, Flags);
+#[cfg(feature = "bytemuck")]
+unsafe impl Zeroable for CooperativeMatrixFlagsEXT {}
 impl CooperativeMatrixFlagsEXT {
     pub const SATURATING_ACCUMULATION_EXT: Self = Self(0x1);
 }

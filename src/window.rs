@@ -79,14 +79,14 @@ pub fn required_instance_extensions(
 /// Creates a surface for the given [`RawDisplayHandle`], [`RawWindowHandle`] pair.
 ///
 /// # Supported platforms
-/// * Win32
-/// * Wayland
-/// * Xlib
-/// * Xcb
-/// * Android
-/// * macos (AppKit/metal)
-/// * ios (UiKit/metal)
-/// * Ohos
+/// - Win32
+/// - Wayland
+/// - Xlib
+/// - Xcb
+/// - Android
+/// - macos (AppKit/metal)
+/// - ios (UiKit/metal)
+/// - Ohos
 ///
 /// # Safety
 /// All raw Vulkan calls are unsafe as there is no validation of input or usage.

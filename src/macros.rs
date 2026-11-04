@@ -20,6 +20,10 @@ macro_rules! define_non_dispatchable_handle {
                 Self(x)
             }
         }
+        #[cfg(feature = "bytemuck")]
+        unsafe impl bytemuck::Zeroable for $name {}
+        #[cfg(feature = "bytemuck")]
+        unsafe impl bytemuck::AnyBitPattern for $name {}
         impl fmt::LowerHex for $name {
             fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
                 fmt::LowerHex::fmt(&self.0, f)
@@ -54,6 +58,8 @@ macro_rules! define_handle {
                 Self(x as *mut u8)
             }
         }
+        #[cfg(feature = "bytemuck")]
+        unsafe impl bytemuck::Zeroable for $name {}
         unsafe impl Send for $name {}
         unsafe impl Sync for $name {}
         impl Default for $name {

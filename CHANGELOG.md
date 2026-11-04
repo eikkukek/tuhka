@@ -1,6 +1,10 @@
 # Changelog
 
 All changes to this project will be documented in this file.
+## [0.1.7] - 2026-11-04
+### Added
+- Optional `bytemuck` feature that implements `Zeroable` for structs with no `StructureType` and
+  `AnyBitPattern` for non-dispatchable handles.
 
 ## [0.1.6] - 2026-11-02
 ###  Changed
@@ -36,6 +40,7 @@ All changes to this project will be documented in this file.
 ### Added
 - Initial crate release
 
+[0.1.7]: https://crates.io/crates/tuhka/0.1.7
 [0.1.6]: https://crates.io/crates/tuhka/0.1.6
 [0.1.5]: https://crates.io/crates/tuhka/0.1.5
 [0.1.4]: https://crates.io/crates/tuhka/0.1.4

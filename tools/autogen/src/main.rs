@@ -547,10 +547,13 @@ fn main() -> std::io::Result<()> {
     write!(handles, "use super::*; use crate::define_non_dispatchable_handle; use crate::define_handle;")?;
     let mut enums = File::create("../../src/vk/enums.rs")?;
     write!(enums, "use super::*; use crate::bitflags;")?;
+    write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
     let mut structs = File::create("../../src/vk/structs.rs")?;
     write!(structs, "use super::*; use vk_video::*;")?;
+    write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
     let mut unions = File::create("../../src/vk/unions.rs")?;
     write!(unions, "use super::*;")?;
+    write!(unions, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
     let mut type_defs = File::create("../../src/vk/type_defs.rs")?;
     write!(type_defs, "use super::*;")?;
     let mut type_aliases = IndexMap::<String, String>::new();
@@ -1805,6 +1808,10 @@ fn main() -> std::io::Result<()> {
         let doc = doc_link(&name_str)
             .map(|link| quote! { #[doc = #link] });
         let name = Ident::new(name_str.trim_start_matches("Vk"), Span::call_site());
+        let impl_zeroable = quote! {
+            #[cfg(feature = "bytemuck")]
+            unsafe impl Zeroable for #name {}
+        };
         let def = quote! {
            
             #doc
@@ -1822,6 +1829,8 @@ fn main() -> std::io::Result<()> {
                     self.0
                 }
             }
+
+            #impl_zeroable
         };
         let mut display = vec![];
         let var1 = variants.variants.first().map(|var| var.name.as_str()).unwrap_or_default();
@@ -1917,12 +1926,18 @@ fn main() -> std::io::Result<()> {
             FlagType::U32 => Ident::new("Flags", Span::call_site()),
             FlagType::U64 => Ident::new("Flags64", Span::call_site())
         };
+        let impl_zeroable = quote! {
+            #[cfg(feature = "bytemuck")]
+            unsafe impl Zeroable for #name {}
+        };
         let def = quote! {
             #doc
             #[repr(transparent)]
             #[derive(Default, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
             pub struct #name(#ty);
             bitflags!(#name, #ty); 
+
+            #impl_zeroable
         };
         let requires_sc = upper_snake_case(requires);
         let idx = requires_sc.find("FLAG_BITS").unwrap_or_default();
@@ -2184,6 +2199,7 @@ fn main() -> std::io::Result<()> {
     }
     println!("eq resolve depth: {depth}");
     let mut defined_aliases = HashSet::new();  
+    let mut type_is_not_zeroable: IndexSet<Ident> = IndexSet::new();
     for def in struct_defs {
         let name = def.name.as_ref().unwrap();
         if type_exclude_list.contains(name) {
@@ -2201,6 +2217,7 @@ fn main() -> std::io::Result<()> {
         let mut p_next_mutability = None;
         let mut s_type = None;
         let mut derive_default = true;
+        let mut is_zeroable = true;
         let (derive_eq, derive_partial_eq) =
             non_eq_types.get(name).map(|&partial| (false, partial))
             .unwrap_or((true, true));
@@ -2225,6 +2242,9 @@ fn main() -> std::io::Result<()> {
                     PtrType::MutPtr => Some(true),
                     _ => unreachable!(),
                 };
+            }
+            if type_is_not_zeroable.contains(member_ty) {
+                is_zeroable = false;
             }
             let lifetime = (type_needs_lifetime.contains(member_ty)).then(||
             {
@@ -2500,6 +2520,7 @@ fn main() -> std::io::Result<()> {
                 field_defaults.push(
                     if has_s_type {
                         derive_default = false;
+                        is_zeroable = false;
                         quote! {
                             #name: Self::S_TYPE,
                         }
@@ -2513,6 +2534,7 @@ fn main() -> std::io::Result<()> {
                             PtrType::None => {
                                 if ty_str.starts_with("PFN") {
                                     derive_default = false;
+                                    is_zeroable = false;
                                 }
                                 quote! {
                                     #name: #resolved_ty::default(),
@@ -2637,6 +2659,13 @@ fn main() -> std::io::Result<()> {
             let derive_eq = derive_eq.then(|| quote! {
                 Eq,
             });
+            let impl_zeroable = is_zeroable.then(|| quote! {
+                #[cfg(feature = "bytemuck")]
+                unsafe impl #lifetime Zeroable for #name #lifetime {}
+            });
+            if !is_zeroable {
+                type_is_not_zeroable.insert(name.clone());
+            }
             let def = quote! {
                 #doc
                 #[repr(C)]
@@ -2661,6 +2690,8 @@ fn main() -> std::io::Result<()> {
                 #(#impl_extends)*
 
                 #impl_send_sync
+
+                #impl_zeroable
             };
             write!(structs, "{def}")?;
         } else {
@@ -2668,6 +2699,10 @@ fn main() -> std::io::Result<()> {
                 quote! { <'a> }
             });
             non_eq_types.insert(name.clone(), false);
+            let impl_zeroable = quote! {
+                #[cfg(feature = "bytemuck")]
+                unsafe impl #lifetime Zeroable for #name #lifetime {}
+            };
             let def = quote! {
                 #doc
                 #[repr(C)]
@@ -2683,6 +2718,8 @@ fn main() -> std::io::Result<()> {
                         unsafe { ::core::mem::zeroed() }
                     }
                 }
+
+                #impl_zeroable
             };
             write!(unions, "{def}")?;
         }
