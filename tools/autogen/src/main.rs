@@ -547,10 +547,10 @@ fn main() -> std::io::Result<()> {
     write!(handles, "use super::*; use crate::define_non_dispatchable_handle; use crate::define_handle;")?;
     let mut enums = File::create("../../src/vk/enums.rs")?;
     write!(enums, "use super::*; use crate::bitflags;")?;
-    write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, NoUninit}};")?;
+    write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, NoUninit, AnyBitPattern}};")?;
     let mut structs = File::create("../../src/vk/structs.rs")?;
     write!(structs, "use super::*; use vk_video::*;")?;
-    write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
+    write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, AnyBitPattern}};")?;
     let mut unions = File::create("../../src/vk/unions.rs")?;
     write!(unions, "use super::*;")?;
     write!(unions, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
@@ -1813,6 +1813,8 @@ fn main() -> std::io::Result<()> {
             unsafe impl Zeroable for #name {}
             #[cfg(feature = "bytemuck")]
             unsafe impl NoUninit for #name {}
+            #[cfg(feature = "bytemuck")]
+            unsafe impl AnyBitPattern for #name {}
         };
         let def = quote! {
            
@@ -1933,6 +1935,8 @@ fn main() -> std::io::Result<()> {
             unsafe impl Zeroable for #name {}
             #[cfg(feature = "bytemuck")]
             unsafe impl NoUninit for #name {}
+            #[cfg(feature = "bytemuck")]
+            unsafe impl AnyBitPattern for #name {}
         };
         let def = quote! {
             #doc
@@ -2204,6 +2208,7 @@ fn main() -> std::io::Result<()> {
     println!("eq resolve depth: {depth}");
     let mut defined_aliases = HashSet::new();  
     let mut type_is_not_zeroable: IndexSet<Ident> = IndexSet::new();
+    let mut type_is_not_any_bit_pattern: IndexSet<Ident> = IndexSet::new();
     for def in struct_defs {
         let name = def.name.as_ref().unwrap();
         if type_exclude_list.contains(name) {
@@ -2222,6 +2227,7 @@ fn main() -> std::io::Result<()> {
         let mut s_type = None;
         let mut derive_default = true;
         let mut is_zeroable = true;
+        let mut any_bit_pattern = true;
         let (derive_eq, derive_partial_eq) =
             non_eq_types.get(name).map(|&partial| (false, partial))
             .unwrap_or((true, true));
@@ -2249,6 +2255,9 @@ fn main() -> std::io::Result<()> {
             }
             if type_is_not_zeroable.contains(member_ty) {
                 is_zeroable = false;
+            }
+            if type_is_not_any_bit_pattern.contains(member_ty) {
+                any_bit_pattern = false;
             }
             let lifetime = (type_needs_lifetime.contains(member_ty)).then(||
             {
@@ -2567,6 +2576,7 @@ fn main() -> std::io::Result<()> {
         let doc = doc_link(&format!("Vk{name}"))
             .map(|link| quote! { #[doc = #link] });
         if !def.is_union {
+            let any_bit_pattern = !has_pointer & !needs_lifetime & any_bit_pattern;
             let mut extends_trait = None;
             let push_next = struct_extends
                 .contains(name)
@@ -2663,12 +2673,26 @@ fn main() -> std::io::Result<()> {
             let derive_eq = derive_eq.then(|| quote! {
                 Eq,
             });
-            let impl_zeroable = is_zeroable.then(|| quote! {
-                #[cfg(feature = "bytemuck")]
-                unsafe impl #lifetime Zeroable for #name #lifetime {}
+            let impl_bytemuck = is_zeroable.then(|| {
+                let zeroable = quote! {
+                    #[cfg(feature = "bytemuck")]
+                    unsafe impl #lifetime Zeroable for #name #lifetime {}
+                };
+                if any_bit_pattern {
+                    quote! {
+                        #zeroable
+                        #[cfg(feature = "bytemuck")]
+                        unsafe impl AnyBitPattern for #name {}
+                    }
+                } else {
+                    zeroable
+                }
             });
             if !is_zeroable {
                 type_is_not_zeroable.insert(name.clone());
+            }
+            if !any_bit_pattern {
+                type_is_not_any_bit_pattern.insert(name.clone());
             }
             let def = quote! {
                 #doc
@@ -2695,10 +2719,11 @@ fn main() -> std::io::Result<()> {
 
                 #impl_send_sync
 
-                #impl_zeroable
+                #impl_bytemuck
             };
             write!(structs, "{def}")?;
         } else {
+            type_is_not_any_bit_pattern.insert(name.clone());
             let lifetime = needs_lifetime.then(|| {
                 quote! { <'a> }
             });
@@ -3759,7 +3784,9 @@ fn main() -> std::io::Result<()> {
                                     }
                                 }
                             }
-                            impl Instance { 
+                            impl Instance {
+                                /// # Safety
+                                /// `f` must return valid Vulkan function pointers.
                                 pub unsafe fn load_with(
                                     f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                                     handle: crate::vk::Instance,
@@ -3946,6 +3973,8 @@ fn main() -> std::io::Result<()> {
                             }
                         }
                         impl Device {
+                            /// # Safety
+                            /// `f` must return valid Vulkan function pointers.
                             pub unsafe fn load_with(
                                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                                 handle: crate::vk::Device,
