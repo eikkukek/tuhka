@@ -1,6 +1,6 @@
 use super::*;
 #[cfg(feature = "bytemuck")]
-use bytemuck::Zeroable;
+use bytemuck::{AnyBitPattern, Zeroable};
 use vk_video::*;
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBaseOutStructure.html>"]
 #[repr(C)]
@@ -61,6 +61,8 @@ impl Offset2D {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Offset2D {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Offset2D {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkOffset3D.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -88,6 +90,8 @@ impl Offset3D {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Offset3D {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Offset3D {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkExtent2D.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -109,6 +113,8 @@ impl Extent2D {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Extent2D {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Extent2D {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkExtent3D.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -136,6 +142,8 @@ impl Extent3D {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Extent3D {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Extent3D {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkViewport.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq)]
@@ -181,6 +189,8 @@ impl Viewport {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Viewport {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Viewport {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRect2D.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -202,6 +212,8 @@ impl Rect2D {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for Rect2D {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for Rect2D {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClearRect.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -229,6 +241,8 @@ impl ClearRect {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClearRect {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClearRect {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkComponentMapping.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -262,6 +276,8 @@ impl ComponentMapping {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ComponentMapping {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ComponentMapping {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceProperties.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -353,6 +369,8 @@ impl Default for PhysicalDeviceProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkExtensionProperties.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -394,6 +412,8 @@ impl Default for ExtensionProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExtensionProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ExtensionProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkLayerProperties.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -460,6 +480,8 @@ impl Default for LayerProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for LayerProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for LayerProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkApplicationInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -940,6 +962,8 @@ impl QueueFamilyProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for QueueFamilyProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for QueueFamilyProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceMemoryProperties.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -984,6 +1008,8 @@ impl Default for PhysicalDeviceMemoryProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceMemoryProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceMemoryProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMemoryAllocateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -1084,6 +1110,8 @@ impl MemoryRequirements {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryRequirements {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MemoryRequirements {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSparseImageFormatProperties.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1111,6 +1139,8 @@ impl SparseImageFormatProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseImageFormatProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SparseImageFormatProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSparseImageMemoryRequirements.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1156,6 +1186,8 @@ impl SparseImageMemoryRequirements {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseImageMemoryRequirements {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SparseImageMemoryRequirements {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMemoryType.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1179,6 +1211,8 @@ impl MemoryType {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryType {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MemoryType {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMemoryHeap.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1202,6 +1236,8 @@ impl MemoryHeap {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MemoryHeap {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MemoryHeap {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMappedMemoryRange.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -1296,6 +1332,8 @@ impl FormatProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for FormatProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for FormatProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkImageFormatProperties.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1340,6 +1378,8 @@ impl ImageFormatProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageFormatProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageFormatProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorBufferInfo.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -1370,6 +1410,8 @@ impl DescriptorBufferInfo {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorBufferInfo {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorBufferInfo {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorImageInfo.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -1400,6 +1442,8 @@ impl DescriptorImageInfo {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorImageInfo {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorImageInfo {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkWriteDescriptorSet.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -1862,6 +1906,8 @@ impl ImageSubresource {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageSubresource {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageSubresource {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkImageSubresourceLayers.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1895,6 +1941,8 @@ impl ImageSubresourceLayers {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageSubresourceLayers {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageSubresourceLayers {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkImageSubresourceRange.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -1934,6 +1982,8 @@ impl ImageSubresourceRange {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageSubresourceRange {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageSubresourceRange {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMemoryBarrier.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -2497,6 +2547,8 @@ impl SubresourceLayout {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubresourceLayout {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SubresourceLayout {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkImageViewCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -2623,6 +2675,8 @@ impl BufferCopy {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferCopy {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BufferCopy {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSparseMemoryBind.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -2665,6 +2719,8 @@ impl SparseMemoryBind {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseMemoryBind {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SparseMemoryBind {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSparseImageMemoryBind.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -2711,6 +2767,8 @@ impl SparseImageMemoryBind {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SparseImageMemoryBind {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SparseImageMemoryBind {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSparseBufferMemoryBindInfo.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -2941,6 +2999,8 @@ impl ImageCopy {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageCopy {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageCopy {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkImageBlit.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -2987,6 +3047,8 @@ impl Default for ImageBlit {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageBlit {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageBlit {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBufferImageCopy.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -3036,6 +3098,8 @@ impl BufferImageCopy {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BufferImageCopy {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BufferImageCopy {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkStridedDeviceAddressRangeKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -3063,6 +3127,8 @@ impl StridedDeviceAddressRangeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StridedDeviceAddressRangeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for StridedDeviceAddressRangeKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkCopyMemoryIndirectCommandKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -3090,6 +3156,8 @@ impl CopyMemoryIndirectCommandKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CopyMemoryIndirectCommandKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for CopyMemoryIndirectCommandKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkCopyMemoryIndirectInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -3200,6 +3268,8 @@ impl CopyMemoryToImageIndirectCommandKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CopyMemoryToImageIndirectCommandKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for CopyMemoryToImageIndirectCommandKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkCopyMemoryToImageIndirectInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -3317,6 +3387,8 @@ impl ImageResolve {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ImageResolve {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ImageResolve {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkShaderModuleCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -3534,6 +3606,8 @@ impl DescriptorPoolSize {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorPoolSize {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorPoolSize {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorPoolCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -3713,6 +3787,8 @@ impl SpecializationMapEntry {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SpecializationMapEntry {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SpecializationMapEntry {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSpecializationInfo.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -4071,6 +4147,8 @@ impl VertexInputBindingDescription {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VertexInputBindingDescription {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VertexInputBindingDescription {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVertexInputAttributeDescription.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -4108,6 +4186,8 @@ impl VertexInputAttributeDescription {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VertexInputAttributeDescription {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VertexInputAttributeDescription {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineVertexInputStateCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -4697,6 +4777,8 @@ impl PipelineColorBlendAttachmentState {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineColorBlendAttachmentState {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PipelineColorBlendAttachmentState {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineColorBlendStateCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -4895,6 +4977,8 @@ impl StencilOpState {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StencilOpState {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for StencilOpState {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineDepthStencilStateCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -5333,6 +5417,8 @@ impl Default for PipelineCacheHeaderVersionOne {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCacheHeaderVersionOne {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PipelineCacheHeaderVersionOne {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineCacheHeaderVersionDataGraphQCOM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -5388,6 +5474,8 @@ impl Default for PipelineCacheHeaderVersionDataGraphQCOM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCacheHeaderVersionDataGraphQCOM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PipelineCacheHeaderVersionDataGraphQCOM {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPushConstantRange.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -5418,6 +5506,8 @@ impl PushConstantRange {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PushConstantRange {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PushConstantRange {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineBinaryCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -6473,6 +6563,8 @@ impl ClearDepthStencilValue {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClearDepthStencilValue {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClearDepthStencilValue {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClearAttachment.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -6567,6 +6659,8 @@ impl AttachmentDescription {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AttachmentDescription {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AttachmentDescription {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAttachmentReference.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -6588,6 +6682,8 @@ impl AttachmentReference {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AttachmentReference {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AttachmentReference {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSubpassDescription.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -6712,6 +6808,8 @@ impl SubpassDependency {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SubpassDependency {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SubpassDependency {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRenderPassCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -7368,6 +7466,8 @@ impl PhysicalDeviceFeatures {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceFeatures {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceFeatures {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceSparseProperties.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -7425,6 +7525,8 @@ impl PhysicalDeviceSparseProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceSparseProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceSparseProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceLimits.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -8454,6 +8556,8 @@ impl Default for PhysicalDeviceLimits {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceLimits {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceLimits {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSemaphoreCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -8734,6 +8838,8 @@ impl DrawIndirectCommand {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrawIndirectCommand {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrawIndirectCommand {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDrawIndexedIndirectCommand.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -8773,6 +8879,8 @@ impl DrawIndexedIndirectCommand {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrawIndexedIndirectCommand {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrawIndexedIndirectCommand {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDispatchIndirectCommand.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -8800,6 +8908,8 @@ impl DispatchIndirectCommand {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DispatchIndirectCommand {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DispatchIndirectCommand {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMultiDrawInfoEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -8821,6 +8931,8 @@ impl MultiDrawInfoEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MultiDrawInfoEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MultiDrawInfoEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMultiDrawIndexedInfoEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -8848,6 +8960,8 @@ impl MultiDrawIndexedInfoEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MultiDrawIndexedInfoEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MultiDrawIndexedInfoEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSubmitInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -9030,6 +9144,8 @@ impl DisplayPlanePropertiesKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayPlanePropertiesKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DisplayPlanePropertiesKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDisplayModeParametersKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -9053,6 +9169,8 @@ impl DisplayModeParametersKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayModeParametersKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DisplayModeParametersKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDisplayModePropertiesKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -9076,6 +9194,8 @@ impl DisplayModePropertiesKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayModePropertiesKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DisplayModePropertiesKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDisplayModeCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -9190,6 +9310,8 @@ impl DisplayPlaneCapabilitiesKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DisplayPlaneCapabilitiesKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DisplayPlaneCapabilitiesKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDisplaySurfaceCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -9494,6 +9616,8 @@ impl SurfaceCapabilitiesKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SurfaceCapabilitiesKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SurfaceCapabilitiesKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAndroidSurfaceCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -10094,6 +10218,8 @@ impl SurfaceFormatKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SurfaceFormatKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SurfaceFormatKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSwapchainCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -11109,6 +11235,8 @@ impl ExternalImageFormatPropertiesNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalImageFormatPropertiesNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ExternalImageFormatPropertiesNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkExternalMemoryImageCreateInfoNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -12377,6 +12505,8 @@ impl StridedDeviceAddressNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StridedDeviceAddressNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for StridedDeviceAddressNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -12445,6 +12575,8 @@ impl ClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureMoveObjectsInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12463,6 +12595,8 @@ impl ClusterAccelerationStructureMoveObjectsInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureMoveObjectsInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureMoveObjectsInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12490,6 +12624,8 @@ impl ClusterAccelerationStructureBuildClustersBottomLevelInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureBuildClustersBottomLevelInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureBuildClustersBottomLevelInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureGetTemplateIndicesInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12508,6 +12644,8 @@ impl ClusterAccelerationStructureGetTemplateIndicesInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureGetTemplateIndicesInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureGetTemplateIndicesInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureBuildTriangleClusterInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12532,6 +12670,8 @@ impl ClusterAccelerationStructureBuildTriangleClusterInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureBuildTriangleClusterInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureBuildTriangleClusterInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12556,6 +12696,8 @@ impl ClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureInstantiateClusterInfoNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -12595,6 +12737,8 @@ impl ClusterAccelerationStructureInstantiateClusterInfoNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ClusterAccelerationStructureInstantiateClusterInfoNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ClusterAccelerationStructureInstantiateClusterInfoNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkClusterAccelerationStructureClustersBottomLevelInputNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -13153,6 +13297,8 @@ impl BindShaderGroupIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindShaderGroupIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindShaderGroupIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBindIndexBufferIndirectCommandNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -13180,6 +13326,8 @@ impl BindIndexBufferIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindIndexBufferIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindIndexBufferIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBindVertexBufferIndirectCommandNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -13207,6 +13355,8 @@ impl BindVertexBufferIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindVertexBufferIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindVertexBufferIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSetStateFlagsIndirectCommandNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -13222,6 +13372,8 @@ impl SetStateFlagsIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SetStateFlagsIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SetStateFlagsIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsStreamNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -13243,6 +13395,8 @@ impl IndirectCommandsStreamNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsStreamNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for IndirectCommandsStreamNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsLayoutTokenNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -13714,6 +13868,8 @@ impl BindPipelineIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindPipelineIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindPipelineIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceFeatures2.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -14384,6 +14540,8 @@ impl ConformanceVersion {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ConformanceVersion {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ConformanceVersion {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceDriverProperties.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -14564,6 +14722,8 @@ impl RectLayerKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RectLayerKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for RectLayerKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceVariablePointersFeatures.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -14653,6 +14813,8 @@ impl ExternalMemoryProperties {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ExternalMemoryProperties {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ExternalMemoryProperties {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceExternalImageFormatInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -18814,6 +18976,8 @@ impl DescriptorUpdateTemplateEntry {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorUpdateTemplateEntry {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorUpdateTemplateEntry {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorUpdateTemplateCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -18930,6 +19094,8 @@ impl XYColorEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for XYColorEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for XYColorEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDevicePresentIdFeaturesKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -19510,6 +19676,8 @@ impl PresentStageTimeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentStageTimeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PresentStageTimeEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPastPresentationTimingInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -20254,6 +20422,8 @@ impl RefreshCycleDurationGOOGLE {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RefreshCycleDurationGOOGLE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for RefreshCycleDurationGOOGLE {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPastPresentationTimingGOOGLE.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -20298,6 +20468,8 @@ impl PastPresentationTimingGOOGLE {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PastPresentationTimingGOOGLE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PastPresentationTimingGOOGLE {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPresentTimesInfoGOOGLE.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -20368,6 +20540,8 @@ impl PresentTimeGOOGLE {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PresentTimeGOOGLE {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PresentTimeGOOGLE {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIOSSurfaceCreateInfoMVK.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -20533,6 +20707,8 @@ impl ViewportWScalingNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ViewportWScalingNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ViewportWScalingNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineViewportWScalingStateCreateInfoNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -20625,6 +20801,8 @@ impl ViewportSwizzleNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ViewportSwizzleNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ViewportSwizzleNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineViewportSwizzleStateCreateInfoNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -20869,6 +21047,8 @@ impl InputAttachmentAspectReference {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for InputAttachmentAspectReference {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for InputAttachmentAspectReference {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRenderPassInputAttachmentAspectCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -23147,6 +23327,8 @@ impl SampleLocationEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SampleLocationEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SampleLocationEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkSampleLocationsInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -25996,6 +26178,8 @@ impl ShaderResourceUsageAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderResourceUsageAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ShaderResourceUsageAMD {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkShaderStatisticsInfoAMD.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -26061,6 +26245,8 @@ impl Default for ShaderStatisticsInfoAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderStatisticsInfoAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ShaderStatisticsInfoAMD {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -29046,6 +29232,8 @@ impl VertexInputBindingDivisorDescription {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VertexInputBindingDivisorDescription {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VertexInputBindingDivisorDescription {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineVertexInputDivisorStateCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -31799,6 +31987,8 @@ impl CoarseSampleLocationNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for CoarseSampleLocationNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for CoarseSampleLocationNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkCoarseSampleOrderCustomNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -32111,6 +32301,8 @@ impl DrawMeshTasksIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrawMeshTasksIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrawMeshTasksIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceMeshShaderFeaturesEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -32506,6 +32698,8 @@ impl DrawMeshTasksIndirectCommandEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrawMeshTasksIndirectCommandEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrawMeshTasksIndirectCommandEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRayTracingShaderGroupCreateInfoNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -34087,6 +34281,8 @@ impl StridedDeviceAddressRegionKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for StridedDeviceAddressRegionKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for StridedDeviceAddressRegionKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkTraceRaysIndirectCommandKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -34114,6 +34310,8 @@ impl TraceRaysIndirectCommandKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TraceRaysIndirectCommandKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for TraceRaysIndirectCommandKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkTraceRaysIndirectCommand2KHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -34240,6 +34438,8 @@ impl TraceRaysIndirectCommand2KHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TraceRaysIndirectCommand2KHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for TraceRaysIndirectCommand2KHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -34379,6 +34579,8 @@ impl DrmFormatModifierPropertiesEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrmFormatModifierPropertiesEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrmFormatModifierPropertiesEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceImageDrmFormatModifierInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -36626,6 +36828,8 @@ impl PipelineCreationFeedback {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PipelineCreationFeedback {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PipelineCreationFeedback {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineCreationFeedbackCreateInfo.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -42201,6 +42405,8 @@ impl GpaPerfBlockPropertiesAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaPerfBlockPropertiesAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for GpaPerfBlockPropertiesAMD {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceGpaFeaturesAMD.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -42400,6 +42606,8 @@ impl GpaPerfCounterAMD {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for GpaPerfCounterAMD {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for GpaPerfCounterAMD {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkGpaSampleBeginInfoAMD.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -43692,6 +43900,8 @@ impl AccelerationStructureBuildRangeInfoKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureBuildRangeInfoKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AccelerationStructureBuildRangeInfoKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureCreateInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -43834,6 +44044,8 @@ impl AabbPositionsKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AabbPositionsKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AabbPositionsKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkTransformMatrixKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -43857,6 +44069,8 @@ impl Default for TransformMatrixKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for TransformMatrixKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for TransformMatrixKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureInstanceKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq)]
@@ -43900,6 +44114,8 @@ impl AccelerationStructureInstanceKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureInstanceKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AccelerationStructureInstanceKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureDeviceAddressInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -44276,6 +44492,8 @@ impl RefreshObjectKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RefreshObjectKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for RefreshObjectKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRefreshObjectListKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -44952,6 +45170,8 @@ impl ColorBlendEquationEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ColorBlendEquationEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ColorBlendEquationEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkColorBlendAdvancedEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -44991,6 +45211,8 @@ impl ColorBlendAdvancedEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ColorBlendAdvancedEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ColorBlendAdvancedEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRenderPassTransformBeginInfoQCOM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -45258,6 +45480,8 @@ impl BuildPartitionedAccelerationStructureIndirectCommandNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BuildPartitionedAccelerationStructureIndirectCommandNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BuildPartitionedAccelerationStructureIndirectCommandNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPartitionedAccelerationStructureFlagsNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -45391,6 +45615,8 @@ impl Default for PartitionedAccelerationStructureWriteInstanceDataNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PartitionedAccelerationStructureWriteInstanceDataNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PartitionedAccelerationStructureWriteInstanceDataNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPartitionedAccelerationStructureUpdateInstanceDataNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -45421,6 +45647,8 @@ impl PartitionedAccelerationStructureUpdateInstanceDataNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PartitionedAccelerationStructureUpdateInstanceDataNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PartitionedAccelerationStructureUpdateInstanceDataNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq)]
@@ -45451,6 +45679,8 @@ impl Default for PartitionedAccelerationStructureWritePartitionTranslationDataNV
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PartitionedAccelerationStructureWritePartitionTranslationDataNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PartitionedAccelerationStructureWritePartitionTranslationDataNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkWriteDescriptorSetPartitionedAccelerationStructureNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -49809,6 +50039,8 @@ impl DrawIndirectCountIndirectCommandEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrawIndirectCountIndirectCommandEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrawIndirectCountIndirectCommandEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsVertexBufferTokenEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49824,6 +50056,8 @@ impl IndirectCommandsVertexBufferTokenEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsVertexBufferTokenEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for IndirectCommandsVertexBufferTokenEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBindVertexBufferIndirectCommandEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49851,6 +50085,8 @@ impl BindVertexBufferIndirectCommandEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindVertexBufferIndirectCommandEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindVertexBufferIndirectCommandEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsIndexBufferTokenEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49866,6 +50102,8 @@ impl IndirectCommandsIndexBufferTokenEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsIndexBufferTokenEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for IndirectCommandsIndexBufferTokenEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkBindIndexBufferIndirectCommandEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49893,6 +50131,8 @@ impl BindIndexBufferIndirectCommandEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for BindIndexBufferIndirectCommandEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for BindIndexBufferIndirectCommandEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsPushConstantTokenEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49908,6 +50148,8 @@ impl IndirectCommandsPushConstantTokenEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsPushConstantTokenEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for IndirectCommandsPushConstantTokenEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkIndirectCommandsExecutionSetTokenEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -49929,6 +50171,8 @@ impl IndirectCommandsExecutionSetTokenEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for IndirectCommandsExecutionSetTokenEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for IndirectCommandsExecutionSetTokenEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPipelineViewportDepthClipControlCreateInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -57573,6 +57817,8 @@ impl VideoEncodeH264QpKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH264QpKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeH264QpKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeH264FrameSizeKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -57600,6 +57846,8 @@ impl VideoEncodeH264FrameSizeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH264FrameSizeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeH264FrameSizeKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeH264GopRemainingFrameInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -58558,6 +58806,8 @@ impl VideoEncodeH265QpKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265QpKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeH265QpKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeH265FrameSizeKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -58585,6 +58835,8 @@ impl VideoEncodeH265FrameSizeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeH265FrameSizeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeH265FrameSizeKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeH265GopRemainingFrameInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -59702,6 +59954,8 @@ impl VideoEncodeAV1QIndexKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1QIndexKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeAV1QIndexKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeAV1FrameSizeKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -59729,6 +59983,8 @@ impl VideoEncodeAV1FrameSizeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for VideoEncodeAV1FrameSizeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for VideoEncodeAV1FrameSizeKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkVideoEncodeAV1GopRemainingFrameInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -62728,6 +62984,8 @@ impl SRTDataNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for SRTDataNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for SRTDataNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureSRTMotionInstanceNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq)]
@@ -62777,6 +63035,8 @@ impl AccelerationStructureSRTMotionInstanceNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureSRTMotionInstanceNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AccelerationStructureSRTMotionInstanceNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureMatrixMotionInstanceNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq)]
@@ -62826,6 +63086,8 @@ impl AccelerationStructureMatrixMotionInstanceNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for AccelerationStructureMatrixMotionInstanceNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for AccelerationStructureMatrixMotionInstanceNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAccelerationStructureMotionInstanceNV.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy)]
@@ -63985,6 +64247,8 @@ impl DrmFormatModifierProperties2EXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DrmFormatModifierProperties2EXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DrmFormatModifierProperties2EXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkAndroidHardwareBufferFormatProperties2ANDROID.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -66440,6 +66704,8 @@ impl RenderPassCreationFeedbackInfoEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RenderPassCreationFeedbackInfoEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for RenderPassCreationFeedbackInfoEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRenderPassCreationFeedbackCreateInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -66534,6 +66800,8 @@ impl Default for RenderPassSubpassFeedbackInfoEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for RenderPassSubpassFeedbackInfoEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for RenderPassSubpassFeedbackInfoEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkRenderPassSubpassFeedbackCreateInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -67177,6 +67445,8 @@ impl MicromapUsageKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MicromapUsageKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MicromapUsageKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMicromapUsageEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -67205,6 +67475,8 @@ impl MicromapUsageEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MicromapUsageEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MicromapUsageEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkMicromapTriangleKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -67233,6 +67505,8 @@ impl MicromapTriangleKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for MicromapTriangleKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for MicromapTriangleKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceOpacityMicromapFeaturesKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -70298,6 +70572,8 @@ impl DeviceFaultAddressInfoKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultAddressInfoKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DeviceFaultAddressInfoKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceFaultVendorInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -70345,6 +70621,8 @@ impl Default for DeviceFaultVendorInfoKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultVendorInfoKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DeviceFaultVendorInfoKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceFaultInfoKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -70737,6 +71015,8 @@ impl Default for DeviceFaultVendorBinaryHeaderVersionOneKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceFaultVendorBinaryHeaderVersionOneKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DeviceFaultVendorBinaryHeaderVersionOneKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceFaultFeaturesKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -71071,6 +71351,8 @@ impl DecompressMemoryRegionNV {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DecompressMemoryRegionNV {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DecompressMemoryRegionNV {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDecompressMemoryRegionEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -71106,6 +71388,8 @@ impl DecompressMemoryRegionEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DecompressMemoryRegionEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DecompressMemoryRegionEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDecompressMemoryInfoEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -78367,6 +78651,8 @@ impl DepthClampRangeEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DepthClampRangeEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DepthClampRangeEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceCooperativeMatrix2FeaturesNV.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -83080,6 +83366,8 @@ impl PhysicalDeviceDataGraphProcessingEngineARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceDataGraphProcessingEngineARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceDataGraphProcessingEngineARM {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkPhysicalDeviceDataGraphOperationSupportARM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -83125,6 +83413,8 @@ impl Default for PhysicalDeviceDataGraphOperationSupportARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for PhysicalDeviceDataGraphOperationSupportARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for PhysicalDeviceDataGraphOperationSupportARM {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkQueueFamilyDataGraphPropertiesARM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -85519,6 +85809,8 @@ impl DescriptorMappingSourceHeapDataEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorMappingSourceHeapDataEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorMappingSourceHeapDataEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorMappingSourceShaderRecordIndexEXT.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq)]
@@ -85619,6 +85911,8 @@ impl DescriptorMappingSourceIndirectAddressEXT {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DescriptorMappingSourceIndirectAddressEXT {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DescriptorMappingSourceIndirectAddressEXT {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDescriptorSetAndBindingMappingEXT.html>"]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -86649,6 +86943,8 @@ impl ShaderInstrumentationMetricDataHeaderARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for ShaderInstrumentationMetricDataHeaderARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for ShaderInstrumentationMetricDataHeaderARM {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceAddressRangeKHR.html>"]
 #[repr(C)]
 #[derive(Default, Clone, Copy, PartialEq, Eq)]
@@ -86670,6 +86966,8 @@ impl DeviceAddressRangeKHR {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DeviceAddressRangeKHR {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DeviceAddressRangeKHR {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkDeviceMemoryCopyKHR.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -87885,6 +88183,8 @@ impl Default for DataGraphTOSANameQualityARM {
 }
 #[cfg(feature = "bytemuck")]
 unsafe impl Zeroable for DataGraphTOSANameQualityARM {}
+#[cfg(feature = "bytemuck")]
+unsafe impl AnyBitPattern for DataGraphTOSANameQualityARM {}
 #[doc = "<https://docs.vulkan.org/refpages/latest/refpages/source/VkQueueFamilyDataGraphTOSAPropertiesARM.html>"]
 #[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]

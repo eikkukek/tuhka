@@ -170,6 +170,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -615,6 +617,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -1057,6 +1061,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -1416,6 +1422,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -1540,6 +1548,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -1680,6 +1690,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -1820,6 +1832,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -1935,6 +1949,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -2052,6 +2068,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -2415,6 +2433,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -2771,6 +2791,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -2884,6 +2906,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3123,6 +3147,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3402,6 +3428,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3535,6 +3563,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3666,6 +3696,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3819,6 +3851,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -3943,6 +3977,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4074,6 +4110,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4296,6 +4334,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4511,6 +4551,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4654,6 +4696,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4780,6 +4824,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -4895,6 +4941,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -5064,6 +5112,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -5274,6 +5324,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -5501,6 +5553,8 @@ pub mod khr {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -5832,6 +5886,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -6338,6 +6394,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -6935,6 +6993,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7229,6 +7289,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7354,6 +7416,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7480,6 +7544,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7599,6 +7665,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7836,6 +7904,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -7994,6 +8064,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -8168,6 +8240,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -8302,6 +8376,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -8449,6 +8525,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -8642,6 +8720,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -8857,6 +8937,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -9104,6 +9186,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -9274,6 +9358,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -9461,6 +9547,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -9684,6 +9772,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -10312,6 +10402,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -10896,6 +10988,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11053,6 +11147,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11203,6 +11299,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11437,6 +11535,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11585,6 +11685,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11772,6 +11874,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -11984,6 +12088,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12078,6 +12184,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12272,6 +12380,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12390,6 +12500,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12649,6 +12761,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12842,6 +12956,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -12996,6 +13112,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -13203,6 +13321,8 @@ pub mod khr {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -13367,6 +13487,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -13595,6 +13717,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -13850,6 +13974,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -14140,6 +14266,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -14232,6 +14360,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -14340,6 +14470,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -14452,6 +14584,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -14613,6 +14747,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -14810,6 +14946,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -14955,6 +15093,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -15278,6 +15418,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -15697,6 +15839,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -15999,6 +16143,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -16119,6 +16265,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -16281,6 +16429,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -16501,6 +16651,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -16621,6 +16773,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -16846,6 +17000,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -17026,6 +17182,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -17159,6 +17317,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -17246,6 +17406,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -17461,6 +17623,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -17642,6 +17806,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -17731,6 +17897,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -17827,6 +17995,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -18142,6 +18312,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -18507,6 +18679,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -18674,6 +18848,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -18775,6 +18951,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -18883,6 +19061,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -19071,6 +19251,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -19242,6 +19424,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -19557,6 +19741,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -19917,6 +20103,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20090,6 +20278,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20192,6 +20382,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20320,6 +20512,8 @@ pub mod ext {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -20437,6 +20631,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20570,6 +20766,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20753,6 +20951,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -20901,6 +21101,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -21037,6 +21239,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -21451,6 +21655,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -21838,6 +22044,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -22605,6 +22813,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -23312,6 +23522,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -24541,6 +24753,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -25715,6 +25929,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -25829,6 +26045,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26137,6 +26355,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26397,6 +26617,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26513,6 +26735,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26637,6 +26861,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26736,6 +26962,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26844,6 +27072,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -26989,6 +27219,8 @@ pub mod ext {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -27119,6 +27351,8 @@ pub mod nv {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -27232,6 +27466,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -27329,6 +27565,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -27521,6 +27759,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -27924,6 +28164,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -28351,6 +28593,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -28529,6 +28773,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -28693,6 +28939,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -28854,6 +29102,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -28977,6 +29227,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -29219,6 +29471,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -29531,6 +29785,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -29865,6 +30121,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30014,6 +30272,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30127,6 +30387,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30233,6 +30495,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30454,6 +30718,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30694,6 +30960,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -30859,6 +31127,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -31007,6 +31277,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -31168,6 +31440,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -31395,6 +31669,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -31732,6 +32008,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -31984,6 +32262,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32234,6 +32514,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32444,6 +32726,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32613,6 +32897,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32745,6 +33031,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32859,6 +33147,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -32994,6 +33284,8 @@ pub mod nv {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -33177,6 +33469,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -33328,6 +33622,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -33707,6 +34003,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34013,6 +34311,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34153,6 +34453,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34256,6 +34558,8 @@ pub mod amd {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34420,6 +34724,8 @@ pub mod nvx {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34637,6 +34943,8 @@ pub mod nvx {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -34770,6 +35078,8 @@ pub mod ggp {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -34869,6 +35179,8 @@ pub mod nn {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -34990,6 +35302,8 @@ pub mod google {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -35170,6 +35484,8 @@ pub mod mvk {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -35265,6 +35581,8 @@ pub mod mvk {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -35387,6 +35705,8 @@ pub mod android {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -35649,6 +35969,8 @@ pub mod amdx {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -35917,6 +36239,8 @@ pub mod qcom {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -36055,6 +36379,8 @@ pub mod qcom {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -36211,6 +36537,8 @@ pub mod qcom {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -36392,6 +36720,8 @@ pub mod qcom {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -36667,6 +36997,8 @@ pub mod intel {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -36885,6 +37217,8 @@ pub mod fuchsia {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -37004,6 +37338,8 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -37139,6 +37475,8 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -37341,6 +37679,8 @@ pub mod fuchsia {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -37525,6 +37865,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -37823,6 +38165,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -38333,6 +38677,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -38750,6 +39096,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -38851,6 +39199,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39123,6 +39473,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39384,6 +39736,8 @@ pub mod arm {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39569,6 +39923,8 @@ pub mod valve {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39722,6 +40078,8 @@ pub mod huawei {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39823,6 +40181,8 @@ pub mod huawei {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -39938,6 +40298,8 @@ pub mod huawei {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -40080,6 +40442,8 @@ pub mod qnx {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -40194,6 +40558,8 @@ pub mod qnx {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -40308,6 +40674,8 @@ pub mod ohos {
             }
         }
         impl Device {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Device,
@@ -40407,6 +40775,8 @@ pub mod ohos {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,
@@ -40549,6 +40919,8 @@ pub mod sec {
             }
         }
         impl Instance {
+            #[doc = r" # Safety"]
+            #[doc = r" `f` must return valid Vulkan function pointers."]
             pub unsafe fn load_with(
                 f: &mut dyn FnMut(&ffi::CStr) -> *const ffi::c_void,
                 handle: crate::vk::Instance,

@@ -1,6 +1,9 @@
 # Changelog
 
 All changes to this project will be documented in this file.
+## [0.1.11] - 2026-11-07
+### Added
+- `bytemuck::AnyBitPattern` for applicable structs and enums.
 ## [0.1.10] - 2026-11-05
 ### Fixed
 - Docs.
@@ -49,6 +52,7 @@ All changes to this project will be documented in this file.
 ### Added
 - Initial crate release
 
+[0.1.11]: https://crates.io/crates/tuhka/0.1.11
 [0.1.10]: https://crates.io/crates/tuhka/0.1.10
 [0.1.9]: https://crates.io/crates/tuhka/0.1.9
 [0.1.8]: https://crates.io/crates/tuhka/0.1.8

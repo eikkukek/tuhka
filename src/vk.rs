@@ -79,6 +79,8 @@ impl packed_u24_u8 {
 
 #[cfg(feature = "bytemuck")]
 unsafe impl bytemuck::Zeroable for packed_u24_u8 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl bytemuck::AnyBitPattern for packed_u24_u8 {}
 
 #[allow(non_camel_case_types)]
 #[repr(transparent)]
@@ -126,6 +128,8 @@ impl packed_u9_u9_u6_u4_u4 {
 
 #[cfg(feature = "bytemuck")]
 unsafe impl bytemuck::Zeroable for packed_u9_u9_u6_u4_u4 {}
+#[cfg(feature = "bytemuck")]
+unsafe impl bytemuck::AnyBitPattern for packed_u9_u9_u6_u4_u4 {}
 
 #[allow(non_camel_case_types)]
 trait PFN_Default {
