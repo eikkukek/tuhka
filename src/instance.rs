@@ -126,7 +126,7 @@ impl Instance {
         }
     }
 
-    /// Destroys a [`Device'][1].
+    /// Destroys a [`Device`][1].
     ///
     /// # Safety
     /// All raw Vulkan calls are unsafe as there is no validation of input or usage.

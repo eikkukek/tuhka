@@ -214,7 +214,7 @@ impl Library {
         }
     }
     
-    /// Creates an [`Instance'][1].
+    /// Creates an [`Instance`][1].
     ///
     /// # Safety
     /// All raw Vulkan calls are unsafe as there is no validation of input or usage.
@@ -248,7 +248,7 @@ impl Library {
         }
     }
 
-    /// Destroys an [`Instance'][1].
+    /// Destroys an [`Instance`][1].
     ///
     /// # Safety
     /// All raw Vulkan calls are unsafe as there is no validation of input or usage.

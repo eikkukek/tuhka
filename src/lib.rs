@@ -27,6 +27,7 @@
 //! ```
 
 #![no_std]
+#![warn(rustdoc::all)]
 
 pub mod vk;
 mod option;
