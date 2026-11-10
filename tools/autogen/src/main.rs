@@ -14,6 +14,14 @@ use proc_macro2::{Span, TokenStream};
 use syn::{Ident, punctuated::Punctuated, Token};
 use xml::reader::{EventReader, XmlEvent};
 
+fn align_up(offset: usize, align: usize) -> usize {
+    (offset + align - 1) & !(align - 1)
+}
+
+fn new_ident(str: &str) -> Ident {
+    Ident::new(str, Span::call_site())
+}
+
 #[derive(Default)]
 struct Bitmask {
     requires: Option<String>,
@@ -417,7 +425,7 @@ impl UnresolvedCmd {
                     #allow_too_many_arguments
                     pub unsafe fn #name_rs #rs_def_get_data_ext
                 };
-                name_rs = Ident::new(&format!("{name_rs}_len"), Span::call_site());
+                name_rs = new_ident(&format!("{name_rs}_len"));
                 (Some(get_data), Some(get_data_ext))
             } else { (None, None) };
         ResolvedCmd {
@@ -550,7 +558,7 @@ fn main() -> std::io::Result<()> {
     write!(enums, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, NoUninit, AnyBitPattern}};")?;
     let mut structs = File::create("../../src/vk/structs.rs")?;
     write!(structs, "use super::*; use vk_video::*;")?;
-    write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, AnyBitPattern}};")?;
+    write!(structs, "#[cfg(feature = \"bytemuck\")] use bytemuck::{{Zeroable, AnyBitPattern, NoUninit}};")?;
     let mut unions = File::create("../../src/vk/unions.rs")?;
     write!(unions, "use super::*;")?;
     write!(unions, "#[cfg(feature = \"bytemuck\")] use bytemuck::Zeroable;")?;
@@ -568,31 +576,47 @@ fn main() -> std::io::Result<()> {
     let mut type_exclude_list = HashSet::new();
     let mut dispatchable_handles = HashSet::new();
     let mut non_eq_types = HashMap::new();
-    non_eq_types.insert(Ident::new("f32", Span::call_site()), true);
-    non_eq_types.insert(Ident::new("f64", Span::call_site()), true);
+    non_eq_types.insert(new_ident("f32"), true);
+    non_eq_types.insert(new_ident("f64"), true);
+    let mut nouninit_types: IndexMap<Ident, (usize, usize)> = [
+        (new_ident("u8"), (1, 1)),
+
+        (new_ident("u16"), (2, 2)),
+
+        (new_ident("u32"), (4, 4)),
+        (new_ident("i32"), (4, 4)),
+        (new_ident("f32"), (4, 4)),
+        (new_ident("Bool32"), (4, 4)),
+
+        (new_ident("i64"), (8, 8)),
+        (new_ident("u64"), (8, 8)),
+
+        (new_ident("packed_u24_u8"), (4, 4)),
+        (new_ident("packed_u9_u9_u6_u4_u4"), (4, 4)),
+    ].into_iter().collect();
     let opaque_handles: HashSet<_> = [
-        Ident::new("Display", Span::call_site()),
-        Ident::new("wl_display", Span::call_site()),
-        Ident::new("wl_surface", Span::call_site()),
-        Ident::new("ubm_device", Span::call_site()),
-        Ident::new("ubm_surface", Span::call_site()),
-        Ident::new("HANDLE", Span::call_site()),
-        Ident::new("SECURITY_ATTRIBUTES", Span::call_site()),
-        Ident::new("xcb_connection_t", Span::call_site()),
-        Ident::new("xcb_visualid_t", Span::call_site()),
-        Ident::new("xcb_window_t", Span::call_site()),
-        Ident::new("IDirectFB", Span::call_site()),
-        Ident::new("IDirectFBSurface", Span::call_site()),
-        Ident::new("_screen_context", Span::call_site()),
-        Ident::new("_screen_window", Span::call_site()),
-        Ident::new("_screen_buffer", Span::call_site()),
-        Ident::new("__IOSurface", Span::call_site()),
-        Ident::new("ANativeWindow", Span::call_site()),
-        Ident::new("AHardwareBuffer", Span::call_site()),
-        Ident::new("CAMetalLayer", Span::call_site()),
-        Ident::new("OHNativeWindow", Span::call_site()),
-        Ident::new("OHBufferHandle", Span::call_site()),
-        Ident::new("OH_NativeBuffer", Span::call_site()),
+        new_ident("Display"),
+        new_ident("wl_display"),
+        new_ident("wl_surface"),
+        new_ident("ubm_device"),
+        new_ident("ubm_surface"),
+        new_ident("HANDLE"),
+        new_ident("SECURITY_ATTRIBUTES"),
+        new_ident("xcb_connection_t"),
+        new_ident("xcb_visualid_t"),
+        new_ident("xcb_window_t"),
+        new_ident("IDirectFB"),
+        new_ident("IDirectFBSurface"),
+        new_ident("_screen_context"),
+        new_ident("_screen_window"),
+        new_ident("_screen_buffer"),
+        new_ident("__IOSurface"),
+        new_ident("ANativeWindow"),
+        new_ident("AHardwareBuffer"),
+        new_ident("CAMetalLayer"),
+        new_ident("OHNativeWindow"),
+        new_ident("OHBufferHandle"),
+        new_ident("OH_NativeBuffer"),
     ].into_iter().collect();
     for event in parser {
         match event {
@@ -864,11 +888,10 @@ fn main() -> std::io::Result<()> {
                                         }
                                         let number = syn::LitInt::new(&value, Span::call_site());
                                         (
-                                            syn::Ident::new(
+                                            new_ident(
                                                 if ty == "uint32_t" { "u32" } else {
                                                     "u64"
                                                 },
-                                                Span::call_site()
                                             ),
                                             quote! {
                                                 #not #number
@@ -883,13 +906,13 @@ fn main() -> std::io::Result<()> {
                                             Span::call_site()
                                         );
                                         (
-                                            syn::Ident::new("f32", Span::call_site()),
+                                            new_ident("f32"),
                                             quote! {#number},
                                         )
                                     },
                                     _ => unreachable!(),
                                 };
-                                let name = Ident::new(name.trim_start_matches("VK_"), Span::call_site());
+                                let name = new_ident(name.trim_start_matches("VK_"));
                                 let def = quote! {
                                     pub const #name: #ty = #value;
                                 };
@@ -981,9 +1004,9 @@ fn main() -> std::io::Result<()> {
                                 let alias = alias.value.clone();
                                 let pfn_name = format!("PFN_{name}");
                                 let pfn_alias = format!("PFN_{alias}");
-                                let name_rs = Ident::new(&lower_snake_case(
+                                let name_rs = new_ident(&lower_snake_case(
                                     name.trim_start_matches("vk")
-                                ), Span::call_site());
+                                ));
                                 commands.insert(name, Command {
                                     body: CommandBody::Alias(alias),
                                     success_codes,
@@ -1160,7 +1183,7 @@ fn main() -> std::io::Result<()> {
                                 let Some(name) = find_attribute("name")
                             {
                                 type_exclude_list.insert(
-                                    Ident::new(name.value.trim_start_matches("Vk"), Span::call_site())
+                                    new_ident(name.value.trim_start_matches("Vk"))
                                 );
                             }
                         }
@@ -1273,9 +1296,8 @@ fn main() -> std::io::Result<()> {
                                 } else {
                                     if let Some(name) = find_attribute("name") {
                                         type_exclude_list.insert(
-                                            Ident::new(name.value
+                                            new_ident(name.value
                                                 .trim_start_matches("Vk"),
-                                                Span::call_site(),
                                             )
                                         );
                                     }
@@ -1346,9 +1368,8 @@ fn main() -> std::io::Result<()> {
                                         parsing_member.parsing = StructParsing::None;
                                     },
                                     StructParsing::Type => {
-                                        parsing_member.ty = Some(Ident::new(string
+                                        parsing_member.ty = Some(new_ident(string
                                             .trim_start_matches("Vk"),
-                                            Span::call_site()
                                         ));
                                         parsing_member.parsing = StructParsing::Pointer;
                                     },
@@ -1399,7 +1420,7 @@ fn main() -> std::io::Result<()> {
                                         {
                                             let packed_u24_u8 = structure.packed_u24_u8.take().unwrap();
                                             parsing_member.name = format!("{packed_u24_u8}_and_{}", parsing_member.name);
-                                            parsing_member.ty = Some(Ident::new("packed_u24_u8", Span::call_site()));
+                                            parsing_member.ty = Some(new_ident("packed_u24_u8"));
                                         } else if let Some(packed) = structure.packed_u9_u9_u6_u4_u4.take() {
                                             use packed_u9_u9_u6_u4_u4 as E;
                                             structure.packed_u9_u9_u6_u4_u4 = match packed {
@@ -1410,8 +1431,7 @@ fn main() -> std::io::Result<()> {
                                                 E::E(name) => {
                                                     parsing_member.name = format!("{name}_and_{}", parsing_member.name);
                                                     parsing_member.ty = Some(
-                                                        Ident::new("packed_u9_u9_u6_u4_u4",
-                                                        Span::call_site()
+                                                        new_ident("packed_u9_u9_u6_u4_u4",
                                                     ));
                                                     None
                                                 },
@@ -1589,35 +1609,33 @@ fn main() -> std::io::Result<()> {
                                             );
                                     },
                                     Type::Struct(structure) => {
-                                        structure.name = Some(Ident::new(reader.element_name
+                                        structure.name = Some(new_ident(reader.element_name
                                             .as_ref()
                                             .unwrap()
                                             .trim_start_matches("Vk"),
-                                            Span::call_site()
                                         ));
                                         if let Some(extends) = &structure.extends_unparsed {
                                             for item in parse_punctuated(extends) {
                                                 let item = item.trim_start_matches("Vk");
-                                                struct_extends.insert(Ident::new(item, Span::call_site()));
-                                                structure.extends.push(Ident::new(
+                                                struct_extends.insert(new_ident(item));
+                                                structure.extends.push(new_ident(
                                                     &format!("Extends{}", item),
-                                                    Span::call_site()
                                                 ));
                                             }
                                         }
                                         struct_defs.push(structure.clone());
                                     },
                                     Type::Handle(handle) => {
-                                        let type_enum = Ident::new(
+                                        let type_enum = new_ident(
                                             handle.type_enum.trim_start_matches("VK_OBJECT_TYPE_"),
-                                            Span::call_site(),
                                         );
                                         let name_str = reader.element_name.take().unwrap();
                                         let doc = doc_link(&format!("Vk{name_str}")).unwrap_or_default();
-                                        let name = Ident::new(&name_str, Span::call_site());
+                                        let name = new_ident(&name_str);
                                         let def = match handle.ty {
                                             HandleType::NonDispatchable => {
                                                 non_eq_types.insert(name.clone(), false);
+                                                nouninit_types.insert(name.clone(), (8, 8));
                                                 quote! {
                                                     define_non_dispatchable_handle!(
                                                         #name, #type_enum, #doc,
@@ -1690,9 +1708,9 @@ fn main() -> std::io::Result<()> {
                             let Type::Funcpointer(funcpointer) = ty
                         {
                             let name = reader.element_name.clone().unwrap();
-                            let name_rs = Ident::new(&lower_snake_case(
+                            let name_rs = new_ident(&lower_snake_case(
                                 name.trim_start_matches("vk")
-                            ), Span::call_site());
+                            ));
                             commands.insert(
                                 reader.element_name.clone().unwrap(),
                                 Command {
@@ -1807,7 +1825,7 @@ fn main() -> std::io::Result<()> {
         if name_str.find("FlagBits").is_some() { continue }
         let doc = doc_link(&name_str)
             .map(|link| quote! { #[doc = #link] });
-        let name = Ident::new(name_str.trim_start_matches("Vk"), Span::call_site());
+        let name = new_ident(name_str.trim_start_matches("Vk"));
         let impl_bytemuck = quote! {
             #[cfg(feature = "bytemuck")]
             unsafe impl Zeroable for #name {}
@@ -1816,6 +1834,7 @@ fn main() -> std::io::Result<()> {
             #[cfg(feature = "bytemuck")]
             unsafe impl AnyBitPattern for #name {}
         };
+        nouninit_types.insert(name.clone(), (4, 4));
         let def = quote! {
            
             #doc
@@ -1859,7 +1878,7 @@ fn main() -> std::io::Result<()> {
                 if name_str.starts_with(char::is_numeric) {
                     name_str.insert_str(0, "TYPE_")
                 }
-                let name = Ident::new(&name_str, Span::call_site());
+                let name = new_ident(&name_str);
                 //let doc = doc.as_ref().map(|doc| quote! { #[doc = #doc] });
                 var_names.push(name.clone());
                 let deprecated = deprecated
@@ -1872,7 +1891,7 @@ fn main() -> std::io::Result<()> {
                     if alias_str.starts_with(char::is_numeric) {
                         alias_str.insert_str(0, "TYPE_")
                     }
-                    let alias = Ident::new(&alias_str, Span::call_site());
+                    let alias = new_ident(&alias_str);
                     quote! { Self::#alias }
                 } else {
                     display.push(quote! {
@@ -1925,10 +1944,16 @@ fn main() -> std::io::Result<()> {
         let name = requires.replace("FlagBits", "Flags");
         let doc = doc_link(&format!("Vk{name}"))
             .map(|link| quote! { #[doc = #link] });
-        let name = Ident::new(&name, Span::call_site());
+        let name = new_ident(&name);
         let ty = match bits.flag_type {
-            FlagType::U32 => Ident::new("Flags", Span::call_site()),
-            FlagType::U64 => Ident::new("Flags64", Span::call_site())
+            FlagType::U32 => {
+                nouninit_types.insert(name.clone(), (4, 4));
+                new_ident("Flags")
+            },
+            FlagType::U64 => {
+                nouninit_types.insert(name.clone(), (8, 8));
+                new_ident("Flags64")
+            }
         };
         let impl_bytemuck = quote! {
             #[cfg(feature = "bytemuck")]
@@ -1978,7 +2003,7 @@ fn main() -> std::io::Result<()> {
             if name_str.starts_with(char::is_numeric) {
                 name_str.insert_str(0, "TYPE_");
             }
-            let name = Ident::new(&name_str, Span::call_site());
+            let name = new_ident(&name_str);
             let doc = doc.as_ref().map(|doc| quote! { #[doc = #doc] });
             let deprecated = deprecated
                 .as_ref()
@@ -1991,7 +2016,7 @@ fn main() -> std::io::Result<()> {
                 if alias_str.starts_with(char::is_numeric) {
                     alias_str.insert_str(0, "TYPE_");
                 }
-                let alias = Ident::new(&alias_str, Span::call_site());
+                let alias = new_ident(&alias_str);
                 quote! {
                     Self::#alias
                 }
@@ -2040,19 +2065,19 @@ fn main() -> std::io::Result<()> {
     }
     let not_send_sync_types: HashSet<Ident> =
         [
-            Ident::new("LPCWSTR", Span::call_site()),
-            Ident::new("HANDLE", Span::call_site()),
-            Ident::new("NvSciSyncAttrList", Span::call_site()),
-            Ident::new("NvSciSyncObj", Span::call_site()),
-            Ident::new("NvSciBufAttrList", Span::call_site()),
-            Ident::new("NvSciBufObj", Span::call_site()),
-            Ident::new("MTLDevice_id", Span::call_site()),
-            Ident::new("MTLCommandQueue_id", Span::call_site()),
-            Ident::new("MTLBuffer_id", Span::call_site()),
-            Ident::new("MTLTexture_id", Span::call_site()),
-            Ident::new("MTLSharedEvent_id", Span::call_site()),
-            Ident::new("IOSurfaceRef", Span::call_site()),
-            Ident::new("RemoteAddressNV", Span::call_site()),
+            new_ident("LPCWSTR"),
+            new_ident("HANDLE"),
+            new_ident("NvSciSyncAttrList"),
+            new_ident("NvSciSyncObj"),
+            new_ident("NvSciBufAttrList"),
+            new_ident("NvSciBufObj"),
+            new_ident("MTLDevice_id"),
+            new_ident("MTLCommandQueue_id"),
+            new_ident("MTLBuffer_id"),
+            new_ident("MTLTexture_id"),
+            new_ident("MTLSharedEvent_id"),
+            new_ident("IOSurfaceRef"),
+            new_ident("RemoteAddressNV"),
         ].into_iter().collect();
     let mut type_needs_lifetime: IndexSet<Ident> =
         struct_defs
@@ -2086,47 +2111,44 @@ fn main() -> std::io::Result<()> {
     let resolve_ty = |ty: &str, prefix_handle_vk: bool| -> Option<Punctuated<Ident, Token![::]>> {
         let mut punct = Punctuated::new();
         if ty.starts_with("uint") {
-            let ident = syn::Ident::new(
+            let ident = new_ident(
                 &format!("u{}", ty
                     .trim_start_matches("uint")
                     .trim_end_matches("_t")
                 ),
-                Span::call_site()
             );
             punct.push_value(ident);
         } else if ty.starts_with("int") {
             if ty == "int" {
-                punct.push_value(Ident::new("ffi", Span::call_site()));
-                punct.push(Ident::new("c_int", Span::call_site()));
+                punct.push_value(new_ident("ffi"));
+                punct.push(new_ident("c_int"));
             } else {
-                let ident = syn::Ident::new(
+                let ident = new_ident(
                     &format!("i{}", ty
                         .trim_start_matches("int")
                         .trim_end_matches("_t")
                     ),
-                    Span::call_site()
                 );
                 punct.push_value(ident);
             }
         } else if ty == "size_t" {
-            punct.push_value(Ident::new("usize", Span::call_site()));
+            punct.push_value(new_ident("usize"));
         } else if ty == "float" {
-            punct.push_value(Ident::new("f32", Span::call_site()));
+            punct.push_value(new_ident("f32"));
         }  else if ty == "double" {
-            punct.push_value(Ident::new("f64", Span::call_site()));
+            punct.push_value(new_ident("f64"));
         } else if ty == "void" {
-            punct.push_value(Ident::new("ffi", Span::call_site()));
-            punct.push(Ident::new("c_void", Span::call_site()));
+            punct.push_value(new_ident("ffi"));
+            punct.push(new_ident("c_void"));
         } else if ty == "char" {
-            punct.push_value(Ident::new("ffi", Span::call_site()));
-            punct.push(Ident::new("c_char", Span::call_site()));
+            punct.push_value(new_ident("ffi"));
+            punct.push(new_ident("c_char"));
         } else {
             let ty = ty.replace("FlagBits", "Flags");
             let ty = ty
                 .trim_start_matches("Vk");
-            let ident = syn::Ident::new(
+            let ident = new_ident(
                 ty,
-                Span::call_site()
             );
             if type_exclude_list.contains(&ident) {
                 return None
@@ -2135,8 +2157,8 @@ fn main() -> std::io::Result<()> {
                 ty == "Device" ||
                 ty == "Instance"
             {
-                punct.push_value(Ident::new("crate", Span::call_site()));
-                punct.push(Ident::new("vk", Span::call_site()));
+                punct.push_value(new_ident("crate"));
+                punct.push(new_ident("vk"));
                 punct.push(ident);
             } else {
                 punct.push_value(ident);
@@ -2208,7 +2230,7 @@ fn main() -> std::io::Result<()> {
     println!("eq resolve depth: {depth}");
     let mut defined_aliases = HashSet::new();  
     let mut type_is_not_zeroable: IndexSet<Ident> = IndexSet::new();
-    let mut type_is_not_any_bit_pattern: IndexSet<Ident> = IndexSet::new();
+    let mut type_is_not_any_bit_pattern: IndexSet<Ident> = IndexSet::new(); 
     for def in struct_defs {
         let name = def.name.as_ref().unwrap();
         if type_exclude_list.contains(name) {
@@ -2228,6 +2250,10 @@ fn main() -> std::io::Result<()> {
         let mut derive_default = true;
         let mut is_zeroable = true;
         let mut any_bit_pattern = true;
+        let mut is_nouninit = true;
+        let mut total_align = 1;
+        let mut total_size = 0;
+        let mut packed_size = 0;
         let (derive_eq, derive_partial_eq) =
             non_eq_types.get(name).map(|&partial| (false, partial))
             .unwrap_or((true, true));
@@ -2259,6 +2285,16 @@ fn main() -> std::io::Result<()> {
             if type_is_not_any_bit_pattern.contains(member_ty) {
                 any_bit_pattern = false;
             }
+            if let Some(&(size, align)) = nouninit_types.get(member_ty) &&
+                member.array_len.is_none() &&
+                member.ptr_type == PtrType::None
+            {
+                packed_size += size;
+                total_size = align_up(total_size, align) + size;
+                total_align = total_align.max(align);
+            } else {
+                is_nouninit = false;
+            }
             let lifetime = (type_needs_lifetime.contains(member_ty)).then(||
             {
                 needs_lifetime = true;
@@ -2272,7 +2308,7 @@ fn main() -> std::io::Result<()> {
                             let len: usize = str::parse(len).unwrap();
                             quote! { #len }
                         } else {
-                            let len = Ident::new(len, Span::call_site());
+                            let len = new_ident(len);
                             quote! { #len as _ }
                         };
                     let q = quote! {
@@ -2288,9 +2324,8 @@ fn main() -> std::io::Result<()> {
                 };
             let has_s_type =
                 if let Some(value) = &member.value {
-                    let ident = Ident::new(
+                    let ident = new_ident(
                         value.trim_start_matches("VK_STRUCTURE_TYPE_"),
-                        Span::call_site()
                     );
                     s_type = Some(ident);
                     true
@@ -2313,7 +2348,7 @@ fn main() -> std::io::Result<()> {
             let name_str = if member.name == "type" {
                 "ty"
             } else { &member.name };
-            let name = Ident::new(name_str, Span::call_site());
+            let name = new_ident(name_str);
             field_defs.push(
                 quote! {
                     #doc
@@ -2338,9 +2373,8 @@ fn main() -> std::io::Result<()> {
                         } else if resolved_ty.iter().any(|ty| ty == "c_char") &&
                             member.array_len.is_some()
                         {
-                            let getter_name = Ident::new(
+                            let getter_name = new_ident(
                                 &format!("{name}_as_cstr"),
-                                Span::call_site(),
                             );
                             field_getters.push(quote! {
                                 #[inline]
@@ -2377,16 +2411,14 @@ fn main() -> std::io::Result<()> {
                                         .to_string();
                                     setter_name.insert_str(0, "p_");
                                 }
-                                let setter_name = Ident::new(
+                                let setter_name = new_ident(
                                     &setter_name,
-                                    Span::call_site(),
                                 );
                                 let mut len_setter = quote! {};
                                 if let StructMemberLen::Member(len) = len {
                                     field_setters[field_mappings[len]] = None;
-                                    let len_member = Ident::new(
+                                    let len_member = new_ident(
                                         &def.members[len].name,
-                                        Span::call_site(),
                                     );
                                     len_setter = quote! {
                                         self.#len_member = #setter_name.len() as _;
@@ -2409,7 +2441,7 @@ fn main() -> std::io::Result<()> {
                                                     Ident,
                                                     Token![::]
                                                 >::new();
-                                                ty.push_value(Ident::new("u8", Span::call_site()));
+                                                ty.push_value(new_ident("u8"));
                                                 resolved_ty = ty;
                                                 quote! { as_mut_ptr().cast() }
                                             } else {
@@ -2437,7 +2469,7 @@ fn main() -> std::io::Result<()> {
                                                         Ident,
                                                         Token![::]
                                                     >::new();
-                                                    ty.push_value(Ident::new("u8", Span::call_site()));
+                                                    ty.push_value(new_ident("u8"));
                                                     resolved_ty = ty;
                                                     quote! { as_ptr().cast() }
                                                 } else {
@@ -2470,9 +2502,8 @@ fn main() -> std::io::Result<()> {
                                             PtrType::MutPtrMutPtr | PtrType::ConstPtrConstPtr
                                         )
                                     );
-                                    let setter_name = Ident::new(name_str
+                                    let setter_name = new_ident(name_str
                                         .trim_start_matches("p_"),
-                                        Span::call_site(),
                                     );
                                     let (ty, setter) =
                                         if member.ptr_type == PtrType::MutPtr {
@@ -2570,6 +2601,8 @@ fn main() -> std::io::Result<()> {
                 );
             }
         }
+        total_size = align_up(total_size, total_align);
+        is_nouninit &= total_size == packed_size;
         if !derive_eq {
             non_eq_types.insert(name.clone(), derive_partial_eq);
         }
@@ -2584,9 +2617,8 @@ fn main() -> std::io::Result<()> {
                     let p_next_mutability = if p_next_mutability.unwrap() {
                         quote! { mut }
                     } else { quote! { const } };
-                    let trait_name = Ident::new(
+                    let trait_name = new_ident(
                         &format!("Extends{name}"),
-                        Span::call_site(),
                     );
                     let doc = format!("A trait for structures that extend {name}.");
                     let doc = quote! {
@@ -2694,6 +2726,20 @@ fn main() -> std::io::Result<()> {
             if !any_bit_pattern {
                 type_is_not_any_bit_pattern.insert(name.clone());
             }
+            /* checked that derive is successfull
+            let derive_nouninit = is_nouninit.then(|| {
+                nouninit_types.insert(name.clone(), (total_size, total_align));
+                quote! {
+                    NoUninit,
+                }
+            });*/
+            let impl_nouninit = is_nouninit.then(|| {
+                nouninit_types.insert(name.clone(), (total_size, total_align));
+                quote! {
+                    #[cfg(feature = "bytemuck")]
+                    unsafe impl NoUninit for #name {}
+                }
+            });
             let def = quote! {
                 #doc
                 #[repr(C)]
@@ -2720,6 +2766,7 @@ fn main() -> std::io::Result<()> {
                 #impl_send_sync
 
                 #impl_bytemuck
+                #impl_nouninit
             };
             write!(structs, "{def}")?;
         } else {
@@ -2766,7 +2813,7 @@ fn main() -> std::io::Result<()> {
                 ->  #ret_ptr #ty
             }
         };
-        let name = Ident::new(&name, Span::call_site());
+        let name = new_ident(&name);
         let mut skip_sc = false;
         let mut field_tys = vec![];
         let mut params_ignored = vec![];
@@ -2778,13 +2825,13 @@ fn main() -> std::io::Result<()> {
                     return quote! {}
                 };
                 let name = lower_snake_case(&param.name);
-                let name = Ident::new(&name, Span::call_site());
+                let name = new_ident(&name);
                 let ty = match param.ptr {
                     FuncParamPtrType::PtrType(ptr) => quote! { #ptr #ty },
                     FuncParamPtrType::Array(len) => quote! { *const [#ty; #len] },
                 };
                 field_tys.push(ty.to_string());
-                let ignored_name = Ident::new(&format!("_{name}"), Span::call_site());
+                let ignored_name = new_ident(&format!("_{name}"));
                 params_ignored.push(
                     quote! {
                         #ignored_name: #ty,
@@ -2826,7 +2873,7 @@ fn main() -> std::io::Result<()> {
     }
     let mut core_commands = IndexSet::new();
     let mut instance_commands = IndexSet::new();
-    let mut device_commands = IndexSet::new(); 
+    let mut device_commands = IndexSet::new();  
     for (name, command) in &mut commands {
         println!("processing function {name}");
         let extension =
@@ -2836,10 +2883,10 @@ fn main() -> std::io::Result<()> {
                     .iter()
                     .any(|cmd| cmd.name == *name)
                 );
-        let mut fp = Ident::new("fp", Span::call_site());
+        let mut fp = new_ident("fp");
         let doc = if let Some(version) = &command.version {
             let doc = format!("Provided by Vulkan version {version}.");
-            fp = Ident::new(&format!("fp_v{}", version.replace(".", "")), Span::call_site());
+            fp = new_ident(&format!("fp_v{}", version.replace(".", "")));
             quote! {#[doc = #doc]}
         } else if let Some((ext, _)) = &extension {
             let doc = format!("Provided by {ext}.");
@@ -2867,7 +2914,7 @@ fn main() -> std::io::Result<()> {
         let is_aliased = type_aliases
             .values()
             .any(|name| *name == pfn_name);
-        let pfn_name = Ident::new(&pfn_name, Span::call_site());
+        let pfn_name = new_ident(&pfn_name);
         let mut skip = false;
         enum DispatchableType {
             Instance {
@@ -2897,7 +2944,7 @@ fn main() -> std::io::Result<()> {
                 let filter = command.success_codes
                     .iter()
                     .map(|code|
-                        Ident::new(code.trim_start_matches("VK_"), Span::call_site())
+                        new_ident(code.trim_start_matches("VK_"))
                     );
                 quote! {
                     &[
@@ -2932,7 +2979,7 @@ fn main() -> std::io::Result<()> {
                 if name == "type" {
                     name = "ty".to_string();
                 }
-                let name = Ident::new(name.trim_start_matches("p_"), Span::call_site());
+                let name = new_ident(name.trim_start_matches("p_"));
                 let has_lifetime = ty.iter().any(|ident| type_needs_lifetime.contains(ident));
                 let (ty, rs_ty) = match param.ptr {
                     FuncParamPtrType::PtrType(ptr) =>
@@ -2976,7 +3023,7 @@ fn main() -> std::io::Result<()> {
                     FuncParamPtrType::Array(len) =>
                         (quote! { *const [#ty; #len] }, RsTy::Array(ty, len, has_lifetime)),
                 };
-                let ignored_name = Ident::new(&format!("_{name}"), Span::call_site());
+                let ignored_name = new_ident(&format!("_{name}"));
                 params_ignored.push(
                     quote! {
                         #ignored_name: #ty,
@@ -3157,17 +3204,17 @@ fn main() -> std::io::Result<()> {
                         let len = param.has_len.unwrap().unwrap();
                         let mut fn_params2 = fn_params.clone();
                         let mut fn_maps2 = fn_maps.clone();
-                        let mut out_name = Ident::new("out", Span::call_site());
+                        let mut out_name = new_ident("out");
                         let mut get_len_name = out_name.clone();
                         if let Some(idx) = query_len {
                             let first = &param_names_and_tys[idx];
-                            let name1 = Ident::new(&format!("out_{}", first.0), Span::call_site());
+                            let name1 = new_ident(&format!("out_{}", first.0));
                             get_len_name = name1.clone();
                             let RsTy::QueryLen(ty1, has_lifetime1) = &first.1 else {
                                 unreachable!()
                             };
                             let lifetime1 = has_lifetime1.then(|| quote! { <'_> });
-                            out_name = Ident::new(&format!("out_{name}"), Span::call_site());
+                            out_name = new_ident(&format!("out_{name}"));
                             fn_params2[len as usize + 1] = Some(quote! {
                                 #name1: &mut [#ty1 #lifetime1],
                             });
@@ -3338,9 +3385,8 @@ fn main() -> std::io::Result<()> {
                         <'_>
                     });
                     let len = param.has_len.unwrap().unwrap();
-                    let name = Ident::new(
+                    let name = new_ident(
                         name.to_string().trim_start_matches("pp_"),
-                        Span::call_site(),
                     );
                     if get_lens.contains(&len) {
                         fn_params.push(Some(quote! {
@@ -3487,10 +3533,10 @@ fn main() -> std::io::Result<()> {
             let non_camel = name_str.contains('_').then(|| quote! {
                 #[allow(non_camel_case_types)]
             });
-            let name = Ident::new(&name_str, Span::call_site());
+            let name = new_ident(&name_str);
             defined_aliases.insert(name_str);
             let alias_str = &alias.trim_start_matches("Vk").replace("FlagBits", "Flags");
-            let alias = Ident::new(alias_str, Span::call_site());
+            let alias = new_ident(alias_str);
             if type_needs_lifetime.contains(&alias) {
                 type_needs_lifetime.insert(alias.clone());
                 Some(quote! {
@@ -3601,7 +3647,7 @@ fn main() -> std::io::Result<()> {
                     .replace(&replace1, "")
                     .replace(&replace2, "")
                     .replace("EXTENSION_NAME", "NAME");
-                let name = Ident::new(name.trim_start_matches("VK_"), Span::call_site());
+                let name = new_ident(name.trim_start_matches("VK_"));
                 let def = match constant {
                     ExtConstant::U32(value) => quote!{
                         pub const #name: u32 = #value;
@@ -3635,10 +3681,10 @@ fn main() -> std::io::Result<()> {
                     let mut rs_defs = vec![];
                     for command in &ext.commands {
                         ext_fns.insert(&command.name);
-                        let name_rs = Ident::new(&lower_snake_case(
+                        let name_rs = new_ident(&lower_snake_case(
                             command.name.trim_start_matches("vk")
                             .trim_end_matches(&prefix)
-                        ), Span::call_site());
+                        ));
                         let cname = std::ffi::CString::from_str(&command.name).unwrap();
                         let link = doc_link(&command.name)
                             .map(|link| quote! {
@@ -3825,10 +3871,10 @@ fn main() -> std::io::Result<()> {
                 let mut rs_defs = vec![];
                 for command in &ext.commands {
                     ext_fns.insert(&command.name);
-                    let name_rs = Ident::new(&lower_snake_case(
+                    let name_rs = new_ident(&lower_snake_case(
                         command.name.trim_start_matches("vk")
                         .trim_end_matches(&prefix)
-                    ), Span::call_site());
+                    ));
                     let cname = std::ffi::CString::from_str(&command.name).unwrap();
                     let link = doc_link(&command.name)
                         .map(|link| quote! {
@@ -4164,7 +4210,7 @@ use crate::AsPtr;"
                     },
                 };
                 let counter_part = counter_part.as_ref().map(|cmd| {
-                    let pfn = Ident::new(&format!("PFN_{}", cmd.ext_cmd), Span::call_site());
+                    let pfn = new_ident(&format!("PFN_{}", cmd.ext_cmd));
                     let cname = std::ffi::CString::from_str(&cmd.ext_cmd).unwrap();
                     quote! {
                         #name_rs: unsafe {
@@ -4206,8 +4252,8 @@ use crate::AsPtr;"
         }
         version_tables.sort_unstable_by_key(|t| t.0);
         for (version_minor, commands) in version_tables {
-            let name = Ident::new(&format!("{table}V1{version_minor}"), Span::call_site());
-            let vk_version = Ident::new(&format!("API_VERSION_1_{version_minor}"), Span::call_site());
+            let name = new_ident(&format!("{table}V1{version_minor}"));
+            let vk_version = new_ident(&format!("API_VERSION_1_{version_minor}"));
             let mut pfns = vec![];
             let mut load_fns = vec![];
             let mut load_fns_alt = vec![];

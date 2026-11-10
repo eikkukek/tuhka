@@ -6,7 +6,7 @@ New up-to-date Vulkan bindings for Rust.
 ``` rust
 use tuhka::{vk, Library, Instance};
 let library = unsafe {
-      Library::load()
+    Library::load()
 }.unwrap();
 let app_name = c"Test";
 let engine_name = c"Engine";
@@ -33,8 +33,8 @@ unsafe {
 Provides the `window` module, which can be used to create surfaces for a
 [`raw_window_handle`](https://crates.io/crates/raw-window-handle).
 ### `bytemuck` (disabled by default)
-Implements [`bytemuck`](https://crates.io/crates/bytemuck) `Zeroable` for Vulkan structures
-that have no structure type and that don't contain any function pointers, `AnyBitPattern` for "Pod" structs, and
-`AnyBitPattern` and `NoUninit` for non-dispatchable handles and enums/bitflags.
+Implements [`bytemuck`](https://crates.io/crates/bytemuck) `Zeroable`, `AnyBitPattern` and `NoUninit` 
+for applicable Vulkan structures, and `AnyBitPattern` and `NoUninit` for non-dispatchable handles
+and enums/bitflags.
 
 [tuhka]: https://crates.io/crates/tuhka

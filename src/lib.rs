@@ -49,6 +49,9 @@ pub use device::*;
 pub use extension_gen::*;
 mod macros;
 
+/*
+ * don't test, because can't mark as no_run
 #[doc = include_str!("../README.md")]
 #[cfg(doctest)]
 pub struct ReadMeDoctests;
+*/
