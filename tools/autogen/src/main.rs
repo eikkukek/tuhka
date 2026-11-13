@@ -2048,8 +2048,7 @@ fn main() -> std::io::Result<()> {
 
                 fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
                     if self.is_empty() {
-                        write!(f, "NONE")?;
-                    }
+                        write!(f, "0x0")?; }
                     const BITS: &[(u64, &str)] = &[
                         #(#display)*
                     ];

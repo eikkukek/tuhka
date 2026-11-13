@@ -13279,7 +13279,7 @@ impl FramebufferCreateFlags {
 impl fmt::Display for FramebufferCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "IMAGELESS")];
         flag_display(self.0 as u64, BITS, f)
@@ -13302,7 +13302,7 @@ impl QueryPoolCreateFlags {
 impl fmt::Display for QueryPoolCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "RESET_KHR")];
         flag_display(self.0 as u64, BITS, f)
@@ -13326,7 +13326,7 @@ impl RenderPassCreateFlags {
 impl fmt::Display for RenderPassCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (2u64, "TRANSFORM_QCOM"),
@@ -13356,7 +13356,7 @@ impl SamplerCreateFlags {
 impl fmt::Display for SamplerCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SUBSAMPLED_EXT"),
@@ -13386,7 +13386,7 @@ impl PipelineLayoutCreateFlags {
 impl fmt::Display for PipelineLayoutCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] =
             &[(2u64, "INDEPENDENT_SETS_EXT"), (4u64, "NO_TASK_SHADER_KHR")];
@@ -13411,7 +13411,7 @@ impl PipelineCacheCreateFlags {
 impl fmt::Display for PipelineCacheCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "EXTERNALLY_SYNCHRONIZED"),
@@ -13438,7 +13438,7 @@ impl PipelineDepthStencilStateCreateFlags {
 impl fmt::Display for PipelineDepthStencilStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_EXT"),
@@ -13462,7 +13462,7 @@ impl PipelineDynamicStateCreateFlags {}
 impl fmt::Display for PipelineDynamicStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13485,7 +13485,7 @@ impl PipelineColorBlendStateCreateFlags {
 impl fmt::Display for PipelineColorBlendStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -13506,7 +13506,7 @@ impl PipelineMultisampleStateCreateFlags {}
 impl fmt::Display for PipelineMultisampleStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13527,7 +13527,7 @@ impl PipelineRasterizationStateCreateFlags {}
 impl fmt::Display for PipelineRasterizationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13548,7 +13548,7 @@ impl PipelineViewportStateCreateFlags {}
 impl fmt::Display for PipelineViewportStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13569,7 +13569,7 @@ impl PipelineTessellationStateCreateFlags {}
 impl fmt::Display for PipelineTessellationStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13590,7 +13590,7 @@ impl PipelineInputAssemblyStateCreateFlags {}
 impl fmt::Display for PipelineInputAssemblyStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13611,7 +13611,7 @@ impl PipelineVertexInputStateCreateFlags {}
 impl fmt::Display for PipelineVertexInputStateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13635,7 +13635,7 @@ impl PipelineShaderStageCreateFlags {
 impl fmt::Display for PipelineShaderStageCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ALLOW_VARYING_SUBGROUP_SIZE"),
@@ -13667,7 +13667,7 @@ impl DescriptorSetLayoutCreateFlags {
 impl fmt::Display for DescriptorSetLayoutCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (2u64, "UPDATE_AFTER_BIND_POOL"),
@@ -13696,7 +13696,7 @@ impl BufferViewCreateFlags {}
 impl fmt::Display for BufferViewCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13719,7 +13719,7 @@ impl InstanceCreateFlags {
 impl fmt::Display for InstanceCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "ENUMERATE_PORTABILITY_KHR")];
         flag_display(self.0 as u64, BITS, f)
@@ -13740,7 +13740,7 @@ impl DeviceCreateFlags {}
 impl fmt::Display for DeviceCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -13765,7 +13765,7 @@ impl DeviceQueueCreateFlags {
 impl fmt::Display for DeviceQueueCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "PROTECTED"), (4u64, "INTERNALLY_SYNCHRONIZED_KHR")];
         flag_display(self.0 as u64, BITS, f)
@@ -13801,7 +13801,7 @@ impl QueueFlags {
 impl fmt::Display for QueueFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "GRAPHICS"),
@@ -13848,7 +13848,7 @@ impl MemoryPropertyFlags {
 impl fmt::Display for MemoryPropertyFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEVICE_LOCAL"),
@@ -13885,7 +13885,7 @@ impl MemoryHeapFlags {
 impl fmt::Display for MemoryHeapFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEVICE_LOCAL"),
@@ -13958,7 +13958,7 @@ impl AccessFlags {
 impl fmt::Display for AccessFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INDIRECT_COMMAND_READ"),
@@ -14047,7 +14047,7 @@ impl BufferUsageFlags {
 impl fmt::Display for BufferUsageFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSFER_SRC"),
@@ -14112,7 +14112,7 @@ impl BufferCreateFlags {
 impl fmt::Display for BufferCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SPARSE_BINDING"),
@@ -14160,7 +14160,7 @@ impl ShaderStageFlags {
 impl fmt::Display for ShaderStageFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VERTEX"),
@@ -14234,7 +14234,7 @@ impl ImageUsageFlags {
 impl fmt::Display for ImageUsageFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSFER_SRC"),
@@ -14312,7 +14312,7 @@ impl ImageCreateFlags {
 impl fmt::Display for ImageCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SPARSE_BINDING"),
@@ -14359,7 +14359,7 @@ impl ImageViewCreateFlags {
 impl fmt::Display for ImageViewCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "FRAGMENT_DENSITY_MAP_DYNAMIC_EXT"),
@@ -14416,7 +14416,7 @@ impl PipelineCreateFlags {
 impl fmt::Display for PipelineCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DISABLE_OPTIMIZATION"),
@@ -14477,7 +14477,7 @@ impl ColorComponentFlags {
 impl fmt::Display for ColorComponentFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "R"), (2u64, "G"), (4u64, "B"), (8u64, "A")];
         flag_display(self.0 as u64, BITS, f)
@@ -14500,7 +14500,7 @@ impl FenceCreateFlags {
 impl fmt::Display for FenceCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "SIGNALED")];
         flag_display(self.0 as u64, BITS, f)
@@ -14521,7 +14521,7 @@ impl SemaphoreCreateFlags {}
 impl fmt::Display for SemaphoreCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -14596,7 +14596,7 @@ impl FormatFeatureFlags {
 impl fmt::Display for FormatFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SAMPLED_IMAGE"),
@@ -14661,7 +14661,7 @@ impl QueryControlFlags {
 impl fmt::Display for QueryControlFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "PRECISE")];
         flag_display(self.0 as u64, BITS, f)
@@ -14692,7 +14692,7 @@ impl QueryResultFlags {
 impl fmt::Display for QueryResultFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_64"),
@@ -14719,7 +14719,7 @@ impl ShaderModuleCreateFlags {}
 impl fmt::Display for ShaderModuleCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -14742,7 +14742,7 @@ impl EventCreateFlags {
 impl fmt::Display for EventCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "DEVICE_ONLY")];
         flag_display(self.0 as u64, BITS, f)
@@ -14770,7 +14770,7 @@ impl CommandPoolCreateFlags {
 impl fmt::Display for CommandPoolCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSIENT"),
@@ -14798,7 +14798,7 @@ impl CommandPoolResetFlags {
 impl fmt::Display for CommandPoolResetFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "RELEASE_RESOURCES")];
         flag_display(self.0 as u64, BITS, f)
@@ -14822,7 +14822,7 @@ impl CommandBufferResetFlags {
 impl fmt::Display for CommandBufferResetFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "RELEASE_RESOURCES")];
         flag_display(self.0 as u64, BITS, f)
@@ -14848,7 +14848,7 @@ impl CommandBufferUsageFlags {
 impl fmt::Display for CommandBufferUsageFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ONE_TIME_SUBMIT"),
@@ -14899,7 +14899,7 @@ impl QueryPipelineStatisticFlags {
 impl fmt::Display for QueryPipelineStatisticFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INPUT_ASSEMBLY_VERTICES"),
@@ -14937,7 +14937,7 @@ impl MemoryMapFlags {
 impl fmt::Display for MemoryMapFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "PLACED_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -14960,7 +14960,7 @@ impl MemoryUnmapFlags {
 impl fmt::Display for MemoryUnmapFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "RESERVE_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -14994,7 +14994,7 @@ impl ImageAspectFlags {
 impl fmt::Display for ImageAspectFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "COLOR"),
@@ -15030,7 +15030,7 @@ impl SparseMemoryBindFlags {
 impl fmt::Display for SparseMemoryBindFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "METADATA")];
         flag_display(self.0 as u64, BITS, f)
@@ -15058,7 +15058,7 @@ impl SparseImageFormatFlags {
 impl fmt::Display for SparseImageFormatFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SINGLE_MIPTAIL"),
@@ -15093,7 +15093,7 @@ impl SubpassDescriptionFlags {
 impl fmt::Display for SubpassDescriptionFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PER_VIEW_ATTRIBUTES_NVX"),
@@ -15170,7 +15170,7 @@ impl PipelineStageFlags {
 impl fmt::Display for PipelineStageFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TOP_OF_PIPE"),
@@ -15233,7 +15233,7 @@ impl SampleCountFlags {
 impl fmt::Display for SampleCountFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_1"),
@@ -15267,7 +15267,7 @@ impl AttachmentDescriptionFlags {
 impl fmt::Display for AttachmentDescriptionFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "MAY_ALIAS"),
@@ -15301,7 +15301,7 @@ impl StencilFaceFlags {
 impl fmt::Display for StencilFaceFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "FRONT"), (2u64, "BACK"), (3u64, "FRONT_AND_BACK")];
         flag_display(self.0 as u64, BITS, f)
@@ -15327,7 +15327,7 @@ impl CullModeFlags {
 impl fmt::Display for CullModeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "FRONT"), (2u64, "BACK"), (3u64, "FRONT_AND_BACK")];
         flag_display(self.0 as u64, BITS, f)
@@ -15355,7 +15355,7 @@ impl DescriptorPoolCreateFlags {
 impl fmt::Display for DescriptorPoolCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "FREE_DESCRIPTOR_SET"),
@@ -15382,7 +15382,7 @@ impl DescriptorPoolResetFlags {}
 impl fmt::Display for DescriptorPoolResetFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -15413,7 +15413,7 @@ impl DependencyFlags {
 impl fmt::Display for DependencyFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "BY_REGION"),
@@ -15461,7 +15461,7 @@ impl SubgroupFeatureFlags {
 impl fmt::Display for SubgroupFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "BASIC"),
@@ -15498,7 +15498,7 @@ impl IndirectCommandsLayoutUsageFlagsNV {
 impl fmt::Display for IndirectCommandsLayoutUsageFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "EXPLICIT_PREPROCESS_NV"),
@@ -15525,7 +15525,7 @@ impl IndirectStateFlagsNV {
 impl fmt::Display for IndirectStateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "FLAG_FRONTFACE_NV")];
         flag_display(self.0 as u64, BITS, f)
@@ -15549,7 +15549,7 @@ impl GeometryFlagsKHR {
 impl fmt::Display for GeometryFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_KHR"),
@@ -15581,7 +15581,7 @@ impl GeometryInstanceFlagsKHR {
 impl fmt::Display for GeometryInstanceFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRIANGLE_FACING_CULL_DISABLE_KHR"),
@@ -15613,7 +15613,7 @@ impl ClusterAccelerationStructureGeometryFlagsNV {
 impl fmt::Display for ClusterAccelerationStructureGeometryFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "CULL_DISABLE_NV"),
@@ -15640,7 +15640,7 @@ impl ClusterAccelerationStructureClusterFlagsNV {
 impl fmt::Display for ClusterAccelerationStructureClusterFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "ALLOW_DISABLE_OPACITY_MICROMAPS_NV")];
         flag_display(self.0 as u64, BITS, f)
@@ -15669,7 +15669,7 @@ impl ClusterAccelerationStructureAddressResolutionFlagsNV {
 impl fmt::Display for ClusterAccelerationStructureAddressResolutionFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INDIRECTED_DST_IMPLICIT_DATA_NV"),
@@ -15711,7 +15711,7 @@ impl BuildAccelerationStructureFlagsKHR {
 impl fmt::Display for BuildAccelerationStructureFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ALLOW_UPDATE_KHR"),
@@ -15748,7 +15748,7 @@ impl PrivateDataSlotCreateFlags {
 impl fmt::Display for PrivateDataSlotCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "BASE_OBJECT_HANDLE_NV")];
         flag_display(self.0 as u64, BITS, f)
@@ -15773,7 +15773,7 @@ impl AccelerationStructureCreateFlagsKHR {
 impl fmt::Display for AccelerationStructureCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEVICE_ADDRESS_CAPTURE_REPLAY_KHR"),
@@ -15798,7 +15798,7 @@ impl DescriptorUpdateTemplateCreateFlags {}
 impl fmt::Display for DescriptorUpdateTemplateCreateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -15823,7 +15823,7 @@ impl PipelineCreationFeedbackFlags {
 impl fmt::Display for PipelineCreationFeedbackFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VALID"),
@@ -15851,7 +15851,7 @@ impl PerformanceCounterDescriptionFlagsKHR {
 impl fmt::Display for PerformanceCounterDescriptionFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PERFORMANCE_IMPACTING_KHR"),
@@ -15875,7 +15875,7 @@ impl AcquireProfilingLockFlagsKHR {}
 impl fmt::Display for AcquireProfilingLockFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -15898,7 +15898,7 @@ impl SemaphoreWaitFlags {
 impl fmt::Display for SemaphoreWaitFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "ANY")];
         flag_display(self.0 as u64, BITS, f)
@@ -15919,7 +15919,7 @@ impl PipelineCompilerControlFlagsAMD {}
 impl fmt::Display for PipelineCompilerControlFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -15940,7 +15940,7 @@ impl ShaderCorePropertiesFlagsAMD {}
 impl fmt::Display for ShaderCorePropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -15966,7 +15966,7 @@ impl DeviceDiagnosticsConfigFlagsNV {
 impl fmt::Display for DeviceDiagnosticsConfigFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ENABLE_SHADER_DEBUG_INFO_NV"),
@@ -15992,7 +15992,7 @@ impl RefreshObjectFlagsKHR {}
 impl fmt::Display for RefreshObjectFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -16066,7 +16066,7 @@ impl AccessFlags2 {
 impl fmt::Display for AccessFlags2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INDIRECT_COMMAND_READ"),
@@ -16187,7 +16187,7 @@ impl PipelineStageFlags2 {
 impl fmt::Display for PipelineStageFlags2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TOP_OF_PIPE"),
@@ -16254,7 +16254,7 @@ impl AccelerationStructureMotionInfoFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInfoFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -16275,7 +16275,7 @@ impl AccelerationStructureMotionInstanceFlagsNV {}
 impl fmt::Display for AccelerationStructureMotionInstanceFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -16359,7 +16359,7 @@ impl FormatFeatureFlags2 {
 impl fmt::Display for FormatFeatureFlags2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SAMPLED_IMAGE"),
@@ -16455,7 +16455,7 @@ impl FormatFeatureFlags4KHR {}
 impl fmt::Display for FormatFeatureFlags4KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0, BITS, f)
@@ -16487,7 +16487,7 @@ impl RenderingFlags {
 impl fmt::Display for RenderingFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "CONTENTS_SECONDARY_COMMAND_BUFFERS"),
@@ -16521,7 +16521,7 @@ impl MemoryDecompressionMethodFlagsEXT {
 impl fmt::Display for MemoryDecompressionMethodFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "GDEFLATE_1_0_EXT")];
         flag_display(self.0, BITS, f)
@@ -16549,7 +16549,7 @@ impl DeviceFaultFlagsKHR {
 impl fmt::Display for DeviceFaultFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "FLAG_DEVICE_LOST_KHR"),
@@ -16581,7 +16581,7 @@ impl BuildMicromapFlagsEXT {
 impl fmt::Display for BuildMicromapFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PREFER_FAST_TRACE_EXT"),
@@ -16608,7 +16608,7 @@ impl MicromapCreateFlagsEXT {
 impl fmt::Display for MicromapCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "DEVICE_ADDRESS_CAPTURE_REPLAY_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -16632,7 +16632,7 @@ impl IndirectCommandsLayoutUsageFlagsEXT {
 impl fmt::Display for IndirectCommandsLayoutUsageFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "EXPLICIT_PREPROCESS_EXT"),
@@ -16659,7 +16659,7 @@ impl IndirectCommandsInputModeFlagsEXT {
 impl fmt::Display for IndirectCommandsInputModeFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VULKAN_INDEX_BUFFER_EXT"),
@@ -16683,7 +16683,7 @@ impl DirectDriverLoadingFlagsLUNARG {}
 impl fmt::Display for DirectDriverLoadingFlagsLUNARG {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -16747,7 +16747,7 @@ impl PipelineCreateFlags2 {
 impl fmt::Display for PipelineCreateFlags2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DISABLE_OPTIMIZATION"),
@@ -16853,7 +16853,7 @@ impl BufferUsageFlags2 {
 impl fmt::Display for BufferUsageFlags2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSFER_SRC"),
@@ -16936,7 +16936,7 @@ impl ImageUsageFlags2KHR {
 impl fmt::Display for ImageUsageFlags2KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_2_TRANSFER_SRC_KHR"),
@@ -17008,7 +17008,7 @@ impl ImageCreateFlags2KHR {
 impl fmt::Display for ImageCreateFlags2KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_2_SPARSE_BINDING_KHR"),
@@ -17058,7 +17058,7 @@ impl AddressCopyFlagsKHR {
 impl fmt::Display for AddressCopyFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEVICE_LOCAL_KHR"),
@@ -17088,7 +17088,7 @@ impl TensorCreateFlagsARM {
 impl fmt::Display for TensorCreateFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "MUTABLE_FORMAT_ARM"),
@@ -17124,7 +17124,7 @@ impl TensorUsageFlagsARM {
 impl fmt::Display for TensorUsageFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (2u64, "SHADER_ARM"),
@@ -17153,7 +17153,7 @@ impl TensorViewCreateFlagsARM {
 impl fmt::Display for TensorViewCreateFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "DESCRIPTOR_BUFFER_CAPTURE_REPLAY_ARM")];
         flag_display(self.0, BITS, f)
@@ -17177,7 +17177,7 @@ impl DataGraphPipelineSessionCreateFlagsARM {
 impl fmt::Display for DataGraphPipelineSessionCreateFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "PROTECTED_ARM"), (2u64, "OPTICAL_FLOW_CACHE_ARM")];
         flag_display(self.0, BITS, f)
@@ -17198,7 +17198,7 @@ impl DataGraphPipelineDispatchFlagsARM {}
 impl fmt::Display for DataGraphPipelineDispatchFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0, BITS, f)
@@ -17225,7 +17225,7 @@ impl VideoEncodeRgbModelConversionFlagsVALVE {
 impl fmt::Display for VideoEncodeRgbModelConversionFlagsVALVE {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "RGB_IDENTITY_VALVE"),
@@ -17255,7 +17255,7 @@ impl VideoEncodeRgbRangeCompressionFlagsVALVE {
 impl fmt::Display for VideoEncodeRgbRangeCompressionFlagsVALVE {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "FULL_RANGE_VALVE"), (2u64, "NARROW_RANGE_VALVE")];
         flag_display(self.0 as u64, BITS, f)
@@ -17279,7 +17279,7 @@ impl VideoEncodeRgbChromaOffsetFlagsVALVE {
 impl fmt::Display for VideoEncodeRgbChromaOffsetFlagsVALVE {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "COSITED_EVEN_VALVE"), (2u64, "MIDPOINT_VALVE")];
         flag_display(self.0 as u64, BITS, f)
@@ -17312,7 +17312,7 @@ impl SpirvResourceTypeFlagsEXT {
 impl fmt::Display for SpirvResourceTypeFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (2147483647u64, "ALL_EXT"),
@@ -17353,7 +17353,7 @@ impl GpaSqShaderStageFlagsAMD {
 impl fmt::Display for GpaSqShaderStageFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PS_AMD"),
@@ -17382,7 +17382,7 @@ impl GpaPerfBlockPropertiesFlagsAMD {}
 impl fmt::Display for GpaPerfBlockPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17403,7 +17403,7 @@ impl PhysicalDeviceGpaPropertiesFlagsAMD {}
 impl fmt::Display for PhysicalDeviceGpaPropertiesFlagsAMD {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17431,7 +17431,7 @@ impl AddressCommandFlagsKHR {
 impl fmt::Display for AddressCommandFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PROTECTED_KHR"),
@@ -17464,7 +17464,7 @@ impl CompositeAlphaFlagsKHR {
 impl fmt::Display for CompositeAlphaFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_KHR"),
@@ -17495,7 +17495,7 @@ impl DisplayPlaneAlphaFlagsKHR {
 impl fmt::Display for DisplayPlaneAlphaFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_KHR"),
@@ -17531,7 +17531,7 @@ impl SurfaceTransformFlagsKHR {
 impl fmt::Display for SurfaceTransformFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "IDENTITY_KHR"),
@@ -17575,7 +17575,7 @@ impl SwapchainCreateFlagsKHR {
 impl fmt::Display for SwapchainCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SPLIT_INSTANCE_BIND_REGIONS_KHR"),
@@ -17605,7 +17605,7 @@ impl DisplayModeCreateFlagsKHR {}
 impl fmt::Display for DisplayModeCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17626,7 +17626,7 @@ impl DisplaySurfaceCreateFlagsKHR {}
 impl fmt::Display for DisplaySurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17647,7 +17647,7 @@ impl AndroidSurfaceCreateFlagsKHR {}
 impl fmt::Display for AndroidSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17668,7 +17668,7 @@ impl ViSurfaceCreateFlagsNN {}
 impl fmt::Display for ViSurfaceCreateFlagsNN {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17689,7 +17689,7 @@ impl WaylandSurfaceCreateFlagsKHR {}
 impl fmt::Display for WaylandSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17710,7 +17710,7 @@ impl UbmSurfaceCreateFlagsSEC {}
 impl fmt::Display for UbmSurfaceCreateFlagsSEC {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17731,7 +17731,7 @@ impl Win32SurfaceCreateFlagsKHR {}
 impl fmt::Display for Win32SurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17752,7 +17752,7 @@ impl XlibSurfaceCreateFlagsKHR {}
 impl fmt::Display for XlibSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17773,7 +17773,7 @@ impl XcbSurfaceCreateFlagsKHR {}
 impl fmt::Display for XcbSurfaceCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17794,7 +17794,7 @@ impl DirectFBSurfaceCreateFlagsEXT {}
 impl fmt::Display for DirectFBSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17815,7 +17815,7 @@ impl IOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for IOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17836,7 +17836,7 @@ impl MacOSSurfaceCreateFlagsMVK {}
 impl fmt::Display for MacOSSurfaceCreateFlagsMVK {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17857,7 +17857,7 @@ impl MetalSurfaceCreateFlagsEXT {}
 impl fmt::Display for MetalSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17878,7 +17878,7 @@ impl ImagePipeSurfaceCreateFlagsFUCHSIA {}
 impl fmt::Display for ImagePipeSurfaceCreateFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17899,7 +17899,7 @@ impl StreamDescriptorSurfaceCreateFlagsGGP {}
 impl fmt::Display for StreamDescriptorSurfaceCreateFlagsGGP {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17920,7 +17920,7 @@ impl HeadlessSurfaceCreateFlagsEXT {}
 impl fmt::Display for HeadlessSurfaceCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17941,7 +17941,7 @@ impl ScreenSurfaceCreateFlagsQNX {}
 impl fmt::Display for ScreenSurfaceCreateFlagsQNX {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -17971,7 +17971,7 @@ impl PeerMemoryFeatureFlags {
 impl fmt::Display for PeerMemoryFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "COPY_SRC"),
@@ -18003,7 +18003,7 @@ impl MemoryAllocateFlags {
 impl fmt::Display for MemoryAllocateFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEVICE_MASK"),
@@ -18038,7 +18038,7 @@ impl DeviceGroupPresentModeFlagsKHR {
 impl fmt::Display for DeviceGroupPresentModeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "LOCAL_KHR"),
@@ -18070,7 +18070,7 @@ impl DebugReportFlagsEXT {
 impl fmt::Display for DebugReportFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INFORMATION_EXT"),
@@ -18097,7 +18097,7 @@ impl CommandPoolTrimFlags {}
 impl fmt::Display for CommandPoolTrimFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18123,7 +18123,7 @@ impl ExternalMemoryHandleTypeFlagsNV {
 impl fmt::Display for ExternalMemoryHandleTypeFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_WIN32_NV"),
@@ -18153,7 +18153,7 @@ impl ClusterAccelerationStructureIndexFormatFlagsNV {
 impl fmt::Display for ClusterAccelerationStructureIndexFormatFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_8BIT_NV"),
@@ -18182,7 +18182,7 @@ impl ExternalMemoryFeatureFlagsNV {
 impl fmt::Display for ExternalMemoryFeatureFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEDICATED_ONLY_NV"),
@@ -18227,7 +18227,7 @@ impl ExternalMemoryHandleTypeFlags {
 impl fmt::Display for ExternalMemoryHandleTypeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_FD"),
@@ -18272,7 +18272,7 @@ impl ExternalMemoryFeatureFlags {
 impl fmt::Display for ExternalMemoryFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DEDICATED_ONLY"),
@@ -18306,7 +18306,7 @@ impl ExternalSemaphoreHandleTypeFlags {
 impl fmt::Display for ExternalSemaphoreHandleTypeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_FD"),
@@ -18338,7 +18338,7 @@ impl ExternalSemaphoreFeatureFlags {
 impl fmt::Display for ExternalSemaphoreFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "EXPORTABLE"), (2u64, "IMPORTABLE")];
         flag_display(self.0 as u64, BITS, f)
@@ -18361,7 +18361,7 @@ impl SemaphoreImportFlags {
 impl fmt::Display for SemaphoreImportFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "TEMPORARY")];
         flag_display(self.0 as u64, BITS, f)
@@ -18389,7 +18389,7 @@ impl ExternalFenceHandleTypeFlags {
 impl fmt::Display for ExternalFenceHandleTypeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "OPAQUE_FD"),
@@ -18420,7 +18420,7 @@ impl ExternalFenceFeatureFlags {
 impl fmt::Display for ExternalFenceFeatureFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "EXPORTABLE"), (2u64, "IMPORTABLE")];
         flag_display(self.0 as u64, BITS, f)
@@ -18443,7 +18443,7 @@ impl FenceImportFlags {
 impl fmt::Display for FenceImportFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "TEMPORARY")];
         flag_display(self.0 as u64, BITS, f)
@@ -18466,7 +18466,7 @@ impl SurfaceCounterFlagsEXT {
 impl fmt::Display for SurfaceCounterFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "VBLANK_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -18487,7 +18487,7 @@ impl PipelineViewportSwizzleStateCreateFlagsNV {}
 impl fmt::Display for PipelineViewportSwizzleStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18508,7 +18508,7 @@ impl PipelineDiscardRectangleStateCreateFlagsEXT {}
 impl fmt::Display for PipelineDiscardRectangleStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18529,7 +18529,7 @@ impl PipelineCoverageToColorStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageToColorStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18550,7 +18550,7 @@ impl PipelineCoverageModulationStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageModulationStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18571,7 +18571,7 @@ impl PipelineCoverageReductionStateCreateFlagsNV {}
 impl fmt::Display for PipelineCoverageReductionStateCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18592,7 +18592,7 @@ impl ValidationCacheCreateFlagsEXT {}
 impl fmt::Display for ValidationCacheCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18618,7 +18618,7 @@ impl DebugUtilsMessageSeverityFlagsEXT {
 impl fmt::Display for DebugUtilsMessageSeverityFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VERBOSE_EXT"),
@@ -18649,7 +18649,7 @@ impl DebugUtilsMessageTypeFlagsEXT {
 impl fmt::Display for DebugUtilsMessageTypeFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "GENERAL_EXT"),
@@ -18675,7 +18675,7 @@ impl DebugUtilsMessengerCreateFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18696,7 +18696,7 @@ impl DebugUtilsMessengerCallbackDataFlagsEXT {}
 impl fmt::Display for DebugUtilsMessengerCallbackDataFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18717,7 +18717,7 @@ impl DeviceMemoryReportFlagsEXT {}
 impl fmt::Display for DeviceMemoryReportFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18738,7 +18738,7 @@ impl PipelineRasterizationConservativeStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationConservativeStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18764,7 +18764,7 @@ impl DescriptorBindingFlags {
 impl fmt::Display for DescriptorBindingFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "UPDATE_AFTER_BIND"),
@@ -18792,7 +18792,7 @@ impl ConditionalRenderingFlagsEXT {
 impl fmt::Display for ConditionalRenderingFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "INVERTED_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -18821,7 +18821,7 @@ impl ResolveModeFlags {
 impl fmt::Display for ResolveModeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SAMPLE_ZERO"),
@@ -18849,7 +18849,7 @@ impl PipelineRasterizationStateStreamCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationStateStreamCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18870,7 +18870,7 @@ impl PipelineRasterizationDepthClipStateCreateFlagsEXT {}
 impl fmt::Display for PipelineRasterizationDepthClipStateCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18893,7 +18893,7 @@ impl SwapchainImageUsageFlagsANDROID {
 impl fmt::Display for SwapchainImageUsageFlagsANDROID {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "SHARED_ANDROID")];
         flag_display(self.0 as u64, BITS, f)
@@ -18922,7 +18922,7 @@ impl ToolPurposeFlags {
 impl fmt::Display for ToolPurposeFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VALIDATION"),
@@ -18953,7 +18953,7 @@ impl SubmitFlags {
 impl fmt::Display for SubmitFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "PROTECTED")];
         flag_display(self.0 as u64, BITS, f)
@@ -18974,7 +18974,7 @@ impl ImageFormatConstraintsFlagsFUCHSIA {}
 impl fmt::Display for ImageFormatConstraintsFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -18997,7 +18997,7 @@ impl HostImageCopyFlags {
 impl fmt::Display for HostImageCopyFlags {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "MEMCPY")];
         flag_display(self.0 as u64, BITS, f)
@@ -19024,7 +19024,7 @@ impl PartitionedAccelerationStructureInstanceFlagsNV {
 impl fmt::Display for PartitionedAccelerationStructureInstanceFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "FLAG_TRIANGLE_FACING_CULL_DISABLE_NV"),
@@ -19057,7 +19057,7 @@ impl ImageConstraintsInfoFlagsFUCHSIA {
 impl fmt::Display for ImageConstraintsInfoFlagsFUCHSIA {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "CPU_READ_RARELY_FUCHSIA"),
@@ -19089,7 +19089,7 @@ impl GraphicsPipelineLibraryFlagsEXT {
 impl fmt::Display for GraphicsPipelineLibraryFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VERTEX_INPUT_INTERFACE_EXT"),
@@ -19120,7 +19120,7 @@ impl ImageCompressionFlagsEXT {
 impl fmt::Display for ImageCompressionFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "FIXED_RATE_DEFAULT_EXT"),
@@ -19171,7 +19171,7 @@ impl ImageCompressionFixedRateFlagsEXT {
 impl fmt::Display for ImageCompressionFixedRateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_1BPC_EXT"),
@@ -19224,7 +19224,7 @@ impl ExportMetalObjectTypeFlagsEXT {
 impl fmt::Display for ExportMetalObjectTypeFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "METAL_DEVICE_EXT"),
@@ -19256,7 +19256,7 @@ impl RenderingAttachmentFlagsKHR {
 impl fmt::Display for RenderingAttachmentFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INPUT_ATTACHMENT_FEEDBACK_KHR"),
@@ -19284,7 +19284,7 @@ impl ResolveImageFlagsKHR {
 impl fmt::Display for ResolveImageFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SKIP_TRANSFER_FUNCTION_KHR"),
@@ -19310,7 +19310,7 @@ impl DeviceAddressBindingFlagsEXT {
 impl fmt::Display for DeviceAddressBindingFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "INTERNAL_OBJECT_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -19337,7 +19337,7 @@ impl OpticalFlowGridSizeFlagsNV {
 impl fmt::Display for OpticalFlowGridSizeFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_1X1_NV"),
@@ -19370,7 +19370,7 @@ impl OpticalFlowUsageFlagsNV {
 impl fmt::Display for OpticalFlowUsageFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INPUT_NV"),
@@ -19403,7 +19403,7 @@ impl OpticalFlowSessionCreateFlagsNV {
 impl fmt::Display for OpticalFlowSessionCreateFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ENABLE_HINT_NV"),
@@ -19432,7 +19432,7 @@ impl OpticalFlowExecuteFlagsNV {
 impl fmt::Display for OpticalFlowExecuteFlagsNV {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "DISABLE_TEMPORAL_HINTS_NV")];
         flag_display(self.0 as u64, BITS, f)
@@ -19455,7 +19455,7 @@ impl FrameBoundaryFlagsEXT {
 impl fmt::Display for FrameBoundaryFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "FRAME_END_EXT")];
         flag_display(self.0 as u64, BITS, f)
@@ -19483,7 +19483,7 @@ impl PresentScalingFlagsKHR {
 impl fmt::Display for PresentScalingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ONE_TO_ONE_KHR"),
@@ -19515,7 +19515,7 @@ impl PresentGravityFlagsKHR {
 impl fmt::Display for PresentGravityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] =
             &[(1u64, "MIN_KHR"), (2u64, "MAX_KHR"), (4u64, "CENTERED_KHR")];
@@ -19551,7 +19551,7 @@ impl ShaderCreateFlagsEXT {
 impl fmt::Display for ShaderCreateFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "LINK_STAGE_EXT"),
@@ -19589,7 +19589,7 @@ impl TileShadingRenderPassFlagsQCOM {
 impl fmt::Display for TileShadingRenderPassFlagsQCOM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "ENABLE_QCOM"), (2u64, "PER_TILE_EXECUTION_QCOM")];
         flag_display(self.0 as u64, BITS, f)
@@ -19613,7 +19613,7 @@ impl PhysicalDeviceSchedulingControlsFlagsARM {
 impl fmt::Display for PhysicalDeviceSchedulingControlsFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SHADER_CORE_COUNT_ARM"),
@@ -19637,7 +19637,7 @@ impl SurfaceCreateFlagsOHOS {}
 impl fmt::Display for SurfaceCreateFlagsOHOS {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -19663,7 +19663,7 @@ impl PresentStageFlagsEXT {
 impl fmt::Display for PresentStageFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "QUEUE_OPERATIONS_END_EXT"),
@@ -19692,7 +19692,7 @@ impl PastPresentationTimingFlagsEXT {
 impl fmt::Display for PastPresentationTimingFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ALLOW_PARTIAL_RESULTS_EXT"),
@@ -19719,7 +19719,7 @@ impl PresentTimingInfoFlagsEXT {
 impl fmt::Display for PresentTimingInfoFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PRESENT_AT_RELATIVE_TIME_EXT"),
@@ -19745,7 +19745,7 @@ impl SwapchainImageUsageFlagsOHOS {
 impl fmt::Display for SwapchainImageUsageFlagsOHOS {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "SHARED_OHOS")];
         flag_display(self.0 as u64, BITS, f)
@@ -19766,7 +19766,7 @@ impl PerformanceCounterDescriptionFlagsARM {}
 impl fmt::Display for PerformanceCounterDescriptionFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -19787,7 +19787,7 @@ impl ShaderInstrumentationValuesFlagsARM {}
 impl fmt::Display for ShaderInstrumentationValuesFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -19813,7 +19813,7 @@ impl DataGraphTOSAQualityFlagsARM {
 impl fmt::Display for DataGraphTOSAQualityFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM"),
@@ -19845,7 +19845,7 @@ impl DataGraphOpticalFlowGridSizeFlagsARM {
 impl fmt::Display for DataGraphOpticalFlowGridSizeFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_1X1_ARM"),
@@ -19877,7 +19877,7 @@ impl DataGraphOpticalFlowImageUsageFlagsARM {
 impl fmt::Display for DataGraphOpticalFlowImageUsageFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INPUT_ARM"),
@@ -19907,7 +19907,7 @@ impl DataGraphOpticalFlowCreateFlagsARM {
 impl fmt::Display for DataGraphOpticalFlowCreateFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ENABLE_HINT_ARM"),
@@ -19938,7 +19938,7 @@ impl DataGraphOpticalFlowExecuteFlagsARM {
 impl fmt::Display for DataGraphOpticalFlowExecuteFlagsARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DISABLE_TEMPORAL_HINTS_ARM"),
@@ -19974,7 +19974,7 @@ impl VideoCodecOperationFlagsKHR {
 impl fmt::Display for VideoCodecOperationFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (65536u64, "ENCODE_H264_KHR"),
@@ -20006,7 +20006,7 @@ impl VideoCapabilityFlagsKHR {
 impl fmt::Display for VideoCapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PROTECTED_CONTENT_KHR"),
@@ -20037,7 +20037,7 @@ impl VideoSessionCreateFlagsKHR {
 impl fmt::Display for VideoSessionCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PROTECTED_CONTENT_KHR"),
@@ -20067,7 +20067,7 @@ impl VideoSessionParametersCreateFlagsKHR {
 impl fmt::Display for VideoSessionParametersCreateFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "QUANTIZATION_MAP_COMPATIBLE_KHR")];
         flag_display(self.0 as u64, BITS, f)
@@ -20088,7 +20088,7 @@ impl VideoBeginCodingFlagsKHR {}
 impl fmt::Display for VideoBeginCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -20109,7 +20109,7 @@ impl VideoEndCodingFlagsKHR {}
 impl fmt::Display for VideoEndCodingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -20134,7 +20134,7 @@ impl VideoCodingControlFlagsKHR {
 impl fmt::Display for VideoCodingControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "RESET_KHR"),
@@ -20164,7 +20164,7 @@ impl VideoDecodeUsageFlagsKHR {
 impl fmt::Display for VideoDecodeUsageFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSCODING_KHR"),
@@ -20192,7 +20192,7 @@ impl VideoDecodeCapabilityFlagsKHR {
 impl fmt::Display for VideoDecodeCapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "DPB_AND_OUTPUT_COINCIDE_KHR"),
@@ -20216,7 +20216,7 @@ impl VideoDecodeFlagsKHR {}
 impl fmt::Display for VideoDecodeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -20241,7 +20241,7 @@ impl VideoDecodeH264PictureLayoutFlagsKHR {
 impl fmt::Display for VideoDecodeH264PictureLayoutFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "INTERLACED_INTERLEAVED_LINES_KHR"),
@@ -20269,7 +20269,7 @@ impl VideoEncodeFlagsKHR {
 impl fmt::Display for VideoEncodeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (4u64, "INTRA_REFRESH_KHR"),
@@ -20300,7 +20300,7 @@ impl VideoEncodeUsageFlagsKHR {
 impl fmt::Display for VideoEncodeUsageFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TRANSCODING_KHR"),
@@ -20331,7 +20331,7 @@ impl VideoEncodeContentFlagsKHR {
 impl fmt::Display for VideoEncodeContentFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "CAMERA_KHR"),
@@ -20361,7 +20361,7 @@ impl VideoEncodeCapabilityFlagsKHR {
 impl fmt::Display for VideoEncodeCapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PRECEDING_EXTERNALLY_ENCODED_BYTES_KHR"),
@@ -20398,7 +20398,7 @@ impl VideoEncodeFeedbackFlagsKHR {
 impl fmt::Display for VideoEncodeFeedbackFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VIDEO_ENCODE_FEEDBACKSTREAM_BUFFER_OFFSET_KHR"),
@@ -20434,7 +20434,7 @@ impl VideoEncodePerPartitionFeedbackFlagsKHR {
 impl fmt::Display for VideoEncodePerPartitionFeedbackFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "STATUS_KHR"),
@@ -20465,7 +20465,7 @@ impl VideoEncodeRateControlFlagsKHR {}
 impl fmt::Display for VideoEncodeRateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0 as u64, BITS, f)
@@ -20491,7 +20491,7 @@ impl VideoEncodeRateControlModeFlagsKHR {
 impl fmt::Display for VideoEncodeRateControlModeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] =
             &[(1u64, "DISABLED_KHR"), (2u64, "CBR_KHR"), (4u64, "VBR_KHR")];
@@ -20519,7 +20519,7 @@ impl VideoEncodeIntraRefreshModeFlagsKHR {
 impl fmt::Display for VideoEncodeIntraRefreshModeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "PER_PICTURE_PARTITION_KHR"),
@@ -20551,7 +20551,7 @@ impl VideoChromaSubsamplingFlagsKHR {
 impl fmt::Display for VideoChromaSubsamplingFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "MONOCHROME_KHR"),
@@ -20582,7 +20582,7 @@ impl VideoComponentBitDepthFlagsKHR {
 impl fmt::Display for VideoComponentBitDepthFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VIDEO_COMPONENT_DEPTH_8_KHR"),
@@ -20619,7 +20619,7 @@ impl VideoEncodeH264CapabilityFlagsKHR {
 impl fmt::Display for VideoEncodeH264CapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "HRD_COMPLIANCE_KHR"),
@@ -20673,7 +20673,7 @@ impl VideoEncodeH264StdFlagsKHR {
 impl fmt::Display for VideoEncodeH264StdFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SEPARATE_COLOR_PLANE_FLAG_SET_KHR"),
@@ -20721,7 +20721,7 @@ impl VideoEncodeH264RateControlFlagsKHR {
 impl fmt::Display for VideoEncodeH264RateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ATTEMPT_HRD_COMPLIANCE_KHR"),
@@ -20761,7 +20761,7 @@ impl VideoEncodeH265CapabilityFlagsKHR {
 impl fmt::Display for VideoEncodeH265CapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "HRD_COMPLIANCE_KHR"),
@@ -20817,7 +20817,7 @@ impl VideoEncodeH265StdFlagsKHR {
 impl fmt::Display for VideoEncodeH265StdFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "SEPARATE_COLOR_PLANE_FLAG_SET_KHR"),
@@ -20866,7 +20866,7 @@ impl VideoEncodeH265RateControlFlagsKHR {
 impl fmt::Display for VideoEncodeH265RateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "ATTEMPT_HRD_COMPLIANCE_KHR"),
@@ -20897,7 +20897,7 @@ impl VideoEncodeH265CtbSizeFlagsKHR {
 impl fmt::Display for VideoEncodeH265CtbSizeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_16_KHR"),
@@ -20927,7 +20927,7 @@ impl VideoEncodeH265TransformBlockSizeFlagsKHR {
 impl fmt::Display for VideoEncodeH265TransformBlockSizeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "TYPE_4_KHR"),
@@ -20961,7 +20961,7 @@ impl VideoEncodeAV1CapabilityFlagsKHR {
 impl fmt::Display for VideoEncodeAV1CapabilityFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (
@@ -21009,7 +21009,7 @@ impl VideoEncodeAV1StdFlagsKHR {
 impl fmt::Display for VideoEncodeAV1StdFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (
@@ -21043,7 +21043,7 @@ impl VideoEncodeAV1RateControlFlagsKHR {
 impl fmt::Display for VideoEncodeAV1RateControlFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_KHR"),
@@ -21081,7 +21081,7 @@ impl VideoEncodeAV1SuperblockSizeFlagsKHR {
 impl fmt::Display for VideoEncodeAV1SuperblockSizeFlagsKHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[
             (1u64, "VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_KHR"),
@@ -21107,7 +21107,7 @@ impl AccessFlags3KHR {
 impl fmt::Display for AccessFlags3KHR {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[];
         flag_display(self.0, BITS, f)
@@ -21130,7 +21130,7 @@ impl CooperativeMatrixFlagsEXT {
 impl fmt::Display for CooperativeMatrixFlagsEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if self.is_empty() {
-            write!(f, "NONE")?;
+            write!(f, "0x0")?;
         }
         const BITS: &[(u64, &str)] = &[(1u64, "SATURATING_ACCUMULATION_EXT")];
         flag_display(self.0 as u64, BITS, f)

@@ -1,6 +1,9 @@
 # Changelog
 
 All changes to this project will be documented in this file.
+## [0.1.13] - 2026-11-13
+### Fixed
+- bitflag display
 ## [0.1.12] - 2026-11-10
 - `bytemuck::NoUninit` for applicable structs.
 ## [0.1.11] - 2026-11-07
@@ -54,6 +57,7 @@ All changes to this project will be documented in this file.
 ### Added
 - Initial crate release
 
+[0.1.13]: https://crates.io/crates/tuhka/0.1.13
 [0.1.12]: https://crates.io/crates/tuhka/0.1.12
 [0.1.11]: https://crates.io/crates/tuhka/0.1.11
 [0.1.10]: https://crates.io/crates/tuhka/0.1.10

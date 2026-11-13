@@ -31,7 +31,7 @@ fn flag_display(
     f: &mut fmt::Formatter<'_>
 ) -> fmt::Result
 {
-    let mut first = false;
+    let mut first = true;
     let mut remaining = bits;
     for &(bit, name) in known {
         if bits & bit == bit {
@@ -39,16 +39,16 @@ fn flag_display(
                 write!(f, "{name}")?;
                 first = false;
             } else {
-                write!(f, "|{name}")?;
+                write!(f, " | {name}")?;
             }
         }
         remaining &= !bit;
     }
     if remaining != 0 {
         if first {
-            write!(f, "0x{:x}", remaining)?;
+            write!(f, "0b{:b}", remaining)?;
         } else {
-            write!(f, "|0x{:x}", remaining)?;
+            write!(f, " | 0b{:b}", remaining)?;
         }
     }
     Ok(())
